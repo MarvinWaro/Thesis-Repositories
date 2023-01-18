@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
-    <title>CCS TAMS</title>
+    <title>CCS Thesis Repositories | Login</title>
 </head>
 <body>
     <div class="login-container">
@@ -21,7 +21,7 @@
             <label for="password">Password</label>
             <input type="password" id="password" name="password" placeholder="Enter password" required tabindex="2">
             <input class="button" type="submit" value="Login" name="login" tabindex="3">
-            <a class="create" href="create.php">Create an Account</a>
+            <a class="create" href="create.php">Create an account</a>
             <?php
                 //Display the error message if there is any.
                 if(isset($error)){

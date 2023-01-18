@@ -11,7 +11,7 @@
     align-items: center;
     justify-items: center;
     overflow: hidden;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.75)50%, rgba(0, 0, 0, 0.75)50%), url(../img/backgroundwmsu.jpg)no-repeat center fixed;
+    background-color: #3C6255;
     background-size: cover;
 }
 
@@ -37,13 +37,46 @@
 .login-form .logo-details i {
     font-size: 40px;
     font-weight: 800;
-    color: #107869;
+    color: #3C6255;
     text-align: center;
     padding-right: 5px;
 }
 
 .login-form .logo-details .logo-name {
-    color: rgb(6, 51, 6);
+    color: #3C6255;
     font-size: 36px;
     font-weight: 500;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    margin: 8px 0;
+}
+
+.divider {
+    border: 0;
+    border-bottom: 1px solid #3C6255;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.button {
+    background-color: rgb(180, 224, 183);
+    transition: 0.3s ease;
+    border: none;
+}
+
+.button:hover {
+    background-color: #3C6255;
+    color: white;
+}
+
+.create {
+    font-size: 16.5px;
+    text-decoration: none;
+    color: #3C6255;
 }
