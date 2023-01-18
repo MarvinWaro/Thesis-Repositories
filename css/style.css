@@ -1,0 +1,49 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+.login-container {
+    width: 100%;
+    height: calc(100vh);
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    overflow: hidden;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.75)50%, rgba(0, 0, 0, 0.75)50%), url(../img/backgroundwmsu.jpg)no-repeat center fixed;
+    background-size: cover;
+}
+
+.login-form .divider {
+    margin-top: 30px;
+}
+
+.login-form {
+    max-width: 400px;
+    padding: 40px;
+    margin: auto;
+    background-color: white;
+    border-radius: 4%;
+}
+
+.login-form .logo-details {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-form .logo-details i {
+    font-size: 40px;
+    font-weight: 800;
+    color: #107869;
+    text-align: center;
+    padding-right: 5px;
+}
+
+.login-form .logo-details .logo-name {
+    color: rgb(6, 51, 6);
+    font-size: 36px;
+    font-weight: 500;
+}
