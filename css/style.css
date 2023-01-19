@@ -69,6 +69,8 @@ select {
     background-color: rgb(180, 224, 183);
     transition: 0.3s ease;
     border: none;
+    width: 150px;
+    margin-left: 15px;
 }
 
 .button:hover {
@@ -90,6 +92,12 @@ select {
 
 .login-logo {
     width: 110px;
+}
+
+.button-login {
+    background-color: rgb(180, 224, 183);
+    transition: 0.3s ease;
+    border: none;
 }
 
 /*Create Form*/
@@ -116,4 +124,16 @@ select {
 .create-form h3 {
     color: #3C6255;
     text-align: center;
+}
+
+.reset_btn {
+    background-color: #FA9494;
+    transition: 0.3s ease;
+    border: none;
+    width: 150px;
+}
+
+.reset_btn:hover {
+    background-color: #EB1D36;
+    color: white;
 }

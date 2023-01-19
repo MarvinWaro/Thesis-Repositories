@@ -24,7 +24,7 @@
             <input type="text" id="username" name="username" placeholder="Enter username" required>
             <label for="password">Password</label>
             <input type="password" id="password" name="password" placeholder="Enter password" required>
-            <input class="button" type="submit" value="Login" name="login" tabindex="3">
+            <input class="button-login" type="submit" value="Login" name="login" tabindex="3">
             <a class="create" href="create_account.php">Create an account</a>
 
         </form>

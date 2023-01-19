@@ -65,11 +65,10 @@
                     <option value="second_sem">Second Semester</option>
                 </select>
 
-
-
-
+                <input class="reset_btn" type="reset" value="Clear all" name="clear">
                 <input class="button" type="submit" value="Save" name="save">
-                <a class="create" href="login.php">Back to Login</a>
+                <br>
+                <a class="create" href="login.php">Back to login page</a>
 
             </form>
         </div>
