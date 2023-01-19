@@ -10,25 +10,23 @@
 <body>
     <div class="login-container">
         <form class="login-form" action="login.php" method="post">
+            <div class="logo">
+                <img class="login-logo" src="../img/rlogo.png" alt="logo ccs">
+            </div>
+
             <div class="logo-details">
-                <span class="logo-name">Thesis Archives</span>
+                <span class="logo-name">Thesis Repositories</span>
             </div>
 
             <hr class="divider">
 
             <label for="username">Username</label>
-            <input type="text" id="username" name="username" placeholder="Enter username" required tabindex="1">
+            <input type="text" id="username" name="username" placeholder="Enter username" required>
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="Enter password" required tabindex="2">
+            <input type="password" id="password" name="password" placeholder="Enter password" required>
             <input class="button" type="submit" value="Login" name="login" tabindex="3">
-            <a class="create" href="create.php">Create an account</a>
-            <?php
-                //Display the error message if there is any.
-                if(isset($error)){
-                    echo '<div><p class="error">'.$error.'</p></div>';
-                }
+            <a class="create" href="create_account.php">Create an account</a>
 
-            ?>
         </form>
     </div>
 </body>
