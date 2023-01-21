@@ -2,6 +2,7 @@
     margin: 0;
     box-sizing: border-box;
     text-decoration: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .login-container {
@@ -100,6 +101,7 @@ select {
     transition: 0.3s ease;
     border: none;
     margin-bottom: 20px;
+    margin-top: 16px;
 }
 
 .button-login:hover {
@@ -139,9 +141,14 @@ select {
     border: none;
     width: 150px;
     margin-bottom: 20px;
+    margin-top: 10px;
 }
 
 .reset_btn:hover {
     background-color: #EB1D36;
     color: white;
+}
+
+label {
+    padding: 8px 0px 8px 0px;
 }
