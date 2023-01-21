@@ -25,6 +25,7 @@
     margin: auto;
     background-color: white;
     border-radius: 4%;
+
 }
 
 .login-form .logo-details {
@@ -98,6 +99,7 @@ select {
     background-color: rgb(180, 224, 183);
     transition: 0.3s ease;
     border: none;
+    margin-bottom: 20px;
 }
 
 .button-login:hover {
@@ -136,6 +138,7 @@ select {
     transition: 0.3s ease;
     border: none;
     width: 150px;
+    margin-bottom: 20px;
 }
 
 .reset_btn:hover {
