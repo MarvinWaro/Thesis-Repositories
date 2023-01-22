@@ -1,17 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
+    font-family: 'Poppins', sans-serif;
 }
 
 :root {
     --maincolor: #3C6255;
+    --maincolorMdark: #61876E;
     --maincolor_light: rgb(180, 224, 183);
     --cancelcolor: #EB1D36;
     --cancelcolor_light: #FA9494;
+    --uppernav: #EAE7B1;
 }
 
 .login-container {
@@ -71,7 +74,7 @@ select {
 
 .divider {
     border: 0;
-    border-bottom: 1px solid #3C6255;
+    border-bottom: 1px solid var(--maincolor);
     width: 100%;
     margin: 20px 0;
 }
@@ -160,4 +163,103 @@ select {
 
 label {
     padding: 8px 0px 8px 0px;
+}
+
+
+/* DASHBOARD ADMIN*/
+
+body {
+    min-height: 100vh;
+    width: 100%;
+}
+
+.sidebar {
+    position: fixed;
+    height: 100%;
+    width: 250px;
+    background: var(--maincolor);
+}
+
+.sidebar .logo-details {
+    height: 80px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar .logo-details i {
+    font-size: 28px;
+    font-weight: 400;
+    color: #ffff;
+    min-width: 60px;
+    text-align: center;
+}
+
+.sidebar .logo-details .logo_name {
+    font-size: 24px;
+    font-weight: 400;
+    color: #ffff;
+    margin-left: 8px;
+}
+
+.sidebar .nav-links {
+    margin-top: 16px;
+}
+
+.sidebar .nav-links li {
+    height: 40px;
+    width: 100%;
+    list-style: none;
+}
+
+.sidebar .nav-links li a {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    transition: all 0.4s ease;
+}
+
+.sidebar .nav-links li a:hover {
+    background: var(--maincolorMdark);
+}
+
+.sidebar .nav-links li a i {
+    min-width: 60px;
+    text-align: center;
+    color: #ffff;
+    font-size: 18px;
+}
+
+.sidebar .nav-links li a .link-name {
+    color: #ffff;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.line {
+    color: 1px solid white;
+    width: 200px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+}
+
+/*Home Section*/
+
+.home-section {
+    background: #dddbdb;
+    position: relative;
+    min-height: 100vh;
+    width: calc(100% - 250px);
+    left: 250px;
+}
+
+.home-section nav {
+    background: #ffff;
+    height: 60px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
 }
