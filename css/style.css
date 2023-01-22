@@ -7,6 +7,13 @@
     text-decoration: none;
 }
 
+:root {
+    --maincolor: #3C6255;
+    --maincolor_light: rgb(180, 224, 183);
+    --cancelcolor: #EB1D36;
+    --cancelcolor_light: #FA9494;
+}
+
 .login-container {
     width: 100%;
     height: calc(100vh);
@@ -14,7 +21,7 @@
     align-items: center;
     justify-items: center;
     overflow: hidden;
-    background-color: #3C6255;
+    background-color: var(--maincolor);
     background-size: cover;
 }
 
@@ -103,7 +110,7 @@ select {
     transition: 0.3s ease;
     border: none;
     margin-bottom: 20px;
-    margin-top: 16px;
+
 }
 
 .button-login:hover {
@@ -154,5 +161,3 @@ select {
 label {
     padding: 8px 0px 8px 0px;
 }
-
-/* landingpage css */

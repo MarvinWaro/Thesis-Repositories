@@ -5,12 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
-    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <title>CCS Thesis Repositories | Login</title>
 </head>
 <body>
     <div class="login-container">
-        <form class="login-form" action="login.php" method="post">
+        <form class="login-form" action="../admin/dashboard.php" method="post">
             <div class="logo">
                 <img class="login-logo" src="../img/rlogo.png" alt="logo ccs">
             </div>
