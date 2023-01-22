@@ -39,7 +39,7 @@
 .login-form .logo-details i {
     font-size: 40px;
     font-weight: 800;
-    color: #3C6255;
+    color: var(--primary);
     text-align: center;
     padding-right: 5px;
 }
@@ -152,3 +152,4 @@ select {
 label {
     padding: 8px 0px 8px 0px;
 }
+
