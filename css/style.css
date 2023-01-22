@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
 * {
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
     text-decoration: none;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .login-container {
@@ -153,3 +155,4 @@ label {
     padding: 8px 0px 8px 0px;
 }
 
+/* landingpage css */
