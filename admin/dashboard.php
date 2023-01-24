@@ -67,7 +67,7 @@
                     <span class="link-name">Manage Rubricks</span>
                 </a>
             </li>
-            <hr class="line">
+            <hr class="line-logout">
             <li class="logout" id="logout-link">
                 <a href="../login/logout.php">
                     <i class='bx bx-log-out'></i>

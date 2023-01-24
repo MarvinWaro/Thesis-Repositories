@@ -377,3 +377,14 @@ nav .profile-details i {
     bottom: 0;
     margin-bottom: 1px;
 }
+
+.line-logout {
+    color: 1px solid white;
+    width: 200px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+    position: relative;
+    top: 125px;
+}
