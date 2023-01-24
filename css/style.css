@@ -5,7 +5,6 @@
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
-    font-family: 'Poppins', sans-serif;
 }
 
 :root {
@@ -14,7 +13,7 @@
     --maincolor_light: rgb(180, 224, 183);
     --cancelcolor: #EB1D36;
     --cancelcolor_light: #FA9494;
-    --uppernav: #EAE7B1;
+    --uppernav: #FFFBF5;
 }
 
 .login-container {
@@ -62,7 +61,7 @@
     font-weight: 500;
 }
 
-input,
+.form-input,
 select {
     width: 100%;
     padding: 10px;
@@ -171,6 +170,7 @@ label {
 body {
     min-height: 100vh;
     width: 100%;
+    font-family: 'Poppins', sans-serif;
 }
 
 .sidebar {
@@ -196,10 +196,11 @@ body {
 }
 
 .sidebar .logo-details .logo_name {
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 400;
     color: #ffff;
-    margin-left: 8px;
+    margin: 0 auto;
+    padding-right: 10px;
 }
 
 .sidebar .nav-links {
@@ -231,6 +232,13 @@ body {
     font-size: 18px;
 }
 
+.sidebar .logo-details .sidebar-logo {
+    max-width: 60px;
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 5px;
+}
+
 .sidebar .nav-links li a .link-name {
     color: #ffff;
     font-size: 14px;
@@ -257,9 +265,54 @@ body {
 }
 
 .home-section nav {
-    background: #ffff;
+
+    background: var(--uppernav);
     height: 59px;
     padding: 0 20px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+}
+
+.home-section nav .sidebar-menu {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 450;
+}
+
+.home-section nav .sidebar-menu i {
+    font-size: 35px;
+    margin-right: 10px;
+}
+
+.home-section nav .search-box {
+    height: 40px;
+    width: 350px;
+    margin: 0 20px;
+    position: relative;
+}
+
+nav .search-box input {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-radius: 6px;
+    padding: 0 15px;
+    font-size: 13px;
+    background: transparent;
+    border: 1px solid;
+    outline: none;
+}
+
+nav .search-box .bx-search {
+    position: absolute;
+    right: 0;
+    height: 40px;
+    width: 38px;
+    background-color: #61876E;
+    border-radius: 6px;
+    color: #fff;
+    line-height: 40px;
+    text-align: center;
 }

@@ -20,21 +20,21 @@
                 <hr class="divider">
 
                 <label for="fname">First name</label>
-                <input class="input" type="text" id="fname" name="fname" placeholder="Enter First name*" required>
+                <input class="form-input" type="text" id="fname" name="fname" placeholder="Enter First name*" required>
                 <label for="lname">Last name</label>
-                <input class="input" type="text" id="lname" name="lname" placeholder="Enter Last name*" required>
+                <input class="form-input" type="text" id="lname" name="lname" placeholder="Enter Last name*" required>
                 <br>
 
                 <label for="username">Username</label>
-                <input class="input" type="text" id="username" name="username" placeholder="Enter Username*" required>
+                <input class="form-input" type="text" id="username" name="username" placeholder="Enter Username*" required>
                 <label for="email">Email</label>
-                <input class="input" type="email" id="email" name="email" placeholder="Enter Email*" required>
+                <input class="form-input" type="email" id="email" name="email" placeholder="Enter Email*" required>
                 <br>
 
                 <label for="password">Password</label>
-                <input class="input" type="password" id="password" name="password" placeholder="Enter password" required>
+                <input class="form-input" type="password" id="password" name="password" placeholder="Enter password" required>
                 <label for="password">Re-Enter Password</label>
-                <input class="input" type="password" id="password" name="password" placeholder="Enter Re-Enter Password*" required>
+                <input class="form-input" type="password" id="password" name="password" placeholder="Enter Re-Enter Password*" required>
                 <br>
 
                 <label for="course">Course</label>
@@ -65,8 +65,8 @@
                     <option value="second_sem">Second Semester</option>
                 </select>
 
-                <input class="reset_btn" type="reset" value="Clear all" name="clear">
-                <input class="button" type="submit" value="Save" name="save">
+                <input class="reset_btn form-input" type="reset" value="Clear all" name="clear">
+                <input class="button form-input" type="submit" value="Save" name="save">
                 <br>
                 <a class="create" href="login.php">Back to login page</a>
 

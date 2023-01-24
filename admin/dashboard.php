@@ -12,6 +12,7 @@
 <body>
     <div class="sidebar">
         <div class="logo-details">
+            <img class="sidebar-logo" src="../img/rlogo.png" alt="logo ccs">
             <span class="logo_name">Thesis Repositories</span>
         </div>
 
@@ -75,7 +76,20 @@
         <nav>
             <div class="sidebar-menu">
                 <i class='bx bx-menu'></i>
+                <span class="dashboard">Dashboard</span>
             </div>
+
+            <div class="search-box">
+                <input type="text" placeholder="Search...">
+                <i class='bx bx-search'></i>
+            </div>
+
+            <div class="profile-details">
+                <i class='bx bx-user-circle'></i>
+                <span class="admin_name">Admin</span>
+                <i class='bx bx-chevron-down'></i>
+            </div>
+
         </nav>
     </section>
 
