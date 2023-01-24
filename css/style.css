@@ -178,6 +178,11 @@ body {
     height: 100%;
     width: 250px;
     background: var(--maincolor);
+    transition: all 0.4s ease;
+}
+
+.sidebar.active {
+    width: 60px;
 }
 
 .sidebar .logo-details {
@@ -196,11 +201,11 @@ body {
 }
 
 .sidebar .logo-details .logo_name {
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 400;
     color: #ffff;
     margin: 0 auto;
-    padding-right: 10px;
+    padding-right: 15px;
 }
 
 .sidebar .nav-links {
@@ -221,6 +226,14 @@ body {
     transition: all 0.4s ease;
 }
 
+.sidebar .nav-links .side-active {
+    background: var(--maincolorMdark);
+}
+
+.sidebar .nav-links li a:active {
+    background-color: var(--maincolorMdark);
+}
+
 .sidebar .nav-links li a:hover {
     background: var(--maincolorMdark);
 }
@@ -234,9 +247,8 @@ body {
 
 .sidebar .logo-details .sidebar-logo {
     max-width: 60px;
-    text-align: center;
-    padding-left: 20px;
-    padding-right: 5px;
+    padding-left: 15px;
+    padding-right: 8px;
 }
 
 .sidebar .nav-links li a .link-name {
@@ -252,6 +264,7 @@ body {
     justify-content: center;
     text-align: center;
     margin: auto;
+    white-space: nowrap;
 }
 
 /*Home Section*/
@@ -262,6 +275,12 @@ body {
     min-height: 100vh;
     width: calc(100% - 250px);
     left: 250px;
+    transition: all 0.4s ease;
+}
+
+.sidebar.active~.home-section {
+    width: calc(100% - 60px);
+    left: 60px;
 }
 
 .home-section nav {
@@ -300,7 +319,7 @@ nav .search-box input {
     border-radius: 6px;
     padding: 0 15px;
     font-size: 13px;
-    background: transparent;
+    background: #f5f6fa;
     border: 1px solid;
     outline: none;
 }
@@ -315,4 +334,36 @@ nav .search-box .bx-search {
     color: #fff;
     line-height: 40px;
     text-align: center;
+}
+
+.home-section nav .profile-details {
+    display: flex;
+    height: 40px;
+    min-width: 148px;
+    background: #f5f6fa;
+    border: 1px solid;
+    border-radius: 6px;
+    padding: 0 15px 0 2px;
+    justify-content: center;
+    align-items: center;
+}
+
+nav .profile-details .bx-user-circle {
+    font-size: 25px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+nav .profile-details .admin_name {
+    font-size: 13px;
+    font-weight: 500;
+    color: #333;
+    margin: 0 10px;
+    align-items: center;
+    white-space: nowrap;
+}
+
+nav .profile-details i {
+    color: #333;
+    font-size: 20px;
 }

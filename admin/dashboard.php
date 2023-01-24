@@ -20,7 +20,7 @@
 
         <ul class="nav-links">
             <li>
-                <a href="#">
+                <a class ="side-active" href="../admin/dashboard.php">
                     <i class='bx bx-grid-alt'></i>
                     <span class="link-name">Dashboard</span>
                 </a>
@@ -75,7 +75,7 @@
     <section class="home-section">
         <nav>
             <div class="sidebar-menu">
-                <i class='bx bx-menu'></i>
+                <i class='bx bx-menu sidebarBtn'></i>
                 <span class="dashboard">Dashboard</span>
             </div>
 
@@ -92,6 +92,9 @@
 
         </nav>
     </section>
+
+    <script src="../js/script.js"></script>
+
 
 </body>
 </html>
