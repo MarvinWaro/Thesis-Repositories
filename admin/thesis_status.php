@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../css/style.css">
     <!--bOXiCON cdn-->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <title>CCS TR | Manage Schedules</title>
+    <title>CCS TR | Dashboard</title>
 </head>
 <body>
     <div class="sidebar">
@@ -20,7 +20,7 @@
 
         <ul class="nav-links">
             <li>
-                <a href="../admin/dashboard.php">
+                <a  href="../admin/dashboard.php">
                     <i class='bx bx-grid-alt'></i>
                     <span class="link-name">Dashboard</span>
                 </a>
@@ -32,7 +32,7 @@
                 </a>
             </li>
             <li>
-                <a href="../admin/thesis_status.php">
+                <a class ="side-active" href="../admin/thesis_status.php">
                     <i class='bx bx-task'></i>
                     <span class="link-name">Thesis Status</span>
                 </a>
@@ -56,7 +56,7 @@
                 </a>
             </li>
             <li>
-                <a class ="side-active" href="../admin/manage_schedules.php">
+                <a href="../admin/manage_schedules.php">
                     <i class='bx bx-calendar' ></i>
                     <span class="link-name">Managae Schedule</span>
                 </a>
@@ -76,7 +76,7 @@
         <nav>
             <div class="sidebar-menu">
                 <i class='bx bx-menu sidebarBtn'></i>
-                <span class="dashboard">Manage Schedules</span>
+                <span class="dashboard">Thesis Status</span>
             </div>
 
             <div class="search-box">

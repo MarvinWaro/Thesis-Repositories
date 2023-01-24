@@ -26,43 +26,43 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="../admin/archives.php">
                     <i class='bx bx-folder-open'></i>
                     <span class="link-name">Archives</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="../admin/thesis_status.php">
                     <i class='bx bx-task'></i>
                     <span class="link-name">Thesis Status</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="../admin/manage_students.php">
                     <i class='bx bx-user'></i>
                     <span class="link-name">Manage Student</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="../admin/manage_panels.php">
                     <i class='bx bx-group' ></i>
                     <span class="link-name">Manage Panelist</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="../admin/manage_advisers.php">
                     <i class='bx bx-group' ></i>
                     <span class="link-name">Manage Adviser</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="../admin/manage_schedules.php">
                     <i class='bx bx-calendar' ></i>
                     <span class="link-name">Managae Schedule</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="../admin/manage_rubricks.php">
                     <i class='bx bx-note'></i>
                     <span class="link-name">Manage Rubricks</span>
                 </a>
