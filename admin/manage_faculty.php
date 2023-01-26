@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../css/style.css">
     <!--bOXiCON cdn-->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <title>CCS TR | Manage Panels</title>
+    <title>CCS TR | Manage Faculty</title>
 </head>
 <body>
     <div class="sidebar">
@@ -44,15 +44,9 @@
                 </a>
             </li>
             <li>
-                <a class ="side-active" href="../admin/manage_panels.php">
+                <a class ="side-active" href="../admin/manage_faculty.php">
                     <i class='bx bx-group' ></i>
-                    <span class="link-name">Manage Panelist</span>
-                </a>
-            </li>
-            <li>
-                <a href="../admin/manage_advisers.php">
-                    <i class='bx bx-group' ></i>
-                    <span class="link-name">Manage Adviser</span>
+                    <span class="link-name">Manage Faculty</span>
                 </a>
             </li>
             <li>
@@ -83,7 +77,7 @@
         <nav>
             <div class="sidebar-menu">
                 <i class='bx bx-menu sidebarBtn'></i>
-                <span class="dashboard">Manage Panel</span>
+                <span class="dashboard">Manage Faculty</span>
             </div>
 
             <div class="search-box">

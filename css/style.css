@@ -288,13 +288,21 @@ body {
 }
 
 .home-section nav {
-
+    position: fixed;
+    width: calc(100% - 250px);
+    left: 250px;
     background: var(--uppernav);
     height: 59px;
     padding: 0 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    transition: all 0.5s ease;
+}
+
+.sidebar.active~.home-section nav {
+    width: calc(100% - 60px);
+    left: 60px;
 }
 
 .home-section nav .sidebar-menu {
@@ -385,6 +393,101 @@ nav .profile-details i {
     justify-content: center;
     text-align: center;
     margin: auto;
+    margin-top: 15px;
+}
+
+/*home content*/
+
+.home-section .home-content {
     position: relative;
-    top: 125px;
+    padding-top: 80px;
+}
+
+.home-content .overview-boxes {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.home-content .overview-boxes .box {
+    width: calc(100% / 3 - 15px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 14px;
+    background: #fff;
+    border-radius: 10px;
+}
+
+
+.home-content .overview-boxes .box-topic {
+    font-size: 20px;
+    font-weight: 450;
+
+}
+
+.home-content .overview-boxes .number {
+    font-size: 30px;
+    font-weight: 500;
+    margin-top: -5px;
+    display: inline-block;
+}
+
+.overview-boxes .indicator-symbol {
+    display: flex;
+    align-items: center;
+}
+
+.overview-boxes .indicator-symbol i {
+    height: 20px;
+    width: 20px;
+    background: lightblue;
+    color: rgb(51, 48, 48);
+    border-radius: 50%;
+    font-size: 18px;
+}
+
+.overview-boxes .indicator-symbol .text {
+    font-size: 13px;
+    padding-left: 5px;
+}
+
+.overview-boxes .box .user {
+    font-size: 26px;
+    font-weight: 450;
+    height: 45px;
+    width: 45px;
+    background: lightblue;
+    color: #FFFBF5;
+    line-height: 45px;
+    text-align: center;
+    border-radius: 12px;
+    margin-left: 10px;
+}
+
+.overview-boxes .box .user-2 {
+    font-size: 26px;
+    font-weight: 450;
+    height: 45px;
+    width: 45px;
+    background: rgb(48, 119, 143);
+    color: #FFFBF5;
+    line-height: 45px;
+    text-align: center;
+    border-radius: 12px;
+    margin-left: 10px;
+}
+
+.overview-boxes .box .user-3 {
+    font-size: 26px;
+    font-weight: 450;
+    height: 45px;
+    width: 45px;
+    background: rgb(3, 75, 99);
+    color: #FFFBF5;
+    line-height: 45px;
+    text-align: center;
+    border-radius: 12px;
+    margin-left: 10px;
 }

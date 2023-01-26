@@ -44,15 +44,9 @@
                 </a>
             </li>
             <li>
-                <a href="../admin/manage_panels.php">
+                <a href="../admin/manage_faculty.php">
                     <i class='bx bx-group' ></i>
-                    <span class="link-name">Manage Panelist</span>
-                </a>
-            </li>
-            <li>
-                <a href="../admin/manage_advisers.php">
-                    <i class='bx bx-group' ></i>
-                    <span class="link-name">Manage Adviser</span>
+                    <span class="link-name">Manage Faculty</span>
                 </a>
             </li>
             <li>
@@ -98,10 +92,49 @@
             </div>
 
         </nav>
+
+        <!--Home CONTENT-->
+
+        <div class="home-content">
+            <div class="overview-boxes">
+                <div class="box">
+                    <div class="left-side">
+                        <div class="box_topic">Student</div>
+                        <div class="number">347</div>
+                        <!--<div class="indicator-symbol">
+                            <i class='bx bxs-user'></i>
+                            <span class="text">Added from Yesterday</span>
+                        </div>-->
+                    </div>
+                    <i class='bx bx-user user'></i>
+                </div>
+                <div class="box">
+                    <div class="left-side">
+                        <div class="box_topic">Faculty</div>
+                        <div class="number">10</div>
+                        <!--<div class="indicator-symbol">
+                            <i class='bx bxs-user'></i>
+                            <span class="text">Added from Yesterday</span>
+                        </div>-->
+                    </div>
+                    <i class='bx bx-group user-2'></i>
+                </div>
+                <div class="box">
+                    <div class="left-side">
+                        <div class="box_topic">Archives</div>
+                        <div class="number">1,090</div>
+                        <!--<div class="indicator-symbol">
+                            <i class='bx bxs-user'></i>
+                            <span class="text">Added from Yesterday</span>
+                        </div>-->
+                    </div>
+                    <i class='bx bx-folder-open user-3'></i>
+                </div>
+            </div>
+        </div>
+
     </section>
 
     <script src="../js/script.js"></script>
-
-
 </body>
 </html>

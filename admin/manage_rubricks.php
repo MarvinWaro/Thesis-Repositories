@@ -44,15 +44,9 @@
                 </a>
             </li>
             <li>
-                <a href="../admin/manage_panels.php">
+                <a href="../admin/manage_faculty.php">
                     <i class='bx bx-group' ></i>
-                    <span class="link-name">Manage Panelist</span>
-                </a>
-            </li>
-            <li>
-                <a href="../admin/manage_advisers.php">
-                    <i class='bx bx-group' ></i>
-                    <span class="link-name">Manage Adviser</span>
+                    <span class="link-name">Manage Faculty</span>
                 </a>
             </li>
             <li>
