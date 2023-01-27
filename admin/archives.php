@@ -92,10 +92,46 @@
             </div>
 
         </nav>
+
+        <!--Table-->
+
+        <div class="home-content">
+            <div class="table-container">
+                <div class="table-heading">
+                    <h3 class="table-title">List of Archives</h3>
+                 </div>
+
+                 <hr>
+
+                    <!--Filters-->
+                    
+
+                 <hr>
+
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Titles</th>
+                        <th>Department</th>
+                        <th>Section Rank</th>
+                        <th>Date of Upload</th>
+                        <th>Semester</th>
+                        <th>Grade</th>
+                        <th class="action">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
     </section>
 
-    <script src="../js/script.js"></script>
 
-
+<script src="../js/script.js"></script>
 </body>
 </html>
