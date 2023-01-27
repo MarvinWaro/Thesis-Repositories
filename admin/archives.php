@@ -95,27 +95,24 @@
 
         <!--Table-->
 
-        <div class="home-content">
+        <div class="table-content">
             <div class="table-container">
                 <div class="table-heading">
                     <h3 class="table-title">List of Archives</h3>
                  </div>
 
                  <hr>
-
                     <!--Filters-->
-
-
                  <hr>
 
 
-            <table class="table">
+            <table class="content-table">
                 <thead>
                     <tr>
                         <th>#</th>
                         <th>Titles</th>
                         <th>Department</th>
-                        <th>Section Rank</th>
+                        <th>Section</th>
                         <th>Date of Upload</th>
                         <th>Semester</th>
                         <th>Grade</th>
@@ -123,7 +120,70 @@
                     </tr>
                 </thead>
                 <tbody>
-
+                    <tr>
+                        <td>1</td>
+                        <td>Cyber Crime</td>
+                        <td>BSCS</td>
+                        <td>3A</td>
+                        <td>January 2 2004</td>
+                        <td>First Semester</td>
+                        <td>89.3%</td>
+                        <td>
+                            <div class="action">
+                                <a href="#">Edit</a>
+                                <a href="#">Delete</a>
+                                <a href="#">View</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Infliction of Internet Fraud</td>
+                        <td>BSCS</td>
+                        <td>3A</td>
+                        <td>January 2 2004</td>
+                        <td>First Semester</td>
+                        <td>89.3%</td>
+                        <td>
+                            <div class="action">
+                                <a href="#">Edit</a>
+                                <a href="#">Delete</a>
+                                <a href="#">View</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Hotel reservation System</td>
+                        <td>BSCS</td>
+                        <td>3A</td>
+                        <td>January 2 2004</td>
+                        <td>First Semester</td>
+                        <td>89.3%</td>
+                        <td>
+                            <div class="action">
+                                <a href="#">Edit</a>
+                                <a href="#">Delete</a>
+                                <a href="#">View</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Booking Systems</td>
+                        <td>BSCS</td>
+                        <td>3A</td>
+                        <td>January 2 2004</td>
+                        <td>First Semester</td>
+                        <td>89.3%</td>
+                        <td>
+                            <div class="action">
+                                <a href="#">Edit</a>
+                                <a href="#">Delete</a>
+                                <a href="#">View</a>
+                            </div>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -132,6 +192,6 @@
     </section>
 
 
-<script src="../js/script.js"></script>
+    <script src="../js/script.js"></script>
 </body>
 </html>

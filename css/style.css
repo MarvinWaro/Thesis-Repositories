@@ -93,9 +93,16 @@ select {
 }
 
 .create {
-    font-size: 16.5px;
+    font-size: 15px;
     text-decoration: none;
-    color: #3C6255;
+    color: #000;
+}
+
+.forgot {
+    float: right;
+    font-size: 15px;
+    text-decoration: none;
+    color: var(--maincolor);
 }
 
 .logo {
@@ -400,7 +407,7 @@ nav .profile-details i {
 
 .home-section .home-content {
     position: relative;
-    padding-top: 80px;
+    top: 80px;
 }
 
 .home-content .overview-boxes {
@@ -493,3 +500,50 @@ nav .profile-details i {
 }
 
 /*table*/
+
+.table-content {
+    position: relative;
+    top: 80px;
+    padding-left: 25px;
+}
+
+.table-content .table-title {
+    font-weight: normal;
+    color: var(--maincolor);
+}
+
+.content-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    max-width: 98%;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.content-table thead tr {
+    background-color: var(--maincolorMdark);
+    color: #FFFBF5;
+    text-align: left;
+    font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+    padding: 12px 15px;
+}
+
+.content-table tbody tr {
+    border-bottom: 1px solid var(--maincolorMdark);
+    border-radius: 5px;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+    border-radius: 5px;
+}
+
+.content-table tbody tr:last-of-type {
+    border-bottom: 3px solid var(--maincolorMdark);
+}
