@@ -283,10 +283,10 @@ body {
 .home-section {
     background: #dddbdb;
     position: relative;
-    min-height: 100vh;
     width: calc(100% - 250px);
     left: 250px;
     transition: all 0.4s ease;
+    height: 100VH;
 }
 
 .sidebar.active~.home-section {
