@@ -51,10 +51,11 @@
                 </a>
             </li>
             <li>
-                <a href="../admin/thesis_status.php">
-                    <i class='bx bx-task'></i>
-                    <span class="link-name">Thesis Status</span>
-                </a>
+                        <a href="../admin/thesis_status.php">
+                            <i class='bx bx-task'></i>
+                            <span class="link-name">Thesis Status</span>
+                        </a>
+
             </li>
             <li>
                 <a href="../admin/manage_students.php">

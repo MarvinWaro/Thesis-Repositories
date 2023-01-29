@@ -1,3 +1,20 @@
+<?php
+
+
+        session_start();
+        /*
+            if user is not login then redirect to login page,
+            this is to prevent users from accessing pages that requires
+            authentication such as the dashboard
+        */
+        if (!isset($_SESSION['logged-in'])){
+            header('location: ../login/login.php');
+        }
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +24,7 @@
     <link rel="stylesheet" href="../css/style.css">
     <!--bOXiCON cdn-->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <title>CCS TR | Dashboard</title>
+    <title>CCS TR | Thesis Status</title>
 </head>
 <body>
     <div class="sidebar">
@@ -77,13 +94,12 @@
         <nav>
             <div class="sidebar-menu">
                 <i class='bx bx-menu sidebarBtn'></i>
-                <span class="dashboard">Thesis Status</span>
             </div>
 
-            <div class="search-box">
+            <!--<div class="search-box">
                 <input type="text" placeholder="Search...">
                 <i class='bx bx-search'></i>
-            </div>
+            </div>-->
 
             <div class="profile-details">
                 <i class='bx bx-user-circle'></i>
