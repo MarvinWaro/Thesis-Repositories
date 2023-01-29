@@ -510,8 +510,16 @@ nav .profile-details i {
 }
 
 .table-content .table-title {
-    font-weight: normal;
+    font-weight: bold;
     color: var(--maincolor);
+    font-size: 25px;
+}
+
+.table-content .dashboard {
+    font-weight: bold;
+    color: var(--maincolor);
+    padding-bottom: 20px;
+    font-size: 25px;
 }
 
 .content-table {
@@ -561,10 +569,11 @@ nav .profile-details i {
     text-decoration: none;
     align-items: center;
     background-color: var(--maincolorMdark);
-    padding: 4px 9px;
+    padding: 6px 10px;
     color: var(--uppernav);
-    border-radius: 5px;
+    border-radius: 7px;
     margin-right: 2%;
+    font-size: 19px;
 }
 
 .content-line {

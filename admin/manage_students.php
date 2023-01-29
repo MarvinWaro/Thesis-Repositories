@@ -45,7 +45,7 @@ if (!isset($_SESSION['logged-in'])){
                 </a>
             </li>
             <li>
-                <a class ="side-active" href="../admin/archives.php">
+                <a  href="../admin/archives.php">
                     <i class='bx bx-folder-open'></i>
                     <span class="link-name">Archives</span>
                 </a>
@@ -57,7 +57,7 @@ if (!isset($_SESSION['logged-in'])){
                 </a>
             </li>
             <li>
-                <a href="../admin/manage_students.php">
+                <a class ="side-active" href="../admin/manage_students.php">
                     <i class='bx bx-user'></i>
                     <span class="link-name">Manage Student</span>
                 </a>
@@ -118,7 +118,7 @@ if (!isset($_SESSION['logged-in'])){
             <div class="table-container">
                 <div class="table-heading">
                     <h3 class="table-title">List of Archives</h3>
-                    <a href="#" class="add-button">Add New Faculty</a>
+                    <a href="edit_student.php" class="add-button">Add New Student</a>
                  </div>
 
                 <hr class="content-line">
@@ -217,7 +217,7 @@ if (!isset($_SESSION['logged-in'])){
                 </tbody>
             </table>
         </div>
-    </div>
+        </div>
 
     </section>
 

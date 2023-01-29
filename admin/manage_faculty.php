@@ -27,7 +27,7 @@
                 </a>
             </li>
             <li>
-                <a class ="side-active" href="../admin/archives.php">
+                <a href="../admin/archives.php">
                     <i class='bx bx-folder-open'></i>
                     <span class="link-name">Archives</span>
                 </a>
@@ -45,7 +45,7 @@
                 </a>
             </li>
             <li>
-                <a href="../admin/manage_faculty.php">
+                <a class ="side-active" href="../admin/manage_faculty.php">
                     <i class='bx bx-group' ></i>
                     <span class="link-name">Manage Faculty</span>
                 </a>
