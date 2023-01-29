@@ -96,17 +96,11 @@
         <nav>
             <div class="sidebar-menu">
                 <i class='bx bx-menu sidebarBtn'></i>
-                <span class="dashboard">Archives</span>
-            </div>
-
-            <div class="search-box">
-                <input type="text" placeholder="Search...">
-                <i class='bx bx-search'></i>
             </div>
 
             <div class="profile-details">
                 <i class='bx bx-user-circle'></i>
-                <span class="admin_name">Admin</span>
+                <span class="admin_name"><?php echo $_SESSION['fullname']?></span>
                 <i class='bx bx-chevron-down'></i>
             </div>
 
@@ -117,7 +111,7 @@
         <div class="table-content">
             <div class="table-container">
                 <div class="table-heading">
-                    <h3 class="table-title">List of Archives</h3>
+                    <h3 class="table-title">Faculty</h3>
                     <a href="#" class="add-button">Add New Faculty</a>
                  </div>
 
