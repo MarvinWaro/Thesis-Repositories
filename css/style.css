@@ -182,6 +182,7 @@ body {
     min-height: 100vh;
     width: 100%;
     font-family: 'Poppins', sans-serif;
+    background: #dddbdb;
 }
 
 .sidebar {
@@ -286,7 +287,7 @@ body {
     width: calc(100% - 250px);
     left: 250px;
     transition: all 0.4s ease;
-    height: 100VH;
+    height: 100vh;
 }
 
 .sidebar.active~.home-section {
@@ -305,6 +306,7 @@ body {
     align-items: center;
     justify-content: space-between;
     transition: all 0.5s ease;
+    z-index: 99;
 }
 
 .sidebar.active~.home-section nav {
@@ -516,7 +518,7 @@ nav .profile-details i {
     border-collapse: collapse;
     margin: 25px 0;
     font-size: 0.9em;
-    max-width: 98%;
+    width: 98%;
     border-radius: 5px 5px 0 0;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
@@ -527,6 +529,7 @@ nav .profile-details i {
     color: #FFFBF5;
     text-align: left;
     font-weight: bold;
+    justify-content: space-evenly;
 }
 
 .content-table th,
@@ -546,4 +549,26 @@ nav .profile-details i {
 
 .content-table tbody tr:last-of-type {
     border-bottom: 3px solid var(--maincolorMdark);
+}
+
+.table-container .table-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.table-heading .add-button {
+    text-decoration: none;
+    align-items: center;
+    background-color: var(--maincolorMdark);
+    padding: 4px 9px;
+    color: var(--uppernav);
+    border-radius: 5px;
+    margin-right: 2%;
+}
+
+.content-line {
+    width: 98%;
+    color: var(--maincolor);
+    margin: 7px 0;
 }

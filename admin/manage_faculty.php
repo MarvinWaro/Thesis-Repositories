@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="../css/style.css">
     <!--bOXiCON cdn-->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <title>CCS TR | Manage Faculty</title>
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+    <title>CCS TR | Thesis Archives</title>
 </head>
 <body>
     <div class="sidebar">
@@ -26,7 +27,7 @@
                 </a>
             </li>
             <li>
-                <a href="../admin/archives.php">
+                <a class ="side-active" href="../admin/archives.php">
                     <i class='bx bx-folder-open'></i>
                     <span class="link-name">Archives</span>
                 </a>
@@ -44,7 +45,7 @@
                 </a>
             </li>
             <li>
-                <a class ="side-active" href="../admin/manage_faculty.php">
+                <a href="../admin/manage_faculty.php">
                     <i class='bx bx-group' ></i>
                     <span class="link-name">Manage Faculty</span>
                 </a>
@@ -77,7 +78,7 @@
         <nav>
             <div class="sidebar-menu">
                 <i class='bx bx-menu sidebarBtn'></i>
-                <span class="dashboard">Manage Faculty</span>
+                <span class="dashboard">Archives</span>
             </div>
 
             <div class="search-box">
@@ -92,10 +93,491 @@
             </div>
 
         </nav>
+
+        <!--Table-->
+
+        <div class="table-content">
+            <div class="table-container">
+                <div class="table-heading">
+                    <h3 class="table-title">List of Archives</h3>
+                    <a href="#" class="add-button">Add New Faculty</a>
+                 </div>
+
+                <hr class="content-line">
+                    <!--Filters-->
+                <hr class="content-line">
+
+
+            <table class="content-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Titles</th>
+                        <th>Department</th>
+                        <th>Section</th>
+                        <th>Date of Upload</th>
+                        <th>Semester</th>
+                        <th>Grade</th>
+                        <th class="action">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Cyber Crime</td>
+                        <td>BSCS</td>
+                        <td>3A</td>
+                        <td>January 2 2004</td>
+                        <td>First Semester</td>
+                        <td>89.3%</td>
+                        <td>
+                            <div class="action">
+                                <a href="#">Edit</a>
+                                <a href="#">Delete</a>
+                                <a href="#">View</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Infliction of Internet Fraud</td>
+                        <td>BSCS</td>
+                        <td>3A</td>
+                        <td>January 2 2004</td>
+                        <td>First Semester</td>
+                        <td>89.3%</td>
+                        <td>
+                            <div class="action">
+                                <a href="#">Edit</a>
+                                <a href="#">Delete</a>
+                                <a href="#">View</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Hotel reservation System</td>
+                        <td>BSCS</td>
+                        <td>3A</td>
+                        <td>January 2 2004</td>
+                        <td>First Semester</td>
+                        <td>89.3%</td>
+                        <td>
+                            <div class="action">
+                                <a href="#">Edit</a>
+                                <a href="#">Delete</a>
+                                <a href="#">View</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Booking Systems</td>
+                        <td>BSCS</td>
+                        <td>3A</td>
+                        <td>January 2 2004</td>
+                        <td>First Semester</td>
+                        <td>89.3%</td>
+                        <td>
+                            <div class="action">
+                                <a href="#">Edit</a>
+                                <a href="#">Delete</a>
+                                <a href="#">View</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Cyber Crime</td>
+                        <td>BSCS</td>
+                        <td>3A</td>
+                        <td>January 2 2004</td>
+                        <td>First Semester</td>
+                        <td>89.3%</td>
+                        <td>
+                            <div class="action">
+                                <a href="#">Edit</a>
+                                <a href="#">Delete</a>
+                                <a href="#">View</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Cyber Crime</td>
+                        <td>BSCS</td>
+                        <td>3A</td>
+                        <td>January 2 2004</td>
+                        <td>First Semester</td>
+                        <td>89.3%</td>
+                        <td>
+                            <div class="action">
+                                <a href="#">Edit</a>
+                                <a href="#">Delete</a>
+                                <a href="#">View</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Cyber Crime</td>
+                        <td>BSCS</td>
+                        <td>3A</td>
+                        <td>January 2 2004</td>
+                        <td>First Semester</td>
+                        <td>89.3%</td>
+                        <td>
+                            <div class="action">
+                                <a href="#">Edit</a>
+                                <a href="#">Delete</a>
+                                <a href="#">View</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Cyber Crime</td>
+                        <td>BSCS</td>
+                        <td>3A</td>
+                        <td>January 2 2004</td>
+                        <td>First Semester</td>
+                        <td>89.3%</td>
+                        <td>
+                            <div class="action">
+                                <a href="#">Edit</a>
+                                <a href="#">Delete</a>
+                                <a href="#">View</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Cyber Crime</td>
+                        <td>BSCS</td>
+                        <td>3A</td>
+                        <td>January 2 2004</td>
+                        <td>First Semester</td>
+                        <td>89.3%</td>
+                        <td>
+                            <div class="action">
+                                <a href="#">Edit</a>
+                                <a href="#">Delete</a>
+                                <a href="#">View</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Cyber Crime</td>
+                        <td>BSCS</td>
+                        <td>3A</td>
+                        <td>January 2 2004</td>
+                        <td>First Semester</td>
+                        <td>89.3%</td>
+                        <td>
+                            <div class="action">
+                                <a href="#">Edit</a>
+                                <a href="#">Delete</a>
+                                <a href="#">View</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Cyber Crime</td>
+                        <td>BSCS</td>
+                        <td>3A</td>
+                        <td>January 2 2004</td>
+                        <td>First Semester</td>
+                        <td>89.3%</td>
+                        <td>
+                            <div class="action">
+                                <a href="#">Edit</a>
+                                <a href="#">Delete</a>
+                                <a href="#">View</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Cyber Crime</td>
+                        <td>BSCS</td>
+                        <td>3A</td>
+                        <td>January 2 2004</td>
+                        <td>First Semester</td>
+                        <td>89.3%</td>
+                        <td>
+                            <div class="action">
+                                <a href="#">Edit</a>
+                                <a href="#">Delete</a>
+                                <a href="#">View</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Cyber Crime</td>
+                        <td>BSCS</td>
+                        <td>3A</td>
+                        <td>January 2 2004</td>
+                        <td>First Semester</td>
+                        <td>89.3%</td>
+                        <td>
+                            <div class="action">
+                                <a href="#">Edit</a>
+                                <a href="#">Delete</a>
+                                <a href="#">View</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Cyber Crime</td>
+                        <td>BSCS</td>
+                        <td>3A</td>
+                        <td>January 2 2004</td>
+                        <td>First Semester</td>
+                        <td>89.3%</td>
+                        <td>
+                            <div class="action">
+                                <a href="#">Edit</a>
+                                <a href="#">Delete</a>
+                                <a href="#">View</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Cyber Crime</td>
+                        <td>BSCS</td>
+                        <td>3A</td>
+                        <td>January 2 2004</td>
+                        <td>First Semester</td>
+                        <td>89.3%</td>
+                        <td>
+                            <div class="action">
+                                <a href="#">Edit</a>
+                                <a href="#">Delete</a>
+                                <a href="#">View</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Cyber Crime</td>
+                        <td>BSCS</td>
+                        <td>3A</td>
+                        <td>January 2 2004</td>
+                        <td>First Semester</td>
+                        <td>89.3%</td>
+                        <td>
+                            <div class="action">
+                                <a href="#">Edit</a>
+                                <a href="#">Delete</a>
+                                <a href="#">View</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Cyber Crime</td>
+                        <td>BSCS</td>
+                        <td>3A</td>
+                        <td>January 2 2004</td>
+                        <td>First Semester</td>
+                        <td>89.3%</td>
+                        <td>
+                            <div class="action">
+                                <a href="#">Edit</a>
+                                <a href="#">Delete</a>
+                                <a href="#">View</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Cyber Crime</td>
+                        <td>BSCS</td>
+                        <td>3A</td>
+                        <td>January 2 2004</td>
+                        <td>First Semester</td>
+                        <td>89.3%</td>
+                        <td>
+                            <div class="action">
+                                <a href="#">Edit</a>
+                                <a href="#">Delete</a>
+                                <a href="#">View</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Cyber Crime</td>
+                        <td>BSCS</td>
+                        <td>3A</td>
+                        <td>January 2 2004</td>
+                        <td>First Semester</td>
+                        <td>89.3%</td>
+                        <td>
+                            <div class="action">
+                                <a href="#">Edit</a>
+                                <a href="#">Delete</a>
+                                <a href="#">View</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Cyber Crime</td>
+                        <td>BSCS</td>
+                        <td>3A</td>
+                        <td>January 2 2004</td>
+                        <td>First Semester</td>
+                        <td>89.3%</td>
+                        <td>
+                            <div class="action">
+                                <a href="#">Edit</a>
+                                <a href="#">Delete</a>
+                                <a href="#">View</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Cyber Crime</td>
+                        <td>BSCS</td>
+                        <td>3A</td>
+                        <td>January 2 2004</td>
+                        <td>First Semester</td>
+                        <td>89.3%</td>
+                        <td>
+                            <div class="action">
+                                <a href="#">Edit</a>
+                                <a href="#">Delete</a>
+                                <a href="#">View</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Cyber Crime</td>
+                        <td>BSCS</td>
+                        <td>3A</td>
+                        <td>January 2 2004</td>
+                        <td>First Semester</td>
+                        <td>89.3%</td>
+                        <td>
+                            <div class="action">
+                                <a href="#">Edit</a>
+                                <a href="#">Delete</a>
+                                <a href="#">View</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Cyber Crime</td>
+                        <td>BSCS</td>
+                        <td>3A</td>
+                        <td>January 2 2004</td>
+                        <td>First Semester</td>
+                        <td>89.3%</td>
+                        <td>
+                            <div class="action">
+                                <a href="#">Edit</a>
+                                <a href="#">Delete</a>
+                                <a href="#">View</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Cyber Crime</td>
+                        <td>BSCS</td>
+                        <td>3A</td>
+                        <td>January 2 2004</td>
+                        <td>First Semester</td>
+                        <td>89.3%</td>
+                        <td>
+                            <div class="action">
+                                <a href="#">Edit</a>
+                                <a href="#">Delete</a>
+                                <a href="#">View</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Cyber Crime</td>
+                        <td>BSCS</td>
+                        <td>3A</td>
+                        <td>January 2 2004</td>
+                        <td>First Semester</td>
+                        <td>89.3%</td>
+                        <td>
+                            <div class="action">
+                                <a href="#">Edit</a>
+                                <a href="#">Delete</a>
+                                <a href="#">View</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Cyber Crime</td>
+                        <td>BSCS</td>
+                        <td>3A</td>
+                        <td>January 2 2004</td>
+                        <td>First Semester</td>
+                        <td>89.3%</td>
+                        <td>
+                            <div class="action">
+                                <a href="#">Edit</a>
+                                <a href="#">Delete</a>
+                                <a href="#">View</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Cyber Crime</td>
+                        <td>BSCS</td>
+                        <td>3A</td>
+                        <td>January 2 2004</td>
+                        <td>First Semester</td>
+                        <td>89.3%</td>
+                        <td>
+                            <div class="action">
+                                <a href="#">Edit</a>
+                                <a href="#">Delete</a>
+                                <a href="#">View</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Cyber Crime</td>
+                        <td>BSCS</td>
+                        <td>3A</td>
+                        <td>January 2 2004</td>
+                        <td>First Semester</td>
+                        <td>89.3%</td>
+                        <td>
+                            <div class="action">
+                                <a href="#">Edit</a>
+                                <a href="#">Delete</a>
+                                <a href="#">View</a>
+                            </div>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
     </section>
 
     <script src="../js/script.js"></script>
-
-
 </body>
 </html>
