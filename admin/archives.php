@@ -100,7 +100,6 @@
             <div class="table-container">
                 <div class="table-heading">
                     <h3 class="table-title">List of Archives</h3>
-                    <a href="#" class="add-button">Add New Faculty</a>
                  </div>
 
                 <hr class="content-line">

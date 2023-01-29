@@ -423,7 +423,7 @@ nav .profile-details i {
     width: calc(100% / 3 - 15px);
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     padding: 15px 14px;
     background: #fff;
     border-radius: 10px;
@@ -472,7 +472,7 @@ nav .profile-details i {
     line-height: 45px;
     text-align: center;
     border-radius: 12px;
-    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .overview-boxes .box .user-2 {
@@ -485,7 +485,7 @@ nav .profile-details i {
     line-height: 45px;
     text-align: center;
     border-radius: 12px;
-    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .overview-boxes .box .user-3 {
@@ -498,7 +498,7 @@ nav .profile-details i {
     line-height: 45px;
     text-align: center;
     border-radius: 12px;
-    margin-left: 10px;
+    margin-right: 10px;
 }
 
 /*table*/
@@ -544,7 +544,7 @@ nav .profile-details i {
 
 .content-table tbody tr:nth-of-type(even) {
     background-color: #f3f3f3;
-    border-radius: 5px;
+    border-radius: 20px;
 }
 
 .content-table tbody tr:last-of-type {

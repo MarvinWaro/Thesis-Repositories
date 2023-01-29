@@ -9,14 +9,11 @@
     if (isset($_SESSION['user_type']) == 'admin'){
         header('location: admin/dashboard.php');
     }
+    else if (isset($_SESSION['user_type']) == 'faculty'){
+        header('location: faculty/faculty.php');
+    }
     else if (isset($_SESSION['user_type']) == 'student'){
-        header('location: faculty/faculty.php');
-    }
-    else if (isset($_SESSION['user_type']) == 'adviser'){
-        header('location: faculty/faculty.php');
-    }
-    else if (isset($_SESSION['user_type']) == 'panel'){
-        header('location: faculty/faculty.php');
+        header('location: student/student.php');
     }
     else{
         header('location: login/login.php');
