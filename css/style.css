@@ -303,11 +303,11 @@ html {
 
 .home-section {
     background: #dddbdb;
+    min-height: 100vh;
     position: relative;
     width: calc(100% - 250px);
     left: 250px;
     transition: all 0.4s ease;
-    min-height: 100vh;
 }
 
 .sidebar-admin.active~.home-section {
@@ -438,16 +438,18 @@ nav .profile-details i {
     width: 100%;
     justify-content: space-between;
     padding: 0 20px;
+    flex-wrap: wrap;
 }
 
 .home-content .overview-boxes .box {
-    width: calc(100% / 3 - 15px);
+    width: calc(100% / 4 - 15px);
     display: flex;
     align-items: center;
     justify-content: flex-start;
     padding: 15px 14px;
     background: #fff;
     border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
 
@@ -515,6 +517,19 @@ nav .profile-details i {
     height: 45px;
     width: 45px;
     background: rgb(3, 75, 99);
+    color: #FFFBF5;
+    line-height: 45px;
+    text-align: center;
+    border-radius: 12px;
+    margin-right: 10px;
+}
+
+.overview-boxes .box .user-4 {
+    font-size: 26px;
+    font-weight: 450;
+    height: 45px;
+    width: 45px;
+    background: rgb(187, 49, 49);
     color: #FFFBF5;
     line-height: 45px;
     text-align: center;
@@ -602,4 +617,52 @@ nav .profile-details i {
     width: 98%;
     color: var(--maincolor) !important;
     margin: 7px 0;
+}
+
+
+
+@media (max-width: 1150px) {
+    .sidebar-admin {
+        width: 60px;
+    }
+
+    .sidebar-admin.active {
+        width: 250px;
+    }
+
+    .home-section {
+        width: calc(100% - 60px);
+        left: 60px;
+    }
+
+    .sidebar-admin.active~.home-section {
+        width: calc(100% -250px);
+        left: 250px;
+    }
+
+    .home-section nav {
+        width: calc(100% - 60px);
+        left: 60px;
+    }
+
+    .sidebar-admin.active~.home-section nav {
+        width: calc(100% -250px);
+        left: 250px;
+    }
+
+}
+
+@media (max-width: 974px) {
+    .home-content .overview-boxes .box {
+        width: calc(100% / 2 - 15px);
+        margin-bottom: 15px;
+
+    }
+}
+
+@media (max-width: 534px) {
+    .home-content .overview-boxes .box {
+        width: 100%;
+
+    }
 }

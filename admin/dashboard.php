@@ -162,6 +162,18 @@
                     </div>
                     
                 </div>
+                <div class="box">
+                    <i class='bx bxs-user-x user-4'></i>
+                    <div class="left-side">
+                        <div class="box_topic">Rejected Titles</div>
+                        <div class="number">2,000</div>
+                        <!--<div class="indicator-symbol">
+                            <i class='bx bxs-user'></i>
+                            <span class="text">Added from Yesterday</span>
+                        </div>-->
+                    </div>
+                    
+                </div>
             </div>
         </div>
 
