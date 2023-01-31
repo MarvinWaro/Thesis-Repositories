@@ -179,13 +179,12 @@ label {
 /* DASHBOARD ADMIN*/
 
 body {
-    min-height: 100vh;
     width: 100%;
     font-family: 'Poppins', sans-serif;
     background: #dddbdb;
 }
 
-.sidebar {
+.sidebar-admin {
     position: fixed;
     height: 100%;
     width: 250px;
@@ -193,18 +192,18 @@ body {
     transition: all 0.4s ease;
 }
 
-.sidebar.active {
+.sidebar-admin.active {
     width: 60px;
 }
 
-.sidebar .logo-details {
+.sidebar-admin .logo-details {
     height: 80px;
     width: 100%;
     display: flex;
     align-items: center;
 }
 
-.sidebar .logo-details i {
+.sidebar-admin .logo-details i {
     font-size: 28px;
     font-weight: 400;
     color: #ffff;
@@ -212,7 +211,7 @@ body {
     text-align: center;
 }
 
-.sidebar .logo-details .logo_name {
+.sidebar-admin .logo-details .logo_name {
     font-size: 17px;
     font-weight: 400;
     color: #ffff;
@@ -220,17 +219,20 @@ body {
     padding-right: 15px;
 }
 
-.sidebar .nav-links {
+.sidebar-admin .navi-links {
     margin-top: 16px;
+    padding-left: 0;
+    text-decoration: none;
 }
 
-.sidebar .nav-links li {
+.sidebar-admin .navi-links li {
     height: 40px;
     width: 100%;
     list-style: none;
+
 }
 
-.sidebar .nav-links li a {
+.sidebar-admin .navi-links li a {
     height: 100%;
     width: 100%;
     display: flex;
@@ -238,32 +240,36 @@ body {
     transition: all 0.3s ease;
 }
 
-.sidebar .nav-links .side-active {
+.sidebar-admin .navi-links .side-active {
     background: var(--maincolorMdark);
 }
 
-.sidebar .nav-links li a:active {
+.sidebar-admin .navi-links li a:active {
     background-color: var(--maincolorMdark);
 }
 
-.sidebar .nav-links li a:hover {
+.sidebar-admin .navi-links li a:hover {
     background: var(--maincolorMdark);
 }
 
-.sidebar .nav-links li a i {
+.sidebar-admin .navi-links li a i {
     min-width: 60px;
     text-align: center;
-    color: #ffff;
+    color: #fff;
     font-size: 18px;
 }
 
-.sidebar .logo-details .sidebar-logo {
+a {
+    text-decoration: none !important;
+}
+
+.sidebar-admin .logo-details .sidebar-logo {
     max-width: 60px;
     padding-left: 15px;
     padding-right: 8px;
 }
 
-.sidebar .nav-links li a .link-name {
+.sidebar-admin .navi-links li a .link-name {
     color: #ffff;
     font-size: 14px;
     font-weight: 300;
@@ -281,16 +287,22 @@ body {
 
 /*Home Section*/
 
+html {
+    width: 100%;
+    height: 100%;
+    background: #dddbdb;
+}
+
 .home-section {
     background: #dddbdb;
     position: relative;
     width: calc(100% - 250px);
     left: 250px;
     transition: all 0.4s ease;
-    height: 100vh;
+    min-height: 100vh;
 }
 
-.sidebar.active~.home-section {
+.sidebar-admin.active~.home-section {
     width: calc(100% - 60px);
     left: 60px;
 }
@@ -310,7 +322,7 @@ body {
     box-shadow: 0px 15px 10px -15px #111;
 }
 
-.sidebar.active~.home-section nav {
+.sidebar-admin.active~.home-section nav {
     width: calc(100% - 60px);
     left: 60px;
 }
@@ -539,6 +551,7 @@ nav .profile-details i {
     text-align: left;
     font-weight: bold;
     justify-content: space-evenly;
+    text-transform: uppercase;
 }
 
 .content-table th,

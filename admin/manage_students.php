@@ -27,9 +27,15 @@ if (!isset($_SESSION['logged-in'])){
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
     <title>CCS TR | Thesis Archives</title>
+
+    <!--DATA TABLES LINK-->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
+
 </head>
 <body>
-    <div class="sidebar">
+    <div class="sidebar-admin">
         <div class="logo-details">
             <img class="sidebar-logo" src="../img/rlogo.png" alt="logo ccs">
             <span class="logo_name">Thesis Repositories</span>
@@ -37,7 +43,7 @@ if (!isset($_SESSION['logged-in'])){
 
         <hr class="line">
 
-        <ul class="nav-links">
+        <ul class="navi-links">
             <li>
                 <a href="../admin/dashboard.php">
                     <i class='bx bx-grid-alt'></i>

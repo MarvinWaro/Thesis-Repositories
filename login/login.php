@@ -7,11 +7,11 @@
         //creating an array for list of users can login to the system
         $accounts = array(
             "user1" => array(
-                "firstname" => 'Jaydee',
-                "lastname" => 'Ballaho',
+                "firstname" => 'Admin',
+                "lastname" => ' Ako',
                 "type" => 'admin',
-                "username" => 'jaydee',
-                "password" => 'jaydee'
+                "username" => 'Admin',
+                "password" => 'Admin'
             ),
             "user2" => array(
                 "firstname" => 'Root',
@@ -23,7 +23,7 @@
             "user3" => array(
                 "firstname" => 'Natsu',
                 "lastname" => 'Dragneel',
-                "type" => 'staff',
+                "type" => 'student',
                 "username" => 'natsu',
                 "password" => 'natsu'
             )

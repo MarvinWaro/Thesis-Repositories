@@ -11,7 +11,6 @@
             header('location: ../login/login.php');
         }
 
-
 ?>
 
 
@@ -26,11 +25,16 @@
     <link rel="stylesheet" href="../css/style.css">
     <!--bOXiCON cdn-->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
     <title>CCS TR | Thesis Archives</title>
+
+    <!--DATA TABLES LINK-->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
+
 </head>
 <body>
-    <div class="sidebar">
+    <div class="sidebar-admin">
         <div class="logo-details">
             <img class="sidebar-logo" src="../img/rlogo.png" alt="logo ccs">
             <span class="logo_name">Thesis Repositories</span>
@@ -38,7 +42,7 @@
 
         <hr class="line">
 
-        <ul class="nav-links">
+        <ul class="navi-links">
             <li>
                 <a href="../admin/dashboard.php">
                     <i class='bx bx-grid-alt'></i>
@@ -123,10 +127,12 @@
 
                 <hr class="content-line">
                     <!--Filters-->
+                    <input type="text" id="myInput" onkeyup='tableSearch()' placeholder="Search...">
                 <hr class="content-line">
 
+    </div>
 
-            <table class="content-table">
+    <table class="content-table" id="myTable" data-filter-control="true" data-show-search-clear-button="true">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -592,10 +598,18 @@
                 </tbody>
             </table>
         </div>
-    </div>
 
     </section>
 
     <script src="../js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
+
 </body>
 </html>
