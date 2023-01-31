@@ -41,7 +41,7 @@
             <span class="logo_name">Thesis Repositories</span>
         </div>
 
-        <hr class="line">
+        <hr class="line-ko">
 
         <ul class="navi-links">
             <li>
@@ -87,7 +87,9 @@
                     <span class="link-name">Manage Rubricks</span>
                 </a>
             </li>
+            
             <hr class="line-logout">
+
             <li class="logout" id="logout-link">
                 <a href="../login/logout.php">
                     <i class='bx bx-log-out'></i>

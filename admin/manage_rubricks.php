@@ -40,7 +40,7 @@
             <span class="logo_name">Thesis Repositories</span>
         </div>
 
-        <hr class="line">
+        <hr class="line-ko">
 
         <ul class="navi-links">
             <li>
@@ -101,17 +101,11 @@
         <nav>
             <div class="sidebar-menu">
                 <i class='bx bx-menu sidebarBtn'></i>
-                <span class="dashboard">Manage Rubricks</span>
-            </div>
-
-            <div class="search-box">
-                <input type="text" placeholder="Search...">
-                <i class='bx bx-search'></i>
             </div>
 
             <div class="profile-details">
                 <i class='bx bx-user-circle'></i>
-                <span class="admin_name">Admin</span>
+                <span class="admin_name"><?php echo $_SESSION['fullname']?></span>
                 <i class='bx bx-chevron-down'></i>
             </div>
 

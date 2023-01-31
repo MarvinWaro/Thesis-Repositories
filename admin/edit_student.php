@@ -42,7 +42,7 @@ if (!isset($_SESSION['logged-in'])){
             <span class="logo_name">Thesis Repositories</span>
         </div>
 
-        <hr class="line">
+        <hr class="line-ko">
 
         <ul class="navi-links">
             <li>

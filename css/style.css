@@ -275,14 +275,22 @@ a {
     font-weight: 300;
 }
 
-.line {
-    color: 1px solid white;
-    width: 200px;
+.line-ko {
+    color: 1px solid var(--uppernav);
+    width: 90%;
     align-items: center;
     justify-content: center;
     text-align: center;
     margin: auto;
     white-space: nowrap;
+}
+
+hr {
+    color: white !important;
+    border-top: 1px solid !important;
+    opacity: 70 !important;
+
+
 }
 
 /*Home Section*/
@@ -592,6 +600,6 @@ nav .profile-details i {
 
 .content-line {
     width: 98%;
-    color: var(--maincolor);
+    color: var(--maincolor) !important;
     margin: 7px 0;
 }
