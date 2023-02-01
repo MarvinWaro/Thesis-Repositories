@@ -32,6 +32,18 @@ if (!isset($_SESSION['logged-in'])){
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function(){
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function(){
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
 
 </head>
 <body>
@@ -123,6 +135,7 @@ if (!isset($_SESSION['logged-in'])){
 
                 <hr class="content-line">
                     <!--Filters-->
+                    <input type="text" id="myInput" onkeyup='tableSearch()' placeholder="Search...">
                 <hr class="content-line">
 
 
@@ -140,7 +153,7 @@ if (!isset($_SESSION['logged-in'])){
                         <th class="action">Action</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="myTable">
                 <?php
                         //create an array for list of student, use session so we can access this anywhere
                         if(!isset($_SESSION['student'])){
@@ -198,10 +211,9 @@ if (!isset($_SESSION['logged-in'])){
                                 if($_SESSION['user_type'] == 'admin'){ 
                             ?>
                                 <td>
-                                    <div class="action">
+                                    <div class="actions">
                                         <a class="action-edit" href="#">Edit</a>
                                         <a class="action-delete" href="#">Delete</a>
-                                        <a class="action-delete" href="#">View</a>
                                     </div>
                                 </td>
                             <?php

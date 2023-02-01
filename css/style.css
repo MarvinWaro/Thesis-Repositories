@@ -466,6 +466,11 @@ nav .profile-details i {
     display: inline-block;
 }
 
+.text {
+    font-size: 10px;
+}
+
+
 .overview-boxes .indicator-symbol {
     display: flex;
     align-items: center;
@@ -619,9 +624,16 @@ nav .profile-details i {
     margin: 7px 0;
 }
 
+.table-content #myInput {
+    background: #ffffff;
+    padding: 7px;
+    border-radius: 7px;
+    border: none;
+}
 
+/* MEDIA QUERIES */
 
-@media (max-width: 1150px) {
+@media (max-width: 1242px) {
     .sidebar-admin {
         width: 60px;
     }
@@ -652,7 +664,7 @@ nav .profile-details i {
 
 }
 
-@media (max-width: 974px) {
+@media (max-width: 1062px) {
     .home-content .overview-boxes .box {
         width: calc(100% / 2 - 15px);
         margin-bottom: 15px;
@@ -660,9 +672,49 @@ nav .profile-details i {
     }
 }
 
-@media (max-width: 534px) {
+@media (max-width: 584px) {
     .home-content .overview-boxes .box {
         width: 100%;
 
     }
+}
+
+@media (max-width: 320px) {
+    .home-content .overview-boxes .box {
+        width: 100%;
+    }
+
+    .home-section nav .profile-details {
+        display: flex;
+        height: 40px;
+        min-width: 148px;
+        background: #f5f6fa;
+        border: 1px solid;
+        border-radius: 6px;
+        padding: 0 7px 0 2px;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.actions {
+    display: flex;
+
+}
+
+a.action-edit {
+    background-color: orange;
+    padding: 7px 19px;
+    border-radius: 7px;
+    text-decoration: none;
+    color: white !important;
+}
+
+a.action-delete {
+    background-color: lightcoral;
+    margin-left: 5px;
+    padding: 7px 10px;
+    border-radius: 7px;
+    text-decoration: none;
+    color: white !important;
 }

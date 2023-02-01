@@ -135,6 +135,9 @@
                             <i class='bx bxs-user'></i>
                             <span class="text">Added from Yesterday</span>
                         </div>-->
+                        <div class="indicator">
+                            <span class="text">As of <?php echo ' ' . date("m-d-Y h:i:s A"); ?></span>
+                        </div>
                     </div>
                     
                 </div>
@@ -147,6 +150,9 @@
                             <i class='bx bxs-user'></i>
                             <span class="text">Added from Yesterday</span>
                         </div>-->
+                        <div class="indicator">
+                            <span class="text">As of <?php echo ' ' . date("m-d-Y h:i:s A"); ?></span>
+                        </div>
                     </div>
                     
                 </div>
@@ -159,6 +165,9 @@
                             <i class='bx bxs-user'></i>
                             <span class="text">Added from Yesterday</span>
                         </div>-->
+                        <div class="indicator">
+                            <span class="text">As of <?php echo ' ' . date("m-d-Y h:i:s A"); ?></span>
+                        </div>
                     </div>
                     
                 </div>
@@ -166,11 +175,14 @@
                     <i class='bx bxs-user-x user-4'></i>
                     <div class="left-side">
                         <div class="box_topic">Rejected Titles</div>
-                        <div class="number">2,000</div>
+                        <div class="number">2078</div>
                         <!--<div class="indicator-symbol">
                             <i class='bx bxs-user'></i>
                             <span class="text">Added from Yesterday</span>
                         </div>-->
+                        <div class="indicator">
+                            <span class="text">As of <?php echo ' ' . date("m-d-Y h:i:s A"); ?></span>
+                        </div>
                     </div>
                     
                 </div>
