@@ -42,7 +42,11 @@
                     //display the appropriate dashboard page for user
                     if($value['type'] == 'admin'){
                         header('location: ../admin/dashboard.php');
-                    }else{
+                    }
+                    else if($value['type'] == 'student'){
+                        header('location: ../admin/manage_students.php');
+                    }
+                    else{
                         header('location: ../login/login.php');
                     }
                 }
@@ -50,7 +54,6 @@
             //set the error message if account is invalid
             $error = 'Invalid username/password. Try again.';
         }
-    
     ?>
 
 

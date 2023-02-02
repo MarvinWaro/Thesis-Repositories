@@ -1,3 +1,9 @@
+<?php
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,6 +68,8 @@
                     <option value="first_sem">First Semester</option>
                     <option value="second_sem">Second Semester</option>
                 </select>
+
+                <label for="type">Regular?</label>
 
                 <input class="reset_btn form-input" type="reset" value="Clear all" name="clear">
                 <input class="button form-input" type="submit" value="Save" name="save">
