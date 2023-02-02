@@ -19,10 +19,10 @@
 
                 <hr class="divider">
 
-                <label for="fname">First name</label>
-                <input class="form-input" type="text" id="fname" name="fname" placeholder="Enter First name*" required>
-                <label for="lname">Last name</label>
-                <input class="form-input" type="text" id="lname" name="lname" placeholder="Enter Last name*" required>
+                <label for="firstname">First name</label>
+                <input class="form-input" type="text" id="firstname" name="firstname" placeholder="Enter First name*" required>
+                <label for="lastname">Last name</label>
+                <input class="form-input" type="text" id="lastname" name="lastname" placeholder="Enter Last name*" required>
                 <br>
 
                 <label for="username">Username</label>
@@ -33,8 +33,6 @@
 
                 <label for="password">Password</label>
                 <input class="form-input" type="password" id="password" name="password" placeholder="Enter password" required>
-                <label for="password">Re-Enter Password</label>
-                <input class="form-input" type="password" id="password" name="password" placeholder="Enter Re-Enter Password*" required>
                 <br>
 
                 <label for="course">Course</label>

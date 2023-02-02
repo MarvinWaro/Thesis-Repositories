@@ -14,6 +14,8 @@ if (!isset($_SESSION['logged-in'])){
 ?>
 
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -152,78 +154,45 @@ if (!isset($_SESSION['logged-in'])){
                     </tr>
                 </thead>
                 <tbody id="myTable">
-                <?php
-                        //create an array for list of student, use session so we can access this anywhere
-                        if(!isset($_SESSION['student'])){
-                            $_SESSION['student'] = array(
-                                "student1" => array(
-                                    "fname" => 'Jaydee',
-                                    "lname" => 'Ballaho',
-                                    "username" => 'jaydee',
-                                    "email" => 'jaydee.ballaho@wmsu.edu.ph',
-                                    "course" => 'BSCS',
-                                    "year_level" => '3rd Year',
-                                    "section" => 'A',
-                                    "sem" => 'First Sem'
-                                ),
-                                "student2" => array(
-                                    "fname" => 'Marvin',
-                                    "lname" => 'Waro',
-                                    "username" => 'marvin',
-                                    "email" => 'marvin@wmsu.edu.ph',
-                                    "course" => 'BSCS',
-                                    "year_level" => '3rd Year',
-                                    "section" => 'B',
-                                    "sem" => 'First Sem'
-                                ),
-                                "student3" => array(
-                                    "fname" => 'Luffy',
-                                    "lname" => 'Mugiwara',
-                                    "username" => 'luffy',
-                                    "email" => 'luffy@wmsu.edu.ph',
-                                    "course" => 'BSIT',
-                                    "year_level" => '4th Year',
-                                    "section" => 'B',
-                                    "sem" => 'Second Sem'
-                                )
-                            );
-                        }
-                        
-                        //We will now fetch all the records in the array using loop
-                        //use as a counter, not required but suggested for the table
-                        $i = 1;
-                        //loop for each record found in the array
-                        foreach ($_SESSION['student'] as $key => $value){ //start of loop
-                    ?>
-                        <tr>
-                            <!-- always use echo to output PHP values -->
-                            <td><?php echo $i ?></td>
-                            <td><?php echo $value['lname'] . ', ' . $value['fname'] ?></td>
-                            <td><?php echo $value['username'] ?></td>
-                            <td><?php echo $value['email'] ?></td>
-                            <td><?php echo $value['course'] ?></td>
-                            <td><?php echo $value['year_level'] ?></td>
-                            <td><?php echo $value['section'] ?></td>
-                            <td><?php echo $value['sem'] ?></td>
-                            <?php
-                                if($_SESSION['user_type'] == 'admin'){ 
-                            ?>
-                                <td>
-                                    <div class="actions">
+                        <?php
+                            require_once '../class/student.class.php';
+
+                            $student = new Student();
+                            //We will now fetch all the records in the array using loop
+                            //use as a counter, not required but suggested for the table
+                            $i = 1;
+                            //loop for each record found in the array
+                            foreach ($student->show() as $value){ //start of loop
+                        ?>
+                            <tr>
+                                <!-- always use echo to output PHP values -->
+                                <td><?php echo $i ?></td>
+                                <td><?php echo $value['lastname'] . ', ' . $value['firstname'] ?></td>
+                                <td><?php echo $value['email'] ?></td>
+                                <td><?php echo $value['username'] ?></td>
+                                <td><?php echo $value['course'] ?></td>
+                                <td><?php echo $value['year_level'] ?></td>
+                                <td><?php echo $value['section'] ?></td>
+                                <td><?php echo $value['sem'] ?></td>
+                                <?php
+                                    if($_SESSION['user_type'] == 'admin'){ 
+                                ?>
+                                    <td>
+                                        <div class="actions">
                                         <a class="action-edit" href="#">Edit</a>
                                         <a class="action-delete" href="#">Delete</a>
-                                    </div>
-                                </td>
-                            <?php
-                                }
-                            ?>
-                        </tr>
-                    <?php
-                        $i++;
-                    //end of loop
-                    }
-                    ?>
-                </tbody>
+                                        </div>
+                                    </td>
+                                <?php
+                                    }
+                                ?>
+                            </tr>
+                        <?php
+                            $i++;
+                        //end of loop
+                        }
+                        ?>
+                    </tbody>
                 </tbody>
             </table>
         </div>
