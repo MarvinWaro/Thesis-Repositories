@@ -14,8 +14,6 @@ if (!isset($_SESSION['logged-in'])){
 ?>
 
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
