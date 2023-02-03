@@ -1,5 +1,7 @@
 <?php
 
+        require_once '../class/useraccounts.class.php';
+
         //we start session since we need to use session values
         $conn=mysqli_connect("localhost","root","","tams");
         $error="";

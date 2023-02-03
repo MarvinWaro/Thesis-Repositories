@@ -1,7 +1,7 @@
 <?php
     require_once '../class/database.php';
     require_once '../class/student.class.php';
-
+    
     //we start session since we need to use session values
     session_start();
     //creating an array for list of users can login to the system
