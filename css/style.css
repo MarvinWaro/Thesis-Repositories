@@ -547,15 +547,9 @@ nav .profile-details i {
 thead {
     color: black !important;
     border-bottom: black !important;
+    text-transform: uppercase;
 }
 
-thead .action {
-    text-align: center !important;
-}
-
-thead .sorting {
-    text-align: center !important;
-}
 
 
 /* MEDIA QUERIES */
