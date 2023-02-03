@@ -25,7 +25,6 @@ if (!isset($_SESSION['logged-in'])){
     <link rel="stylesheet" href="../css/style.css">
     <!--bOXiCON cdn-->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
     <title>CCS TR | Thesis Archives</title>
 
     <!--DATA TABLES LINK-->
@@ -132,76 +131,80 @@ if (!isset($_SESSION['logged-in'])){
                     <h3 class="table-title">Student</h3>
                     <a href="edit_student.php" class="add-button">Add New Student</a>
                  </div>
-
-                <hr class="content-line">
-                    <!--Filters-->
-                    <input type="text" id="myInput" onkeyup='tableSearch()' placeholder="Search...">
-                <hr class="content-line">
-
-
-            <table class="content-table">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>Username</th>
-                        <th>Email</th>
-                        <th>Course</th>
-                        <th>Year</th>
-                        <th>Section</th>
-                        <th>Semester</th>
-                        <th>Type</th>
-                        <th class="action">Action</th>
-                    </tr>
-                </thead>
-                <tbody id="myTable">
-                        <?php
-                            require_once '../class/student.class.php';
-
-                            $student = new Student();
-                            //We will now fetch all the records in the array using loop
-                            //use as a counter, not required but suggested for the table
-                            $i = 1;
-                            //loop for each record found in the array
-                            foreach ($student->show() as $value){ //start of loop
-                        ?>
-                            <tr>
-                                <!-- always use echo to output PHP values -->
-                                <td><?php echo $i ?></td>
-                                <td><?php echo $value['lastname'] . ', ' . $value['firstname'] ?></td>
-                                <td><?php echo $value['email'] ?></td>
-                                <td><?php echo $value['username'] ?></td>
-                                <td><?php echo $value['course'] ?></td>
-                                <td><?php echo $value['year_level'] ?></td>
-                                <td><?php echo $value['section'] ?></td>
-                                <td><?php echo $value['sem'] ?></td>
-                                <td><?php echo $value['type'] ?></td>
-                                <?php
-                                    if($_SESSION['user_type'] == 'admin'){ 
-                                ?>
-                                    <td>
-                                        <div class="actions">
-                                        <a class="action-edit" href="#">Edit</a>
-                                        <a class="action-delete" href="#">Delete</a>
-                                        </div>
-                                    </td>
-                                <?php
-                                    }
-                                ?>
-                            </tr>
-                        <?php
-                            $i++;
-                        //end of loop
-                        }
-                        ?>
-                    </tbody>
-                </tbody>
-            </table>
         </div>
+
+        <div class="container mt-5">
+                    <table id="example" class="table table-striped" style="width:100%">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Course</th>
+                            <th>Year</th>
+                            <th>Section</th>
+                            <th>Semester</th>
+                            <th>Type</th>
+                            <th class="action">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                                <?php
+                                    require_once '../class/student.class.php';
+
+                                    $student = new Student();
+                                    //We will now fetch all the records in the array using loop
+                                    //use as a counter, not required but suggested for the table
+                                    $i = 1;
+                                    //loop for each record found in the array
+                                    foreach ($student->show() as $value){ //start of loop
+                                ?>
+                                    <tr>
+                                        <!-- always use echo to output PHP values -->
+                                        <td><?php echo $i ?></td>
+                                        <td><?php echo $value['lastname'] . ', ' . $value['firstname'] ?></td>
+                                        <td><?php echo $value['email'] ?></td>
+                                        <td><?php echo $value['username'] ?></td>
+                                        <td><?php echo $value['course'] ?></td>
+                                        <td><?php echo $value['year_level'] ?></td>
+                                        <td><?php echo $value['section'] ?></td>
+                                        <td><?php echo $value['sem'] ?></td>
+                                        <td><?php echo $value['type'] ?></td>
+                                        <?php
+                                            if($_SESSION['user_type'] == 'admin'){ 
+                                        ?>
+                                            <td>
+                                                <div class="actions">
+                                                    <a class="action-edit" href="#">Edit</a>
+                                                    <a class="action-delete" href="#">Delete</a>
+                                                </div>
+                                            </td>
+                                        <?php
+                                            }
+                                        ?>
+                                    </tr>
+                                <?php
+                                    $i++;
+                                //end of loop
+                                }
+                                ?>
+                        </tbody>
+                    </table>
+                </div>
+
         </div>
 
     </section>
 
     <script src="../js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
 </body>
 </html>

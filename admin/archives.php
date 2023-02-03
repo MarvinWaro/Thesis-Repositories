@@ -137,93 +137,71 @@
                     <h3 class="table-title">List of Archives</h3>
                  </div>
 
-                <hr class="content-line">
-                    <!--Filters-->
-                    <input type="text" id="myInput" onkeyup='tableSearch()' placeholder="Search...">
-                <hr class="content-line">
+            </div>
 
-    </div>
-
-        <table class="content-table" id="myTable" >
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Titles</th>
-                        <th>Department</th>
-                        <th>Section</th>
-                        <th>Date of Upload</th>
-                        <th>Semester</th>
-                        <th>Grade</th>
-                        <th class="action">Action</th>
-                    </tr>
-                </thead>
-                <tbody id="myTable">
-                    <tr>
-                        <td>1</td>
-                        <td>Cyber Crime</td>
-                        <td>BSCS</td>
-                        <td>3A</td>
-                        <td>January 2 2004</td>
-                        <td>First Semester</td>
-                        <td>89.3%</td>
-                        <td>
-                            <div class="action">
-                                <a href="#">Edit</a>
-                                <a href="#">Delete</a>
-                                <a href="#">View</a>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Infliction of Internet Fraud</td>
-                        <td>BSCS</td>
-                        <td>3A</td>
-                        <td>January 2 2004</td>
-                        <td>First Semester</td>
-                        <td>89.3%</td>
-                        <td>
-                            <div class="actions">
-                                <a href="#">Edit</a>
-                                <a href="#">Delete</a>
-                                <a href="#">View</a>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Hotel reservation System</td>
-                        <td>BSCS</td>
-                        <td>3A</td>
-                        <td>January 2 2004</td>
-                        <td>First Semester</td>
-                        <td>89.3%</td>
-                        <td>
-                            <div class="actions">
-                                <a href="#">Edit</a>
-                                <a href="#">Delete</a>
-                                <a href="#">View</a>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Booking Systems</td>
-                        <td>BSCS</td>
-                        <td>3A</td>
-                        <td>January 2 2004</td>
-                        <td>First Semester</td>
-                        <td>89.3%</td>
-                        <td>
-                            <div class="actions">
-                                <a href="#">Edit</a>
-                                <a href="#">Delete</a>
-                                <a href="#">View</a>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="container mt-5">
+                    <table id="example" class="table table-striped" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Titles</th>
+                                <th>Department</th>
+                                <th>Section</th>
+                                <th>Date of Upload date</th>
+                                <th>Semester</th>
+                                <th>Grade</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>System Architect</td>
+                                <td>BSCS</td>
+                                <td>B</td>
+                                <td>2011-04-25</td>
+                                <td>First Semester</td>
+                                <td>89%</td>
+                                <td>
+                                    <div class="actions">
+                                        <a class="action-edit" href="#">Edit</a>
+                                        <a class="action-delete" href="#">Delete</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Software Engineering</td>
+                                <td>BSCS</td>
+                                <td>B</td>
+                                <td>2011-04-25</td>
+                                <td>First Semester</td>
+                                <td>89%</td>
+                                <td>
+                                    <div class="actions">
+                                        <a class="action-edit" href="#">Edit</a>
+                                        <a class="action-delete" href="#">Delete</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Cyber Crime</td>
+                                <td>BSCS</td>
+                                <td>B</td>
+                                <td>2011-04-25</td>
+                                <td>First Semester</td>
+                                <td>89%</td>
+                                <td>
+                                    <div class="actions">
+                                        <a class="action-edit" href="#">Edit</a>
+                                        <a class="action-delete" href="#">Delete</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
         </div>
 
     </section>

@@ -25,7 +25,6 @@
     <link rel="stylesheet" href="../css/style.css">
     <!--bOXiCON cdn-->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
     <title>CCS TR | Thesis Archives</title>
 
     <!--DATA TABLES LINK-->
@@ -132,33 +131,29 @@
                     <h3 class="table-title">Faculty</h3>
                     <a href="#" class="add-button">Add New Faculty</a>
                  </div>
+        </div>
 
-                <hr class="content-line">
-                    <!--Filters-->
-                    <input type="text" id="myInput" onkeyup='tableSearch()' placeholder="Search...">
-                <hr class="content-line">
-
-
-            <table class="content-table">
-                <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Username</th>
-                            <th>Department</th>
-                            <th>Contact Number</th>
-                            <th>Status</th>
-                            <?php
-                                if($_SESSION['user_type'] == 'admin'){ 
-                            ?>
-                                <th class="action">Action</th>
-                            <?php
-                                }
-                            ?>
-                        </tr>
-                    </thead>
-                    <tbody id="myTable">
+        <div class="container mt-5">
+                    <table id="example" class="table table-striped" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Username</th>
+                                <th>Department</th>
+                                <th>Contact Number</th>
+                                <th>Status</th>
+                                <?php
+                                    if($_SESSION['user_type'] == 'admin'){ 
+                                ?>
+                                    <th class="action">Action</th>
+                                <?php
+                                    }
+                                ?>
+                            </tr>
+                        </thead>
+                        <tbody>
                         <?php
                             require_once '../class/faculty.class.php';
 
@@ -196,13 +191,21 @@
                         //end of loop
                         }
                         ?>
-                    </tbody>
-            </table>
-        </div>
+                        </tbody>
+                    </table>
+                </div>
     </div>
 
     </section>
 
     <script src="../js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
 </body>
 </html>
