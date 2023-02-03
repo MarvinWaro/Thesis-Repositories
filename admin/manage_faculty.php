@@ -145,6 +145,7 @@
                             <th>#</th>
                             <th>Name</th>
                             <th>Email</th>
+                            <th>Username</th>
                             <th>Department</th>
                             <th>Contact Number</th>
                             <th>Status</th>
@@ -173,6 +174,7 @@
                                 <td><?php echo $i ?></td>
                                 <td><?php echo $value['lastname'] . ', ' . $value['firstname'] ?></td>
                                 <td><?php echo $value['email'] ?></td>
+                                <td><?php echo $value['username'] ?></td>
                                 <td><?php echo $value['department'] ?></td>
                                 <td><?php echo $value['contact_number'] ?></td>
                                 <td><?php echo $value['status'] ?></td>

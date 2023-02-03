@@ -150,6 +150,7 @@ if (!isset($_SESSION['logged-in'])){
                         <th>Year</th>
                         <th>Section</th>
                         <th>Semester</th>
+                        <th>Type</th>
                         <th class="action">Action</th>
                     </tr>
                 </thead>
@@ -174,6 +175,7 @@ if (!isset($_SESSION['logged-in'])){
                                 <td><?php echo $value['year_level'] ?></td>
                                 <td><?php echo $value['section'] ?></td>
                                 <td><?php echo $value['sem'] ?></td>
+                                <td><?php echo $value['type'] ?></td>
                                 <?php
                                     if($_SESSION['user_type'] == 'admin'){ 
                                 ?>

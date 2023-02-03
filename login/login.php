@@ -1,5 +1,8 @@
 <?php
+
         //we start session since we need to use session values
+        $conn=mysqli_connect("localhost","root","","tams");
+        $error="";
         session_start();
         if(isset($_SESSION['user_type']) == 'admin'){
             header('location: ../admin/dashboard.php');
@@ -45,6 +48,9 @@
                     }
                     else if($value['type'] == 'student'){
                         header('location: ../admin/manage_students.php');
+                    }
+                    else if($value['type'] == 'faculty'){
+                        header('location: ../admin/manage_faculty.php');
                     }
                     else{
                         header('location: ../login/login.php');
