@@ -69,7 +69,7 @@ select {
     border-radius: 6px;
     box-sizing: border-box;
     border: 1px solid black;
-    margin: px 0;
+    margin: 7px 0;
 }
 
 .divider {
@@ -598,8 +598,14 @@ h3.table-title {
     margin-right: 20px;
 }
 
-.add-form {
+.container .add-form {
     max-width: 400px;
+    margin: 0 10px;
+}
+
+.container .add-form input {
+    margin-top: 1px;
+    margin-bottom: 1px;
 }
 
 
