@@ -5,3 +5,7 @@ sidebarBtn.onclick = function () {
     sidebar.classList.toggle("active");
 }
 
+
+$(document).ready(function () {
+    $('#example').DataTable();
+});

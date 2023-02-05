@@ -169,7 +169,7 @@
                             <span class="text">As of <?php echo ' ' . date("m-d-Y h:i:s A"); ?></span>
                         </div>
                     </div>
-                    
+
                 </div>
                 <div class="box">
                     <i class='bx bxs-user-x user-4'></i>
@@ -184,7 +184,7 @@
                             <span class="text">As of <?php echo ' ' . date("m-d-Y h:i:s A"); ?></span>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>

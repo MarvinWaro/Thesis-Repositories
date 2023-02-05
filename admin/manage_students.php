@@ -14,8 +14,6 @@ if (!isset($_SESSION['logged-in'])){
 ?>
 
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,16 +31,7 @@ if (!isset($_SESSION['logged-in'])){
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
-    <script>
-        $(document).ready(function(){
-            $("#myInput").on("keyup", function(){
-                var value = $(this).val().toLowerCase();
-                $("#myTable tr").filter(function(){
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                });
-            });
-        });
-    </script>
+
 
 </head>
 <body>
@@ -125,15 +114,12 @@ if (!isset($_SESSION['logged-in'])){
 
         <!--Table-->
 
-        <div class="table-content">
-            <div class="table-container">
-                <div class="table-heading">
-                    <h3 class="table-title">Student</h3>
-                    <a href="edit_student.php" class="add-button">Add New Student</a>
-                 </div>
+    <div class="container">
+        <div class="head-cont">
+            <h3 class="table-title">Student</h3>
+            <a href="add_students.php" class="add-button">Add New Student</a>
         </div>
 
-        <div class="container mt-5">
                     <table id="example" class="table table-striped" style="width:100%">
                         <thead>
                         <tr>
@@ -201,10 +187,5 @@ if (!isset($_SESSION['logged-in'])){
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('#example').DataTable();
-        });
-    </script>
 </body>
 </html>

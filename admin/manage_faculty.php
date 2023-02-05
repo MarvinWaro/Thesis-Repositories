@@ -15,7 +15,6 @@
 ?>
 
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,17 +31,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-
-    <script>
-        $(document).ready(function(){
-            $("#myInput").on("keyup", function(){
-                var value = $(this).val().toLowerCase();
-                $("#myTable tr").filter(function(){
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                });
-            });
-        });
-    </script>
 
 </head>
 <body>
@@ -125,15 +113,11 @@
 
         <!--Table-->
 
-        <div class="table-content">
-            <div class="table-container">
-                <div class="table-heading">
-                    <h3 class="table-title">Faculty</h3>
-                    <a href="#" class="add-button">Add New Faculty</a>
-                 </div>
-        </div>
-
-        <div class="container mt-5">
+        <div class="container">
+            <div class="head-cont">
+                <h3 class="table-title">Faculty</h3>
+                <a href="add_faculty.php" class="add-button">Add New Faculty</a>
+            </div>
                     <table id="example" class="table table-striped" style="width:100%">
                         <thead>
                             <tr>
@@ -202,10 +186,6 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('#example').DataTable();
-        });
-    </script>
+
 </body>
 </html>

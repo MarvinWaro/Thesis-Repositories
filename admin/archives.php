@@ -131,15 +131,12 @@
 
         <!--Table-->
 
-        <div class="table-content">
-            <div class="table-container">
-                <div class="table-heading">
-                    <h3 class="table-title">List of Archives</h3>
-                 </div>
+        <div class="container">
 
-            </div>
+                <div class="head-cont">
+                    <h3 class="table-title">Archives</h3>
+                </div>
 
-            <div class="container mt-5">
                     <table id="example" class="table table-striped" style="width:100%">
                         <thead>
                             <tr>
@@ -210,11 +207,6 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('#example').DataTable();
-        });
-    </script>
-
+    
 </body>
 </html>

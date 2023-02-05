@@ -69,7 +69,7 @@ select {
     border-radius: 6px;
     box-sizing: border-box;
     border: 1px solid black;
-    margin: 8px 0;
+    margin: px 0;
 }
 
 .divider {
@@ -550,6 +550,60 @@ thead {
     text-transform: uppercase;
 }
 
+.actions {
+    display: flex;
+
+}
+
+a.action-edit {
+    background-color: orange;
+    padding: 5px 19px;
+    border-radius: 7px;
+    text-decoration: none;
+    color: white !important;
+}
+
+a.action-delete {
+    background-color: lightcoral;
+    margin-left: 5px;
+    padding: 5px 10px;
+    border-radius: 7px;
+    text-decoration: none;
+    color: white !important;
+}
+
+.container {
+    font-size: 80%;
+}
+
+.container .head-cont {
+    padding-top: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h3.table-title {
+    align-items: center !important;
+}
+
+.container .add-button {
+    padding: 10px;
+    background-color: var(--maincolor);
+    color: #ffff;
+    border-radius: 5px;
+}
+
+.margin-right {
+    margin-right: 20px;
+}
+
+.add-form {
+    max-width: 400px;
+}
+
+
+
 
 
 /* MEDIA QUERIES */
@@ -616,26 +670,4 @@ thead {
         justify-content: center;
         align-items: center;
     }
-}
-
-.actions {
-    display: flex;
-
-}
-
-a.action-edit {
-    background-color: orange;
-    padding: 7px 19px;
-    border-radius: 7px;
-    text-decoration: none;
-    color: white !important;
-}
-
-a.action-delete {
-    background-color: lightcoral;
-    margin-left: 5px;
-    padding: 7px 10px;
-    border-radius: 7px;
-    text-decoration: none;
-    color: white !important;
 }
