@@ -592,6 +592,7 @@ h3.table-title {
     color: #ffff;
     border-radius: 5px;
     font-size: 13px;
+    border: var(--maincolor);
 }
 
 .margin-right {
@@ -610,6 +611,10 @@ h3.table-title {
 
 .padding-bottom {
     padding-bottom: 10px;
+}
+
+.add-form .con-1 {
+    display: inline-flex;
 }
 
 
