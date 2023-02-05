@@ -588,10 +588,10 @@ h3.table-title {
 }
 
 .container .add-button {
-    padding: 10px;
     background-color: var(--maincolor);
     color: #ffff;
     border-radius: 5px;
+    font-size: 13px;
 }
 
 .margin-right {
@@ -608,8 +608,9 @@ h3.table-title {
     margin-bottom: 1px;
 }
 
-
-
+.padding-bottom {
+    padding-bottom: 10px;
+}
 
 
 /* MEDIA QUERIES */

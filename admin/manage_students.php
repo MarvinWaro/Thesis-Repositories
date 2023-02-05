@@ -114,10 +114,12 @@ if (!isset($_SESSION['logged-in'])){
 
         <!--Table-->
 
-    <div class="container">
+    <div class="container padding-bottom">
         <div class="head-cont">
             <h3 class="table-title">Student</h3>
-            <a href="add_students.php" class="add-button">Add New Student</a>
+            <button type="button" class="btn btn-primary add-button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Add new Student
+            </button>
         </div>
 
                     <table id="example" class="table table-striped" style="width:100%">
@@ -178,8 +180,92 @@ if (!isset($_SESSION['logged-in'])){
                         </tbody>
                     </table>
                 </div>
-
         </div>
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                    <form class="create-form" action="create_account.php" method="post">
+
+                            <div class="logo">
+                                <img class="login-logo" src="../img/rlogo.png" alt="logo ccs">
+                            </div>
+
+                                <h3>Create Account</h3>
+
+                            <hr class="divider">
+
+                            <label for="firstname">First name</label>
+                            <input class="form-input" type="text" id="firstname" name="firstname" placeholder="Enter First name*" required value="<?php if(isset($_POST['firstname'])) { echo $_POST['firstname']; } ?>">
+                            <label for="lastname">Last name</label>
+                            <input class="form-input" type="text" id="lastname" name="lastname" placeholder="Enter Last name*" required value="<?php if(isset($_POST['lastname'])) { echo $_POST['lastname']; } ?>">
+                            <br>
+
+                            <label for="username">Username</label>
+                            <input class="form-input" type="text" id="username" name="username" placeholder="Enter Username*" required value="<?php if(isset($_POST['username'])) { echo $_POST['username']; } ?>">
+                            <label for="email">Email</label>
+                            <input class="form-input" type="email" id="email" name="email" placeholder="Enter Email*" required value="<?php if(isset($_POST['email'])) { echo $_POST['email']; } ?>">
+                            <br>
+
+                            <label for="password">Password</label>
+                            <input class="form-input" type="password" id="password" name="password" placeholder="Enter password" required value="<?php if(isset($_POST['password'])) { echo $_POST['password']; } ?>">
+                            <br>
+
+                            <label for="course">Course</label>
+                            <select name="course" id="course">
+                                <option value="none <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'None') echo ' selected="selected"'; } ?>">--Select--</option>
+                                <option value="BSIT" <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'BSCS') echo ' selected="selected"'; } ?>>BSCS</option>
+                                <option value="BSCS" <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'BSIT') echo ' selected="selected"'; } ?>>BSIT</option>
+                            </select>
+                            <label for="year_level">Year Level</label>
+                            <select name="year_level" id="year_level">
+                                <option value="none" <?php if(isset($_POST['year_level'])) { if ($_POST['year_level'] == 'None') echo ' selected="selected"'; } ?>>--Select--</option>
+                                <option value="3rd_year" <?php if(isset($_POST['year_level'])) { if ($_POST['year_level'] == '3rd_year') echo ' selected="selected"'; } ?>>3rd Year</option>
+                                <option value="4th_year" <?php if(isset($_POST['year_level'])) { if ($_POST['year_level'] == '4th_year') echo ' selected="selected"'; } ?>>4th Year</option>
+                            </select>
+
+                            <br>
+                            <label for="section">Section</label>
+                            <select name="section" id="section">
+                                <option value="none"  <?php if(isset($_POST['section'])) { if ($_POST['section'] == 'None') echo ' selected="selected"'; } ?>>--Select--</option>
+                                <option value="A"  <?php if(isset($_POST['section'])) { if ($_POST['section'] == 'A') echo ' selected="selected"'; } ?>>A</option>
+                                <option value="B"  <?php if(isset($_POST['section'])) { if ($_POST['section'] == 'B') echo ' selected="selected"'; } ?>>B</option>
+                                <option value="C"  <?php if(isset($_POST['section'])) { if ($_POST['section'] == 'C') echo ' selected="selected"'; } ?>>C</option>
+                            </select>
+                            <label for="sem">Semester</label>
+                            <select name="sem" id="sem">
+                                <option value="none" <?php if(isset($_POST['sem'])) { if ($_POST['sem'] == 'None') echo ' selected="selected"'; } ?>>--Select--</option>
+                                <option value="First_sem" <?php if(isset($_POST['sem'])) { if ($_POST['sem'] == 'fisrt_sem') echo ' selected="selected"'; } ?>>First Semester</option>
+                                <option value="Second_sem" <?php if(isset($_POST['sem'])) { if ($_POST['sem'] == 'second_sem') echo ' selected="selected"'; } ?>>Second Semester</option>
+                            </select>
+
+                            <label for="type">Regular?</label>
+                            <input type="radio" name="type" id="student" value="student" <?php if(isset($_POST['type'])) { if ($_POST['type'] == 'student') echo ' checked'; } ?>>
+                            <label for="type">Irregular?</label>
+                            <input type="radio" name="type" id="student" value="student" <?php if(isset($_POST['type'])) { if ($_POST['type'] == 'student') echo ' checked'; } ?>>
+                            <br>
+
+                            <input class="reset_btn form-input" type="reset" value="Clear all" name="clear">
+                            <input class="button form-input" type="submit" value="Save" name="save">
+                            <br>
+                            <a class="create" href="login.php">Back to login page</a>
+
+                            </form>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
 
     </section>
 
