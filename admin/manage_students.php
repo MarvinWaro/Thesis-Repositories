@@ -161,7 +161,6 @@ if(isset($_POST['save'])){
                             <th>Year</th>
                             <th>Section</th>
                             <th>Semester</th>
-                            <th>Type</th>
                             <th class="action">Action</th>
                         </tr>
                         </thead>
@@ -180,13 +179,12 @@ if(isset($_POST['save'])){
                                         <!-- always use echo to output PHP values -->
                                         <td><?php echo $i ?></td>
                                         <td><?php echo $value['lastname'] . ', ' . $value['firstname'] ?></td>
-                                        <td><?php echo $value['email'] ?></td>
                                         <td><?php echo $value['username'] ?></td>
+                                        <td><?php echo $value['email'] ?></td>
                                         <td><?php echo $value['course'] ?></td>
                                         <td><?php echo $value['year_level'] ?></td>
                                         <td><?php echo $value['section'] ?></td>
                                         <td><?php echo $value['sem'] ?></td>
-                                        <td><?php echo $value['type'] ?></td>
                                         <?php
                                             if($_SESSION['user_type'] == 'admin'){ 
                                         ?>
@@ -208,6 +206,7 @@ if(isset($_POST['save'])){
                         </tbody>
                     </table>
                 </div>
+                
         </div>
 
             <div class="modal fade>" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -249,8 +248,8 @@ if(isset($_POST['save'])){
                                     <label for="year_level">Year Level</label>
                                     <select name="year_level" id="year_level">
                                         <option value="none" <?php if(isset($_POST['year_level'])) { if ($_POST['year_level'] == 'None') echo ' selected="selected"'; } ?>>--Select--</option>
-                                        <option value="3rd_year" <?php if(isset($_POST['year_level'])) { if ($_POST['year_level'] == '3rd_year') echo ' selected="selected"'; } ?>>3rd Year</option>
-                                        <option value="4th_year" <?php if(isset($_POST['year_level'])) { if ($_POST['year_level'] == '4th_year') echo ' selected="selected"'; } ?>>4th Year</option>
+                                        <option value="3rd Year" <?php if(isset($_POST['year_level'])) { if ($_POST['year_level'] == '3rd_year') echo ' selected="selected"'; } ?>>3rd Year</option>
+                                        <option value="4th Year" <?php if(isset($_POST['year_level'])) { if ($_POST['year_level'] == '4th_year') echo ' selected="selected"'; } ?>>4th Year</option>
                                     </select>
 
 
@@ -268,8 +267,8 @@ if(isset($_POST['save'])){
                                     <label for="sem">Semester</label>
                                     <select name="sem" id="sem">
                                         <option value="none" <?php if(isset($_POST['sem'])) { if ($_POST['sem'] == 'None') echo ' selected="selected"'; } ?>>--Select--</option>
-                                        <option value="First_sem" <?php if(isset($_POST['sem'])) { if ($_POST['sem'] == 'fisrt_sem') echo ' selected="selected"'; } ?>>First Semester</option>
-                                        <option value="Second_sem" <?php if(isset($_POST['sem'])) { if ($_POST['sem'] == 'second_sem') echo ' selected="selected"'; } ?>>Second Semester</option>
+                                        <option value="First Semester" <?php if(isset($_POST['sem'])) { if ($_POST['sem'] == 'fisrt_sem') echo ' selected="selected"'; } ?>>First Semester</option>
+                                        <option value="Second Semester" <?php if(isset($_POST['sem'])) { if ($_POST['sem'] == 'second_sem') echo ' selected="selected"'; } ?>>Second Semester</option>
                                     </select>
 
 
