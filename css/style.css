@@ -628,6 +628,16 @@ h3.table-title {
 }
 
 
+.form-cont .edit-form {
+    margin: 10px;
+    max-width: 400px;
+}
+
+.form-cont .edit-form select {
+    margin-bottom: 0;
+}
+
+
 /* MEDIA QUERIES */
 
 @media (max-width: 1242px) {
