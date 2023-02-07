@@ -190,7 +190,7 @@ if(isset($_POST['save'])){
                                         ?>
                                             <td>
                                                 <div class="actions">
-                                                    <a class="action-edit" href="#">Edit</a>
+                                                    <a class="action-edit" href="edit_student.php">Edit</a>
                                                     <a class="action-delete" href="delete_student.php?id=<?php echo $value['id'] ?>">Delete</a>
                                                 </div>
                                             </td>
