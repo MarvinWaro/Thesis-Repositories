@@ -10,6 +10,8 @@ $(document).ready(function () {
     $('#example').DataTable();
 });
 
+/*Modal*/
+
 const myModal = document.getElementById('myModal')
 const myInput = document.getElementById('myInput')
 

@@ -104,6 +104,7 @@ select {
     font-size: 15px;
     text-decoration: none;
     color: var(--maincolor);
+    text-decoration: underline !important;
 }
 
 .logo {

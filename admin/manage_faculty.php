@@ -48,13 +48,14 @@
     <link rel="stylesheet" href="../css/style.css">
     <!--bOXiCON cdn-->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <title>CCS TR | Thesis Archives</title>
+    <title>CCS TR | Manage Faculty</title>
 
     <!--DATA TABLES LINK-->
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
 
 </head>
 <body>
@@ -184,8 +185,8 @@
                                 ?>
                                     <td>
                                         <div class="actions">
-                                        <a class="action-edit" href="#">Edit</a>
-                                        <a class="action-delete" href="#">Delete</a>
+                                            <a class="action-edit" href="#">Edit</a>
+                                             <a class="action-delete" href="delete_faculty.php?id=<?php echo $value['id'] ?>" >Delete</a>
                                         </div>
                                     </td>
                                 <?php
@@ -203,6 +204,7 @@
     </div>
 
 <!--modal-->
+
 
         <div class="modal fade>" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -237,7 +239,7 @@
 
                                 <div class="cont">
                                 <label for="type">Active?</label>
-                                <input class="radio" type="radio" name="type" id="student" value="student" required <?php if(isset($_POST['type'])) { if ($_POST['type'] == 'faculty') echo ' checked'; } ?>>
+                                <input class="checkbox" type="checkbox" name="type" id="faculty" value="faculty" required <?php if(isset($_POST['type'])) { if ($_POST['type'] == 'faculty') echo ' checked'; } ?>>
                                 </div>
 
                         </div>
