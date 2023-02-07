@@ -620,7 +620,8 @@ h3.table-title {
 
 }
 
-.add-form .cont input {
+.add-form .cont input,
+.add-form .cont select {
     margin: 7px;
     justify-content: space-between;
 }

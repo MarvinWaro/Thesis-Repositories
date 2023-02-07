@@ -9,9 +9,8 @@ class Faculty{
     public $lastname;
     public $email;
     public $username;
+    public $password;
     public $department;
-    public $contact_number;
-    public $status = 'Inactive';
     public $type;
 
     protected $db;
@@ -23,17 +22,16 @@ class Faculty{
 
     //Methods
     function add(){
-        $sql = "INSERT INTO faculty (firstname, lastname, email, username, department ,contact_number, status, type) VALUES
-        (:firstname, :lastname, :email, :username, :department, :contact_number, :status, :type);";
+        $sql = "INSERT INTO faculty (firstname, lastname, email, username, password, department, type) VALUES
+        (:firstname, :lastname, :email, :username, :password, :department, :type);";
 
         $query=$this->db->connect()->prepare($sql);
         $query->bindParam(':firstname', $this->firstname);
         $query->bindParam(':lastname', $this->lastname);
         $query->bindParam(':email', $this->email);
         $query->bindParam(':username', $this->username);
+        $query->bindParam(':password', $this->password);
         $query->bindParam(':department', $this->department);
-        $query->bindParam(':contact_number', $this->contact_number);
-        $query->bindParam(':status', $this->status);
         $query->bindParam(':type', $this->type);
 
         if($query->execute()){
