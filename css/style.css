@@ -85,6 +85,7 @@ select {
     border: none;
     width: 150px;
     margin-left: 15px;
+    padding: 8px;
 }
 
 .button:hover {
@@ -613,10 +614,15 @@ h3.table-title {
     padding-bottom: 10px;
 }
 
-.add-form .con-1 {
-    display: inline-flex;
+.add-form .cont {
+    width: 100%;
+    display: flex;
+
+}
+
+.add-form .cont input {
+    margin: 7px;
     justify-content: space-between;
-    padding: 0 7px;
 }
 
 
