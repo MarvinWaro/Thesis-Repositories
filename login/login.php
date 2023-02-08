@@ -12,6 +12,8 @@
             //print_r($_POST);
             $username=mysqli_real_escape_string($conn,$_POST['username']);
             $password=mysqli_real_escape_string($conn,$_POST['password']);
+            $firstname=mysqli_real_escape_string($conn,$_POST['firstname']);
+            $lastname=mysqli_real_escape_string($conn,$_POST['lastname']);
 
             $sql=mysqli_query($conn,"SELECT * FROM useraccounts WHERE BINARY username='$username' && BINARY password='$password'");
             $num=mysqli_num_rows($sql);
