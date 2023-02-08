@@ -1,67 +1,41 @@
 <?php
 
+        require_once '../class/database.php';
         require_once '../class/useraccounts.class.php';
 
         //we start session since we need to use session values
-        $conn=mysqli_connect("localhost","root","","tams");
+        $conn = mysqli_connect("localhost","root","","tams");
         $error="";
         session_start();
-        if(isset($_SESSION['user_type']) == 'admin'){
-            header('location: ../admin/dashboard.php');
-        }
-        //creating an array for list of users can login to the system
-        $accounts = array(
-            "user1" => array(
-                "firstname" => 'Admin',
-                "lastname" => ' Ako',
-                "type" => 'admin',
-                "username" => 'Admin',
-                "password" => 'Admin'
-            ),
-            "user2" => array(
-                "firstname" => 'Root',
-                "lastname" => 'Root',
-                "type" => 'admin',
-                "username" => 'root',
-                "password" => 'root'
-            ),
-            "user3" => array(
-                "firstname" => 'Natsu',
-                "lastname" => 'Dragneel',
-                "type" => 'student',
-                "username" => 'natsu',
-                "password" => 'natsu'
-            )
-        );
-        if(isset($_POST['username']) && isset($_POST['password'])){
-            //Sanitizing the inputs of the users. Mandatory to prevent injections!
-            $username = htmlentities($_POST['username']);
-            $password = htmlentities($_POST['password']);
-            foreach($accounts as $keys => $value){
-                //check if the username and password match in the array
-                if($username == $value['username'] && $password == $value['password']){
-                    //if match then save username, fullname and type as session to be reused somewhere else
-                    $_SESSION['logged-in'] = $value['username'];
-                    $_SESSION['fullname'] = $value['firstname'] . ' ' . $value['lastname'];
-                    $_SESSION['user_type'] = $value['type'];
-                    //display the appropriate dashboard page for user
-                    if($value['type'] == 'admin'){
-                        header('location: ../admin/dashboard.php');
-                    }
-                    else if($value['type'] == 'student'){
-                        header('location: ../admin/manage_students.php');
-                    }
-                    else if($value['type'] == 'faculty'){
-                        header('location: ../admin/manage_faculty.php');
-                    }
-                    else{
-                        header('location: ../login/login.php');
-                    }
-                }
-            }
-            //set the error message if account is invalid
-            $error = 'Invalid username/password. Try again.';
-        }
+        if (isset($_POST['login'])) {
+            //echo "<pre>";
+            //print_r($_POST);
+            $username=mysqli_real_escape_string($conn,$_POST['username']);
+            $password=mysqli_real_escape_string($conn,$_POST['password']);
+
+            $sql=mysqli_query($conn,"SELECT * FROM useraccounts WHERE BINARY username='$username' && BINARY password='$password'");
+            $num=mysqli_num_rows($sql);
+            if ($num>0) {
+                  //echo "found";
+                  $row=mysqli_fetch_assoc($sql);
+                  $_SESSION['logged-in'] = $username;
+                  $_SESSION['fullname']=$row['firstname'] . ' ' . $row['lastname'];
+                  $_SESSION['user_type'] = $row['type'];
+
+                  //display the appropriate dashboard page for user
+                  if (($_SESSION['user_type']) == 'student'){
+                      header('location: ../admin/manage_students.php');
+                  }else if (($_SESSION['user_type']) == 'admin'){
+                      header('location: ../admin/dashboard.php');
+                  }else if (($_SESSION['user_type']) == 'faculty'){
+                    header('location: ../admin/manage_faculty.php');
+                  }else{
+                      header('location: login/login.php');
+                  }
+              }
+              $error = 'Invalid username/password. Try again.';
+          }
+
     ?>
 
 

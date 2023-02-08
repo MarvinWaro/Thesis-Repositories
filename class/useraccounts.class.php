@@ -17,7 +17,7 @@ class Account{
 
     //Methods
     function add(){
-        $sql = "INSERT INTO username,password,type FROM student (username, password, type) VALUES
+        $sql = "INSERT INTO useraccounts (username, password, type) VALUES
         (:username, :password, :type);";
 
         $query=$this->db->connect()->prepare($sql);

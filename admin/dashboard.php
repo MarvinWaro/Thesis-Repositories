@@ -116,11 +116,10 @@
         </nav>
 
         <!--Home CONTENT-->
-        <div class="table-content">
-            <div class="table-container">
-                    <div class="table-heading">
-                        <h3 class="dashboard">Dashboard</h3>
-                    </div>
+        <div class="container">
+
+            <div class="head-cont">
+                <h3 class="table-title">Dashboard</h3>
             </div>
         </div>
 
