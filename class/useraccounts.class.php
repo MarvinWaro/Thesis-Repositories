@@ -33,26 +33,6 @@ class Account{
         }
     }
 
-    function edit(){
-        $sql = "UPDATE faculty SET firstname=:firstname, lastname=:lastname, email=:email, contact_number=:contact_number, address=:address, date=:date, status=:status WHERE id = :id;";
-
-        $query=$this->db->connect()->prepare($sql);
-        $query->bindParam(':firstname', $this->firstname);
-        $query->bindParam(':lastname', $this->lastname);
-        $query->bindParam(':email', $this->email);
-        $query->bindParam(':contact_number', $this->contact_number);
-        $query->bindParam(':address', $this->address);
-        $query->bindParam(':date', $this->date);
-        $query->bindParam(':status', $this->status);
-        $query->bindParam(':id', $this->id);
-
-        if($query->execute()){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
 
     function fetch($record_id){
         $sql = "SELECT * FROM useraccounts WHERE id = :id;";

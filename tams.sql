@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 03, 2023 at 04:30 AM
+-- Generation Time: Feb 08, 2023 at 01:04 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -36,7 +36,6 @@ CREATE TABLE `faculty` (
   `password` varchar(100) NOT NULL,
   `department` varchar(100) NOT NULL,
   `contact_number` int(15) NOT NULL,
-  `status` varchar(100) NOT NULL,
   `type` varchar(100) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
@@ -46,8 +45,8 @@ CREATE TABLE `faculty` (
 -- Dumping data for table `faculty`
 --
 
-INSERT INTO `faculty` (`id`, `firstname`, `lastname`, `email`, `username`, `password`, `department`, `contact_number`, `status`, `type`, `created_at`, `updated_at`) VALUES
-(1, 'Lucy Felix', 'Sadiwa', 'lucy@wmsu.edu.ph', 'lucy', '123456', 'BSCS', 926133742, 'active', 'faculty', '2023-02-01 14:52:03', '2023-02-02 15:36:23');
+INSERT INTO `faculty` (`id`, `firstname`, `lastname`, `email`, `username`, `password`, `department`, `contact_number`, `type`, `created_at`, `updated_at`) VALUES
+(14, 'Jaydee', 'Ballaho', 'jaydee@css.com', 'jaydee', 'jaydee', 'BSIT', 0, 'faculty', '2023-02-07 14:42:59', '2023-02-07 14:42:59');
 
 -- --------------------------------------------------------
 
@@ -76,12 +75,11 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`id`, `firstname`, `lastname`, `username`, `email`, `password`, `type`, `course`, `year_level`, `section`, `sem`, `created_at`, `updated_at`) VALUES
-(1, 'Marvin', 'Waro', 'marvin', 'marvinwaro@wmsu.edu.ph', 'marvin', 'student', 'BSCS', '3rd Year', 'B', 'First Semester', '2023-02-02 13:07:14', '2023-02-02 14:38:00'),
-(2, 'Christian', 'Fernandez', 'yan', 'yan@wmsu.edu.ph', 'yan', 'student', 'BSCS', '3rd Year', 'B', 'First Semester', '2023-02-02 23:27:32', '2023-02-02 23:27:32'),
-(3, 'Faye', 'Lacsi', 'faye', 'faye@wmsu.edu.ph', 'faye', 'student', 'bsit', '4th_year', 'c', 'second_sem', '2023-02-02 23:42:41', '2023-02-02 23:42:41'),
-(4, 'Lowey', 'Ecat', 'boo', 'boo@wmsu.edu.ph', 'boo', 'student', 'bsit', '3rd_year', 'b', 'second_sem', '2023-02-03 00:06:44', '2023-02-03 00:06:44'),
-(5, 'Bernard', 'Sanson', 'bernard', 'bernard@wmsu.edu.ph', 'bernard', 'student', 'bscs', '3rd_year', 'b', 'second_sem', '2023-02-03 00:45:19', '2023-02-03 00:45:19'),
-(6, 'Robin', 'Almorfi', 'rob', 'rob@wmsu.edu.ph', 'rob', 'student', 'BSCS', '3rd Year', '', 'First Semester', '2023-02-03 03:25:20', '2023-02-03 03:25:20');
+(20, 'Christian', 'Fernandez', 'chris', 'christian@wmsu.ccs', 'chris', 'student', 'BSIT', '3rd Year', 'B', 'First Semester', '2023-02-07 23:58:39', '2023-02-07 23:58:39'),
+(21, 'Marvin', 'Waro', 'marvin', 'marvin@wmsu.ccs', 'marvin', 'student', 'BSIT', '3rd Year', 'B', 'First Semester', '2023-02-07 23:59:19', '2023-02-07 23:59:19'),
+(22, 'Faye', 'Lacsi', 'faye', 'faye@wmsu.ccs', 'faye', 'student', 'BSCS', '3rd Year', 'A', 'Second Semester', '2023-02-07 23:59:55', '2023-02-07 23:59:55'),
+(23, 'Xela', 'Silorio', 'xela', 'xela@wmsu.ccs', 'XELA', 'student', 'BSCS', '3rd Year', 'C', 'First Semester', '2023-02-08 00:00:47', '2023-02-08 00:00:47'),
+(24, 'Robin', 'Almorfi', 'robin', 'robin@wmsu.ccs', 'robin', 'student', 'BSCS', '4th Year', 'A', 'First Semester', '2023-02-08 00:01:34', '2023-02-08 00:01:34');
 
 -- --------------------------------------------------------
 
@@ -93,7 +91,9 @@ CREATE TABLE `useraccounts` (
   `id` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `type` varchar(100) NOT NULL
+  `type` varchar(100) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -126,13 +126,13 @@ ALTER TABLE `useraccounts`
 -- AUTO_INCREMENT for table `faculty`
 --
 ALTER TABLE `faculty`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `useraccounts`
