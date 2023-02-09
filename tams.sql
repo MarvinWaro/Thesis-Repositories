@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 08, 2023 at 01:04 AM
+-- Generation Time: Feb 09, 2023 at 05:45 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -78,7 +78,6 @@ INSERT INTO `student` (`id`, `firstname`, `lastname`, `username`, `email`, `pass
 (20, 'Christian', 'Fernandez', 'chris', 'christian@wmsu.ccs', 'chris', 'student', 'BSIT', '3rd Year', 'B', 'First Semester', '2023-02-07 23:58:39', '2023-02-07 23:58:39'),
 (21, 'Marvin', 'Waro', 'marvin', 'marvin@wmsu.ccs', 'marvin', 'student', 'BSIT', '3rd Year', 'B', 'First Semester', '2023-02-07 23:59:19', '2023-02-07 23:59:19'),
 (22, 'Faye', 'Lacsi', 'faye', 'faye@wmsu.ccs', 'faye', 'student', 'BSCS', '3rd Year', 'A', 'Second Semester', '2023-02-07 23:59:55', '2023-02-07 23:59:55'),
-(23, 'Xela', 'Silorio', 'xela', 'xela@wmsu.ccs', 'XELA', 'student', 'BSCS', '3rd Year', 'C', 'First Semester', '2023-02-08 00:00:47', '2023-02-08 00:00:47'),
 (24, 'Robin', 'Almorfi', 'robin', 'robin@wmsu.ccs', 'robin', 'student', 'BSCS', '4th Year', 'A', 'First Semester', '2023-02-08 00:01:34', '2023-02-08 00:01:34');
 
 -- --------------------------------------------------------
@@ -88,13 +87,22 @@ INSERT INTO `student` (`id`, `firstname`, `lastname`, `username`, `email`, `pass
 --
 
 CREATE TABLE `useraccounts` (
-  `id` int(11) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `type` varchar(100) NOT NULL,
+  `id` int(15) NOT NULL,
+  `firstname` varchar(255) NOT NULL,
+  `lastname` varchar(255) NOT NULL,
+  `username` varchar(155) NOT NULL,
+  `password` varchar(155) NOT NULL,
+  `type` varchar(155) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `useraccounts`
+--
+
+INSERT INTO `useraccounts` (`id`, `firstname`, `lastname`, `username`, `password`, `type`, `created_at`, `updated_at`) VALUES
+(1, 'Admin', 'Administrator', 'admin', 'admin', 'admin', '2023-02-08 11:01:59', '2023-02-08 22:38:04');
 
 --
 -- Indexes for dumped tables
@@ -138,17 +146,7 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT for table `useraccounts`
 --
 ALTER TABLE `useraccounts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `useraccounts`
---
-ALTER TABLE `useraccounts`
-  ADD CONSTRAINT `useraccounts_ibfk_1` FOREIGN KEY (`id`) REFERENCES `student` (`id`);
+  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
