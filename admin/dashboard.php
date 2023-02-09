@@ -138,7 +138,7 @@
                             <span class="text">As of <?php echo ' ' . date("m-d-Y h:i:s A"); ?></span>
                         </div>
                     </div>
-                    
+
                 </div>
                 <div class="box">
                     <i class='bx bx-group user-2'></i>
