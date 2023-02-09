@@ -23,6 +23,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image" href="../img/rlogo.png" >
     <link rel="stylesheet" href="../css/style.css">
     <!--bOXiCON cdn-->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -129,11 +130,21 @@
                     <i class='bx bx-user user'></i>
                     <div class="left-side">
                         <div class="box_topic">Student</div>
-                        <div class="number">347</div>
-                        <!--<div class="indicator-symbol">
-                            <i class='bx bxs-user'></i>
-                            <span class="text">Added from Yesterday</span>
-                        </div>-->
+                        <div class="number">
+
+                            <?php
+
+                                require '../class/dbconfig.php';
+
+                                $query = "SELECT id FROM student ORDER BY id";
+                                $query_run = mysqli_query($connection, $query);
+
+                                $row = mysqli_num_rows($query_run);
+
+                                echo $row
+                            ?>
+
+                        </div>
                         <div class="indicator">
                             <span class="text">As of <?php echo ' ' . date("m-d-Y h:i:s A"); ?></span>
                         </div>
@@ -144,11 +155,22 @@
                     <i class='bx bx-group user-2'></i>
                     <div class="left-side">
                         <div class="box_topic">Faculty</div>
-                        <div class="number">10</div>
-                        <!--<div class="indicator-symbol">
-                            <i class='bx bxs-user'></i>
-                            <span class="text">Added from Yesterday</span>
-                        </div>-->
+                            <div class="number">
+
+                                <?php
+
+                                        require '../class/dbconfig.php';
+
+                                        $query = "SELECT id FROM faculty ORDER BY id";
+                                        $query_run = mysqli_query($connection, $query);
+
+                                        $row = mysqli_num_rows($query_run);
+
+                                        echo $row
+                                    ?>
+
+                            </div>
+
                         <div class="indicator">
                             <span class="text">As of <?php echo ' ' . date("m-d-Y h:i:s A"); ?></span>
                         </div>
@@ -171,14 +193,22 @@
 
                 </div>
                 <div class="box">
-                    <i class='bx bxs-user-x user-4'></i>
+                    <i class='bx bxs-group user-4'></i>
                     <div class="left-side">
-                        <div class="box_topic">Rejected Titles</div>
-                        <div class="number">2078</div>
-                        <!--<div class="indicator-symbol">
-                            <i class='bx bxs-user'></i>
-                            <span class="text">Added from Yesterday</span>
-                        </div>-->
+                        <div class="box_topic">Total Users</div>
+                        <div class="number">
+                            <?php
+
+                                require '../class/dbconfig.php';
+
+                                $query = "SELECT id FROM useraccounts ORDER BY id";
+                                $query_run = mysqli_query($connection, $query);
+
+                                $row = mysqli_num_rows($query_run);
+
+                                echo $row
+                            ?>
+                        </div>
                         <div class="indicator">
                             <span class="text">As of <?php echo ' ' . date("m-d-Y h:i:s A"); ?></span>
                         </div>
