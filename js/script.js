@@ -6,9 +6,12 @@ sidebarBtn.onclick = function () {
 }
 
 
-$(document).ready(function () {
-    $('#example').DataTable();
-});
+$(document).ready(function() {
+    var table = $('#example').DataTable( {
+        responsive: true
+    } );
+    new $.fn.dataTable.FixedHeader( table );
+} );
 
 /*Modal*/
 

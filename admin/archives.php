@@ -34,16 +34,11 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
-    <script>
-        $(document).ready(function(){
-            $("#myInput").on("keyup", function(){
-                var value = $(this).val().toLowerCase();
-                $("#myTable tr").filter(function(){
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                });
-            });
-        });
-    </script>
+     <!--responsive-->
+     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.bootstrap.min.css">
+
+
+    
 
 </head>
 <body>
@@ -209,5 +204,9 @@
     <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
     
+     <!--responsive-->
+     <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
+
+
 </body>
 </html>
