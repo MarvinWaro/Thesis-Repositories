@@ -33,8 +33,8 @@
 }
 
 .login-form {
-    max-width: 400px;
-    padding: 40px;
+    max-width: 345px;
+    padding: 26px;
     margin: auto;
     background-color: white;
     border-radius: 4%;
@@ -299,7 +299,7 @@ hr {
 
 html {
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background: #dddbdb;
 }
 
@@ -554,6 +554,7 @@ thead {
 
 .actions {
     display: flex;
+
 }
 
 a.action-edit {
@@ -573,14 +574,9 @@ a.action-delete {
     color: white !important;
 }
 
-a.action-edit:hover,
-a.action-delete:hover {
-    opacity: 0.6;
-    cursor: pointer;
-}
-
 .container {
     font-size: 80%;
+
 }
 
 .container .head-cont {
