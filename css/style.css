@@ -554,7 +554,6 @@ thead {
 
 .actions {
     display: flex;
-
 }
 
 a.action-edit {
@@ -572,6 +571,12 @@ a.action-delete {
     border-radius: 7px;
     text-decoration: none;
     color: white !important;
+}
+
+a.action-edit:hover,
+a.action-delete:hover {
+    opacity: 0.6;
+    cursor: pointer;
 }
 
 .container {
