@@ -37,7 +37,7 @@
     padding: 26px;
     margin: auto;
     background-color: white;
-    border-radius: 4%;
+    border-radius: 8px;
     box-shadow: 0px 0px 8px 5px rgba(0, 0, 0, 0.5);
 }
 
@@ -79,16 +79,15 @@ select {
     margin: 20px 0;
 }
 
-.button {
+.save-btn {
     background-color: rgb(180, 224, 183);
     transition: 0.3s ease;
     border: none;
-    width: 150px;
-    margin-left: 15px;
-    padding: 8px;
+    width: 100%;
 }
 
-.button:hover {
+
+.save-btn:hover {
     background-color: #3C6255;
     color: white;
 }
@@ -144,11 +143,11 @@ select {
 }
 
 .create-form {
-    max-width: 400px;
-    padding: 40px;
+    max-width: 345px;
+    padding: 26px;
     margin: auto;
     background-color: white;
-    border-radius: 10px;
+    border-radius: 8px;
     box-shadow: 0px 0px 8px 5px rgba(0, 0, 0, 0.5);
     margin-top: 20px;
 }
@@ -158,13 +157,18 @@ select {
     text-align: center;
 }
 
+.pbutton {
+    display: flex;
+    justify-content: space-between;
+
+}
+
 .reset_btn {
     background-color: #FA9494;
     transition: 0.3s ease;
     border: none;
-    width: 150px;
-    margin-bottom: 20px;
-    margin-top: 10px;
+    width: 100%;
+    margin-right: 5px;
 }
 
 .reset_btn:hover {
@@ -632,10 +636,18 @@ h3.table-title {
 .form-cont .edit-form {
     margin: 10px;
     max-width: 400px;
+    padding-bottom: 20px;
 }
 
 .form-cont .edit-form select {
     margin-bottom: 0;
+}
+
+a.back {
+
+    text-decoration: none;
+    color: #107869;
+    font-size: 15px;
 }
 
 
@@ -704,6 +716,42 @@ h3.table-title {
         align-items: center;
     }
 }
+
+@media (max-width: 335px) {
+
+    .login-form .logo-details .logo-name {
+        color: #3C6255;
+        font-size: 28px;
+        font-weight: 500;
+    }
+
+}
+
+@media (max-width: 317px) {
+
+    .login-form .logo-details .logo-name {
+        color: #3C6255;
+        font-size: 26px;
+        font-weight: 500;
+    }
+
+    .create {
+        font-size: 12px;
+        text-decoration: none;
+        color: #000;
+    }
+
+    .forgot {
+        float: right;
+        font-size: 12px;
+        text-decoration: none;
+        color: var(--maincolor);
+        text-decoration: underline !important;
+    }
+
+}
+
+
 
 .error {
     color: #c51244;
