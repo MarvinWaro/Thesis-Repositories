@@ -102,9 +102,10 @@
                 <input type="radio" name="type" id="student" value="student" <?php if(isset($_POST['type'])) { if ($_POST['type'] == 'student') echo ' checked'; } ?>>
                 <br>
 
-                <input class="reset_btn form-input" type="reset" value="Clear all" name="clear">
-                <input class="button form-input" type="submit" value="Save" name="save">
-                <br>
+                <div class="pbutton">
+                    <input class="reset_btn form-input" type="reset" value="Clear all" name="clear">
+                    <input class="save-btn form-input" type="submit" value="Save" name="save">
+                </div>
                 <a class="create" href="login.php">Back to login page</a>
 
             </form>

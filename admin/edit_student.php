@@ -160,6 +160,7 @@
         <div class="head-cont">
             <h3 class="table-title">Edit Student</h3>
         </div>
+        <a class="back" href="manage_students.php"><i class='bx bx-caret-left'></i>Back</a>
     </div>
 
     <div class="form-cont">
@@ -226,9 +227,22 @@
             <input type="radio" name="type" id="student" value="student" <?php if(isset($_POST['type'])) { if ($_POST['type'] == 'student') echo ' checked'; } ?>>
             <br>
 
-            <input class="reset_btn form-input" type="reset" value="Clear all" name="clear">
-            <input class="button form-input" type="submit" value="Save" name="save">
+            <div class="pbutton">
+                <input class="reset_btn form-input" type="reset" value="Clear all" name="clear">
+                <input class="save-btn form-input" type="submit" value="Save" name="save">
+            </div>
         </form>
     </div>
 
 </section>
+
+    <script src="../js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" ></script>
+    
+    <!--responsive-->
+    <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
+</body>
+</html>
