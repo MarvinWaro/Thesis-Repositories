@@ -69,7 +69,12 @@ select {
     border-radius: 6px;
     box-sizing: border-box;
     border: 1px solid black;
-    margin: 7px 0;
+
+    font-size: 13px
+}
+
+select {
+    font-size: 13px !important;
 }
 
 .divider {
@@ -628,7 +633,7 @@ h3.table-title {
 
 .add-form .cont input,
 .add-form .cont select {
-    margin: 7px;
+    margin: 6px 1px 6px 1px;
     justify-content: space-between;
 }
 
@@ -649,6 +654,26 @@ a.back {
     color: #107869;
     font-size: 15px;
 }
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: nowrap !important;
+}
+
+.modal-footer .form-input {
+    width: 30%;
+    background-color: rgb(180, 224, 183);
+    transition: 0.3s ease;
+    border: none;
+}
+
+
+.modal-footer .form-input:hover {
+    background: var(--maincolor);
+    color: #ffff;
+}
+
 
 
 /* MEDIA QUERIES */
