@@ -64,10 +64,10 @@
 
                     <ul>
                         <li>
-                            <a href=""></a>
+                            <a href="">Accepted Titles</a>
                         </li>
                         <li>
-                            <a href=""></a>
+                            <a href="">Rejected Titles</a>
                         </li>
                     </ul>
                     

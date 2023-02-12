@@ -11,6 +11,7 @@
         $student = new Student();
         //sanitize user inputs
         $student->firstname = htmlentities($_POST['firstname']);
+        $student->middle_name = htmlentities($_POST['middle_name']);
         $student->lastname = htmlentities($_POST['lastname']);
         $student->username = htmlentities($_POST['username']);
         $student->email = htmlentities($_POST['email']);
@@ -54,6 +55,8 @@
 
                 <label for="firstname">First name</label>
                 <input class="form-input" type="text" id="firstname" name="firstname" placeholder="Enter First name*" required value="<?php if(isset($_POST['firstname'])) { echo $_POST['firstname']; } ?>">
+                <label for="middle_name">Middle name</label>
+                <input class="form-input" type="text" id="middle_name" name="middle_name" placeholder="Enter Middle name (optional)*" value="<?php if(isset($_POST['middle_name'])) { echo $_POST['middle_name']; } ?>">
                 <label for="lastname">Last name</label>
                 <input class="form-input" type="text" id="lastname" name="lastname" placeholder="Enter Last name*" required value="<?php if(isset($_POST['lastname'])) { echo $_POST['lastname']; } ?>">
                 <br>

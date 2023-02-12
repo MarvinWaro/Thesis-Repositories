@@ -6,6 +6,7 @@ class Faculty{
     //attributes
 
     public $firstname;
+    public $middle_name;
     public $lastname;
     public $email;
     public $username;
@@ -22,11 +23,12 @@ class Faculty{
 
     //Methods
     function add(){
-        $sql = "INSERT INTO faculty (firstname, lastname, email, username, password, department, type) VALUES
-        (:firstname, :lastname, :email, :username, :password, :department, :type);";
+        $sql = "INSERT INTO faculty (firstname, middle_name, lastname, email, username, password, department, type) VALUES
+        (:firstname, :middle_name, :lastname, :email, :username, :password, :department, :type);";
 
         $query=$this->db->connect()->prepare($sql);
         $query->bindParam(':firstname', $this->firstname);
+        $query->bindParam(':middle_name', $this->middle_name);
         $query->bindParam(':lastname', $this->lastname);
         $query->bindParam(':email', $this->email);
         $query->bindParam(':username', $this->username);
@@ -43,10 +45,11 @@ class Faculty{
     }
 
     function edit(){
-        $sql = "UPDATE faculty SET firstname=:firstname, lastname=:lastname, email=:email, contact_number=:contact_number, address=:address, date=:date, status=:status WHERE id = :id;";
+        $sql = "UPDATE faculty SET firstname=:firstname, middle_name=:middle_name, lastname=:lastname, email=:email, contact_number=:contact_number, address=:address, date=:date, status=:status WHERE id = :id;";
 
         $query=$this->db->connect()->prepare($sql);
         $query->bindParam(':firstname', $this->firstname);
+        $query->bindParam(':middle_name', $this->middle_name);
         $query->bindParam(':lastname', $this->lastname);
         $query->bindParam(':email', $this->email);
         $query->bindParam(':contact_number', $this->contact_number);

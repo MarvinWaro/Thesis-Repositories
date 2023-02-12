@@ -21,6 +21,7 @@
             $faculty = new Faculty();
             //sanitize user inputs
             $faculty->firstname = htmlentities($_POST['firstname']);
+            $faculty->middle_name = htmlentities($_POST['middle_name']);
             $faculty->lastname = htmlentities($_POST['lastname']);
             $faculty->username = htmlentities($_POST['username']);
             $faculty->email = htmlentities($_POST['email']);
@@ -179,7 +180,7 @@
                             <tr>
                                 <!-- always use echo to output PHP values -->
                                 <td><?php echo $i ?></td>
-                                <td><?php echo $value['lastname'] . ', ' . $value['firstname'] ?></td>
+                                <td><?php echo $value['lastname'] . ', ' . $value['firstname'] . ' ' . $value['middle_name']?></td>
                                 <td><?php echo $value['email'] ?></td>
                                 <td><?php echo $value['username'] ?></td>
                                 <td><?php echo $value['department'] ?></td>
@@ -223,16 +224,20 @@
 
                                 <div class="cont">
                                 <input class="form-input" type="text" id="firstname" name="firstname" placeholder="Enter First name*" required value="<?php if(isset($_POST['firstname'])) { echo $_POST['firstname']; } ?>">
+                                <input class="form-input" type="text" id="middle_name" name="middle_name" placeholder="Enter Middle name (optional)*" value="<?php if(isset($_POST['middle_name'])) { echo $_POST['middle_name']; } ?>">
+                                </div>
+
+                                <div class="cont">
                                 <input class="form-input" type="text" id="lastname" name="lastname" placeholder="Enter Last name*" required value="<?php if(isset($_POST['lastname'])) { echo $_POST['lastname']; } ?>">
-                                </div>
-
-                                <div class="cont">
                                 <input class="form-input" type="text" id="username" name="username" placeholder="Enter Username*" required value="<?php if(isset($_POST['username'])) { echo $_POST['username']; } ?>">
-                                <input class="form-input" type="email" id="email" name="email" placeholder="Enter Email*" required value="<?php if(isset($_POST['email'])) { echo $_POST['email']; } ?>">
                                 </div>
 
                                 <div class="cont">
+                                <input class="form-input" type="email" id="email" name="email" placeholder="Enter Email*" required value="<?php if(isset($_POST['email'])) { echo $_POST['email']; } ?>">
                                 <input class="form-input" type="password" id="password" name="password" placeholder="Enter password" required value="<?php if(isset($_POST['password'])) { echo $_POST['password']; } ?>">
+                                </div>
+
+                                <div class="cont">
                                 <select name="department" id="department">
                                     <option value="none <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'None') echo ' selected="selected"'; } ?>">--Select Department--</option>
                                     <option value="BSCS" <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'BSCS') echo ' selected="selected"'; } ?>>BSCS</option>
