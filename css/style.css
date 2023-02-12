@@ -37,7 +37,7 @@
     padding: 26px;
     margin: auto;
     background-color: white;
-    border-radius: 8px;
+    border-radius: 20px;
     box-shadow: 0px 0px 8px 5px rgba(0, 0, 0, 0.5);
 }
 
@@ -649,7 +649,6 @@ h3.table-title {
 }
 
 .form-cont a.back {
-
     text-decoration: none;
     color: var(--maincolor);
     font-size: 17px;
