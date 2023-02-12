@@ -58,22 +58,23 @@
                 </a>
             </li>
             <li>
+
                 <a class ="side-active" href="../admin/thesis_status.php">
                     <i class='bx bx-task'></i>
                     <span class="link-name">Thesis Status</span>
-
-                    <ul>
+                    <i class='bx bx-chevron-down'></i>
+                </a>
+            </li>
+            <div class="sub-menu">
+                <ul >
                         <li>
-                            <a href="">Accepted Titles</a>
+                            <a href="#">Accepted Titles</a>
                         </li>
                         <li>
-                            <a href="">Rejected Titles</a>
+                            <a href="#">Rejected Titles</a>
                         </li>
                     </ul>
-                    
-                </a>
-
-            </li>
+            </div>
             <li>
                 <a href="../admin/manage_students.php">
                     <i class='bx bx-user'></i>
@@ -137,6 +138,14 @@
     </section>
 
     <script src="../js/script.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" ></script>
+    
+    <!--responsive-->
+    <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
 
 </body>
 </html>

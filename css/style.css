@@ -243,6 +243,25 @@ body {
 
 }
 
+.sidebar-admin .navi-links .bx-chevron-down {
+    position: relative;
+    right: -40px;
+}
+
+.sidebar-admin .navi-links .sub-menu {
+    background: var(--maincolorMdark);
+    display: none;
+}
+
+.sidebar-admin .navi-links .sub-menu li {
+    margin: 0 31px 0 31px;
+}
+
+.sidebar-admin .navi-links .sub-menu a {
+    color: #fff;
+}
+
+
 .sidebar-admin .navi-links li a {
     height: 100%;
     width: 100%;
@@ -250,6 +269,7 @@ body {
     align-items: center;
     transition: all 0.3s ease;
 }
+
 
 .sidebar-admin .navi-links .side-active {
     background: var(--maincolorMdark);
