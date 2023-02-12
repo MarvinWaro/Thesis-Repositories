@@ -20,6 +20,7 @@ if(isset($_POST['save'])){
     $student = new Student();
     //sanitize user inputs
     $student->firstname = htmlentities($_POST['firstname']);
+    $student->middle_name = htmlentities($_POST['middle_name']);
     $student->lastname = htmlentities($_POST['lastname']);
     $student->username = htmlentities($_POST['username']);
     $student->email = htmlentities($_POST['email']);
@@ -182,7 +183,7 @@ if(isset($_POST['save'])){
                                     <tr>
                                         <!-- always use echo to output PHP values -->
                                         <td><?php echo $i ?></td>
-                                        <td><?php echo $value['lastname'] . ', ' . $value['firstname'] ?></td>
+                                        <td><?php echo $value['lastname'] . ', ' . $value['firstname'] . ' ' . $value['middle_name'] ?></td>
                                         <td><?php echo $value['username'] ?></td>
                                         <td><?php echo $value['email'] ?></td>
                                         <td><?php echo $value['course'] ?></td>
@@ -227,15 +228,16 @@ if(isset($_POST['save'])){
 
                                     <div class="cont">
                                     <input class="form-input" type="text" id="firstname" name="firstname" placeholder="Enter First name*" required value="<?php if(isset($_POST['firstname'])) { echo $_POST['firstname']; } ?>">
+                                    <input class="form-input" type="text" id="middle_name" name="middle_name" placeholder="Enter Middle name (optional)*" value="<?php if(isset($_POST['middle_name'])) { echo $_POST['middle_name']; } ?>">
+                                    </div>
+
+                                    <div class="cont">
                                     <input class="form-input" type="text" id="lastname" name="lastname" placeholder="Enter Last name*" required value="<?php if(isset($_POST['lastname'])) { echo $_POST['lastname']; } ?>">
-                                    </div>
-
-                                    <div class="cont">
                                     <input class="form-input" type="text" id="username" name="username" placeholder="Enter Username*" required value="<?php if(isset($_POST['username'])) { echo $_POST['username']; } ?>">
-                                    <input class="form-input" type="email" id="email" name="email" placeholder="Enter Email*" required value="<?php if(isset($_POST['email'])) { echo $_POST['email']; } ?>">
                                     </div>
 
                                     <div class="cont">
+                                    <input class="form-input" type="email" id="email" name="email" placeholder="Enter Email*" required value="<?php if(isset($_POST['email'])) { echo $_POST['email']; } ?>">
                                     <input class="form-input" type="password" id="password" name="password" placeholder="Enter password" required value="<?php if(isset($_POST['password'])) { echo $_POST['password']; } ?>">
                                     </div>
 
@@ -297,6 +299,7 @@ if(isset($_POST['save'])){
     </section>
 
     <script src="../js/script.js"></script>
+
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
