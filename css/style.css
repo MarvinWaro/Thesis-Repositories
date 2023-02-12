@@ -37,7 +37,7 @@
     padding: 26px;
     margin: auto;
     background-color: white;
-    border-radius: 8px;
+    border-radius: 20px;
     box-shadow: 0px 0px 8px 5px rgba(0, 0, 0, 0.5);
 }
 
@@ -70,6 +70,11 @@ select {
     box-sizing: border-box;
     border: 1px solid black;
     margin: 7px 0;
+    font-size: 13px
+}
+
+select {
+    font-size: 13px !important;
 }
 
 .divider {
@@ -121,7 +126,7 @@ select {
     transition: 0.3s ease;
     border: none;
     margin-bottom: 20px;
-
+    margin-top: 15px;
 }
 
 .button-login:hover {
@@ -177,7 +182,7 @@ select {
 }
 
 label {
-    font-size: 15px;
+    font-size: 13px;
     padding: 8px 0px 8px 0px;
 }
 
@@ -628,27 +633,53 @@ h3.table-title {
 
 .add-form .cont input,
 .add-form .cont select {
-    margin: 7px;
+    margin: 6px 1px 6px 1px;
     justify-content: space-between;
 }
 
 
 .form-cont .edit-form {
     margin: 10px;
-    max-width: 400px;
+    max-width: 380px;
     padding-bottom: 20px;
 }
 
 .form-cont .edit-form select {
-    margin-bottom: 0;
+    margin: 6px 1px 6px 1px;
 }
 
-a.back {
-
+.form-cont a.back {
     text-decoration: none;
-    color: #107869;
-    font-size: 15px;
+    color: var(--maincolor);
+    font-size: 17px;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 7px;
 }
+
+.modal-body select {
+    margin: 6px 1px;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: nowrap !important;
+}
+
+.modal-footer .form-input {
+    width: 30%;
+    background-color: rgb(180, 224, 183);
+    transition: 0.3s ease;
+    border: none;
+}
+
+
+.modal-footer .form-input:hover {
+    background: var(--maincolor);
+    color: #ffff;
+}
+
 
 
 /* MEDIA QUERIES */
