@@ -69,7 +69,7 @@ select {
     border-radius: 6px;
     box-sizing: border-box;
     border: 1px solid black;
-
+    margin: 7px 0;
     font-size: 13px
 }
 
@@ -126,7 +126,7 @@ select {
     transition: 0.3s ease;
     border: none;
     margin-bottom: 20px;
-
+    margin-top: 15px;
 }
 
 .button-login:hover {
@@ -182,7 +182,7 @@ select {
 }
 
 label {
-    font-size: 15px;
+    font-size: 13px;
     padding: 8px 0px 8px 0px;
 }
 
@@ -640,19 +640,26 @@ h3.table-title {
 
 .form-cont .edit-form {
     margin: 10px;
-    max-width: 400px;
+    max-width: 380px;
     padding-bottom: 20px;
 }
 
 .form-cont .edit-form select {
-    margin-bottom: 0;
+    margin: 6px 1px 6px 1px;
 }
 
-a.back {
+.form-cont a.back {
 
     text-decoration: none;
-    color: #107869;
-    font-size: 15px;
+    color: var(--maincolor);
+    font-size: 17px;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 7px;
+}
+
+.modal-body select {
+    margin: 6px 1px;
 }
 
 .modal-footer {
