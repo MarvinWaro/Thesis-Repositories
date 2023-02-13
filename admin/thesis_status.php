@@ -58,23 +58,25 @@
                 </a>
             </li>
             <li>
-
-                <a class ="side-active" href="../admin/thesis_status.php">
+                <a class ="side-active sub-btn" href="../admin/thesis_status.php">
                     <i class='bx bx-task'></i>
                     <span class="link-name">Thesis Status</span>
-                    <i class='bx bx-chevron-down'></i>
+                    <i class='bx bx-chevron-down dropdown'></i>
                 </a>
-            </li>
-            <div class="sub-menu">
-                <ul >
-                        <li>
-                            <a href="#">Accepted Titles</a>
-                        </li>
-                        <li>
-                            <a href="#">Rejected Titles</a>
-                        </li>
-                    </ul>
-            </div>
+
+            </li >
+                <div class="sub-menu" id="drop" >
+                    <li>
+                        <a href="#">
+                            <span class="link-name">Approve titles</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="link-name">Rejected Titles</span>
+                        </a>
+                    </li>
+                </div>
             <li>
                 <a href="../admin/manage_students.php">
                     <i class='bx bx-user'></i>
@@ -128,24 +130,26 @@
         </nav>
 
         <!--Home CONTENT-->
-        <div class="container">
-
-            <div class="head-cont">
-                <h3 class="table-title">Thesis Status</h3>
-            </div>
-        </div>
 
     </section>
 
     <script src="../js/script.js"></script>
 
+    <script>
+    $(document).ready(function () {
+        $('.sub-btn').click(function () {
+            $(this).next('.sub-menu').slideToggle();
+            $(this).find('.dropdown').toggleClass('rotate');
+        })
+    });
+    </script>
+
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" ></script>
-    
-    <!--responsive-->
-    <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
+
+     <!--responsive-->
+     <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
 
 </body>
 </html>

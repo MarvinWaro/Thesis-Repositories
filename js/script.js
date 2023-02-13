@@ -6,12 +6,12 @@ sidebarBtn.onclick = function () {
 }
 
 
-$(document).ready(function() {
-    var table = $('#example').DataTable( {
+$(document).ready(function () {
+    var table = $('#example').DataTable({
         responsive: true
-    } );
-    new $.fn.dataTable.FixedHeader( table );
-} );
+    });
+    new $.fn.dataTable.FixedHeader(table);
+});
 
 /*Modal*/
 
@@ -21,3 +21,12 @@ const myInput = document.getElementById('myInput')
 myModal.addEventListener('shown.bs.modal', () => {
     myInput.focus()
 })
+
+
+//dropdown
+$(document).ready(function () {
+    $('.sub-btn').click(function () {
+        $(this).next('.sub-menu').slideToggle();
+        $(this).find('.dropdown').toggleClass('rotate');
+    })
+});
