@@ -52,7 +52,7 @@
 
         <ul class="navi-links">
             <li>
-                <a href="home.pph">
+                <a href="home.ph">
                     <i class='bx bx-grid-alt'></i>
                     <span class="link-name">Home</span>
                 </a>
