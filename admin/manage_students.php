@@ -74,7 +74,7 @@ if(isset($_POST['save'])){
             <span class="logo_name">Thesis Repositories</span>
         </div>
 
-        <hr class="line-ko">
+        <hr class="line-logout">
 
         <ul class="navi-links">
             <li>

@@ -37,7 +37,7 @@
     padding: 26px;
     margin: auto;
     background-color: white;
-    border-radius: 20px;
+    border-radius: 8px;
     box-shadow: 0px 0px 8px 5px rgba(0, 0, 0, 0.5);
 }
 
@@ -285,6 +285,23 @@ a {
     font-size: 14px;
     font-weight: 300;
 }
+
+.sidebar-admin .navi-links .sub-menu {
+    background-color: var(--maincolorMdark);
+}
+
+.sidebar-admin .navi-links .sub-menu li {
+    text-decoration: none;
+    margin-left: 80px;
+}
+
+.navi-links .sub-menu li a {
+    color: #fff;
+    font-size: 12px;
+}
+
+.navi-links .sub-menu li a .dropdown
+
 
 .line-ko {
     color: 1px solid var(--uppernav);

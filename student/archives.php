@@ -52,47 +52,31 @@
 
         <ul class="navi-links">
             <li>
-                <a href="../admin/dashboard.php">
+                <a href="home.pph">
                     <i class='bx bx-grid-alt'></i>
-                    <span class="link-name">Dashboard</span>
+                    <span class="link-name">Home</span>
                 </a>
             </li>
             <li>
-                <a class ="side-active" href="../admin/archives.php">
+                <a href="thesis.php">
+                    <i class='bx bx-folder-open'></i>
+                    <span class="link-name">Thesis</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="grades.php">
+                    <i class='bx bx-note'></i>
+                    <span class="link-name">Grades</span>
+                </a>
+            </li>
+            <li>
+                <a class ="side-active" href="archives.php">
                     <i class='bx bx-folder-open'></i>
                     <span class="link-name">Archives</span>
                 </a>
             </li>
-            <li>
-                <a href="../admin/thesis_status.php">
-                    <i class='bx bx-task'></i>
-                    <span class="link-name">Thesis Status</span>
-                </a>
-            </li>
-            <li>
-                <a href="../admin/manage_students.php">
-                    <i class='bx bx-user'></i>
-                    <span class="link-name">Manage Student</span>
-                </a>
-            </li>
-            <li>
-                <a href="../admin/manage_faculty.php">
-                    <i class='bx bx-group' ></i>
-                    <span class="link-name">Manage Faculty</span>
-                </a>
-            </li>
-            <li>
-                <a href="../admin/manage_schedules.php">
-                    <i class='bx bx-calendar' ></i>
-                    <span class="link-name">Managae Schedule</span>
-                </a>
-            </li>
-            <li>
-                <a href="../admin/manage_rubricks.php">
-                    <i class='bx bx-note'></i>
-                    <span class="link-name">Manage Rubricks</span>
-                </a>
-            </li>
+
             <hr class="line-logout">
             <li class="logout" id="logout-link">
                 <a href="../login/logout.php">

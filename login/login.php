@@ -12,8 +12,6 @@
             //print_r($_POST);
             $username=mysqli_real_escape_string($conn,$_POST['username']);
             $password=mysqli_real_escape_string($conn,$_POST['password']);
-            $firstname=mysqli_real_escape_string($conn,$_POST['firstname']);
-            $lastname=mysqli_real_escape_string($conn,$_POST['lastname']);
 
             $sql=mysqli_query($conn,"SELECT * FROM useraccounts WHERE BINARY username='$username' && BINARY password='$password'");
             $num=mysqli_num_rows($sql);
@@ -26,11 +24,11 @@
 
                   //display the appropriate dashboard page for user
                   if (($_SESSION['user_type']) == 'student'){
-                      header('location: ../admin/manage_students.php');
+                      header('location: ../student/home.php');
                   }else if (($_SESSION['user_type']) == 'admin'){
                       header('location: ../admin/dashboard.php');
                   }else if (($_SESSION['user_type']) == 'faculty'){
-                    header('location: ../admin/manage_faculty.php');
+                    header('location: ../faculty/home.php');
                   }else{
                       header('location: login/login.php');
                   }

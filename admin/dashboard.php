@@ -42,7 +42,7 @@
             <span class="logo_name">Thesis Repositories</span>
         </div>
 
-        <hr class="line-ko">
+        <hr class="line-logout">
 
         <ul class="navi-links">
             <li>
@@ -58,10 +58,10 @@
                 </a>
             </li>
             <li>
-                        <a href="../admin/thesis_status.php">
-                            <i class='bx bx-task'></i>
-                            <span class="link-name">Thesis Status</span>
-                        </a>
+                <a href="../admin/thesis_status.php">
+                    <i class='bx bx-task'></i>
+                    <span class="link-name">Thesis Status</span>
+                </a>
 
             </li>
             <li>
