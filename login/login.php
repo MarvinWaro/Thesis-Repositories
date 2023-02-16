@@ -4,12 +4,13 @@
         require_once '../class/useraccounts.class.php';
 
         //we start session since we need to use session values
-        $conn = mysqli_connect("localhost","root","","tams");
-        $error="";
+
+        
         session_start();
         if (isset($_POST['login'])) {
             //echo "<pre>";
             //print_r($_POST);
+            require '../class/dbconfig.php';
             $username=mysqli_real_escape_string($conn,$_POST['username']);
             $password=mysqli_real_escape_string($conn,$_POST['password']);
 

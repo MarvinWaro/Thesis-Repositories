@@ -223,7 +223,7 @@
                   <?php
                     require '../class/dbconfig.php';
                     $query = "SELECT id FROM student ORDER BY id";
-                    $query_run = mysqli_query($connection, $query);
+                    $query_run = mysqli_query($conn, $query);
                     $row = mysqli_num_rows($query_run);
                     echo $row
                   ?>
@@ -245,7 +245,7 @@
                 <?php
                     require '../class/dbconfig.php';
                     $query = "SELECT id FROM faculty ORDER BY id";
-                    $query_run = mysqli_query($connection, $query);
+                    $query_run = mysqli_query($conn, $query);
                     $row = mysqli_num_rows($query_run);
                     echo $row
                   ?>
@@ -267,7 +267,7 @@
                 <?php
                     require '../class/dbconfig.php';
                     $query = "SELECT id FROM useraccounts ORDER BY id";
-                    $query_run = mysqli_query($connection, $query);
+                    $query_run = mysqli_query($conn, $query);
                     $row = mysqli_num_rows($query_run);
                     echo $row
                   ?>
