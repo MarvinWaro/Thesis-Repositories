@@ -68,6 +68,7 @@
     />
     <!-- start: Icons -->
     <!-- start: CSS -->
+    <link rel="icon" href="../img/rlogo.png" type="image/icon type">
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../assets/css/style.css" />
     <!-- end: CSS -->

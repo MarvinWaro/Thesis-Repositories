@@ -28,6 +28,7 @@
     />
     <!-- start: Icons -->
     <!-- start: CSS -->
+    <link rel="icon" href="../img/rlogo.png" type="image/icon type">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
@@ -39,10 +40,10 @@
   <body>
     <!-- start: Sidebar -->
     <div class="sidebar position-fixed top-0 bottom-0 bg-white border-end">
-      <div class="d-flex align-items-center p-3">
+      <div class="d-flex align-items-center  p-3">
         <a
           href="#"
-          class="sidebar-logo text-uppercase fw-bold text-decoration-none text-indigo fs-4"
+          class="sidebar-logo text-uppercase fw-bold text-decoration-none fs-4 "
           >Thesis Repository</a
         >
         <i

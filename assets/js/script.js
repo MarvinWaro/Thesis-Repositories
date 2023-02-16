@@ -66,11 +66,11 @@ $(document).ready(function() {
     })
 
     const visitorsChart = new Chart($('#visitors-chart'), {
-        type: 'doughnut',
+        type: 'pie',
         data: {
             labels: ['Student', 'Faculty', 'Archives'],
             datasets: [{
-                backgroundColor: ['#6610f2', '#198754', '#ffc107'],
+                backgroundColor: ['#0D6EFD', '#198754', '#0DCAF0'],
                 data: [11, 4, 3],
             }]
         }
