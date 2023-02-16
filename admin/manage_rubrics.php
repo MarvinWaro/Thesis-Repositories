@@ -27,6 +27,8 @@
     />
     <!-- start: Icons -->
     <!-- start: CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../assets/css/style.css" />
     <!-- end: CSS -->
@@ -47,42 +49,42 @@
         ></i>
       </div>
       <ul class="sidebar-menu p-3 m-0 mb-0">
-        <li class="sidebar-menu-item active">
+        <li class="sidebar-menu-item">
           <a href="dashboard.php">
             <i class="ri-dashboard-line sidebar-menu-item-icon"></i>
             Dashboard
           </a>
         </li>
+
         <li class="sidebar-menu-divider mt-3 mb-1 text-uppercase">Thesis</li>
-        <li class="sidebar-menu-item">
+
+        <li class="sidebar-menu-item ">
           <a href="archives.php">
             <i class="ri-archive-drawer-line sidebar-menu-item-icon"></i>
             Archives
           </a>
         </li>
         <li class="sidebar-menu-item has-dropdown">
-          <a href="thesis_status.php">
-              <i class="ri-bar-chart-box-line sidebar-menu-item-icon"></i>
-              Thesis Status
-              <i class="ri-arrow-down-s-line sidebar-menu-item-accordion ms-auto"></i>
-          </a>
-          <ul class="sidebar-dropdown-menu">
-              <li class="sidebar-dropdown-menu-item">
-                  <a href="#">
-                      Accepted Titles
-                  </a>
-              </li>
-              <li class="sidebar-dropdown-menu-item">
-                  <a href="#">
-                      Rejected Titles
-                  </a>
-              </li>
-          </ul>
-      </li>
-
+            <a href="thesis_status.php">
+                <i class="ri-bar-chart-box-line sidebar-menu-item-icon"></i>
+                Thesis Status
+                <i class="ri-arrow-down-s-line sidebar-menu-item-accordion ms-auto"></i>
+            </a>
+            <ul class="sidebar-dropdown-menu">
+                <li class="sidebar-dropdown-menu-item">
+                    <a href="#">
+                        Accepted Titles
+                    </a>
+                </li>
+                <li class="sidebar-dropdown-menu-item">
+                    <a href="#">
+                        Rejected Titles
+                    </a>
+                </li>
+            </ul>
+        </li>
         <li class="sidebar-menu-divider mt-3 mb-1 text-uppercase">Manage</li>
-
-        <li class="sidebar-menu-item">
+        <li class="sidebar-menu-item has-dropdown">
           <a href="manage_students.php">
             <i class="ri-user-line sidebar-menu-item-icon"></i>
             Manage Student
@@ -94,8 +96,8 @@
             Manage Faculty
           </a>
         </li>
-        <li class="sidebar-menu-item">
-          <a href="manage_rubrics.php">
+        <li class="sidebar-menu-item active">
+          <a href="manage_rubrics.html">
             <i class="ri-table-2 sidebar-menu-item-icon"></i>
             Manage Rubricks
           </a>
@@ -117,7 +119,7 @@
         <!-- start: Navbar -->
         <nav class="px-3 py-2 bg-white rounded shadow-sm">
           <i class="ri-menu-line sidebar-toggle me-3 d-block d-md-none"></i>
-          <h5 class="fw-bold mb-0 me-auto">Dashboard</h5>
+          <h5 class="fw-bold mb-0 me-auto">Rubrics</h5>
           <div class="dropdown me-3 d-none d-sm-block">
             <div
               class="cursor-pointer dropdown-toggle navbar-link"
@@ -205,104 +207,12 @@
 
         <!-- start: Content -->
         <div class="py-4">
-          <!-- start: Summary -->
-          <div class="row g-3">
-            <div class="col-12 col-sm-6 col-lg-3">
-              <a
-                href="#"
-                class="text-dark text-decoration-none bg-white p-3 rounded shadow-sm d-flex justify-content-between summary-primary"
-              >
-                <div>
-                  <i
-                    class="ri-user-line summary-icon bg-primary mb-2"
-                  ></i>
-                  <div>Total Student</div>
-                </div>
-                <h4>
-                  <?php
-                    require '../class/dbconfig.php';
-                    $query = "SELECT id FROM student ORDER BY id";
-                    $query_run = mysqli_query($connection, $query);
-                    $row = mysqli_num_rows($query_run);
-                    echo $row
-                  ?>
-                </h4>
-              </a>
-            </div>
-            <div class="col-12 col-sm-6 col-lg-3">
-              <a
-                href="#"
-                class="text-dark text-decoration-none bg-white p-3 rounded shadow-sm d-flex justify-content-between summary-indigo"
-              >
-                <div>
-                  <i
-                    class="ri-group-line summary-icon bg-indigo mb-2"
-                  ></i>
-                  <div>Total Faculty</div>
-                </div>
-                <h4>
-                <?php
-                    require '../class/dbconfig.php';
-                    $query = "SELECT id FROM faculty ORDER BY id";
-                    $query_run = mysqli_query($connection, $query);
-                    $row = mysqli_num_rows($query_run);
-                    echo $row
-                  ?>
-                </h4>
-              </a>
-            </div>
-            <div class="col-12 col-sm-6 col-lg-3">
-              <a
-                href="#"
-                class="text-dark text-decoration-none bg-white p-3 rounded shadow-sm d-flex justify-content-between summary-success"
-              >
-                <div>
-                  <i
-                    class="ri-group-line summary-icon bg-success mb-2"
-                  ></i>
-                  <div>Accounts</div>
-                </div>
-                <h4>
-                <?php
-                    require '../class/dbconfig.php';
-                    $query = "SELECT id FROM useraccounts ORDER BY id";
-                    $query_run = mysqli_query($connection, $query);
-                    $row = mysqli_num_rows($query_run);
-                    echo $row
-                  ?>
-                </h4>
-              </a>
-            </div>
-            <div class="col-12 col-sm-6 col-lg-3">
-              <a
-                href="#"
-                class="text-dark text-decoration-none bg-white p-3 rounded shadow-sm d-flex justify-content-between summary-info"
-              >
-                <div>
-                  <i
-                    class="ri-archive-drawer-line summary-icon bg-info mb-2"
-                  ></i>
-                  <div>Total Archives</div>
-                </div>
-                <h4>6</h4>
-              </a>
-            </div>
-          </div>
-          <!-- end: Summary -->
-          <!-- start: Graph -->
+          <!-- start: content -->
 
-          <div class="row g-3 mt-2">
-                    <div class="col-12 col-md-5 col-xl-4">
-                        <div class="card border-0 shadow-sm h-100">
-                            <div class="card-header bg-white">
-                                Data Chart
-                            </div>
-                            <div class="card-body">
-                                <canvas id="visitors-chart"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    </div>
+
+          <!-- end: content -->
+          <!-- start: Graph -->
 
           <!-- end: Graph -->
         </div>
@@ -321,6 +231,10 @@
     ></script>
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/script.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+    <!--responsive-->
+    <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
     <!-- end: JS -->
   </body>
 </html>
