@@ -40,10 +40,10 @@
   <body>
     <!-- start: Sidebar -->
     <div class="sidebar position-fixed top-0 bottom-0 bg-white border-end">
-      <div class="d-flex align-items-center  p-3">
+      <div class="d-flex align-items-center p-3">
         <a
           href="#"
-          class="sidebar-logo text-uppercase fw-bold text-decoration-none fs-4 "
+          class="sidebar-logo text-uppercase fw-bold text-decoration-none text-indigo fs-4"
           >Thesis Repository</a
         >
         <i
