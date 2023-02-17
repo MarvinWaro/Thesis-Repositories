@@ -59,7 +59,7 @@
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../assets/css/style.css" />
     <!-- end: CSS -->
-    <title>Thesis Repository - Blank Page</title>
+    <title>Thesis Repository | Login</title>
   </head>
 <body>
     <div class="login-container">
@@ -69,7 +69,7 @@
             </div>
 
             <div class="logo-details">
-                <span class="logo-name">Thesis Repositories</span>
+                <span class="logo-name">Thesis Archives</span>
             </div>
 
             <hr class="divider">
