@@ -34,7 +34,7 @@
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../assets/css/style.css" />
     <!-- end: CSS -->
-    <title>Thesis Repository - Blank Page</title>
+    <title>Thesis Repository </title>
   </head>
 
   <body>
@@ -101,13 +101,13 @@
         <li class="sidebar-menu-item">
           <a href="manage_rubrics.php">
             <i class="ri-table-2 sidebar-menu-item-icon"></i>
-            Manage Rubricks
+            Manage Rubrics
           </a>
         </li>
         <li class="sidebar-menu-item active">
           <a href="manage_schedules.php">
             <i class="ri-calendar-2-line sidebar-menu-item-icon"></i>
-            Scheudles
+            Schedules
           </a>
         </li>
       </ul>
