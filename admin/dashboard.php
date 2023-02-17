@@ -285,7 +285,7 @@
                   ></i>
                   <div>Total Archives</div>
                 </div>
-                <h4>6</h4>
+                <h4>3</h4>
               </a>
             </div>
           </div>
