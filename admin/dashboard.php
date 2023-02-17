@@ -210,7 +210,7 @@
           <div class="row g-3">
             <div class="col-12 col-sm-6 col-lg-3">
               <a
-                href="manage_student.php"
+                href="manage_students.php"
                 class="text-dark text-decoration-none bg-white p-3 rounded shadow-sm d-flex justify-content-between summary-primary"
               >
                 <div>
