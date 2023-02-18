@@ -1,0 +1,308 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;1,400&display=swap');
+
+:root{
+    --primary: #3155e7;
+    --primary-dark: #2045d6;
+    --black: #010101;
+    --gray1: #788190;
+    --gray2: #d3d4db;
+    --white: #ffffff;
+    --body: #fefefe;
+
+    --maincolor: #3C6255;
+    --maincolorMdark: #61876E;
+    --maincolor_light: rgb(180, 224, 183);
+    --cancelcolor: #EB1D36;
+    --cancelcolor_light: #FA9494;
+    --uppernav: #FFFBF5;
+}
+
+body{
+    font-family: 'Plus Jkarta Sans', sans-serif;
+    background-color: var(--body);
+}
+
+
+
+#logo-name{
+    color: var(--maincolor);
+    font-size: 30px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.btn{
+    border-radius: 8px;
+}
+
+.btn-primary,
+.btn-outline-secondary{
+    padding: 12px 20px;
+}
+
+.btn-primary{
+    background-color: var(--primary);
+}
+
+.btn-primary:hover{
+    background-color: var(--primary-dark);
+}
+
+.btn-outline-secondary{
+    border: 1px solid var(--gray2);
+    color: var(--black);
+}
+
+.btn-outline-secondary:hover{
+    background-color: var(--gray2);
+    border: 1px solid (var(--gray2));
+    color: var(--black);
+}
+
+/*Navbar*/
+
+.navbar .btn-outline-secondary{
+    border: 1px solid var(--gray2);
+    color: var(--black);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    padding: 10px 16px;
+}
+
+.navbar{
+    padding: 32px 0;
+}
+
+.nav-link{
+    margin-left: 41px;
+    font-size: 16px;
+    color: var(--gray1);
+}
+
+.navbar-nav .nav-link.active{
+    font-weight: bold;
+    color: var(--black);
+}
+
+section.home{
+    padding:0;
+}
+
+section.home svg{
+    display: block;
+}
+
+section.home .text{
+    padding-top: 65px;
+    font-weight: 800;
+    font-size: 60px;
+    line-height: 73px;
+    color: var(--maincolor);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+section.home .text2{
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 70px;
+    color: rgb(31, 27, 27);
+    font-family: 'Plus Jkarta Sans', sans-serif;
+}
+
+.buttons{
+    padding-top: 69px;
+}
+
+.buttons .btn{
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 24px;
+}
+
+/* for icons */
+
+.setup .container .icons i{
+    font-size: 30px;
+    color: whitesmoke;
+    background: var(--maincolor);
+    padding: 15px;
+    border-radius: 50%;
+}
+
+section.setup{
+    padding:0 0 0 0;
+}
+
+section.setup .text-header h3{
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 48px;
+    color: var(--black);
+}
+
+section.setup .text-header p{
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 28px;
+    color: var(--gray1);
+    padding: 27px 0;
+}
+
+section.setup .icons{
+    padding: 27px 0;
+}
+
+section.setup h5{
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    color: var(--black);
+    padding-bottom: 18px;
+}
+
+section.setup .desc p{
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 22px;
+    color: var(--gray1);
+    max-width: 284px;
+    margin: 0 auto;
+    padding-bottom: 30px;
+}
+
+section.information .text-information{
+    padding: 134px 0;
+}
+
+section.information h5{
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 48px;
+    color: var(--black);
+}
+
+section.information p{
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 28px;
+    color: var(--gray1);
+    padding-top: 20px ;
+}
+
+section.information img{
+    border-radius: 30px;
+}
+
+section.information .info-1{
+    padding: 0 0 90px 0;
+}
+
+section.information .info-2{
+    padding: 0 0 90px 0;
+}
+
+#line{
+    width: 90%;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+footer{
+    margin-top: 70px;
+    padding-top: 35px;
+    padding-bottom: 35px;
+    background: var(--maincolorMdark);
+}
+
+footer a{
+    font-weight: bold;
+    font-size: 14px;
+    color: var(--white);
+    line-height: 10px;
+}
+
+footer .copy{
+    margin-top: 32px;
+    font-size: 14px;
+    color: var(--white);
+    line-height: 10px;
+    font-weight: 400;
+}
+
+@media ( max-width: 576px){
+
+    section.home,
+    section.setup,
+    section.information{
+        text-align: center;
+    }
+
+    section.home .text2 {
+        font-weight: 700;
+        font-size: 35px;
+        line-height: 30px;
+        color: rgb(31, 27, 27);
+        font-family: 'Plus Jkarta Sans', sans-serif;
+    }
+
+    /* Navbar */
+
+    .navbar{
+        padding: 20px 0;
+    }
+
+    .nav-link{
+        margin-left: 0;
+    }
+
+    /*Home Section*/
+
+    section.home img{
+        padding:0;
+    }
+
+    section.home .text{
+        font-weight: 800;
+        font-size: 38px;
+        line-height: 53px;
+    }
+
+    .buttons .btn{
+        display: block;
+        margin: 1rem 0;
+    }
+
+    .buttons .ms-3{
+        margin-left: 0 !important;
+    }
+
+    /*Setup Section*/
+
+    section.setup{
+        padding: 0;
+    }
+
+    /*Footer*/
+
+    footer{
+        margin-top: 70px;
+        padding-top: 35px;
+        padding-bottom: 35px;
+        background: var(--maincolorMdark);
+    }
+}
+
+
+@media (min-width: 320px){
+    #logo-name {
+        color: var(--maincolor);
+        font-size: 20px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+}
+
+
