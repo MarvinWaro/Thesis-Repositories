@@ -57,7 +57,7 @@ body{
 .btn-outline-secondary:hover{
     background-color: var(--gray2);
     border: 1px solid (var(--gray2));
-    color: var(--white);
+    color: var(--black);
 }
 
 /*Navbar*/
@@ -94,7 +94,7 @@ body{
 }
 
 section.home{
-    padding-top: 100px;
+    padding-top: 120px;
 }
 
 section.home svg{
@@ -241,6 +241,16 @@ footer .copy{
     .navbar-toggler{
         border: none !important;
     }
+
+    .navbar .btn-outline-secondary {
+        border: 1px solid var(--gray2);
+        color: var(--white);
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+        padding: 10px 16px;
+        margin-bottom: 10px;
+    }
 }
 
 @media ( max-width: 576px){
@@ -275,7 +285,7 @@ footer .copy{
 
     .navbar .btn-outline-secondary {
         border: 1px solid var(--gray2);
-        color: var(--black);
+        color: var(--white);
         font-size: 14px;
         font-weight: 500;
         line-height: 20px;
