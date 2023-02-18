@@ -251,6 +251,11 @@ footer .copy{
         padding: 10px 16px;
         margin-bottom: 10px;
     }
+
+    .line{
+        width: 100%;
+        color: white;
+    }
 }
 
 @media ( max-width: 576px){
@@ -259,6 +264,11 @@ footer .copy{
     section.setup,
     section.information{
         text-align: center;
+    }
+
+    .line{
+        width: 100%;
+        color: white;
     }
 
     section.home .text2 {
@@ -337,6 +347,11 @@ footer .copy{
         margin-bottom: 0px;
     }
 
+    .line{
+        width: 100%;
+        color: white;
+    }
+
     #logo-name {
         color: var(--white);
         font-size: 18px;
@@ -374,6 +389,11 @@ footer .copy{
         font-weight: bold;
     }
 
+    .line{
+        width: 100%;
+        color: white;
+    }
+
     .navbar img {
         width: 39px;
         margin-bottom: 4px;
@@ -392,6 +412,11 @@ footer .copy{
         background-repeat: no-repeat;
         background-position: center;
         background-size: 100%;
+    }
+
+    .line{
+        width: 100%;
+        color: white;
     }
 
     #logo-name {

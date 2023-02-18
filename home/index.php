@@ -60,6 +60,9 @@
             <a class="nav-link" href="#">How</a>
             <a class="nav-link me-5" href="#">System Features</a>
           </div>
+
+          <hr class="line">
+
           <a href="../login/login.php" class="btn btn-outline-secondary shadow-sm d-sm d-block me-2">Login</a>
           <a href="#" class="btn btn-outline-secondary shadow-sm d-sm d-block me-2">Sign-up</a>
         </div>
