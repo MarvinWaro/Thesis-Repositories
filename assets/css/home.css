@@ -341,7 +341,7 @@ footer .copy{
 
 
 
-@media (min-width: 315px) and (max-width:375px ){
+@media (min-width: 320px) and (max-width:375px ){
     .navbar img {
         width: 35px;
         margin-bottom: 0px;
