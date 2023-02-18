@@ -401,7 +401,7 @@ footer .copy{
     }
 }
 
-@media (min-width: 280px) and (max-width: 319px){
+@media (min-width: 250px) and (max-width: 319px){
 
     .navbar-toggler-icon {
         display: inline-block;
