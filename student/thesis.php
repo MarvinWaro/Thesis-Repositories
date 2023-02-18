@@ -65,7 +65,7 @@
           </li>
         <li class="sidebar-menu-item ">
           <a href="grades.php">
-            <i class="ri-mail-star-line sidebar-menu-item-icon""></i>
+            <i class="ri-mail-star-line sidebar-menu-item-icon"></i>
             Grades
           </a>
         </li>

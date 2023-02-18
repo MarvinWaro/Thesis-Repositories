@@ -25,7 +25,7 @@ body{
 
 
 #logo-name{
-    color: var(--maincolor);
+    color: var(--white);
     font-size: 30px;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -51,20 +51,20 @@ body{
 
 .btn-outline-secondary{
     border: 1px solid var(--gray2);
-    color: var(--black);
+    color: var(--white);
 }
 
 .btn-outline-secondary:hover{
     background-color: var(--gray2);
     border: 1px solid (var(--gray2));
-    color: var(--black);
+    color: var(--white);
 }
 
 /*Navbar*/
 
 .navbar .btn-outline-secondary{
     border: 1px solid var(--gray2);
-    color: var(--black);
+    color: var(--white);
     font-size: 14px;
     font-weight: 500;
     line-height: 20px;
@@ -72,22 +72,29 @@ body{
 }
 
 .navbar{
-    padding: 32px 0;
+    padding: 10px 0;
+    background:var(--maincolor);
+
+}
+
+.navbar img{
+    width: 50px;
+    margin-bottom: 8px;
 }
 
 .nav-link{
     margin-left: 41px;
     font-size: 16px;
-    color: var(--gray1);
+    color: var(--white);
 }
 
 .navbar-nav .nav-link.active{
     font-weight: bold;
-    color: var(--black);
+    color: var(--white);
 }
 
 section.home{
-    padding:0;
+    padding-top: 100px;
 }
 
 section.home svg{
@@ -95,12 +102,12 @@ section.home svg{
 }
 
 section.home .text{
-    padding-top: 65px;
+    padding-top: 75px;
     font-weight: 800;
-    font-size: 60px;
+    font-size: 80px;
     line-height: 73px;
     color: var(--maincolor);
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 section.home .text2{
@@ -204,31 +211,36 @@ section.information .info-2{
 }
 
 #line{
-    width: 90%;
+    width: 100%;
     justify-content: center;
     padding: 20px 0;
 }
 
 footer{
-    margin-top: 70px;
     padding-top: 35px;
     padding-bottom: 35px;
-    background: var(--maincolorMdark);
+    background: var(--maincolor_light);
 }
 
 footer a{
     font-weight: bold;
     font-size: 14px;
-    color: var(--white);
+    color: var(--black);
     line-height: 10px;
 }
 
 footer .copy{
     margin-top: 32px;
     font-size: 14px;
-    color: var(--white);
+    color: var(--black);
     line-height: 10px;
     font-weight: 400;
+}
+
+@media (max-width: 768px){
+    .navbar-toggler{
+        border: none !important;
+    }
 }
 
 @media ( max-width: 576px){
@@ -241,8 +253,8 @@ footer .copy{
 
     section.home .text2 {
         font-weight: 700;
-        font-size: 35px;
-        line-height: 30px;
+        font-size: 25px;
+        line-height: 15px;
         color: rgb(31, 27, 27);
         font-family: 'Plus Jkarta Sans', sans-serif;
     }
@@ -255,6 +267,20 @@ footer .copy{
 
     .nav-link{
         margin-left: 0;
+    }
+
+    .navbar-toggler{
+        border: none !important;
+    }
+
+    .navbar .btn-outline-secondary {
+        border: 1px solid var(--gray2);
+        color: var(--black);
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+        padding: 10px 16px;
+        margin-bottom: 10px;
     }
 
     /*Home Section*/
@@ -287,22 +313,64 @@ footer .copy{
     /*Footer*/
 
     footer{
-        margin-top: 70px;
         padding-top: 35px;
         padding-bottom: 35px;
-        background: var(--maincolorMdark);
+        background: var(--maincolor_light);
     }
 }
 
 
-@media (min-width: 320px){
+
+@media (max-width: 320px){
+    .navbar img {
+        width: 35px;
+        margin-bottom: 0px;
+    }
+
     #logo-name {
-        color: var(--maincolor);
-        font-size: 20px;
-        letter-spacing: 2px;
+        color: var(--white);
+        font-size: 18px;
+        letter-spacing: 1px;
         text-transform: uppercase;
         font-weight: bold;
     }
+
+    .navbar-toggler-icon {
+        display: inline-block;
+        width: 20px;
+        height: 1.5em;
+        vertical-align: middle;
+        background-image: var(--bs-navbar-toggler-icon-bg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100%;
+        color: var(--white);
+    }
+
+    .navbar img {
+        width: 35px;
+        margin-bottom: 0px;
+        margin-left: 13px;
+    }
+
 }
+
+@media (min-width: 375px) and (max-width: 425px){
+    #logo-name {
+        color: var(--white);
+        font-size: 21px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+
+    .navbar img {
+        width: 39px;
+        margin-bottom: 4px;
+        margin-left: 10px;
+    }
+}
+
+
 
 
