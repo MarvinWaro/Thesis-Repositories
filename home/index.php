@@ -38,7 +38,7 @@
   </head>
   <body>
     <!--Navbar Section-->
-    <nav class="navbar navbar-expand-lg position-fixed w-100">
+    <nav class="navbar navbar-expand-lg ">
       <div class="container">
         <a id="logo-name" class="navbar-brand" href="#">
           <img src="../img/rlogo.png" alt="">
