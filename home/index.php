@@ -294,35 +294,28 @@
                         <div class="col-md-3">
                             <div>
                                 <small>
-                                    <a href="#" class="text-decoration-none">Home</a>
+                                    <a href="#home" class="text-decoration-none">Home</a>
                                 </small>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div>
                                 <small>
-                                    <a href="#" class="text-decoration-none">About</a>
+                                    <a href="#how" class="text-decoration-none">About</a>
                                 </small>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div>
                                 <small>
-                                    <a href="#" class="text-decoration-none">Features</a>
-                                </small>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div>
-                                <small>
-                                    <a href="#" class="text-decoration-none">Data</a>
+                                    <a href="#features" class="text-decoration-none">Features</a>
                                 </small>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="copy">
-                    &copy; Thesis Repository
+                    &copy; Thesis Repository | <a href="#">Privacy Policy</a>
                 </div>
             </div>
         </div>
