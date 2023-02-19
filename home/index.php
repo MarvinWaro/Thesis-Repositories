@@ -38,7 +38,7 @@
   </head>
   <body>
     <!--Navbar Section-->
-    <nav class="navbar navbar-expand-lg position-fixed w-100">
+    <nav id="navbar" class="navbar navbar-expand-lg position-fixed w-100">
       <div class="container">
         <a id="logo-name" class="navbar-brand" href="#">
           <img src="../img/rlogo.png" alt="CCSLOGO">
@@ -330,6 +330,20 @@
     ></script>
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/script.js"></script>
+
+    <script type="text/javascript">
+      var lastScrollTop = 0;
+        navbar = document.getElementById("navbar");
+      window.addEventListener("scroll", function(){
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        if (scrollTop > lastScrollTop){
+          navbar.style.top="-80px";
+        }else{
+          navbar.style.top="0";
+        }
+        lastScrollTop = scrollTop;
+      })
+    </script>
     <!-- end: JS -->
   </body>
 </html>
