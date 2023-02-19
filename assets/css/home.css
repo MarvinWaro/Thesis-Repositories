@@ -321,6 +321,122 @@ footer .copy{
 
 
 
+@media (max-width: 768px){
+    .navbar-toggler{
+        border: none !important;
+    }
+
+    .navbar .btn-outline-secondary {
+        border: 1px solid var(--gray2);
+        color: var(--white);
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+        padding: 10px 16px;
+        margin-bottom: 10px;
+    }
+
+    .line{
+        width: 100%;
+        color: white;
+    }
+}
+
+
+
+@media (min-width: 320px) and (max-width:375px ){
+    .navbar img {
+        width: 35px;
+        margin-bottom: 0px;
+    }
+
+    .line{
+        width: 100%;
+        color: white;
+    }
+
+    #logo-name {
+        color: var(--white);
+        font-size: 18px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+
+    .navbar-toggler-icon {
+        display: inline-block;
+        width: 20px;
+        height: 1.5em;
+        vertical-align: middle;
+        background-image: var(--bs-navbar-toggler-icon-bg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100%;
+        color: var(--white);
+    }
+
+    .navbar img {
+        width: 35px;
+        margin-bottom: 0px;
+        margin-left: 13px;
+    }
+
+}
+
+@media (min-width: 375px) and (max-width: 425px){
+    #logo-name {
+        color: var(--white);
+        font-size: 21px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+
+    .line{
+        width: 100%;
+        color: white;
+    }
+
+    .navbar img {
+        width: 39px;
+        margin-bottom: 4px;
+        margin-left: 10px;
+    }
+}
+
+@media (min-width: 250px) and (max-width: 319px){
+
+    .navbar-toggler-icon {
+        display: inline-block;
+        width: 16px;
+        height: 1.5em;
+        vertical-align: middle;
+        background-image: var(--bs-navbar-toggler-icon-bg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100%;
+    }
+
+    .line{
+        width: 100%;
+        color: white;
+    }
+
+    #logo-name {
+        color: var(--white);
+        font-size: 16px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+
+    .navbar img {
+        width: 30px;
+        margin-bottom: 8px;
+    }
+
+
+}
 
 
 
