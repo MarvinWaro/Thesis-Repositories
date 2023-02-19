@@ -41,7 +41,6 @@
     <nav id="navbar" class="navbar navbar-expand-lg">
       <div class="container">
         <a id="logo-name" class="navbar-brand" href="#">
-          <img src="../img/rlogo.png" alt="CCSLOGO">
           Thesis Archives </a>
         <button
           class="navbar-toggler"
