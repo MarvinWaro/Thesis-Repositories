@@ -73,7 +73,7 @@
 
     <!--Home Sectio-->
     <section id="home" class="home">
-      <div class="container">
+      <div class="container" id="first">
         <div class="row">
           <div class="col-md-6">
             <div class="text">Thesis Archives <spann class="text2">An Online Archive System for College of Computing Studies</spann></div>
@@ -93,7 +93,7 @@
 
     <section id="how" class="setup">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#b4e0b7" fill-opacity="1" d="M0,288L48,272C96,256,192,224,288,186.7C384,149,480,107,576,101.3C672,96,768,128,864,170.7C960,213,1056,267,1152,282.7C1248,299,1344,277,1392,266.7L1440,256L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
-      <div class="container">
+      <div id="second" class="container">
         <div class="text-header text-center">
           <h3>Get Started and Hassle free Experience</h3>
           <p>Submission of titles without worriying of hard copy output.</p>
@@ -149,7 +149,7 @@
 
     <section id="features" class="setup">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#DDDDDD" fill-opacity="1" d="M0,128L48,133.3C96,139,192,149,288,149.3C384,149,480,139,576,122.7C672,107,768,85,864,85.3C960,85,1056,107,1152,138.7C1248,171,1344,213,1392,234.7L1440,256L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
-      <div class="container">
+      <div id="third" class="container">
         <div class="text-header text-center">
           <h3>System Features</h3>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos?</p>
@@ -241,7 +241,7 @@
 
     <section class="information">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#CFB997" fill-opacity="1" d="M0,256L30,266.7C60,277,120,299,180,261.3C240,224,300,128,360,106.7C420,85,480,139,540,170.7C600,203,660,213,720,197.3C780,181,840,139,900,122.7C960,107,1020,117,1080,128C1140,139,1200,149,1260,170.7C1320,192,1380,224,1410,240L1440,256L1440,0L1410,0C1380,0,1320,0,1260,0C1200,0,1140,0,1080,0C1020,0,960,0,900,0C840,0,780,0,720,0C660,0,600,0,540,0C480,0,420,0,360,0C300,0,240,0,180,0C120,0,60,0,30,0L0,0Z"></path></svg>
-    <div class="container">
+    <div id="fourth" class="container">
         <div class="row info-1">
           <!--Text-->
           <div class="col-md-6">
@@ -342,6 +342,12 @@
           navbar.style.top="0";
         }
         lastScrollTop = scrollTop;
+      })
+    </script>
+
+    <script>
+      $(window).scroll(function(){
+        $("#first").css("opacity", 1 - $(window).scrollTop() / 200);
       })
     </script>
     <!-- end: JS -->
