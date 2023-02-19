@@ -4,7 +4,7 @@
     --primary: #3155e7;
     --primary-dark: #2045d6;
     --black: #010101;
-    --gray1: #788190;
+    --gray1: #575e6b;
     --gray2: #d3d4db;
     --white: #ffffff;
     --body: #fefefe;
@@ -114,7 +114,7 @@ section.home .text2{
     font-weight: 700;
     font-size: 50px;
     line-height: 70px;
-    color: rgb(31, 27, 27);
+    color: var(--gray1);
     font-family: 'Plus Jkarta Sans', sans-serif;
 }
 
@@ -240,7 +240,7 @@ footer .copy{
 
 @media ( max-width: 576px){
 
-    section.home,
+    section.home,text2text2
     section.setup,
     section.information{
         text-align: center;
@@ -255,7 +255,7 @@ footer .copy{
         font-weight: 700;
         font-size: 25px;
         line-height: 15px;
-        color: rgb(31, 27, 27);
+        color: var(--gray1);
         font-family: 'Plus Jkarta Sans', sans-serif;
     }
 
@@ -404,7 +404,7 @@ footer .copy{
     }
 }
 
-@media (min-width: 250px) and (max-width: 319px){
+@media (min-width: 250px) and (max-width: 320px){
 
     .navbar-toggler-icon {
         display: inline-block;
@@ -415,6 +415,13 @@ footer .copy{
         background-repeat: no-repeat;
         background-position: center;
         background-size: 100%;
+    }
+
+    section.setup .text-header h3 {
+        font-size: 35px;
+        font-weight: 700;
+        line-height: 48px;
+        color: var(--black);
     }
 
     .line{

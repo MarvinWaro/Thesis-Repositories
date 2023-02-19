@@ -56,9 +56,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav ms-auto  ">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-            <a class="nav-link" href="#">How</a>
-            <a class="nav-link me-5" href="#">System Features</a>
+            <a class="nav-link" aria-current="page" href="#home">Home</a>
+            <a class="nav-link" href="#how"">How</a>
+            <a class="nav-link me-5" href="#features">System Features</a>
           </div>
 
           <hr class="line">
@@ -69,12 +69,14 @@
       </div>
     </nav>
 
+    
+
     <!--Home Sectio-->
-    <section class="home">
+    <section id="home" class="home">
       <div class="container">
         <div class="row">
           <div class="col-md-6">
-            <div class="text">Thesis Archives <spann class="text2">an Online Archive System for College of Computing Studies</spann></div>
+            <div class="text">Thesis Archives <spann class="text2">An Online Archive System for College of Computing Studies</spann></div>
           </div>
 
           <!--Separate-->
@@ -89,7 +91,7 @@
 
     <!--Setup Section-->
 
-    <section class="setup">
+    <section id="how" class="setup">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#b4e0b7" fill-opacity="1" d="M0,288L48,272C96,256,192,224,288,186.7C384,149,480,107,576,101.3C672,96,768,128,864,170.7C960,213,1056,267,1152,282.7C1248,299,1344,277,1392,266.7L1440,256L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
       <div class="container">
         <div class="text-header text-center">
@@ -145,7 +147,7 @@
 
         <!--System Features-->
 
-    <section class="setup">
+    <section id="features" class="setup">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#DDDDDD" fill-opacity="1" d="M0,128L48,133.3C96,139,192,149,288,149.3C384,149,480,139,576,122.7C672,107,768,85,864,85.3C960,85,1056,107,1152,138.7C1248,171,1344,213,1392,234.7L1440,256L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
       <div class="container">
         <div class="text-header text-center">
