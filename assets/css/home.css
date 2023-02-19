@@ -74,6 +74,7 @@ body{
 .navbar{
     padding: 10px 0;
     background:var(--maincolor);
+
 }
 
 .navbar img{
@@ -380,11 +381,6 @@ footer .copy{
         margin-left: 13px;
     }
 
-    .navbar{
-        padding: 10px 0;
-        background:var(--maincolor);
-    }
-
 }
 
 @media (min-width: 375px) and (max-width: 425px){
@@ -399,11 +395,6 @@ footer .copy{
     .line{
         width: 100%;
         color: white;
-    }
-
-    .navbar{
-        padding: 10px 0;
-        background:var(--maincolor);
     }
 
     .navbar img {
@@ -449,11 +440,6 @@ footer .copy{
     .navbar img {
         width: 30px;
         margin-bottom: 8px;
-    }
-
-    .navbar{
-        padding: 10px 0;
-        background:var(--maincolor);
     }
 
 
