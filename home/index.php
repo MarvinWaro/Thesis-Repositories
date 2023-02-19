@@ -41,7 +41,6 @@
     <nav class="navbar navbar-expand-lg position-fixed w-100">
       <div class="container">
         <a id="logo-name" class="navbar-brand" href="#">
-          <img src="../img/rlogo.png" alt="">
           Thesis Archives </a>
         <button
           class="navbar-toggler"
