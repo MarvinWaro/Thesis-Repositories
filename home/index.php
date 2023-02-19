@@ -38,7 +38,7 @@
   </head>
   <body>
     <!--Navbar Section-->
-    <nav id="navbar" class="navbar navbar-expand-lg">
+    <nav id="navbar" class="navbar navbar-expand-lg position-sticky">
       <div class="container">
         <a id="logo-name" class="navbar-brand" href="#">
           Thesis Archives </a>
