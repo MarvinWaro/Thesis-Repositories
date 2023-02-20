@@ -1,7 +1,7 @@
 <?php
 
         require_once '../class/database.php';
-        require_once '../class/student.class.php';
+        require_once '../class/useraccounts.class.php';
 
         //we start session since we need to use session values
 
@@ -14,7 +14,7 @@
             $username=mysqli_real_escape_string($conn,$_POST['username']);
             $password=mysqli_real_escape_string($conn,$_POST['password']);
 
-            $sql=mysqli_query($conn,"SELECT * FROM student WHERE BINARY username='$username' && BINARY password='$password'");
+            $sql=mysqli_query($conn,"SELECT * FROM useraccounts WHERE BINARY username='$username' && BINARY password='$password'");
             $num=mysqli_num_rows($sql);
             if ($num>0) {
                   //echo "found";
@@ -57,7 +57,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../assets/css/home.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
     <!-- end: CSS -->
     <title>Thesis Repository | Login</title>
   </head>
