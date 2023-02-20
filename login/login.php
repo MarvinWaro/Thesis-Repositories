@@ -29,7 +29,7 @@
                   }else if (($_SESSION['user_type']) == 'admin'){
                       header('location: ../admin/dashboard.php');
                   }else if (($_SESSION['user_type']) == 'faculty'){
-                    header('location: ../faculty/home.php');
+                    header('location: ../faculty/adviser/home.php');
                   }else{
                       header('location: login/login.php');
                   }
