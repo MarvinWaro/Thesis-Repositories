@@ -1,10 +1,7 @@
 <?php
-
         require_once '../class/database.php';
         require_once '../class/student.class.php';
-
         //we start session since we need to use session values
-
         
         session_start();
         if (isset($_POST['login'])) {
@@ -13,7 +10,6 @@
             require '../class/dbconfig.php';
             $username=mysqli_real_escape_string($conn,$_POST['username']);
             $password=mysqli_real_escape_string($conn,$_POST['password']);
-
             $sql=mysqli_query($conn,"SELECT * FROM student WHERE BINARY username='$username' && BINARY password='$password'");
             $num=mysqli_num_rows($sql);
             if ($num>0) {
@@ -22,7 +18,6 @@
                   $_SESSION['logged-in'] = $username;
                   $_SESSION['fullname']=$row['firstname'] . ' ' . $row['lastname'];
                   $_SESSION['user_type'] = $row['type'];
-
                   //display the appropriate dashboard page for user
                   if (($_SESSION['user_type']) == 'student'){
                       header('location: ../student/home.php');
@@ -36,10 +31,7 @@
               }
               $error = 'Invalid username/password. Try again.';
           }
-
     ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -67,27 +59,19 @@
             <div class="logo">
                 <img class="login-logo" src="../img/rlogo.png" alt="logo ccs">
             </div>
-
             <div class="logo-details">
                 <span class="logo-name">Thesis Archives</span>
             </div>
-
             <hr class="divider">
-
             <label for="username">Username</label>
             <input class="form-input" type="text" id="username" name="username" placeholder="Enter username" required>
-
             <label for="password">Password</label>
             <input class="form-input" type="password" id="password" name="password" placeholder="Enter password" required>
-
             <input class="button-login form-input" type="submit" value="Login" name="login" tabindex="3">
-
             <a class="create" href="create_account.php">Create an account</a>
             <a class="forgot" href="#">Forgot Password</a>
-
         </form>
     </div>
-
     <script src="../assets/js/jquery.min.js"></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"
@@ -102,6 +86,5 @@
     <!--responsive-->
     <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
     <!-- end: JS -->
-
 </body>
 </html>
