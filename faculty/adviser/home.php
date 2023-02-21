@@ -28,8 +28,8 @@
     <!-- start: Icons -->
     <!-- start: CSS -->
     <link rel="icon" href="../img/rlogo.png" type="image/icon type">
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../assets/css/style.css" />
     <!-- end: CSS -->
     <title>Thesis Repository</title>
   </head>
@@ -111,15 +111,15 @@
     </div>
     <div class="sidebar-overlay"></div>
     <!-- end: Sidebar -->
-    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../../assets/js/jquery.min.js"></script>
     <script>
       src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"
       integrity="sha512-sW/w8s4RWTdFFSduOTGtk4isV1+190E/GghVffMA9XczdJ2MDzSzLEubKAs5h0wzgSJOQTRYyaz73L3d6RtJSg=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     </script>
-    <script src="../assets/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/js/script.js"></script>
+    <script src="../../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/script.js"></script>
     <!-- end: JS -->
   </body>
 </html>
