@@ -69,7 +69,7 @@
             </div>
 
             <div class="logo-details">
-                <span class="logo-name">Thesis Archives</span>
+                <span class="logo-name">Admin Login</span>
             </div>
 
             <hr class="divider">

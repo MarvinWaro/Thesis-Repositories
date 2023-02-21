@@ -32,6 +32,8 @@
               $error = 'Invalid username/password. Try again.';
           }
     ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -49,30 +51,42 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../assets/css/home.css" />
+    <link rel="stylesheet" href="../assets/css/signin.css" />
     <!-- end: CSS -->
-    <title>Thesis Repository | Login</title>
+    <title>Thesis Repository - Blank Page</title>
   </head>
 <body>
-    <div class="login-container">
-        <form class="login-form" action="login.php" method="post">
-            <div class="logo">
-                <img class="login-logo" src="../img/rlogo.png" alt="logo ccs">
-            </div>
-            <div class="logo-details">
-                <span class="logo-name">Thesis Archives</span>
-            </div>
-            <hr class="divider">
-            <label for="username">Username</label>
+  <div class="container">
+    <div class="logo">
+      <img class="rlogo" src="../img/rlogo.png" alt="logo ccs">
+    </div>
+    <div class="title">
+      Thesis Archives
+    </div>
+    <div class="content">
+      <form action="login.php" method="POST">
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Username</span>
             <input class="form-input" type="text" id="username" name="username" placeholder="Enter username" required>
-            <label for="password">Password</label>
+          </div>
+          <div class="input-box">
+            <span class="details">Password</span>
             <input class="form-input" type="password" id="password" name="password" placeholder="Enter password" required>
-            <input class="button-login form-input" type="submit" value="Login" name="login" tabindex="3">
+          </div>
+          <div class="button">
+            <input type="submit" name="login" value="Save">
+          </div>
+          <div class="opt">
             <a class="create" href="create_account.php">Create an account</a>
             <a class="forgot" href="#">Forgot Password</a>
-        </form>
+          </div>
+        </div>
+      </form>
     </div>
-    <script src="../assets/js/jquery.min.js"></script>
+  </div>
+
+  <script src="../assets/js/jquery.min.js"></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"
       integrity="sha512-sW/w8s4RWTdFFSduOTGtk4isV1+190E/GghVffMA9XczdJ2MDzSzLEubKAs5h0wzgSJOQTRYyaz73L3d6RtJSg=="
@@ -85,6 +99,6 @@
     <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
     <!--responsive-->
     <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
-    <!-- end: JS -->
+
 </body>
 </html>
