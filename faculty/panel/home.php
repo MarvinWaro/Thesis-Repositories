@@ -27,9 +27,9 @@
     />
     <!-- start: Icons -->
     <!-- start: CSS -->
-    <link rel="icon" href="../img/rlogo.png" type="image/icon type">
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="icon" href="../../img/rlogo.png" type="image/icon type">
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../assets/css/style.css" />
     <!-- end: CSS -->
     <title>Thesis Repository</title>
   </head>
@@ -118,8 +118,8 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     </script>
-    <script src="../assets/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/js/script.js"></script>
+    <script src="../../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/script.js"></script>
     <!-- end: JS -->
   </body>
 </html>
