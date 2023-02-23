@@ -175,8 +175,8 @@
         <!-- start: Content -->
         <div class="py-4">
           <!-- start: content -->
-              
-    </div>
+          
+        </div>
 
           <!-- end: content -->
           <!-- start: Graph -->

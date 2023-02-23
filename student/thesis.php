@@ -175,7 +175,52 @@
         <!-- start: Content -->
         <div class="py-4">
           <!-- start: content -->
+            <div class="col g-3 p-3">
+              <div class="group-no d-flex justify-content-between align-items-center">
+                <h2>Group 1</h2>
+                  <div class="search-bar">
+                    <form class="d-flex" role="search">
+                      <input class="form-control me-2 bar" type="search" placeholder="Search" aria-label="Search">
+                      <button class="btn btn-outline-success bar" type="submit">Search</button>
+                    </form>
+                  </div>
+              </div>
+                <div class="member p-2">
+                    <h4>Members</h4>
+                    <ul>
+                        <li>Loloy</li>
+                        <li>George</li>
+                    </ul>
+                </div>
+                <div class="titles m-0">
+                    <h4 class="m-0">Titles</h4>
+                    <div class="inline d-flex ">
+                      <input type="text" name="title-file" id="title-file">
+                      <div class="mb-3">
+                        <label for="formFileSm" class="form-label"></label>
+                        <input class="form-control form-control-sm" id="formFileSm" type="file">
+                      </div>
 
+                      <i class="ri-upload-2-fill" title="Upload Title"></i>
+                    </div>
+                    <div class="inline d-flex ">
+                      <input type="text" name="title-file" id="title-file">
+                      <div class="mb-3">
+                        <label for="formFileSm" class="form-label"></label>
+                        <input class="form-control form-control-sm" id="formFileSm" type="file">
+                      </div>
+                      <i class="ri-upload-2-fill" title="Upload Title"></i>
+                    </div>
+                    <div class="inline d-flex ">
+                      <input type="text" name="title-file" id="title-file">
+                      <div class="mb-3">
+                        <label for="formFileSm" class="form-label"></label>
+                        <input class="form-control form-control-sm" id="formFileSm" type="file">
+                      </div>
+                      <i class="ri-upload-2-fill" title="Upload Title"></i>
+                    </div>
+                </div>
+            </div>
         </div>
 
           <!-- end: content -->
