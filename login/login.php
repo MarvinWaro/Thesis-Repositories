@@ -60,7 +60,7 @@
     <div class="logo">
       <img class="rlogo" src="../img/rlogo.png" alt="logo ccs">
     </div>
-    <div class="title">
+    <div class="title pt-3 pb-3">
       Thesis Archives
     </div>
     <div class="content">
@@ -75,7 +75,7 @@
             <input class="form-input" type="password" id="password" name="password" placeholder="Enter password" required>
           </div>
           <div class="button">
-            <input type="submit" name="login" value="Save">
+            <input type="submit" name="login" value="Login">
           </div>
           <div class="opt">
             <a class="create" href="create_account.php">Create an account</a>

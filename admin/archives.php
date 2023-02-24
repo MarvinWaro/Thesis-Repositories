@@ -237,8 +237,8 @@
                             <td>89%</td>
                             <td>
                                 <div class="actions">
-                                    <a class="action-edit" href="#"><i class="ri-edit-line"></i></a>
                                     <a class="action-view" href="#"><i class="ri-eye-line"></i></a>
+                                    <a class="action-edit" href="#"><i class="ri-edit-line"></i></a>
                                     <a class="action-delete" href="#"><i class="ri-delete-bin-line"></i></a>
                                 </div>
                             </td>
@@ -253,8 +253,8 @@
                             <td>89%</td>
                             <td>
                                 <div class="actions">
-                                    <a class="action-edit" href="#"><i class="ri-edit-line"></i></a>
                                     <a class="action-view" href="#"><i class="ri-eye-line"></i></a>
+                                    <a class="action-edit" href="#"><i class="ri-edit-line"></i></a>
                                     <a class="action-delete" href="#"><i class="ri-delete-bin-line"></i></a>
                                 </div>
                             </td>
@@ -269,8 +269,8 @@
                             <td>89%</td>
                             <td>
                                 <div class="actions">
-                                    <a class="action-edit" href="#"><i class="ri-edit-line"></i></a>
                                     <a class="action-view" href="#"><i class="ri-eye-line"></i></a>
+                                    <a class="action-edit" href="#"><i class="ri-edit-line"></i></a>
                                     <a class="action-delete" href="#"><i class="ri-delete-bin-line"></i></a>
                                 </div>
                             </td>
