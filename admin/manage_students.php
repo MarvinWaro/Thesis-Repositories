@@ -286,7 +286,7 @@ if(isset($_POST['save'])){
                                             <td>
                                                 <div class="actions">
                                                     <a class="action-edit" href="edit_student.php?id=<?php echo $value['id'] ?>"><i class="ri-edit-line"></i></a>
-                                                    <a class="action-delete" href="delete_student.php?id=<?php echo $value['id'] ?>"><i class="ri-delete-bin-line"></i></a>
+                                                    <a class="action-delete" href="delete_student.php?id=<?php echo $value['id'] ?>" onclick="return confirm('Are you sure to delete?')"><i class="ri-delete-bin-line"></i></a>
                                                 </div>
                                             </td>
                                         <?php
@@ -414,6 +414,14 @@ if(isset($_POST['save'])){
     <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
     <!--responsive-->
     <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
+    <script>
+      function confirmation(){
+        var result = confirm("Are you sure to delete?");
+        if(result){
+          console.log("Deleted")
+        }
+      }
+  </script>
     <!-- end: JS -->
   </body>
 </html>

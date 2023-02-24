@@ -34,7 +34,7 @@
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../assets/css/style.css" />
     <!-- end: CSS -->
-    <title>Thesis Repository - Blank Page</title>
+    <title>Thesis Repository - Thesis</title>
   </head>
 
   <body>
@@ -193,17 +193,17 @@
                   <div class="titles-up p-3">
                       <span>Titles</span>
                       <div class="uploading">
-                        <div class="mb-3 d-flex">
+                        <div class="mb-3">
                           <input type="text" name="file" id="file" placeholder="Enter you title here">
                           <input class="form-control form-control-sm" type="file" id="formFile">
                           <i class="ri-upload-2-fill"></i>
                         </div>
-                        <div class="mb-3 d-flex">
+                        <div class="mb-3">
                         <input type="text" name="file" id="file" placeholder="Enter you title here">
                           <input class="form-control form-control-sm" type="file" id="formFile">
                           <i class="ri-upload-2-fill"></i>
                         </div>
-                        <div class="mb-3 d-flex">
+                        <div class="mb-3">
                           <input type="text" name="file" id="file" placeholder="Enter you title here">
                           <input class="form-control form-control-sm" type="file" id="formFile">
                           <i class="ri-upload-2-fill"></i>
