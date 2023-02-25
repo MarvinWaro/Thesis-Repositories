@@ -1,5 +1,7 @@
 <?php
 
+        require_once '../class/database.php';
+        require_once '../class/archive.class.php';
 
         session_start();
         /*
@@ -11,6 +13,7 @@
             header('location: ../login/login.php');
         }
 
+        
 
 ?>
 
@@ -177,73 +180,65 @@
           <!-- start: content -->
           <div class="container">
 
-                <table id="example" class="table table-striped" style="width:100%">
-                    <thead id="head">
+          <table id="example" class="table table-striped" style="width:100%">
+                        <thead>
                         <tr>
                             <th>#</th>
-                            <th>Titles</th>
+                            <th>titles</th>
                             <th>Department</th>
                             <th>Section</th>
-                            <th>Date of Upload</th>
+                            <th>Date Of Upload</th>
                             <th>Semester</th>
                             <th>Grade</th>
-                            <th>Action</th>
                         </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>System Architect</td>
-                            <td>BSCS</td>
-                            <td>B</td>
-                            <td>2011-04-25</td>
-                            <td>First Semester</td>
-                            <td>89%</td>
-                            <td>
-                                <div class="actions">
-                                    <a class="action-view" href="#"><i class="ri-eye-line"></i></a>
-                                    <a class="action-edit" href="#"><i class="ri-edit-line"></i></a>
-                                    <a class="action-delete" href="#"><i class="ri-delete-bin-line"></i></a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Software Engineering</td>
-                            <td>BSCS</td>
-                            <td>B</td>
-                            <td>2011-04-25</td>
-                            <td>First Semester</td>
-                            <td>89%</td>
-                            <td>
-                                <div class="actions">
-                                    <a class="action-view" href="#"><i class="ri-eye-line"></i></a>
-                                    <a class="action-edit" href="#"><i class="ri-edit-line"></i></a>
-                                    <a class="action-delete" href="#"><i class="ri-delete-bin-line"></i></a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Cyber Crime</td>
-                            <td>BSCS</td>
-                            <td>B</td>
-                            <td>2011-04-25</td>
-                            <td>First Semester</td>
-                            <td>89%</td>
-                            <td>
-                                <div class="actions">
-                                    <a class="action-view" href="#"><i class="ri-eye-line"></i></a>
-                                    <a class="action-edit" href="#"><i class="ri-edit-line"></i></a>
-                                    <a class="action-delete" href="#"><i class="ri-delete-bin-line"></i></a>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                                <?php
+                                    require_once '../class/archive.class.php';
+
+                                    $archive = new Archive();
+                                    //We will now fetch all the records in the array using loop
+                                    //use as a counter, not required but suggested for the table
+                                    $i = 1;
+                                    //loop for each record found in the array
+                                    foreach ($archive->show() as $value){ //start of loop
+                                ?>
+                                    <tr>
+                                        <!-- always use echo to output PHP values -->
+                                        <td><?php echo $i ?></td>
+                                        <td><?php echo $value['email'] ?></td>
+                                        <td><?php echo $value['course'] ?></td>
+                                        <td><?php echo $value['year_level'] ?></td>
+                                        <td><?php echo $value['section'] ?></td>
+                                        <td><?php echo $value['sem'] ?></td>
+                                        <td><?php echo $value['grade'] ?></td>
+                                        <?php
+                                            if($_SESSION['user_type'] == 'admin'){ 
+                                        ?>
+
+                                          <td>
+                                              <div class="actions">
+                                                  <a class="action-view" href="#"><i class="ri-eye-line"></i></a>
+                                                  <a class="action-edit" href="#"><i class="ri-edit-line"></i></a>
+                                                  <a class="action-delete" href="#"><i class="ri-delete-bin-line"></i></a>
+                                              </div>
+                                          </td>
+                                        <?php
+                                            }
+                                        ?>
+                                    </tr>
+                                <?php
+                                    $i++;
+                                //end of loop
+                                }
+                                ?>
+                        </tbody>
+                    </table>
             </div>
 
         </div>
+
+        
 
           <!-- end: content -->
           <!-- start: Graph -->
