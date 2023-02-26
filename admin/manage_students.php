@@ -303,6 +303,8 @@ if(isset($_POST['save'])){
                 
         </div>
 
+        <!--Modal 1-->
+
             <div class="modal fade>" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -387,6 +389,8 @@ if(isset($_POST['save'])){
 
 
             </div>
+
+            <!--Modal 2-->
     </div>
 
           <!-- end: content -->
