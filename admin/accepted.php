@@ -34,7 +34,7 @@
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../assets/css/style.css" />
     <!-- end: CSS -->
-    <title>Thesis Repository - Thesis</title>
+    <title>Thesis Repository - Blank Page</title>
   </head>
 
   <body>
@@ -52,27 +52,63 @@
       </div>
       <ul class="sidebar-menu p-3 m-0 mb-0">
         <li class="sidebar-menu-item">
-          <a href="home.php">
-            <i class="ri-home-8-line sidebar-menu-item-icon"></i>
-            Home
+          <a href="dashboard.php">
+            <i class="ri-dashboard-line sidebar-menu-item-icon"></i>
+            Dashboard
           </a>
         </li>
-        <li class="sidebar-menu-item active">
-            <a href="thesis.php">
-                <i class="ri-sticky-note-line sidebar-menu-item-icon"></i>
-              Thesis
-            </a>
-          </li>
-        <li class="sidebar-menu-item ">
-          <a href="grades.php">
-            <i class="ri-mail-star-line sidebar-menu-item-icon"></i>
-            Grades
-          </a>
-        </li>
+
+        <li class="sidebar-menu-divider mt-3 mb-1 text-uppercase">Thesis</li>
+
         <li class="sidebar-menu-item ">
           <a href="archives.php">
-             <i class="ri-archive-drawer-line sidebar-menu-item-icon"></i>
+            <i class="ri-archive-drawer-line sidebar-menu-item-icon"></i>
             Archives
+          </a>
+        </li>
+        <li class="sidebar-menu-item has-dropdown">
+            <a href="thesis_status.php">
+                <i class="ri-bar-chart-box-line sidebar-menu-item-icon"></i>
+                Thesis Status
+                <i class="ri-arrow-down-s-line sidebar-menu-item-accordion ms-auto"></i>
+            </a>
+            <ul class="sidebar-dropdown-menu">
+                <li class="sidebar-dropdown-menu-item">
+                    <a href="accepted.php">
+                        Accepted Titles
+                    </a>
+                </li>
+                <li class="sidebar-dropdown-menu-item">
+                    <a href="rejected.php">
+                        Rejected Titles
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="sidebar-menu-divider mt-3 mb-1 text-uppercase">Manage</li>
+
+        <li class="sidebar-menu-item">
+            <a href="manage_students.php">
+              <i class="ri-user-line sidebar-menu-item-icon"></i>
+              Manage Student
+            </a>
+          </li>
+        <li class="sidebar-menu-item">
+          <a href="manage_faculty.php">
+            <i class="ri-group-line sidebar-menu-item-icon"></i>
+            Manage Faculty
+          </a>
+        </li>
+        <li class="sidebar-menu-item">
+          <a href="manage_rubrics.php">
+            <i class="ri-table-2 sidebar-menu-item-icon"></i>
+            Manage Rubrics
+          </a>
+        </li>
+        <li class="sidebar-menu-item">
+          <a href="manage_schedules.php">
+            <i class="ri-calendar-2-line sidebar-menu-item-icon"></i>
+            Schedules
           </a>
         </li>
       </ul>
@@ -86,7 +122,7 @@
         <!-- start: Navbar -->
         <nav class="px-3 py-2 bg-white rounded shadow-sm">
           <i class="ri-menu-line sidebar-toggle me-3 d-block d-md-none"></i>
-          <h5 class="fw-bold mb-0 me-auto">Thesis</h5>
+          <h5 class="fw-bold mb-0 me-auto">Accepted Titles</h5>
           <div class="dropdown me-3 d-none d-sm-block">
             <div
               class="cursor-pointer dropdown-toggle navbar-link"
@@ -160,8 +196,7 @@
               <span class="me-2 d-none d-sm-block"><?php echo $_SESSION['fullname'] ?></span>
               <img
                 class="navbar-profile-image"
-                src="../img/u-icon.png"
-                alt="Image"
+                src="../img/u-icon.png" alt="Image"
               />
             </div>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -169,53 +204,80 @@
               <li><a class="dropdown-item" href="../login/logout.php">Logout </a></li>
             </ul>
           </div>
-          </nav>
-          <!-- end: Navbar -->
+        </nav>
+        <!-- end: Navbar -->
 
-          <!-- start: Content -->
-          <div class="py-4">
-            <!-- start: content -->
-              <div class="main-content border">
-                  <div class="head-number p-3"> 
-                      <h2>Group 1</h2>
-                  </div>
+        <!-- start: Content -->
+        <div class="py-4">
+          <!-- start: content -->
+          <div class="container">
 
-                  <div class="members p-3">
-                      <span>Members</span>
-                      <div class="list-mem pt-2">
-                          <ul>
-                              <li class="pb-1">Marvin Waro</li>
-                              <li class="pb-1">Christian Fernandez</li>
-                          </ul>
-                      </div>
-                  </div>
-
-                  <div class="titles-up p-3">
-                      <span>Titles</span>
-                      <div class="uploading">
-                        <div class="mb-3">
-                          <input type="text" name="file" id="file" placeholder="Enter you title here">
-                          <input class="form-control form-control-sm" type="file" id="formFile">
-                          <i class="ri-upload-2-fill"></i>
-                        </div>
-                        <div class="mb-3">
-                        <input type="text" name="file" id="file" placeholder="Enter you title here">
-                          <input class="form-control form-control-sm" type="file" id="formFile">
-                          <i class="ri-upload-2-fill"></i>
-                        </div>
-                        <div class="mb-3">
-                          <input type="text" name="file" id="file" placeholder="Enter you title here">
-                          <input class="form-control form-control-sm" type="file" id="formFile">
-                          <i class="ri-upload-2-fill"></i>
-                        </div>
-                      </div>
-                  </div>
-              </div>
-            
+                <table id="example" class="table table-striped" style="width:100%">
+                    <thead id="head">
+                        <tr>
+                            <th>#</th>
+                            <th>Titles</th>
+                            <th>Department</th>
+                            <th>Section</th>
+                            <th>Date of Upload</th>
+                            <th>Semester</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>System Architect</td>
+                            <td>BSCS</td>
+                            <td>B</td>
+                            <td>2011-04-25</td>
+                            <td>First Semester</td>
+                            <td>
+                                <div class="actions">
+                                    <a class="action-view" href="#"><i class="ri-eye-line"></i></a>
+                                    <a class="action-edit" href="#"><i class="ri-edit-line"></i></a>
+                                    <a class="action-delete" href="#"><i class="ri-delete-bin-line"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Software Engineering</td>
+                            <td>BSCS</td>
+                            <td>B</td>
+                            <td>2011-04-25</td>
+                            <td>First Semester</td>
+                            <td>
+                                <div class="actions">
+                                    <a class="action-view" href="#"><i class="ri-eye-line"></i></a>
+                                    <a class="action-edit" href="#"><i class="ri-edit-line"></i></a>
+                                    <a class="action-delete" href="#"><i class="ri-delete-bin-line"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Cyber Crime</td>
+                            <td>BSCS</td>
+                            <td>B</td>
+                            <td>2011-04-25</td>
+                            <td>First Semester</td>
+                            <td>
+                                <div class="actions">
+                                    <a class="action-view" href="#"><i class="ri-eye-line"></i></a>
+                                    <a class="action-edit" href="#"><i class="ri-edit-line"></i></a>
+                                    <a class="action-delete" href="#"><i class="ri-delete-bin-line"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
           </div>
+    </div>
 
           <!-- end: content -->
           <!-- start: Graph -->
+          
 
           <!-- end: Graph -->
         </div>
