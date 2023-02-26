@@ -101,12 +101,12 @@ if(isset($_POST['save'])){
           </a>
           <ul class="sidebar-dropdown-menu">
               <li class="sidebar-dropdown-menu-item">
-                  <a href="#">
+                  <a href="accepted.php">
                       Accepted Titles
                   </a>
               </li>
               <li class="sidebar-dropdown-menu-item">
-                  <a href="#">
+                  <a href="rejected.php">
                       Rejected Titles
                   </a>
               </li>
@@ -223,8 +223,7 @@ if(isset($_POST['save'])){
               <span class="me-2 d-none d-sm-block"><?php echo $_SESSION['fullname'] ?></span>
               <img
                 class="navbar-profile-image"
-                src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cGVyc29ufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
-                alt="Image"
+                src="../img/u-icon.png" alt="Image"
               />
             </div>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
