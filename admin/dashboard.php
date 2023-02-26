@@ -253,28 +253,6 @@
             </div>
             <div class="col-12 col-sm-6 col-lg-3">
               <a
-                href="#"
-                class="text-dark text-decoration-none bg-white p-3 rounded shadow-sm d-flex justify-content-between summary-success"
-              >
-                <div>
-                  <i
-                    class="ri-group-line summary-icon bg-success mb-2"
-                  ></i>
-                  <div>Accounts</div>
-                </div>
-                <h4>
-                <?php
-                    require '../class/dbconfig.php';
-                    $query = "SELECT id FROM useraccounts ORDER BY id";
-                    $query_run = mysqli_query($conn, $query);
-                    $row = mysqli_num_rows($query_run);
-                    echo $row
-                  ?>
-                </h4>
-              </a>
-            </div>
-            <div class="col-12 col-sm-6 col-lg-3">
-              <a
                 href="archives.php"
                 class="text-dark text-decoration-none bg-white p-3 rounded shadow-sm d-flex justify-content-between summary-info"
               >
@@ -287,7 +265,22 @@
                 <h4>3</h4>
               </a>
             </div>
+            <div class="col-12 col-sm-6 col-lg-3">
+              <a
+                href="#"
+                class="text-dark text-decoration-none bg-white p-3 rounded shadow-sm d-flex justify-content-between summary-danger"
+              >
+                <div>
+                  <i
+                    class="ri-group-line summary-icon bg-danger mb-2"
+                  ></i>
+                  <div>Total Rejected Titles</div>
+                </div>
+                <h4>149</h4>
+              </a>
+            </div>
           </div>
+          
           <!-- end: Summary -->
 
           <!-- start: Graph -->
