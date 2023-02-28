@@ -21,6 +21,7 @@
             //sanitize user inputs
             $student->id = $_POST['student-id'];
             $student->firstname = htmlentities($_POST['firstname']);
+            $student->middle_name = htmlentities($_POST['middle_name']);
             $student->lastname = htmlentities($_POST['lastname']);
             $student->username = htmlentities($_POST['username']);
             $student->email = htmlentities($_POST['email']);
@@ -41,6 +42,7 @@
             if ($student->fetch($_GET['id'])){
                 $data = $student->fetch($_GET['id']);
                 $student->firstname = $data['firstname'];
+                $student->firstname = $data['middle_name'];
                 $student->lastname = $data['lastname'];
                 $student->username = $data['username'];
                 $student->email = $data['email'];
@@ -273,10 +275,10 @@
 
             <div class="cont">
             
-            <select name="course" id="course">
+            <select name="course" id="course"">
                 <option value="none <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'None') echo ' selected="selected"'; } ?>">--Select Course--</option>
-                <option value="BSIT" <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'BSCS') echo ' selected="selected"'; } ?>>BSCS</option>
-                <option value="BSCS" <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'BSIT') echo ' selected="selected"'; } ?>>BSIT</option>
+                <option value="BSIT" <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'BSCS') echo ' selected="selected"'; } else { echo $data['course']; }?> >BSCS</option>
+                <option value="BSCS" <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'BSIT') echo ' selected="selected"'; } else { echo $data['course']; }?> >BSIT</option>
             </select>
             </div>
 
