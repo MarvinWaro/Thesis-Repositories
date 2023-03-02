@@ -15,6 +15,9 @@ class Student{
     public $year_level;
     public $section;
     public $sem;
+    public $school_year;
+    public $your_adviser;
+    public $your_group;
     public $type;
 
     protected $db;
@@ -26,8 +29,8 @@ class Student{
 
     //Methods
     function add(){
-        $sql = "INSERT INTO student (firstname, middle_name, lastname,  email, username, password, course ,year_level, section, sem, type) VALUES
-        (:firstname, :middle_name, :lastname, :email, :username, :password, :course, :year_level, :section, :sem, :type);";
+        $sql = "INSERT INTO student (firstname, middle_name, lastname,  email, username, password, course ,year_level, section, sem, school_year, your_adviser, your_group, type) VALUES
+        (:firstname, :middle_name, :lastname, :email, :username, :password, :course, :year_level, :section, :sem, :school_year, :your_adviser, :your_group, :type);";
 
         $query=$this->db->connect()->prepare($sql);
         $query->bindParam(':firstname', $this->firstname);
@@ -40,6 +43,9 @@ class Student{
         $query->bindParam(':year_level', $this->year_level);
         $query->bindParam(':section', $this->section);
         $query->bindParam(':sem', $this->sem);
+        $query->bindParam(':school_year', $this->school_year);
+        $query->bindParam(':your_adviser', $this->your_adviser);
+        $query->bindParam(':your_group', $this->your_group);
         $query->bindParam(':type', $this->type);
 
         if($query->execute()){
