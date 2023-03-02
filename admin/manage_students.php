@@ -28,6 +28,9 @@ if(isset($_POST['save'])){
     $student->year_level = htmlentities($_POST['year_level']);
     $student->section = htmlentities($_POST['section']);
     $student->sem = htmlentities($_POST['sem']);
+    $student->school_year = htmlentities($_POST['school_year']);
+    $student->your_adviser = htmlentities($_POST['your_adviser']);
+    $student->your_group = htmlentities($_POST['your_group']);
     $student->type = $_POST['type'];
 
     if(isset($_POST)){
@@ -238,11 +241,11 @@ if(isset($_POST['save'])){
         <div class="py-4">
           <!-- start: content -->
           <div class="container padding-bottom">
-        <div class="head-cont d-flex justify-content-end pb-2">
-            <button type="button" class="btn btn-primary add-button" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Add new Student
-            </button>
-        </div>
+                  <div class="head-cont d-flex justify-content-end pb-2">
+                      <button type="button" class="btn btn-primary add-button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                          Add new Student
+                      </button>
+                  </div>
 
                     <table id="example" class="table table-striped" style="width:100%">
                         <thead>
@@ -255,6 +258,9 @@ if(isset($_POST['save'])){
                             <th>Year</th>
                             <th>Section</th>
                             <th>Semester</th>
+                            <th>School Year</th>
+                            <th>Adviser</th>
+                            <th>Group #</th>
                             <th class="action">Action</th>
                         </tr>
                         </thead>
@@ -279,6 +285,9 @@ if(isset($_POST['save'])){
                                         <td><?php echo $value['year_level'] ?></td>
                                         <td><?php echo $value['section'] ?></td>
                                         <td><?php echo $value['sem'] ?></td>
+                                        <td><?php echo $value['school_year'] ?></td>
+                                        <td><?php echo $value['your_adviser'] ?></td>
+                                        <td><?php echo $value['your_group'] ?></td>
                                         <?php
                                             if($_SESSION['user_type'] == 'admin'){ 
                                         ?>
@@ -299,7 +308,7 @@ if(isset($_POST['save'])){
                                 ?>
                         </tbody>
                     </table>
-                </div>
+          </div>
                 
         </div>
 
@@ -366,6 +375,19 @@ if(isset($_POST['save'])){
                                         <option value="none" <?php if(isset($_POST['sem'])) { if ($_POST['sem'] == 'None') echo ' selected="selected"'; } ?>>--Select Semester--</option>
                                         <option value="First Semester" <?php if(isset($_POST['sem'])) { if ($_POST['sem'] == 'fisrt_sem') echo ' selected="selected"'; } ?>>First Semester</option>
                                         <option value="Second Semester" <?php if(isset($_POST['sem'])) { if ($_POST['sem'] == 'second_sem') echo ' selected="selected"'; } ?>>Second Semester</option>
+                                    </select>
+
+
+                                    <select name="school_year" id="school_year">
+                                      <option value="2022-2023" <?php if(isset($_POST['school_year'])) { if ($_POST['school_year'] == 'current_sy') echo ' selected="selected"'; } ?>>Current SY</option>
+                                    </select>
+
+                                    <select name="your_adviser" id="your_adviser">
+                                      <option value="Jaydee_Ballaho" <?php if(isset($_POST['your_adviser'])) { if ($_POST['your_adviser'] == 'jaydee') echo ' selected="selected"'; } ?>>Jaydee</option>
+                                    </select>
+
+                                    <select name="your_group" id="your_group">
+                                      <option value="group_1" <?php if(isset($_POST['your_group'])) { if ($_POST['your_group'] == 'group1') echo ' selected="selected"'; } ?>>Group 1</option>
                                     </select>
 
 
