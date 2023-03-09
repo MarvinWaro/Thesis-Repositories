@@ -12,8 +12,7 @@ class Student{
     public $username;
     public $password;
     public $course;
-    public $year_level;
-    public $section;
+    public $year_and_section;
     public $sem;
     public $school_year;
     public $your_adviser;
@@ -29,8 +28,8 @@ class Student{
 
     //Methods
     function add(){
-        $sql = "INSERT INTO student (firstname, middle_name, lastname,  email, username, password, course ,year_level, section, sem, school_year, your_adviser, your_group, type) VALUES
-        (:firstname, :middle_name, :lastname, :email, :username, :password, :course, :year_level, :section, :sem, :school_year, :your_adviser, :your_group, :type);";
+        $sql = "INSERT INTO student (firstname, middle_name, lastname,  email, username, password, course, year_and_section, sem, school_year, your_adviser, your_group, type) VALUES
+        (:firstname, :middle_name, :lastname, :email, :username, :password, :course, :year_and_section, :sem, :school_year, :your_adviser, :your_group, :type);";
 
         $query=$this->db->connect()->prepare($sql);
         $query->bindParam(':firstname', $this->firstname);
@@ -40,8 +39,7 @@ class Student{
         $query->bindParam(':username', $this->username);
         $query->bindParam(':password', $this->password);
         $query->bindParam(':course', $this->course);
-        $query->bindParam(':year_level', $this->year_level);
-        $query->bindParam(':section', $this->section);
+        $query->bindParam(':year_and_section', $this->year_and_section);
         $query->bindParam(':sem', $this->sem);
         $query->bindParam(':school_year', $this->school_year);
         $query->bindParam(':your_adviser', $this->your_adviser);
@@ -57,7 +55,7 @@ class Student{
     }
 
     function edit_student(){
-        $sql = "UPDATE student SET firstname=:firstname, middle_name=:middle_name, lastname=:lastname, email=:email, username=:username, password=:password, course=:course, year_level=:year_level, section=:section, sem=:sem, type=:type WHERE id = :id;";
+        $sql = "UPDATE student SET firstname=:firstname, middle_name=:middle_name, lastname=:lastname, email=:email, username=:username, password=:password, course=:course, year_and_section=:year_and_section, sem=:sem, type=:type WHERE id = :id;";
 
         $query=$this->db->connect()->prepare($sql);
         $query->bindParam(':firstname', $this->firstname);
@@ -67,8 +65,7 @@ class Student{
         $query->bindParam(':username', $this->username);
         $query->bindParam(':password', $this->password);
         $query->bindParam(':course', $this->course);
-        $query->bindParam(':year_level', $this->year_level);
-        $query->bindParam(':section', $this->section);
+        $query->bindParam(':year_and_section', $this->year_and_section);
         $query->bindParam(':sem', $this->sem);
         $query->bindParam(':type', $this->type);
         $query->bindParam(':id', $this->id);

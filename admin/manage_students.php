@@ -255,8 +255,7 @@ if(isset($_POST['save'])){
                             <th>Username</th>
                             <th>Email</th>
                             <th>Course</th>
-                            <th>Year</th>
-                            <th>Section</th>
+                            <th>Year & Section</th>
                             <th>Semester</th>
                             <th>School Year</th>
                             <th>Adviser</th>
@@ -282,8 +281,7 @@ if(isset($_POST['save'])){
                                         <td><?php echo $value['username'] ?></td>
                                         <td><?php echo $value['email'] ?></td>
                                         <td><?php echo $value['course'] ?></td>
-                                        <td><?php echo $value['year_level'] ?></td>
-                                        <td><?php echo $value['section'] ?></td>
+                                        <td><?php echo $value['year_and_section'] ?></td>
                                         <td><?php echo $value['sem'] ?></td>
                                         <td><?php echo $value['school_year'] ?></td>
                                         <td><?php echo $value['your_adviser'] ?></td>
