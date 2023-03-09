@@ -97,8 +97,8 @@
             <span class="details">Course</span>
             <select name="course" id="course">
                 <option value="none <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'None') echo ' selected="selected"'; } ?>">--Select--</option>
-                <option value="BSIT" <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'BSCS') echo ' selected="selected"'; } ?>>BSCS</option>
-                <option value="BSCS" <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'BSIT') echo ' selected="selected"'; } ?>>BSIT</option>
+                <option value="BSIT" <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'BSIT') echo ' selected="selected"'; } ?>>BSIT</option>
+                <option value="BSCS" <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'BSCS') echo ' selected="selected"'; } ?>>BSCS</option>
               </select>
           </div>
           <div class="input-box">
@@ -131,14 +131,15 @@
           <div class="input-box">
             <span class="details">Your Adviser</span>
             <select name="your_adviser" id="your_adviser">
-              <option value="Jaydee_Ballaho" <?php if(isset($_POST['your_adviser'])) { if ($_POST['your_adviser'] == 'jaydee') echo ' selected="selected"'; } ?>>Jaydee</option>
+              <option value="Jaydee Ballaho" <?php if(isset($_POST['your_adviser'])) { if ($_POST['your_adviser'] == 'Jaydee Ballaho') echo ' selected="selected"'; } ?>>Jaydee Ballaho</option>
+              <option value="Marjorie Rojas" <?php if(isset($_POST['your_adviser'])) { if ($_POST['your_adviser'] == 'Marjorie Rojas') echo ' selected="selected"'; } ?>>Marjorie Rojas</option>
             </select>
           </div>
 
           <div class="input-box">
             <span class="details">Your Group</span>
             <select name="your_group" id="your_group">
-              <option value="group_1" <?php if(isset($_POST['your_group'])) { if ($_POST['your_group'] == 'group1') echo ' selected="selected"'; } ?>>Group 1</option>
+              <option value="1" <?php if(isset($_POST['your_group'])) { if ($_POST['your_group'] == '1') echo ' selected="selected"'; } ?>>Group 1</option>
             </select>
           </div>
         </div>
