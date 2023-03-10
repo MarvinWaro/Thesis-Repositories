@@ -165,3 +165,11 @@ a{
     text-decoration: underline;
     color: var(--maincolorMdark);
 }
+
+.error {
+  color: #c51244;
+  text-align: center;
+  line-height: 20px;
+  padding-top: 8px;
+  font-size: 11px;
+}
