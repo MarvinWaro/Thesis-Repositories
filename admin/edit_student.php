@@ -27,9 +27,11 @@
             $student->email = htmlentities($_POST['email']);
             $student->password = $_POST['password'];
             $student->course = $_POST['course'];
-            $student->year_level = $_POST['year_level'];
-            $student->section = $_POST['section'];
+            $student->year_and_section = htmlentities($_POST['year_and_section']);
             $student->sem = $_POST['sem'];
+            $student->school_year = htmlentities($_POST['school_year']);
+            $student->your_adviser = htmlentities($_POST['your_adviser']);
+            $student->your_group = htmlentities($_POST['your_group']);
             $student->type = $_POST['type'];
 
             if(isset($_POST)){
@@ -42,15 +44,17 @@
             if ($student->fetch($_GET['id'])){
                 $data = $student->fetch($_GET['id']);
                 $student->firstname = $data['firstname'];
-                $student->firstname = $data['middle_name'];
+                $student->middle_name = $data['middle_name'];
                 $student->lastname = $data['lastname'];
                 $student->username = $data['username'];
                 $student->email = $data['email'];
                 $student->password = $data['password'];
                 $student->course = $data['course'];
-                $student->year_level = $data['year_level'];
-                $student->section = $data['section'];
+                $student->year_and_section = $data['year_and_section'];
                 $student->sem = $data['sem'];
+                $student->school_year = $data['school_year'];
+                $student->your_adviser = $data['your_adviser'];
+                $student->your_group = $data['your_group'];
                 $student->type = $data['type'];
             }
         }
@@ -161,7 +165,7 @@
         <!-- start: Navbar -->
         <nav class="px-3 py-2 bg-white rounded shadow-sm">
           <i class="ri-menu-line sidebar-toggle me-3 d-block d-md-none"></i>
-          <h5 class="fw-bold mb-0 me-auto">Edit Student</h5>
+          <h5 class="fw-bold mb-0 me-auto">Student</h5>
           <div class="dropdown me-3 d-none d-sm-block">
             <div
               class="cursor-pointer dropdown-toggle navbar-link"
@@ -249,80 +253,108 @@
         <!-- start: Content -->
         <div class="py-4">
           <!-- start: Summary -->
-        <div class="form-cont">
+           <div class="main-content border">
+              <div class="form-cont">
+                  <form class="edit-form" action="edit_student.php" method="POST">
+                    <div class="d-flex justify-content-between pt-2 pb-3">
+                        <h3>Update Info</h3>
+                        <a href="manage_students.php"><i class="ri-arrow-go-back-line back pb-2"></i></a>
+                    </div>
+
+                      <input type="text" hidden name="student-id" value="<?php echo $data['id']; ?>">
+
+                      <div class="cont">
+                      <label for="firstname">First Name</label>
+                      <input class="form-input" type="text" id="firstname" name="firstname" placeholder="Enter First name*" required value="<?php if(isset($_POST['firstname'])) { echo $_POST['firstname']; } else { echo $data['firstname']; }?>">
+                      <label for="middle_name">Middle Name</label>
+                      <input class="form-input" type="text" id="middle_name" name="middle_name" placeholder="Enter Middle name" value="<?php if(isset($_POST['middle_name'])) { echo $_POST['middle_name']; } else { echo $data['middle_name']; }?>">
+                      <label for="lastname">Last Name</label>
+                      <input class="form-input" type="text" id="lastname" name="lastname" placeholder="Enter Last name*" required value="<?php if(isset($_POST['lastname'])) { echo $_POST['lastname']; } else { echo $data['lastname']; }?>">
+                      </div>
+
+                      <div class="cont">
+                      <label for="username">Username</label>
+                      <input class="form-input" type="text" id="username" name="username" placeholder="Enter Username*" required value="<?php if(isset($_POST['username'])) { echo $_POST['username']; } else { echo $data['username']; }?>">
+                      <label for="email">Email</label>
+                      <input class="form-input" type="email" id="email" name="email" placeholder="Enter Email*" required value="<?php if(isset($_POST['email'])) { echo $_POST['email']; } else { echo $data['email']; }?>">
+                      </div>
+
+                      <div class="cont">
+                      <label for="password">Password</label>
+                      <input class="form-input" type="password" id="password" name="password" placeholder="Enter password" required value="<?php if(isset($_POST['password'])) { echo $_POST['password']; } else { echo $data['password']; }?>">
+                      </div>
 
 
-        <form class="edit-form" action="edit_student.php" method="POST">
 
-        <a href="manage_students.php"><i class="ri-arrow-go-back-line back pb-2"></i></a>
+                      <div class="cont">
+                      <label for="course">Course</label>
+                      <select name="course" id="course"">
+                          <option value="none <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'None') echo ' selected="selected"'; } ?>">--Select Course--</option>
+                          <option value="BSIT" <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'BSCS') echo ' selected="selected"'; } else { echo $data['course']; }?> >BSCS</option>
+                          <option value="BSCS" <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'BSIT') echo ' selected="selected"'; } else { echo $data['course']; }?> >BSIT</option>
+                      </select>
+                      </div>
 
-            <input type="text" hidden name="student-id" value="<?php echo $data['id']; ?>">
 
-            <div class="cont">
-            <input class="form-input" type="text" id="firstname" name="firstname" placeholder="Enter First name*" required value="<?php if(isset($_POST['firstname'])) { echo $_POST['firstname']; } else { echo $data['firstname']; }?>">
-            <input class="form-input" type="text" id="middle_name" name="middle_name" placeholder="Enter Middle name" required value="<?php if(isset($_POST['middle_name'])) { echo $_POST['middle_name']; } else { echo $data['middle_name']; }?>">
-            <input class="form-input" type="text" id="lastname" name="lastname" placeholder="Enter Last name*" required value="<?php if(isset($_POST['lastname'])) { echo $_POST['lastname']; } else { echo $data['lastname']; }?>">
+                      <div class="cont">
+                      <label for="year_and_section">Year & Section</label>
+                      <select name="year_and_section" id="year_and_section">
+                          <option value="none <?php if(isset($_POST['year_and_section'])) { if ($_POST['year_and_section'] == 'None') echo ' selected="selected"'; } ?>">--Select Year & Section--</option>
+                          <option value="3-A" <?php if(isset($_POST['year_and_section'])) { if ($_POST['year_and_section'] == '3-A') echo ' selected="selected"'; } ?>>3-A</option>
+                          <option value="3-B" <?php if(isset($_POST['year_and_section'])) { if ($_POST['year_and_section'] == '3-B') echo ' selected="selected"'; } ?>>3-B</option>
+                          <option value="3-C" <?php if(isset($_POST['year_and_section'])) { if ($_POST['year_and_section'] == '3-C') echo ' selected="selected"'; } ?>>3-C</option>
+                          <option value="4-A" <?php if(isset($_POST['year_and_section'])) { if ($_POST['year_and_section'] == '4-A') echo ' selected="selected"'; } ?>>4-A</option>
+                          <option value="4-B" <?php if(isset($_POST['year_and_section'])) { if ($_POST['year_and_section'] == '4-B') echo ' selected="selected"'; } ?>>4-B</option>
+                        </select>
+                      </div>
+
+                      <div class="cont">
+                      <label for="sem">Semester</label>
+                      <select name="sem" id="sem">
+                          <option value="none" <?php if(isset($_POST['sem'])) { if ($_POST['sem'] == 'None') echo ' selected="selected"'; } ?>>--Select Semester--</option>
+                          <option value="First Semester" <?php if(isset($_POST['sem'])) { if ($_POST['sem'] == 'fisrt_sem') echo ' selected="selected"'; } ?>>First Semester</option>
+                          <option value="Second Semester" <?php if(isset($_POST['sem'])) { if ($_POST['sem'] == 'second_sem') echo ' selected="selected"'; } ?>>Second Semester</option>
+                      </select>
+                      </div>  
+
+                      
+                      <div class="cont">
+                      <label for="your_adviser">Adviser</label>
+                      <select name="your_adviser" id="your_adviser">
+                        <option value="Jaydee Ballaho" <?php if(isset($_POST['your_adviser'])) { if ($_POST['your_adviser'] == 'Jaydee Ballaho') echo ' selected="selected"'; } ?>>Jaydee Ballaho</option>
+                        <option value="Marjorie Rojas" <?php if(isset($_POST['your_adviser'])) { if ($_POST['your_adviser'] == 'Marjorie Rojas') echo ' selected="selected"'; } ?>>Marjorie Rojas</option>
+                      </select>
+                      </div>
+
+                      <div class="cont">
+                      <label for="your_group">Group no.</label>
+                      <select name="your_group" id="your_group">
+                        <option value="1" <?php if(isset($_POST['your_group'])) { if ($_POST['your_group'] == '1') echo ' selected="selected"'; } ?>>Group 1</option>
+                      </select>
+                      </div>
+
+                      <div class="cont">
+                      <label for="school_year">School Year</label>
+                      <select name="school_year" id="school_year">
+                        <option value="2022-2023" <?php if(isset($_POST['school_year'])) { if ($_POST['school_year'] == 'current_sy') echo ' selected="selected"'; } ?>>Current SY</option>
+                      </select>
+                      </div>
+
+
+
+                      <label for="type">Regular?</label>
+                      <input type="radio" name="type" id="student" value="student" <?php if(isset($_POST['type'])) { if ($_POST['type'] == 'student') echo ' checked'; } ?>>
+                      <label for="type">Irregular?</label>
+                      <input type="radio" name="type" id="student" value="student" <?php if(isset($_POST['type'])) { if ($_POST['type'] == 'student') echo ' checked'; } ?>>
+                      <br>
+
+                      <div class="pbutton">
+                          <input class="save-btn form-input" type="submit" value="Save" name="save">
+                      </div>
+                  </form>
+                </div>
+              </div>
             </div>
-
-            <div class="cont">
-            <input class="form-input" type="text" id="username" name="username" placeholder="Enter Username*" required value="<?php if(isset($_POST['username'])) { echo $_POST['username']; } else { echo $data['username']; }?>">
-            <input class="form-input" type="email" id="email" name="email" placeholder="Enter Email*" required value="<?php if(isset($_POST['email'])) { echo $_POST['email']; } else { echo $data['email']; }?>">
-            </div>
-
-            <div class="cont">
-            <input class="form-input" type="password" id="password" name="password" placeholder="Enter password" required value="<?php if(isset($_POST['password'])) { echo $_POST['password']; } else { echo $data['password']; }?>">
-            </div>
-
-            <div class="cont">
-            
-            <select name="course" id="course"">
-                <option value="none <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'None') echo ' selected="selected"'; } ?>">--Select Course--</option>
-                <option value="BSIT" <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'BSCS') echo ' selected="selected"'; } else { echo $data['course']; }?> >BSCS</option>
-                <option value="BSCS" <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'BSIT') echo ' selected="selected"'; } else { echo $data['course']; }?> >BSIT</option>
-            </select>
-            </div>
-
-            <div class="cont">
-            
-            <select name="year_level" id="year_level">
-                <option value="none" <?php if(isset($_POST['year_level'])) { if ($_POST['year_level'] == 'None') echo ' selected="selected"'; } ?>>--Select Year Level--</option>
-                <option value="3rd Year" <?php if(isset($_POST['year_level'])) { if ($_POST['year_level'] == '3rd_year') echo ' selected="selected"'; } ?>>3rd Year</option>
-                <option value="4th Year" <?php if(isset($_POST['year_level'])) { if ($_POST['year_level'] == '4th_year') echo ' selected="selected"'; } ?>>4th Year</option>
-            </select>
-            </div>
-
-            <div class="cont">
-            
-            <select name="section" id="section">
-                <option value="none"  <?php if(isset($_POST['section'])) { if ($_POST['section'] == 'None') echo ' selected="selected"'; } ?>>--Select Section--</option>
-                <option value="A"  <?php if(isset($_POST['section'])) { if ($_POST['section'] == 'A') echo ' selected="selected"'; } ?>>A</option>
-                <option value="B"  <?php if(isset($_POST['section'])) { if ($_POST['section'] == 'B') echo ' selected="selected"'; } ?>>B</option>
-                <option value="C"  <?php if(isset($_POST['section'])) { if ($_POST['section'] == 'C') echo ' selected="selected"'; } ?>>C</option>
-            </select>
-            </div>
-
-            <div class="cont">
-            
-            <select name="sem" id="sem">
-                <option value="none" <?php if(isset($_POST['sem'])) { if ($_POST['sem'] == 'None') echo ' selected="selected"'; } ?>>--Select Semester--</option>
-                <option value="First Semester" <?php if(isset($_POST['sem'])) { if ($_POST['sem'] == 'fisrt_sem') echo ' selected="selected"'; } ?>>First Semester</option>
-                <option value="Second Semester" <?php if(isset($_POST['sem'])) { if ($_POST['sem'] == 'second_sem') echo ' selected="selected"'; } ?>>Second Semester</option>
-            </select>
-            </div>  
-
-            
-            <label for="type">Regular?</label>
-            <input type="radio" name="type" id="student" value="student" <?php if(isset($_POST['type'])) { if ($_POST['type'] == 'student') echo ' checked'; } ?>>
-            <label for="type">Irregular?</label>
-            <input type="radio" name="type" id="student" value="student" <?php if(isset($_POST['type'])) { if ($_POST['type'] == 'student') echo ' checked'; } ?>>
-            <br>
-
-            <div class="pbutton">
-                <input class="reset_btn form-input" type="reset" value="Clear all" name="clear">
-                <input class="save-btn form-input" type="submit" value="Save" name="save">
-            </div>
-        </form>
-    </div>
           </div>
           <!-- end: Summary -->
           <!-- start: Graph -->

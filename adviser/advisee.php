@@ -1,21 +1,15 @@
 <?php
 
 
-require_once '../class/database.php';
-require_once '../class/faculty.class.php';
-
-
-
-session_start();
-/*
-    if user is not login then redirect to login page,
-    this is to prevent users from accessing pages that requires
-    authentication such as the dashboard
-*/
-if (!isset($_SESSION['logged-in'])){
-    header('location: ../login/login.php');
-}
-
+        session_start();
+        /*
+            if user is not login then redirect to login page,
+            this is to prevent users from accessing pages that requires
+            authentication such as the dashboard
+        */
+        if (!isset($_SESSION['logged-in'])){
+            header('location: ../login/login.php');
+        }
 
 
 ?>
@@ -58,65 +52,17 @@ if (!isset($_SESSION['logged-in'])){
       </div>
       <ul class="sidebar-menu p-3 m-0 mb-0">
         <li class="sidebar-menu-item">
-          <a href="dashboard.php">
-            <i class="ri-dashboard-line sidebar-menu-item-icon"></i>
-            Dashboard
-          </a>
-        </li>
-
-        <li class="sidebar-menu-divider mt-3 mb-1 text-uppercase">Thesis</li>
-
-        <li class="sidebar-menu-item">
-          <a href="archives.php">
-            <i class="ri-archive-drawer-line sidebar-menu-item-icon"></i>
-            Archives
-          </a>
-        </li>
-        <li class="sidebar-menu-item has-dropdown">
-            <a href="thesis_status.php">
-                <i class="ri-bar-chart-box-line sidebar-menu-item-icon"></i>
-                Thesis Status
-                <i class="ri-arrow-down-s-line sidebar-menu-item-accordion ms-auto"></i>
-            </a>
-            <ul class="sidebar-dropdown-menu">
-                <li class="sidebar-dropdown-menu-item">
-                    <a href="accepted.php">
-                        Accepted Titles
-                    </a>
-                </li>
-                <li class="sidebar-dropdown-menu-item">
-                    <a href="rejected.php">
-                        Rejected Titles
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li class="sidebar-menu-divider mt-3 mb-1 text-uppercase">Manage</li>
-
-        <li class="sidebar-menu-item">
-          <a href="manage_students.php">
-            <i class="ri-user-line sidebar-menu-item-icon"></i>
-            Manage Student
+          <a href="home.php ">
+            <i class="ri-home-8-line sidebar-menu-item-icon"></i>
+            Home
           </a>
         </li>
         <li class="sidebar-menu-item active">
-          <a href="manage_faculty.php active">
-            <i class="ri-group-line sidebar-menu-item-icon"></i>
-            Manage Faculty
-          </a>
-        </li>
-        <li class="sidebar-menu-item">
-          <a href="manage_rubrics.php">
-            <i class="ri-table-2 sidebar-menu-item-icon"></i>
-            Manage Rubrics
-          </a>
-        </li>
-        <li class="sidebar-menu-item">
-          <a href="manage_schedules.php">
-            <i class="ri-calendar-2-line sidebar-menu-item-icon"></i>
-            Schedules
-          </a>
-        </li>
+            <a href="thesis.php">
+                <i class="ri-sticky-note-line sidebar-menu-item-icon"></i>
+              Groups
+            </a>
+          </li>
       </ul>
     </div>
     <div class="sidebar-overlay"></div>
@@ -128,7 +74,7 @@ if (!isset($_SESSION['logged-in'])){
         <!-- start: Navbar -->
         <nav class="px-3 py-2 bg-white rounded shadow-sm">
           <i class="ri-menu-line sidebar-toggle me-3 d-block d-md-none"></i>
-          <h5 class="fw-bold mb-0 me-auto">Faculty</h5>
+          <h5 class="fw-bold mb-0 me-auto">Home</h5>
           <div class="dropdown me-3 d-none d-sm-block">
             <div
               class="cursor-pointer dropdown-toggle navbar-link"
@@ -216,71 +162,39 @@ if (!isset($_SESSION['logged-in'])){
         <!-- start: Content -->
         <div class="py-4">
           <!-- start: content -->
-          <div class="container">
-            <div class="head-cont d-flex justify-content-end pb-2">
-              <a class="btn btn-primary add-button" href="add_faculty.php">Add new Faculty</a>
+          <div class="main-content border">
+                  <div class="head-number p-3"> 
+                      <h2>Group 1</h2>
+                  </div>
+
+                  <div class="members p-3">
+                      <span>Members</span>
+                      <div class="list-mem pt-2">
+                          <ul>
+                              <li class="pb-1">Marvin Waro</li>
+                              <li class="pb-1">Christian Fernandez</li>
+                          </ul>
+                      </div>
+                  </div>
+
+                  <div class="titles-up p-3">
+                      <span>Titles</span>
+                      <div class="uploading">
+                        <div class="mb-3">
+                          <p>link here</p>
+                        </div>
+                        <div class="mb-3">
+                          <p>link here</p>
+                        </div>
+                        <div class="mb-3">
+                          <p>link here</p>
+                        </div>
+                      </div>
+                  </div>
             </div>
-                    <table id="example" class="table table-striped" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Username</th>
-                                <th>Department</th>
-                                <?php
-                                    if($_SESSION['user_type'] == 'admin'){ 
-                                ?>
-                                    <th class="action">Action</th>
-                                <?php
-                                    }
-                                ?>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        <?php
-                            require_once '../class/faculty.class.php';
+            
 
-                            $faculty = new Faculty();
-                            //We will now fetch all the records in the array using loop
-                            //use as a counter, not required but suggested for the table
-                            $i = 1;
-                            //loop for each record found in the array
-                            foreach ($faculty->show() as $value){ //start of loop
-                        ?>
-                            <tr>
-                                <!-- always use echo to output PHP values -->
-                                <td><?php echo $i ?></td>
-                                <td><?php echo $value['lastname'] . ', ' . $value['firstname'] . ' ' . $value['middle_name']?></td>
-                                <td><?php echo $value['email'] ?></td>
-                                <td><?php echo $value['username'] ?></td>
-                                <td><?php echo $value['department'] ?></td>
-                                <?php
-                                    if($_SESSION['user_type'] == 'admin'){ 
-                                ?>
-                                    <td>
-                                        <div class="actions">
-                                            <a class="action-edit" href="edit_faculty.php?id=<?php echo $value['id'] ?>"><i class="ri-edit-line"></i></a>
-                                             <!--<a class="action-delete" href="delete_faculty.php?id=<?php echo $value['id'] ?>" ><i class="ri-delete-bin-line"></i></a>-->
-                                             <a class="action-delete" href="delete_faculty.php?id=<?php echo $value['id'] ?>" onclick="return confirm('Are you sure to delete?')"><i class="ri-delete-bin-line"></i></a>
-                                        </div>
-                                    </td>
-                                <?php
-                                    }
-                                ?>
-                            </tr>
-                        <?php
-                            $i++;
-                        //end of loop
-                        }
-                        ?>
-                        </tbody>
-                    </table>
-                </div>
-    </div>
-
-<!--modal-->
-
+        </div>
 
           <!-- end: content -->
           <!-- start: Graph -->
@@ -306,14 +220,6 @@ if (!isset($_SESSION['logged-in'])){
     <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
     <!--responsive-->
     <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
-    <script>
-    function confirmation(){
-      var result = confirm("Are you sure to delete?");
-      if(result){
-        console.log("Deleted")
-      }
-    }
-  </script>
     <!-- end: JS -->
   </body>
 </html>

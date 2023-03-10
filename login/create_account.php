@@ -18,9 +18,11 @@
         $student->email = htmlentities($_POST['email']);
         $student->password = htmlentities($_POST['password']);
         $student->course = htmlentities($_POST['course']);
-        $student->year_level = htmlentities($_POST['year_level']);
-        $student->section = htmlentities($_POST['section']);
+        $student->year_and_section = htmlentities($_POST['year_and_section']);
         $student->sem = htmlentities($_POST['sem']);
+        $student->school_year = htmlentities($_POST['school_year']);
+        $student->your_adviser = htmlentities($_POST['your_adviser']);
+        $student->your_group = htmlentities($_POST['your_group']);
         $student->type = $_POST['type'];
 
         if(isset($_POST)){
@@ -95,36 +97,53 @@
             <span class="details">Course</span>
             <select name="course" id="course">
                 <option value="none <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'None') echo ' selected="selected"'; } ?>">--Select--</option>
-                <option value="BSIT" <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'BSCS') echo ' selected="selected"'; } ?>>BSCS</option>
-                <option value="BSCS" <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'BSIT') echo ' selected="selected"'; } ?>>BSIT</option>
+                <option value="BSIT" <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'BSIT') echo ' selected="selected"'; } ?>>BSIT</option>
+                <option value="BSCS" <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'BSCS') echo ' selected="selected"'; } ?>>BSCS</option>
               </select>
           </div>
           <div class="input-box">
-            <span class="details">Year Level</span>
-            <select name="year_level" id="year_level">
-              <option value="none" <?php if(isset($_POST['year_level'])) { if ($_POST['year_level'] == 'None') echo ' selected="selected"'; } ?>>--Select--</option>
-              <option value="3rd_year" <?php if(isset($_POST['year_level'])) { if ($_POST['year_level'] == '3rd_year') echo ' selected="selected"'; } ?>>3rd Year</option>
-              <option value="4th_year" <?php if(isset($_POST['year_level'])) { if ($_POST['year_level'] == '4th_year') echo ' selected="selected"'; } ?>>4th Year</option>
-            </select>
-          </div>
-          <div class="input-box">
-            <span class="details">Section</span>
-            <select name="section" id="section">
-              <option value="none"  <?php if(isset($_POST['section'])) { if ($_POST['section'] == 'None') echo ' selected="selected"'; } ?>>--Select--</option>
-              <option value="A"  <?php if(isset($_POST['section'])) { if ($_POST['section'] == 'A') echo ' selected="selected"'; } ?>>A</option>
-              <option value="B"  <?php if(isset($_POST['section'])) { if ($_POST['section'] == 'B') echo ' selected="selected"'; } ?>>B</option>
-              <option value="C"  <?php if(isset($_POST['section'])) { if ($_POST['section'] == 'C') echo ' selected="selected"'; } ?>>C</option>
-            </select>
+            <span class="details">Year & Section</span>
+            <select name="year_and_section" id="year_and_section">
+                <option value="none <?php if(isset($_POST['year_and_section'])) { if ($_POST['year_and_section'] == 'None') echo ' selected="selected"'; } ?>">--Select--</option>
+                <option value="3-A" <?php if(isset($_POST['year_and_section'])) { if ($_POST['year_and_section'] == '3-A') echo ' selected="selected"'; } ?>>3-A</option>
+                <option value="3-B" <?php if(isset($_POST['year_and_section'])) { if ($_POST['year_and_section'] == '3-B') echo ' selected="selected"'; } ?>>3-B</option>
+                <option value="3-C" <?php if(isset($_POST['year_and_section'])) { if ($_POST['year_and_section'] == '3-C') echo ' selected="selected"'; } ?>>3-C</option>
+                <option value="4-A" <?php if(isset($_POST['year_and_section'])) { if ($_POST['year_and_section'] == '4-A') echo ' selected="selected"'; } ?>>4-A</option>
+                <option value="4-B" <?php if(isset($_POST['year_and_section'])) { if ($_POST['year_and_section'] == '4-B') echo ' selected="selected"'; } ?>>4-B</option>
+              </select>
           </div>
           <div class="input-box">
             <span class="details">Semester</span>
             <select name="sem" id="sem">
               <option value="none" <?php if(isset($_POST['sem'])) { if ($_POST['sem'] == 'None') echo ' selected="selected"'; } ?>>--Select--</option>
-              <option value="First_sem" <?php if(isset($_POST['sem'])) { if ($_POST['sem'] == 'fisrt_sem') echo ' selected="selected"'; } ?>>First Semester</option>
+              <option value="First_sem" <?php if(isset($_POST['sem'])) { if ($_POST['sem'] == 'first_sem') echo ' selected="selected"'; } ?>>First Semester</option>
               <option value="Second_sem" <?php if(isset($_POST['sem'])) { if ($_POST['sem'] == 'second_sem') echo ' selected="selected"'; } ?>>Second Semester</option>
             </select>
           </div>
+
+          <div class="input-box">
+            <span class="details">School Year</span>
+            <select name="school_year" id="school_year">
+              <option value="2022-2023" <?php if(isset($_POST['school_year'])) { if ($_POST['school_year'] == 'current_sy') echo ' selected="selected"'; } ?>>Current SY</option>
+            </select>
+          </div>
+
+          <div class="input-box">
+            <span class="details">Your Adviser</span>
+            <select name="your_adviser" id="your_adviser">
+              <option value="Jaydee Ballaho" <?php if(isset($_POST['your_adviser'])) { if ($_POST['your_adviser'] == 'Jaydee Ballaho') echo ' selected="selected"'; } ?>>Jaydee Ballaho</option>
+              <option value="Marjorie Rojas" <?php if(isset($_POST['your_adviser'])) { if ($_POST['your_adviser'] == 'Marjorie Rojas') echo ' selected="selected"'; } ?>>Marjorie Rojas</option>
+            </select>
+          </div>
+
+          <div class="input-box">
+            <span class="details">Your Group</span>
+            <select name="your_group" id="your_group">
+              <option value="1" <?php if(isset($_POST['your_group'])) { if ($_POST['your_group'] == '1') echo ' selected="selected"'; } ?>>Group 1</option>
+            </select>
+          </div>
         </div>
+
         <div class="gender-details">
           <input type="radio" name="type" id="regular"  value="student" <?php if(isset($_POST['type'])) { if ($_POST['type'] == 'student') echo ' checked'; } ?>>
           <input type="radio" name="type" id="irregular"  value="student" <?php if(isset($_POST['type'])) { if ($_POST['type'] == 'student') echo ' checked'; } ?>>

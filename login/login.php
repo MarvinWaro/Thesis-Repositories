@@ -23,8 +23,8 @@
                       header('location: ../student/home.php');
                   }else if (($_SESSION['user_type']) == 'admin'){
                       header('location: ../admin/dashboard.php');
-                  }else if (($_SESSION['user_type']) == 'faculty'){
-                    header('location: ../faculty/home.php');
+                  }else if (($_SESSION['user_type']) == 'adviser'){
+                    header('location: ../adviser/home.php');
                   }else{
                       header('location: login/login.php');
                   }
