@@ -44,7 +44,7 @@
             if ($student->fetch($_GET['id'])){
                 $data = $student->fetch($_GET['id']);
                 $student->firstname = $data['firstname'];
-                $student->firstname = $data['middle_name'];
+                $student->middle_name = $data['middle_name'];
                 $student->lastname = $data['lastname'];
                 $student->username = $data['username'];
                 $student->email = $data['email'];
@@ -267,7 +267,7 @@
                       <label for="firstname">First Name</label>
                       <input class="form-input" type="text" id="firstname" name="firstname" placeholder="Enter First name*" required value="<?php if(isset($_POST['firstname'])) { echo $_POST['firstname']; } else { echo $data['firstname']; }?>">
                       <label for="middle_name">Middle Name</label>
-                      <input class="form-input" type="text" id="middle_name" name="middle_name" placeholder="Enter Middle name" required value="<?php if(isset($_POST['middle_name'])) { echo $_POST['middle_name']; } else { echo $data['middle_name']; }?>">
+                      <input class="form-input" type="text" id="middle_name" name="middle_name" placeholder="Enter Middle name" value="<?php if(isset($_POST['middle_name'])) { echo $_POST['middle_name']; } else { echo $data['middle_name']; }?>">
                       <label for="lastname">Last Name</label>
                       <input class="form-input" type="text" id="lastname" name="lastname" placeholder="Enter Last name*" required value="<?php if(isset($_POST['lastname'])) { echo $_POST['lastname']; } else { echo $data['lastname']; }?>">
                       </div>

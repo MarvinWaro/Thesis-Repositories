@@ -44,18 +44,18 @@ class Faculty{
         }
     }
 
-    function edit(){
-        $sql = "UPDATE faculty SET firstname=:firstname, middle_name=:middle_name, lastname=:lastname, email=:email, contact_number=:contact_number, address=:address, date=:date, status=:status WHERE id = :id;";
+    function edit_faculty(){
+        $sql = "UPDATE faculty SET firstname=:firstname, middle_name=:middle_name, lastname=:lastname, email=:email, username=:username, password=:password, department=:department, type=:type WHERE id = :id;";
 
         $query=$this->db->connect()->prepare($sql);
         $query->bindParam(':firstname', $this->firstname);
         $query->bindParam(':middle_name', $this->middle_name);
         $query->bindParam(':lastname', $this->lastname);
         $query->bindParam(':email', $this->email);
-        $query->bindParam(':contact_number', $this->contact_number);
-        $query->bindParam(':address', $this->address);
-        $query->bindParam(':date', $this->date);
-        $query->bindParam(':status', $this->status);
+        $query->bindParam(':username', $this->username);
+        $query->bindParam(':password', $this->password);
+        $query->bindParam(':department', $this->department);
+        $query->bindParam(':type', $this->type);
         $query->bindParam(':id', $this->id);
 
         if($query->execute()){

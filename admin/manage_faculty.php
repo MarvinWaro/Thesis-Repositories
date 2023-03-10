@@ -17,26 +17,6 @@ if (!isset($_SESSION['logged-in'])){
 }
 
 
-if(isset($_POST['save'])){
-
-    $faculty = new Faculty();
-    //sanitize user inputs
-    $faculty->firstname = htmlentities($_POST['firstname']);
-    $faculty->middle_name = htmlentities($_POST['middle_name']);
-    $faculty->lastname = htmlentities($_POST['lastname']);
-    $faculty->username = htmlentities($_POST['username']);
-    $faculty->email = htmlentities($_POST['email']);
-    $faculty->password = htmlentities($_POST['password']);
-    $faculty->department = htmlentities($_POST['department']);
-    $faculty->type = $_POST['type'];
-    if(isset($_POST)){
-        if($faculty->add()){
-            //redirect user to create page after saving
-            header('location: manage_faculty.php');
-        }
-    }
-}
-
 
 ?>
 
@@ -238,9 +218,7 @@ if(isset($_POST['save'])){
           <!-- start: content -->
           <div class="container">
             <div class="head-cont d-flex justify-content-end pb-2">
-                <button type="button" class="btn btn-primary add-button" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Add new Faculty
-                </button>
+              <a class="btn btn-primary add-button" href="add_faculty.php">Add new Faculty</a>
             </div>
                     <table id="example" class="table table-striped" style="width:100%">
                         <thead>
@@ -282,7 +260,7 @@ if(isset($_POST['save'])){
                                 ?>
                                     <td>
                                         <div class="actions">
-                                            <a class="action-edit" href="#"><i class="ri-edit-line"></i></a>
+                                            <a class="action-edit" href="edit_faculty.php?id=<?php echo $value['id'] ?>"><i class="ri-edit-line"></i></a>
                                              <!--<a class="action-delete" href="delete_faculty.php?id=<?php echo $value['id'] ?>" ><i class="ri-delete-bin-line"></i></a>-->
                                              <a class="action-delete" href="delete_faculty.php?id=<?php echo $value['id'] ?>" onclick="return confirm('Are you sure to delete?')"><i class="ri-delete-bin-line"></i></a>
                                         </div>
@@ -303,60 +281,6 @@ if(isset($_POST['save'])){
 
 <!--modal-->
 
-
-        <div class="modal fade>" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Faculty</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-
-                    <form class="add-form" action="manage_faculty.php" method="post">
-
-
-                                <div class="cont">
-                                <input class="form-input me-2" type="text" id="firstname" name="firstname" placeholder="Enter First name*" required value="<?php if(isset($_POST['firstname'])) { echo $_POST['firstname']; } ?>">
-                                <input class="form-input" type="text" id="middle_name" name="middle_name" placeholder="Enter Middle name (optional)*" value="<?php if(isset($_POST['middle_name'])) { echo $_POST['middle_name']; } ?>">
-                                </div>
-
-                                <div class="cont">
-                                <input class="form-input me-2" type="text" id="lastname" name="lastname" placeholder="Enter Last name*" required value="<?php if(isset($_POST['lastname'])) { echo $_POST['lastname']; } ?>">
-                                <input class="form-input" type="text" id="username" name="username" placeholder="Enter Username*" required value="<?php if(isset($_POST['username'])) { echo $_POST['username']; } ?>">
-                                </div>
-
-                                <div class="cont">
-                                <input class="form-input me-2" type="email" id="email" name="email" placeholder="Enter Email*" required value="<?php if(isset($_POST['email'])) { echo $_POST['email']; } ?>">
-                                <input class="form-input" type="password" id="password" name="password" placeholder="Enter password" required value="<?php if(isset($_POST['password'])) { echo $_POST['password']; } ?>">
-                                </div>
-
-                                <div class="cont">
-                                <select name="department" id="department">
-                                    <option value="none <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'None') echo ' selected="selected"'; } ?>">--Select Department--</option>
-                                    <option value="BSCS" <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'BSCS') echo ' selected="selected"'; } ?>>BSCS</option>
-                                    <option value="BSIT" <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'BSIT') echo ' selected="selected"'; } ?>>BSIT</option>
-                                </select>
-                                </div>
-
-                                <div class="cont">
-                                <label for="type">Active?</label>
-                                <input class="checkbox" type="checkbox" name="type" id="faculty" value="faculty" required <?php if(isset($_POST['type'])) { if ($_POST['type'] == 'faculty') echo ' checked'; } ?>>
-                                </div>
-
-                        </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <!--<button type="submit" value="Save" name="save" class="btn btn-primary">Save changes</button>-->
-                                    <input class="button form-input" type="submit" value="Save" name="save">
-                                </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-
-    </div>
 
           <!-- end: content -->
           <!-- start: Graph -->
