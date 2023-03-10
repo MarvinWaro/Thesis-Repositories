@@ -34,7 +34,7 @@
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../assets/css/style.css" />
     <!-- end: CSS -->
-    <title>Thesis Repository - Blank Page</title>
+    <title>Thesis Repository</title>
   </head>
 
   <body>
