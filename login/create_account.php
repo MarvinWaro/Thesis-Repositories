@@ -124,7 +124,7 @@
           <div class="input-box">
             <span class="details">School Year</span>
             <select name="school_year" id="school_year">
-              <option value="2022-2023" <?php if(isset($_POST['school_year'])) { if ($_POST['school_year'] == 'current_sy') echo ' selected="selected"'; } ?>>Current SY</option>
+              <option value="2022-2023" <?php if(isset($_POST['school_year'])) { if ($_POST['school_year'] == '2022-2023') echo ' selected="selected"'; } ?>>2022-2023</option>
             </select>
           </div>
 
