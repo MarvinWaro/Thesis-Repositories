@@ -781,5 +781,19 @@ a{
     }
 }
 
+form .error {
+    text-align: center;
+    line-height: 20px;
+    padding: 0;
+    font-size: 12px;
+  }
+  
+.error {
+    color: #c51244;
+    text-align: center;
+    line-height: 12px;
+    padding-top: 12px;
+  }
+
 
 

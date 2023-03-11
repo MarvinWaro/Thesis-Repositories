@@ -1,6 +1,7 @@
 
     <?php
 
+    require_once '../tools/functions.php';
     require_once '../class/database.php';
     require_once '../class/student.class.php';
 
@@ -14,50 +15,51 @@
         header('location: ../login/login.php');
     }
 
-        $student = new Student();
+    $student = new Student();
 
-        //sanitize user inputs
-        if(isset($_POST['save'])){
-            //sanitize user inputs
-            $student->id = $_POST['student-id'];
-            $student->firstname = htmlentities($_POST['firstname']);
-            $student->middle_name = htmlentities($_POST['middle_name']);
-            $student->lastname = htmlentities($_POST['lastname']);
-            $student->username = htmlentities($_POST['username']);
-            $student->email = htmlentities($_POST['email']);
-            $student->password = $_POST['password'];
-            $student->course = $_POST['course'];
-            $student->year_and_section = htmlentities($_POST['year_and_section']);
-            $student->sem = $_POST['sem'];
-            $student->school_year = htmlentities($_POST['school_year']);
-            $student->your_adviser = htmlentities($_POST['your_adviser']);
-            $student->your_group = htmlentities($_POST['your_group']);
-            $student->type = $_POST['type'];
 
-            if(isset($_POST)){
-                if($student->edit_student()){
-                    //redirect user to student page after saving
-                    header('location: manage_students.php');
-                }
-            }
-        }else{
-            if ($student->fetch($_GET['id'])){
-                $data = $student->fetch($_GET['id']);
-                $student->firstname = $data['firstname'];
-                $student->middle_name = $data['middle_name'];
-                $student->lastname = $data['lastname'];
-                $student->username = $data['username'];
-                $student->email = $data['email'];
-                $student->password = $data['password'];
-                $student->course = $data['course'];
-                $student->year_and_section = $data['year_and_section'];
-                $student->sem = $data['sem'];
-                $student->school_year = $data['school_year'];
-                $student->your_adviser = $data['your_adviser'];
-                $student->your_group = $data['your_group'];
-                $student->type = $data['type'];
-            }
-        }
+    if(isset($_POST['save'])){
+      //sanitize user inputs
+      $student->id = $_POST['student-id'];
+      $student->firstname = htmlentities($_POST['firstname']);
+      $student->middle_name = htmlentities($_POST['middle_name']);
+      $student->lastname = htmlentities($_POST['lastname']);
+      $student->username = htmlentities($_POST['username']);
+      $student->email = htmlentities($_POST['email']);
+      $student->password = htmlentities($_POST['password']);
+      $student->course = htmlentities($_POST['course']);
+      $student->year_and_section = htmlentities($_POST['year_and_section']);
+      $student->sem = htmlentities($_POST['sem']);
+      $student->school_year = htmlentities($_POST['school_year']);
+      $student->your_adviser = htmlentities($_POST['your_adviser']);
+      $student->your_group = htmlentities($_POST['your_group']);
+      $student->type = $_POST['type'];
+      if(validate_add_student($_POST)){
+          if($student->edit_student()){
+              //redirect user to create page after saving
+              header('location: manage_students.php');
+          }
+      }
+  }else{
+      if ($student->fetch($_GET['id'])){
+          $data = $student->fetch($_GET['id']);
+          $student->firstname = $data['firstname'];
+          $student->middle_name = $data['middle_name'];
+          $student->lastname = $data['lastname'];
+          $student->username = $data['username'];
+          $student->email = $data['email'];
+          $student->password = $data['password'];
+          $student->course = $data['course'];
+          $student->year_and_section = $data['year_and_section'];
+          $student->sem = $data['sem'];
+          $student->school_year = $data['school_year'];
+          $student->your_adviser = $data['your_adviser'];
+          $student->your_group = $data['your_group'];
+          $student->type = $data['type'];
+      }
+  }
+
+
     ?>
 
 
@@ -137,9 +139,9 @@
           </a>
         </li>
         <li class="sidebar-menu-item">
-          <a href="manage_faculty.php">
+          <a href="manage_student.php">
             <i class="ri-group-line sidebar-menu-item-icon"></i>
-            Manage Faculty
+            Manage student
           </a>
         </li>
         <li class="sidebar-menu-item">
@@ -265,19 +267,55 @@
 
                       <div class="cont">
                       <label for="firstname">First Name</label>
-                      <input class="form-input" type="text" id="firstname" name="firstname" placeholder="Enter First name*" required value="<?php if(isset($_POST['firstname'])) { echo $_POST['firstname']; } else { echo $data['firstname']; }?>">
+                      <input class="form-input" type="text" id="firstname" name="firstname" placeholder="Enter First name*" value="<?php if(isset($_POST['firstname'])) { echo $_POST['firstname']; } else { echo $data['firstname']; }?>">
+                      
+                      <?php
+                        if(isset($_POST['save']) && !validate_first_name($_POST)){
+                        ?>
+                                    <p class="error">First name is invalid. Trailing spaces will be ignored.</p>
+                        <?php
+                            }
+                        ?>
+
                       <label for="middle_name">Middle Name</label>
                       <input class="form-input" type="text" id="middle_name" name="middle_name" placeholder="Enter Middle name" value="<?php if(isset($_POST['middle_name'])) { echo $_POST['middle_name']; } else { echo $data['middle_name']; }?>">
+                      
                       <label for="lastname">Last Name</label>
-                      <input class="form-input" type="text" id="lastname" name="lastname" placeholder="Enter Last name*" required value="<?php if(isset($_POST['lastname'])) { echo $_POST['lastname']; } else { echo $data['lastname']; }?>">
-                      </div>
+                      <input class="form-input" type="text" id="lastname" name="lastname" placeholder="Enter Last name*" value="<?php if(isset($_POST['lastname'])) { echo $_POST['lastname']; } else { echo $data['lastname']; }?>">
+                      
+                      <?php
+                        if(isset($_POST['save']) && !validate_last_name($_POST)){
+                        ?>
+                                    <p class="error">Last name is invalid. Trailing spaces will be ignored.</p>
+                        <?php
+                            }
+                        ?>
+
+                    </div>
 
                       <div class="cont">
                       <label for="username">Username</label>
-                      <input class="form-input" type="text" id="username" name="username" placeholder="Enter Username*" required value="<?php if(isset($_POST['username'])) { echo $_POST['username']; } else { echo $data['username']; }?>">
+                      <input class="form-input" type="text" id="username" name="username" placeholder="Enter Username*" value="<?php if(isset($_POST['username'])) { echo $_POST['username']; } else { echo $data['username']; }?>">
+                      
+                      <?php
+                            if(isset($_POST['save']) && !validate_username($_POST)){
+                        ?>
+                                    <p class="error">Username is invalid. Trailing spaces will be ignored.</p>
+                        <?php
+                            }
+                        ?>
+                      
                       <label for="email">Email</label>
-                      <input class="form-input" type="email" id="email" name="email" placeholder="Enter Email*" required value="<?php if(isset($_POST['email'])) { echo $_POST['email']; } else { echo $data['email']; }?>">
+                      <input class="form-input" type="email" id="email" name="email" placeholder="Enter Email*"  value="<?php if(isset($_POST['email'])) { echo $_POST['email']; } else { echo $data['email']; }?>">
                       </div>
+
+                      <?php
+                            if(isset($_POST['save']) && !validate_email($_POST)){
+                        ?>
+                              <p class="error">Email is invalid. Use only @wmsu.edu.ph</p>
+                        <?php
+                            }
+                        ?>
 
                       <div class="cont">
                       <label for="password">Password</label>
@@ -288,18 +326,18 @@
 
                       <div class="cont">
                       <label for="course">Course</label>
-                      <select name="course" id="course"">
-                          <option value="none <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'None') echo ' selected="selected"'; } ?>">--Select Course--</option>
+                      <select name="course" id="course">
+                          <option value="None" <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'None') echo ' selected="selected"'; } ?>>--Select Course--</option>
                           <option value="BSIT" <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'BSCS') echo ' selected="selected"'; } else { echo $data['course']; }?> >BSCS</option>
                           <option value="BSCS" <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'BSIT') echo ' selected="selected"'; } else { echo $data['course']; }?> >BSIT</option>
                       </select>
                       </div>
 
-
+                      
                       <div class="cont">
                       <label for="year_and_section">Year & Section</label>
                       <select name="year_and_section" id="year_and_section">
-                          <option value="none <?php if(isset($_POST['year_and_section'])) { if ($_POST['year_and_section'] == 'None') echo ' selected="selected"'; } ?>">--Select Year & Section--</option>
+                          <option value="None" <?php if(isset($_POST['year_and_section'])) { if ($_POST['year_and_section'] == 'None') echo ' selected="selected"'; } ?>>--Select Year & Section--</option>
                           <option value="3-A" <?php if(isset($_POST['year_and_section'])) { if ($_POST['year_and_section'] == '3-A') echo ' selected="selected"'; } ?>>3-A</option>
                           <option value="3-B" <?php if(isset($_POST['year_and_section'])) { if ($_POST['year_and_section'] == '3-B') echo ' selected="selected"'; } ?>>3-B</option>
                           <option value="3-C" <?php if(isset($_POST['year_and_section'])) { if ($_POST['year_and_section'] == '3-C') echo ' selected="selected"'; } ?>>3-C</option>
@@ -308,30 +346,42 @@
                         </select>
                       </div>
 
+
+                        
+
+
                       <div class="cont">
                       <label for="sem">Semester</label>
                       <select name="sem" id="sem">
-                          <option value="none" <?php if(isset($_POST['sem'])) { if ($_POST['sem'] == 'None') echo ' selected="selected"'; } ?>>--Select Semester--</option>
-                          <option value="First Semester" <?php if(isset($_POST['sem'])) { if ($_POST['sem'] == 'fisrt_sem') echo ' selected="selected"'; } ?>>First Semester</option>
-                          <option value="Second Semester" <?php if(isset($_POST['sem'])) { if ($_POST['sem'] == 'second_sem') echo ' selected="selected"'; } ?>>Second Semester</option>
+                          <option value="None" <?php if(isset($_POST['sem'])) { if ($_POST['sem'] == 'None') echo ' selected="selected"'; } ?>>--Select Semester--</option>
+                          <option value="First Semester" <?php if(isset($_POST['sem'])) { if ($_POST['sem'] == 'First Semester') echo ' selected="selected"'; } ?>>First Semester</option>
+                          <option value="Second Semester" <?php if(isset($_POST['sem'])) { if ($_POST['sem'] == 'Second Semester') echo ' selected="selected"'; } ?>>Second Semester</option>
                       </select>
-                      </div>  
+                      </div>
+
+                       
 
                       
                       <div class="cont">
                       <label for="your_adviser">Adviser</label>
                       <select name="your_adviser" id="your_adviser">
-                        <option value="Jaydee Ballaho" <?php if(isset($_POST['your_adviser'])) { if ($_POST['your_adviser'] == 'Jaydee Ballaho') echo ' selected="selected"'; } ?>>Jaydee Ballaho</option>
-                        <option value="Marjorie Rojas" <?php if(isset($_POST['your_adviser'])) { if ($_POST['your_adviser'] == 'Marjorie Rojas') echo ' selected="selected"'; } ?>>Marjorie Rojas</option>
+                          <option value="None" <?php if(isset($_POST['your_adviser'])) { if ($_POST['your_adviser'] == 'None') echo ' selected="selected"'; } ?>>--Select Adviser--</option>
+                          <option value="Jaydee Ballaho" <?php if(isset($_POST['your_adviser'])) { if ($_POST['your_adviser'] == 'Jaydee Ballaho') echo ' selected="selected"'; } ?>>Jaydee Ballaho</option>
+                          <option value="Marjorie Rojas" <?php if(isset($_POST['your_adviser'])) { if ($_POST['your_adviser'] == 'Marjorie Rojas') echo ' selected="selected"'; } ?>>Marjorie Rojas</option>
                       </select>
                       </div>
+
+                      
 
                       <div class="cont">
                       <label for="your_group">Group no.</label>
                       <select name="your_group" id="your_group">
+                      <option value="None" <?php if(isset($_POST['your_group'])) { if ($_POST['your_group'] == 'None') echo ' selected="selected"'; } ?>>--Select Group No.--</option>
                         <option value="1" <?php if(isset($_POST['your_group'])) { if ($_POST['your_group'] == '1') echo ' selected="selected"'; } ?>>Group 1</option>
                       </select>
                       </div>
+
+                     
 
                       <div class="cont">
                       <label for="school_year">School Year</label>

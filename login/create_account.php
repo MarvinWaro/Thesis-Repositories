@@ -89,6 +89,13 @@
             <span class="details">Email</span>
             <input class="form-input" type="email" id="email" name="email" placeholder="Enter Email*" required value="<?php if(isset($_POST['email'])) { echo $_POST['email']; } ?>">
           </div>
+                    <?php
+                        if(isset($_POST['save']) && !validate_email($_POST)){
+                    ?>
+                                <p class="error">Email is invalid. Use only @wmsu.edu.ph</p>
+                    <?php
+                        }
+                    ?>
           <div class="input-box">
             <span class="details">Password</span>
             <input class="form-input" type="password" id="password" name="password" placeholder="Enter password" required value="<?php if(isset($_POST['password'])) { echo $_POST['password']; } ?>">
