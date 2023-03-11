@@ -87,6 +87,15 @@
             <a class="forgot" href="#">Forgot Password</a>
           </div>
         </div>
+
+          <?php
+                //Display the error message if there is any.
+                if(isset($error)){
+                    echo '<div><p class="error">'.$error.'</p></div>';
+                }
+
+            ?>
+
       </form>
     </div>
   </div>
