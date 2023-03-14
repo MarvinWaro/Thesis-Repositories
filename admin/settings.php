@@ -1,17 +1,15 @@
 <?php
 
-require_once '../class/database.php';
-require_once '../class/student.class.php';
 
-session_start();
-/*
-    if user is not login then redirect to login page,
-    this is to prevent users from accessing pages that requires
-    authentication such as the dashboard
-*/
-if (!isset($_SESSION['logged-in'])){
-    header('location: ../login/login.php');
-}
+        session_start();
+        /*
+            if user is not login then redirect to login page,
+            this is to prevent users from accessing pages that requires
+            authentication such as the dashboard
+        */
+        if (!isset($_SESSION['logged-in'])){
+            header('location: ../login/login.php');
+        }
 
 
 ?>
@@ -69,32 +67,32 @@ if (!isset($_SESSION['logged-in'])){
           </a>
         </li>
         <li class="sidebar-menu-item has-dropdown">
-          <a href="thesis_status.php">
-              <i class="ri-bar-chart-box-line sidebar-menu-item-icon"></i>
-              Thesis Status
-              <i class="ri-arrow-down-s-line sidebar-menu-item-accordion ms-auto"></i>
-          </a>
-          <ul class="sidebar-dropdown-menu">
-              <li class="sidebar-dropdown-menu-item">
-                  <a href="accepted.php">
-                      Accepted Titles
-                  </a>
-              </li>
-              <li class="sidebar-dropdown-menu-item">
-                  <a href="rejected.php">
-                      Rejected Titles
-                  </a>
-              </li>
-          </ul>
-      </li>
+            <a href="thesis_status.php">
+                <i class="ri-bar-chart-box-line sidebar-menu-item-icon"></i>
+                Thesis Status
+                <i class="ri-arrow-down-s-line sidebar-menu-item-accordion ms-auto"></i>
+            </a>
+            <ul class="sidebar-dropdown-menu">
+                <li class="sidebar-dropdown-menu-item">
+                    <a href="accepted.php">
+                        Accepted Titles
+                    </a>
+                </li>
+                <li class="sidebar-dropdown-menu-item">
+                    <a href="rejected.php">
+                        Rejected Titles
+                    </a>
+                </li>
+            </ul>
+        </li>
         <li class="sidebar-menu-divider mt-3 mb-1 text-uppercase">Manage</li>
 
-        <li class="sidebar-menu-item active">
-          <a href="manage_students.html">
-            <i class="ri-user-line sidebar-menu-item-icon"></i>
-            Manage Student
-          </a>
-        </li>
+        <li class="sidebar-menu-item">
+            <a href="manage_students.php">
+              <i class="ri-user-line sidebar-menu-item-icon"></i>
+              Manage Student
+            </a>
+          </li>
         <li class="sidebar-menu-item">
           <a href="manage_faculty.php">
             <i class="ri-group-line sidebar-menu-item-icon"></i>
@@ -124,7 +122,7 @@ if (!isset($_SESSION['logged-in'])){
         <!-- start: Navbar -->
         <nav class="px-3 py-2 bg-white rounded shadow-sm">
           <i class="ri-menu-line sidebar-toggle me-3 d-block d-md-none"></i>
-          <h5 class="fw-bold mb-0 me-auto">Students</h5>
+          <h5 class="fw-bold mb-0 me-auto">Settings</h5>
           <div class="dropdown me-3 d-none d-sm-block">
             <div
               class="cursor-pointer dropdown-toggle navbar-link"
@@ -213,83 +211,16 @@ if (!isset($_SESSION['logged-in'])){
 
         <!-- start: Content -->
         <div class="py-4">
+            <div class="main-content border">
+
+            </div>
           <!-- start: content -->
-          <div class="container padding-bottom">
-                  <div class="head-cont d-flex justify-content-end pb-2">
-                      <a class="btn btn-primary add-button" href="add_student.php">Add new Student</a>
-                  </div>
-
-                    <table id="example" class="table table-striped" style="width:100%">
-                        <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Name</th>
-                            <th>Username</th>
-                            <th>Email</th>
-                            <th>Course</th>
-                            <th>Year & Section</th>
-                            <th>Semester</th>
-                            <th>School Year</th>
-                            <th>Adviser</th>
-                            <th>Group #</th>
-                            <th class="action">Action</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                                <?php
-                                    require_once '../class/student.class.php';
-
-                                    $student = new Student();
-                                    //We will now fetch all the records in the array using loop
-                                    //use as a counter, not required but suggested for the table
-                                    $i = 1;
-                                    //loop for each record found in the array
-                                    foreach ($student->show() as $value){ //start of loop
-                                ?>
-                                    <tr>
-                                        <!-- always use echo to output PHP values -->
-                                        <td><?php echo $i ?></td>
-                                        <td><?php echo $value['lastname'] . ', ' . $value['firstname'] . ' ' . $value['middle_name'] ?></td>
-                                        <td><?php echo $value['username'] ?></td>
-                                        <td><?php echo $value['email'] ?></td>
-                                        <td><?php echo $value['course'] ?></td>
-                                        <td><?php echo $value['year_and_section'] ?></td>
-                                        <td><?php echo $value['sem'] ?></td>
-                                        <td><?php echo $value['school_year'] ?></td>
-                                        <td><?php echo $value['your_adviser'] ?></td>
-                                        <td><?php echo $value['your_group'] ?></td>
-                                        <?php
-                                            if($_SESSION['user_type'] == 'admin'){ 
-                                        ?>
-                                            <td>
-                                                <div class="actions">
-                                                    <a class="action-edit" href="edit_student.php?id=<?php echo $value['id'] ?>"><i class="ri-edit-line"></i></a>
-                                                    <a class="action-delete" href="delete_student.php?id=<?php echo $value['id'] ?>" onclick="return confirm('Are you sure to delete?')"><i class="ri-delete-bin-line"></i></a>
-                                                </div>
-                                            </td>
-                                        <?php
-                                            }
-                                        ?>
-                                    </tr>
-                                <?php
-                                    $i++;
-                                //end of loop
-                                }
-                                ?>
-                        </tbody>
-                    </table>
-          </div>
-                
         </div>
-
-        <!--Modal 1-->
-
-
-            <!--Modal 2-->
     </div>
 
           <!-- end: content -->
           <!-- start: Graph -->
+          
 
           <!-- end: Graph -->
         </div>
@@ -312,14 +243,6 @@ if (!isset($_SESSION['logged-in'])){
     <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
     <!--responsive-->
     <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
-    <script>
-      function confirmation(){
-        var result = confirm("Are you sure to delete?");
-        if(result){
-          console.log("Deleted")
-        }
-      }
-  </script>
     <!-- end: JS -->
   </body>
 </html>
