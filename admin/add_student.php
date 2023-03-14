@@ -364,7 +364,7 @@ if(isset($_POST['save'])){
                 </select>
 
                 <?php
-                    if(isset($_POST['save']) && !validate_semester($_POST)){
+                    if(isset($_POST['save']) && !validate_adviser($_POST)){
                 ?>
                       <p class="error">Please choose from the Dropdown</p>
                 <?php
@@ -378,7 +378,7 @@ if(isset($_POST['save'])){
                 </select>
 
                 <?php
-                    if(isset($_POST['save']) && !validate_semester($_POST)){
+                    if(isset($_POST['save']) && !validate_group_no($_POST)){
                 ?>
                       <p class="error">Please choose from the Dropdown</p>
                 <?php
