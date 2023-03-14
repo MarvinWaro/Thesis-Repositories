@@ -197,6 +197,8 @@
             </div>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li><a class="dropdown-item" href="#">Settings</a></li>
+              <hr class="w-100">
               <li><a class="dropdown-item" href="../login/logout.php">Logout </a></li>
             </ul>
           </div>

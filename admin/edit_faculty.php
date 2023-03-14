@@ -251,7 +251,7 @@ if(isset($_POST['save'])){
 
                   <div class="d-flex justify-content-between pt-2 pb-3">
                       <h3>Update Faculty</h3>
-                      <a href="manage_faculty.php"><i class="ri-arrow-go-back-line back pb-2"></i></a>
+                      <a href="manage_faculty.php"><i class="ri-arrow-go-back-line back pb-2"></i>Back</a>
                   </div>
 
                   <input type="text" hidden name="faculty-id" value="<?php echo $data['id']; ?>">

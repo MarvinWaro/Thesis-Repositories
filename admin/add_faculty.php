@@ -1,6 +1,7 @@
 
     <?php
 
+require_once '../tools/functions.php';
 require_once '../class/database.php';
 require_once '../class/faculty.class.php';
 
@@ -26,7 +27,7 @@ if(isset($_POST['save'])){
   $faculty->password = htmlentities($_POST['password']);
   $faculty->department = htmlentities($_POST['department']);
   $faculty->type = $_POST['type'];
-  if(isset($_POST)){
+  if(validate_add_faculty($_POST)){
       if($faculty->add()){
           //redirect user to create page after saving
           header('location: manage_faculty.php');
@@ -236,26 +237,64 @@ if(isset($_POST['save'])){
 
                       <div class="d-flex justify-content-between pt-2 pb-3">
                           <h3>Add Faculty</h3>
-                          <a href="manage_faculty.php"><i class="ri-arrow-go-back-line back pb-2"></i></a>
+                          <a href="manage_faculty.php"><i class="ri-arrow-go-back-line back pb-2">Back</i></a>
                       </div>
 
                     <div class="cont">
                     <label for="firstname">First Name</label>
-                    <input class="form-input me-2" type="text" id="firstname" name="firstname" placeholder="Enter First name*" required value="<?php if(isset($_POST['firstname'])) { echo $_POST['firstname']; } ?>">
+                    <input class="form-input me-2" type="text" id="firstname" name="firstname" placeholder="Enter First name*"  value="<?php if(isset($_POST['firstname'])) { echo $_POST['firstname']; } ?>">
+                    
+                    <?php
+                        if(isset($_POST['save']) && !validate_first_name($_POST)){
+                    ?>
+                                <p class="error">First name is invalid. Trailing spaces will be ignored.</p>
+                    <?php
+                        }
+                    ?>
+
+
                     <label for="middle_name">Middle Name</label>
                     <input class="form-input" type="text" id="middle_name" name="middle_name" placeholder="Enter Middle name (optional)*" value="<?php if(isset($_POST['middle_name'])) { echo $_POST['middle_name']; } ?>">
                     </div>
 
                     <div class="cont">
                     <label for="lastname">Last Name</label>
-                    <input class="form-input me-2" type="text" id="lastname" name="lastname" placeholder="Enter Last name*" required value="<?php if(isset($_POST['lastname'])) { echo $_POST['lastname']; } ?>">
+                    <input class="form-input me-2" type="text" id="lastname" name="lastname" placeholder="Enter Last name*"  value="<?php if(isset($_POST['lastname'])) { echo $_POST['lastname']; } ?>">
+                    
+                    <?php
+                        if(isset($_POST['save']) && !validate_last_name($_POST)){
+                    ?>
+                                <p class="error">Last name is invalid. Trailing spaces will be ignored.</p>
+                    <?php
+                        }
+                    ?>
+
+                    
                     <label for="username">Username</label>
-                    <input class="form-input" type="text" id="username" name="username" placeholder="Enter Username*" required value="<?php if(isset($_POST['username'])) { echo $_POST['username']; } ?>">
+                    <input class="form-input" type="text" id="username" name="username" placeholder="Enter Username*"  value="<?php if(isset($_POST['username'])) { echo $_POST['username']; } ?>">
                     </div>
+
+                    <?php
+                        if(isset($_POST['save']) && !validate_username($_POST)){
+                    ?>
+                                <p class="error">Username is invalid. Trailing spaces will be ignored.</p>
+                    <?php
+                        }
+                    ?>
 
                     <div class="cont">
                     <label for="email">Email </label>
                     <input class="form-input me-2" type="email" id="email" name="email" placeholder="Enter Email*" required value="<?php if(isset($_POST['email'])) { echo $_POST['email']; } ?>">
+                    
+                    <?php
+                        if(isset($_POST['save']) && !validate_email($_POST)){
+                    ?>
+                        <p class="error">Email is invalid. Use only @wmsu.edu.ph</p>
+                    <?php
+                        }
+                    ?>
+
+                    
                     <label for="password">Password</label>
                     <input class="form-input" type="password" id="password" name="password" placeholder="Enter password" required value="<?php if(isset($_POST['password'])) { echo $_POST['password']; } ?>">
                     </div>

@@ -34,7 +34,7 @@
       $student->your_adviser = htmlentities($_POST['your_adviser']);
       $student->your_group = htmlentities($_POST['your_group']);
       $student->type = $_POST['type'];
-      if(validate_add_student($_POST)){
+      if(isset($_POST)){
           if($student->edit_student()){
               //redirect user to create page after saving
               header('location: manage_students.php');
@@ -260,7 +260,7 @@
                   <form class="edit-form" action="edit_student.php" method="POST">
                     <div class="d-flex justify-content-between pt-2 pb-3">
                         <h3>Update Student</h3>
-                        <a href="manage_students.php"><i class="ri-arrow-go-back-line back pb-2"></i></a>
+                        <a href="manage_students.php"><i class="ri-arrow-go-back-line back pb-2"></i>Back</a>
                     </div>
 
                       <input type="text" hidden name="student-id" value="<?php echo $data['id']; ?>">
@@ -331,6 +331,13 @@
                           <option value="BSIT" <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'BSCS') echo ' selected="selected"'; } else { echo $data['course']; }?> >BSCS</option>
                           <option value="BSCS" <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'BSIT') echo ' selected="selected"'; } else { echo $data['course']; }?> >BSIT</option>
                       </select>
+                      <?php
+                        if(isset($_POST['save']) && !validate_course($_POST)){
+                      ?>
+                        <p class="error">Please select a course from the dropdown.</p>
+                      <?php
+                          }
+                      ?>
                       </div>
 
                       
@@ -393,9 +400,9 @@
 
 
                       <label for="type">Regular?</label>
-                      <input type="radio" name="type" id="student" value="student" <?php if(isset($_POST['type'])) { if ($_POST['type'] == 'student') echo ' checked'; } ?>>
+                      <input type="radio" name="type" id="student" required value="student" <?php if(isset($_POST['type'])) { if ($_POST['type'] == 'student') echo ' checked'; } ?>>
                       <label for="type">Irregular?</label>
-                      <input type="radio" name="type" id="student" value="student" <?php if(isset($_POST['type'])) { if ($_POST['type'] == 'student') echo ' checked'; } ?>>
+                      <input type="radio" name="type" id="student" required value="student" <?php if(isset($_POST['type'])) { if ($_POST['type'] == 'student') echo ' checked'; } ?>>
                       <br>
 
                       <div class="pbutton">

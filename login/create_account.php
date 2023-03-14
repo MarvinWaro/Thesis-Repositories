@@ -145,6 +145,12 @@
                 <option value="BSCS" <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'BSCS') echo ' selected="selected"'; } ?>>BSCS</option>
               </select>
           </div>
+
+
+          
+
+
+
           <div class="input-box">
             <span class="details">Year & Section</span>
             <select name="year_and_section" id="year_and_section">

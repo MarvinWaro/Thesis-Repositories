@@ -25,13 +25,14 @@ if(isset($_POST['save'])){
     $student->username = htmlentities($_POST['username']);
     $student->email = htmlentities($_POST['email']);
     $student->password = htmlentities($_POST['password']);
-    $student->course = htmlentities($_POST['course']);
-    $student->year_and_section = htmlentities($_POST['year_and_section']);
+    $student->course = $_POST['course'];
+    $student->year_and_section = $_POST['year_and_section'];
     $student->sem = htmlentities($_POST['sem']);
     $student->school_year = htmlentities($_POST['school_year']);
     $student->your_adviser = htmlentities($_POST['your_adviser']);
     $student->your_group = htmlentities($_POST['your_group']);
-    $student->type = $_POST['type'];
+    $student->type = htmlentities($_POST['type']);
+
 
     if(validate_add_student($_POST)){
         if($student->add()){
@@ -244,7 +245,7 @@ if(isset($_POST['save'])){
 
                 <div class="d-flex justify-content-between pt-2 pb-3">
                     <h3>Add Student</h3>
-                    <a href="manage_students.php"><i class="ri-arrow-go-back-line back pb-2"></i></a>
+                    <a href="manage_students.php"><i class="ri-arrow-go-back-line back pb-2">Back</i></a>
                 </div>
 
                 <div class="cont">
@@ -278,7 +279,7 @@ if(isset($_POST['save'])){
                 <label for="username">Username</label>
                 <input class="form-input" type="text" id="username" name="username" placeholder="Enter Username*" value="<?php if(isset($_POST['username'])) { echo $_POST['username']; } ?>">
                 </div>
-                    <?php
+                        <?php
                             if(isset($_POST['save']) && !validate_username($_POST)){
                         ?>
                                     <p class="error">Username is invalid. Trailing spaces will be ignored.</p>
@@ -310,8 +311,13 @@ if(isset($_POST['save'])){
                     <option value="BSCS" <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'BSIT') echo ' selected="selected"'; } ?>>BSCS</option>
                 </select>
 
-                
-          
+                <?php
+                    if(isset($_POST['save']) && !validate_course($_POST)){
+                ?>
+                      <p class="error">Please choose from the Dropdown</p>
+                <?php
+                    }
+                ?>
 
 
                 <label for="year_and_section">Year & Section</label>
@@ -324,6 +330,14 @@ if(isset($_POST['save'])){
                     <option value="4-B" <?php if(isset($_POST['year_and_section'])) { if ($_POST['year_and_section'] == '4-B') echo ' selected="selected"'; } ?>>4-B</option>
                 </select>
 
+                <?php
+                    if(isset($_POST['save']) && !validate_year_and_section($_POST)){
+                ?>
+                      <p class="error">Please choose from the Dropdown</p>
+                <?php
+                    }
+                ?>
+
 
 
                 <label for="sem">Semester</label>
@@ -333,7 +347,13 @@ if(isset($_POST['save'])){
                     <option value="Second Semester" <?php if(isset($_POST['sem'])) { if ($_POST['sem'] == 'Second Semester') echo ' selected="selected"'; } ?>>Second Semester</option>
                 </select>
 
-     
+                <?php
+                    if(isset($_POST['save']) && !validate_semester($_POST)){
+                ?>
+                      <p class="error">Please choose from the Dropdown</p>
+                <?php
+                    }
+                ?>
 
 
                 <label for="your_adviser">Adviser</label>
@@ -343,7 +363,13 @@ if(isset($_POST['save'])){
                     <option value="Marjorie Rojas" <?php if(isset($_POST['your_adviser'])) { if ($_POST['your_adviser'] == 'Marjorie Rojas') echo ' selected="selected"'; } ?>>Marjorie Rojas</option>
                 </select>
 
-
+                <?php
+                    if(isset($_POST['save']) && !validate_semester($_POST)){
+                ?>
+                      <p class="error">Please choose from the Dropdown</p>
+                <?php
+                    }
+                ?>
 
                 <label for="your_group">Group no.</label>
                 <select name="your_group" id="your_group">
@@ -351,7 +377,13 @@ if(isset($_POST['save'])){
                     <option value="1" <?php if(isset($_POST['your_group'])) { if ($_POST['your_group'] == '1') echo ' selected="selected"'; } ?>>Group 1</option>
                 </select>
 
-    
+                <?php
+                    if(isset($_POST['save']) && !validate_semester($_POST)){
+                ?>
+                      <p class="error">Please choose from the Dropdown</p>
+                <?php
+                    }
+                ?>
 
                 <label for="school_year">School Year</label>
                 <select name="school_year" id="school_year">
@@ -361,9 +393,9 @@ if(isset($_POST['save'])){
 
 
                 <label for="type">Regular?</label>
-                <input type="radio" name="type" id="student" value="student" <?php if(isset($_POST['type'])) { if ($_POST['type'] == 'student') echo ' checked'; } ?>>
+                <input type="radio" name="type" id="student" required value="student" <?php if(isset($_POST['type'])) { if ($_POST['type'] == 'student') echo ' checked'; } ?>>
                 <label for="type">Irregular?</label>
-                <input type="radio" name="type" id="student" value="student" <?php if(isset($_POST['type'])) { if ($_POST['type'] == 'student') echo ' checked'; } ?>>
+                <input type="radio" name="type" id="student" required value="student" <?php if(isset($_POST['type'])) { if ($_POST['type'] == 'student') echo ' checked'; } ?>>
 
                     <div class="pbutton">
                         <input class="save-btn form-input" type="submit" value="Save" name="save">
