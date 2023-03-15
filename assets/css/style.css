@@ -939,5 +939,11 @@ form .error {
     font-size: 15px;
   }
 
+  #upload{
+    border-radius: 5px;
+    outline: none;
+    border: none;
+  }
+
 
 
