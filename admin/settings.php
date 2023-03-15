@@ -60,7 +60,7 @@
 
         <li class="sidebar-menu-divider mt-3 mb-1 text-uppercase">Thesis</li>
 
-        <li class="sidebar-menu-item active">
+        <li class="sidebar-menu-item">
           <a href="archives.php">
             <i class="ri-archive-drawer-line sidebar-menu-item-icon"></i>
             Archives
@@ -122,7 +122,7 @@
         <!-- start: Navbar -->
         <nav class="px-3 py-2 bg-white rounded shadow-sm">
           <i class="ri-menu-line sidebar-toggle me-3 d-block d-md-none"></i>
-          <h5 class="fw-bold mb-0 me-auto">Archives</h5>
+          <h5 class="fw-bold mb-0 me-auto">Settings</h5>
           <div class="dropdown me-3 d-none d-sm-block">
             <div
               class="cursor-pointer dropdown-toggle navbar-link"
@@ -211,79 +211,15 @@
 
         <!-- start: Content -->
         <div class="py-4">
-          <!-- start: content -->
-          <div class="container">
+            <div class="main-content border">
 
-                <table id="example" class="table table-striped" style="width:100%">
-                    <thead id="head">
-                        <tr>
-                            <th>#</th>
-                            <th>Titles</th>
-                            <th>Department</th>
-                            <th>Section</th>
-                            <th>Date of Upload</th>
-                            <th>Semester</th>
-                            <th>Grade</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>System Architect</td>
-                            <td>BSCS</td>
-                            <td>B</td>
-                            <td>2011-04-25</td>
-                            <td>First Semester</td>
-                            <td>89%</td>
-                            <td>
-                                <div class="actions">
-                                    <a class="action-view" href="#"><i class="ri-eye-line"></i></a>
-                                    <a class="action-edit" href="#"><i class="ri-edit-line"></i></a>
-                                    <a class="action-delete" href="#"><i class="ri-delete-bin-line"></i></a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Software Engineering</td>
-                            <td>BSCS</td>
-                            <td>B</td>
-                            <td>2011-04-25</td>
-                            <td>First Semester</td>
-                            <td>89%</td>
-                            <td>
-                                <div class="actions">
-                                    <a class="action-view" href="#"><i class="ri-eye-line"></i></a>
-                                    <a class="action-edit" href="#"><i class="ri-edit-line"></i></a>
-                                    <a class="action-delete" href="#"><i class="ri-delete-bin-line"></i></a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Cyber Crime</td>
-                            <td>BSCS</td>
-                            <td>B</td>
-                            <td>2011-04-25</td>
-                            <td>First Semester</td>
-                            <td>89%</td>
-                            <td>
-                                <div class="actions">
-                                    <a class="action-view" href="#"><i class="ri-eye-line"></i></a>
-                                    <a class="action-edit" href="#"><i class="ri-edit-line"></i></a>
-                                    <a class="action-delete" href="#"><i class="ri-delete-bin-line"></i></a>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-          </div>
+            </div>
+          <!-- start: content -->
+        </div>
     </div>
 
           <!-- end: content -->
           <!-- start: Graph -->
-          
 
           <!-- end: Graph -->
         </div>
