@@ -26,7 +26,11 @@ if(isset($_POST['save'])){
   $faculty->email = htmlentities($_POST['email']);
   $faculty->password = htmlentities($_POST['password']);
   $faculty->department = htmlentities($_POST['department']);
-  $faculty->type = $_POST['type'];
+  
+  $faculty->type = 'faculty';
+        if(isset($_POST['type'])){
+            $faculty->type = $_POST['type'];
+        }
   if(validate_add_faculty($_POST)){
       if($faculty->add()){
           //redirect user to create page after saving
@@ -304,17 +308,27 @@ if(isset($_POST['save'])){
                     <div class="cont">
                     <label for="department">Department</label>
                     <select name="department" id="department">
-                        <option value="none <?php if(isset($_POST['department'])) { if ($_POST['department'] == 'None') echo ' selected="selected"'; } ?>">--Select Department--</option>
+                    <option value="None" <?php if(isset($_POST['department'])) { if ($_POST['department'] == 'None') echo ' selected="selected"'; } ?>>--Select Department.--</option>
                         <option value="Computer Science" <?php if(isset($_POST['department'])) { if ($_POST['department'] == 'Computer Science') echo ' selected="selected"'; } ?>>Computer Science</option>
                         <option value="Information Technolgy" <?php if(isset($_POST['department'])) { if ($_POST['department'] == 'Information Technology') echo ' selected="selected"'; } ?>>Information Technology</option>
                     </select>
                     </div>
 
-                    <div class="cont">
-                    <label for="type">Active?</label>
-                    <input class="checkbox" type="checkbox" name="type" id="faculty" value="faculty" required <?php if(isset($_POST['type'])) { if ($_POST['type'] == 'faculty') echo ' checked'; } ?>>
-                    </div>
+                    <?php
+                        if(isset($_POST['save']) && !validate_department($_POST)){
+                    ?>
+                        <p class="error">Please Select Department from dropdown to proceed</p>
+                    <?php
+                        }
+                    ?>
 
+                    
+                    <div class="cont">
+                      <label class="container-label label-font">Active
+                        <input type="checkbox" checked="checked" class="checkbox" name="type" id="faculty" value="faculty" <?php if(isset($_POST['type'])) { if ($_POST['type'] == 'faculty') echo ' checked'; } ?>>
+                        <span class="checkmark"></span>
+                      </label>
+                    </div>
                     
                       <div class="pbutton">
                           <input class="save-btn form-input" type="submit" value="Save" name="save">

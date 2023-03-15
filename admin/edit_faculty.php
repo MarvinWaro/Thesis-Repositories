@@ -288,9 +288,13 @@ if(isset($_POST['save'])){
                   </select>
                   </div>
 
+                  
+
                   <div class="cont">
-                  <label for="type">Active?</label>
-                  <input class="checkbox" type="checkbox" name="type" id="faculty" value="faculty" required <?php if(isset($_POST['type'])) { if ($_POST['type'] == 'faculty') echo ' checked'; } ?>>
+                    <label class="container-label label-font">Active
+                      <input type="checkbox" checked="checked" class="checkbox" name="type" id="faculty" value="faculty" required <?php if(isset($_POST['type'])) { if ($_POST['type'] == 'faculty') echo ' checked'; } ?>>
+                      <span class="checkmark"></span>
+                    </label>
                   </div>
 
 

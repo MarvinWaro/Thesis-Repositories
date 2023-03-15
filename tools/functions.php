@@ -111,8 +111,18 @@ function validate_add_student($POST){
 }
 
 
+function validate_department($POST){
+    if(!isset($POST['department'])){
+        return false;
+    }else if(strcmp($POST['department'], 'None') == 0){
+        return false;
+    }
+    return true;
+}
+
+
 function validate_add_faculty($POST){
-    if(!validate_first_name($POST) || !validate_last_name($POST) || !validate_username($POST) || !validate_email($POST)){
+    if(!validate_first_name($POST) || !validate_last_name($POST) || !validate_username($POST) || !validate_email($POST) || !validate_department($POST)){
         return false;
      }
     return true;
