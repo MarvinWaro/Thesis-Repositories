@@ -63,7 +63,8 @@
 
           <hr class="line">
 
-          <a href="../login/login.php" class="btn btn-outline-secondary shadow-sm d-sm d-block me-2">Login</a>
+          <a href="../login/login.php" class="btn btn-outline-secondary shadow-sm d-sm d-block me-2">Student Login</a>
+          <a href="../adviser/login.php" class="btn btn-outline-secondary shadow-sm d-sm d-block me-2">Faculty Login</a>
           <a href="../login/create_account.php" class="btn btn-outline-secondary shadow-sm d-sm d-block me-2">Sign-up</a>
         </div>
       </div>

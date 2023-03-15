@@ -57,14 +57,13 @@
             Home
           </a>
         </li>
-        <li class="sidebar-menu-item active">
+        <li class="sidebar-menu-item">
             <a href="bscs.php">
                 <i class="ri-sticky-note-line sidebar-menu-item-icon"></i>
               BSCS
             </a>
           </li>
-          </li>
-          <li class="sidebar-menu-item">
+          <li class="sidebar-menu-item active">
             <a href="bsit.php">
                 <i class="ri-sticky-note-line sidebar-menu-item-icon"></i>
                 BSIT
@@ -200,7 +199,7 @@
                                     //use as a counter, not required but suggested for the table
                                     $i = 1;
                                     //loop for each record found in the array
-                                    foreach ($student->show_bscs() as $value){ //start of loop
+                                    foreach ($student->show_bsit() as $value){ //start of loop
                                 ?>
                                     <tr>
                                         <!-- always use echo to output PHP values -->

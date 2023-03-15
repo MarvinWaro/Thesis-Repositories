@@ -58,9 +58,16 @@
           </a>
         </li>
         <li class="sidebar-menu-item">
-            <a href="groups.php">
+            <a href="bscs.php">
               <i class="ri-sticky-note-line sidebar-menu-item-icon"></i>
-              Groups
+              BSCS
+            </a>
+          </li>
+          </li>
+          <li class="sidebar-menu-item">
+            <a href="bsit.php">
+                <i class="ri-sticky-note-line sidebar-menu-item-icon"></i>
+                BSIT
             </a>
           </li>
       </ul>

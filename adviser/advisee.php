@@ -1,5 +1,8 @@
 <?php
 
+require_once  '../student/process.php';
+
+
 
         session_start();
         /*
@@ -10,6 +13,8 @@
         if (!isset($_SESSION['logged-in'])){
             header('location: ../login/login.php');
         }
+
+
 
 
 ?>
@@ -57,10 +62,17 @@
             Home
           </a>
         </li>
-        <li class="sidebar-menu-item active">
-            <a href="thesis.php">
+        <li class="sidebar-menu-item">
+            <a href="bscs.php">
+              <i class="ri-sticky-note-line sidebar-menu-item-icon"></i>
+              BSCS
+            </a>
+          </li>
+          </li>
+          <li class="sidebar-menu-item">
+            <a href="bsit.php">
                 <i class="ri-sticky-note-line sidebar-menu-item-icon"></i>
-              Groups
+                BSIT
             </a>
           </li>
       </ul>
@@ -181,7 +193,32 @@
                       <span>Titles</span>
                       <div class="uploading">
                         <div class="mb-3">
-                          <p>link here</p>
+                        
+                            <?php
+                              require_once '../class/dbconfig.php';
+
+                              // Initialize $insert variable
+                              $insert = TRUE;
+
+                              if (isset($_POST['file_submit'])) {
+                                  // ...
+                                  // Your existing file upload code
+                                  // ...
+                              }
+
+                              include '../student/process.php';
+
+                              // Check the value of $insert
+                              if ($insert) {
+                                  $files = scandir("../student/upload/documents");
+                                  if (isset($files[4])) { // Check if there's at least one file in the directory (excluding . and ..)
+                                      $file = $files[4]; // Get the first file from the directory
+                                      ?>
+                                      <a href="../student/upload/documents/<?php echo $file; ?>"><?php echo $file; ?></a>
+                                      <?php
+                                  }
+                              }
+                              ?>
                         </div>
                         <div class="mb-3">
                           <p>link here</p>

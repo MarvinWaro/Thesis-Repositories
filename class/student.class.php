@@ -112,6 +112,24 @@ class Student{
         return $data;
     }
 
+    function show_bscs(){
+        $sql = "SELECT * FROM student WHERE course = 'BSCS';";
+        $query=$this->db->connect()->prepare($sql);
+        if($query->execute()){
+            $data = $query->fetchAll();
+        }
+        return $data;
+    }
+
+    function show_bsit(){
+        $sql = "SELECT * FROM student WHERE course = 'BSIT';";
+        $query=$this->db->connect()->prepare($sql);
+        if($query->execute()){
+            $data = $query->fetchAll();
+        }
+        return $data;
+    }
+
 }
 
 ?>
