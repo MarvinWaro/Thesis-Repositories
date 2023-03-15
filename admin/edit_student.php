@@ -393,17 +393,22 @@
 
                       <div class="cont">
                       <label for="school_year">School Year</label>
-                      <select name="school_year" id="school_year">
+                      <select name="school_year" id="school_year" class="mb-3">
                         <option value="2022-2023" <?php if(isset($_POST['school_year'])) { if ($_POST['school_year'] == '2022-2023') echo ' selected="selected"'; } ?>>2022-2023</option>
                       </select>
                       </div>
 
 
+                      <label class="container-radio label-radio">Regular
+                        <input type="radio" checked="checked" name="type" id="student" required value="student" <?php if(isset($_POST['type'])) { if ($_POST['type'] == 'student') echo ' checked'; } ?>>
+                        <span class="checkmark"></span>
+                      </label>
 
-                      <label for="type">Regular?</label>
-                      <input type="radio" name="type" id="student" required value="student" <?php if(isset($_POST['type'])) { if ($_POST['type'] == 'student') echo ' checked'; } ?>>
-                      <label for="type">Irregular?</label>
-                      <input type="radio" name="type" id="student" required value="student" <?php if(isset($_POST['type'])) { if ($_POST['type'] == 'student') echo ' checked'; } ?>>
+                      <label class="container-radio label-radio">Irregular
+                        <input type="radio"  name="type" id="student" required value="student" <?php if(isset($_POST['type'])) { if ($_POST['type'] == 'student') echo ' checked'; } ?>>
+                        <span class="checkmark"></span>
+                      </label>
+
                       <br>
 
                       <div class="pbutton">
