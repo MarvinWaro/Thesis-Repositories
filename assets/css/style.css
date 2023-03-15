@@ -943,6 +943,12 @@ form .error {
     border-radius: 5px;
     outline: none;
     border: none;
+    font-size: 13px;
+    padding: 4px 9px;
+  }
+
+  #upload:hover{
+    opacity: 79%;
   }
 
 
