@@ -108,7 +108,7 @@
         <li class="sidebar-menu-item">
           <a href="manage_schedules.php">
             <i class="ri-calendar-2-line sidebar-menu-item-icon"></i>
-            Schedules
+            Manage Events
           </a>
         </li>
       </ul>
@@ -212,7 +212,7 @@
         <!-- start: Content -->
         <div class="py-4">
             <div class="main-content border">
-
+                
             </div>
           <!-- start: content -->
         </div>
