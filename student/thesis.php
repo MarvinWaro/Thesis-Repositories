@@ -194,7 +194,7 @@
                   </div>
 
                   <div class="titles-up p-3">
-                      <span>Titles</span>
+                      <span>Title</span>
                       <div class="uploading">
                         <form action="process.php" method="POST" enctype="multipart/form-data">
                           <div class="mb-3">

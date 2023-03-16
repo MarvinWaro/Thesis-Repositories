@@ -750,7 +750,7 @@ a{
 
 .main-content .titles-up .mb-3{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-start;
 }
 
 #file{

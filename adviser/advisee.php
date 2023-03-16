@@ -208,11 +208,13 @@ require_once  '../student/process.php';
 
                               include '../student/process.php';
 
+
+                              
                               // Check the value of $insert
                               if ($insert) {
                                   $files = scandir("../student/upload/documents");
-                                  if (isset($files[4])) { // Check if there's at least one file in the directory (excluding . and ..)
-                                      $file = $files[4]; // Get the first file from the directory
+                                  if (isset($files[6])) { // Check if there's at least one file in the directory (excluding . and ..)
+                                      $file = $files[6]; // Get the first file from the directory
                                       ?>
                                       <a href="../student/upload/documents/<?php echo $file; ?>"><?php echo $file; ?></a>
                                       <?php
