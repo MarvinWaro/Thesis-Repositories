@@ -6,7 +6,7 @@
     --primary-clr: #b38add;
 
     --maincolor: #3C6255;
-    --maincolorb: #244237;
+    --maincolorb: #27463aef;
     --maincolorMdark: #61876E;
     --maincolor_light: rgb(180, 224, 183);
     --cancelcolor: #EB1D36;
@@ -361,15 +361,15 @@
     align-items: center;
     justify-content: center;
     font-size: 1rem;
-    color: #878895;
-    border: 2px solid #878895;
-    opacity: 0.5;
+    color: #ffff;
+    border: 2px solid #ffff;
+    opacity: 100;
     border-radius: 50%;
     background-color: transparent;
     cursor: pointer;
   }
   .add-event:hover {
-    opacity: 1;
+    opacity: 50%;
   }
   .add-event i {
     pointer-events: none;

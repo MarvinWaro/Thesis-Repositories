@@ -44,10 +44,6 @@
     />
 
 
-
-
-
-
     <!-- end: CSS -->
     <title>Thesis Repository </title>
   </head>
