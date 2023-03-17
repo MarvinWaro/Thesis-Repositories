@@ -143,7 +143,7 @@ if(isset($_POST['save'])){
     <li class="sidebar-menu-item">
       <a href="manage_schedules.php">
         <i class="ri-calendar-2-line sidebar-menu-item-icon"></i>
-        Schedules
+        Manage Events
       </a>
     </li>
   </ul>
