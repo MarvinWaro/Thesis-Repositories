@@ -32,7 +32,16 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/calendar.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
     <!-- end: CSS -->
     <title>Thesis Repository</title>
   </head>
@@ -51,16 +60,23 @@
         ></i>
       </div>
       <ul class="sidebar-menu p-3 m-0 mb-0">
-        <li class="sidebar-menu-item ">
+        <li class="sidebar-menu-item active">
           <a href="home.php ">
             <i class="ri-home-8-line sidebar-menu-item-icon"></i>
             Home
           </a>
         </li>
-        <li class="sidebar-menu-item active">
+        <li class="sidebar-menu-item">
             <a href="bscs.php">
+              <i class="ri-sticky-note-line sidebar-menu-item-icon"></i>
+              BSCS
+            </a>
+          </li>
+          </li>
+          <li class="sidebar-menu-item">
+            <a href="bsit.php">
                 <i class="ri-sticky-note-line sidebar-menu-item-icon"></i>
-              Groups
+                BSIT
             </a>
           </li>
       </ul>
@@ -74,7 +90,7 @@
         <!-- start: Navbar -->
         <nav class="px-3 py-2 bg-white rounded shadow-sm">
           <i class="ri-menu-line sidebar-toggle me-3 d-block d-md-none"></i>
-          <h5 class="fw-bold mb-0 me-auto">Home</h5>
+          <h5 class="fw-bold mb-0 me-auto">Home | Panelist</h5>
           <div class="dropdown me-3 d-none d-sm-block">
             <div
               class="cursor-pointer dropdown-toggle navbar-link"
@@ -152,8 +168,11 @@
               />
             </div>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" href="#">Profile</a></li>
-              <li><a class="dropdown-item" href="../login/logout.php">Logout </a></li>
+              <li><a class="dropdown-item" href="#"><i class="ri-user-settings-line me-2"></i>Profile</a></li>
+              <li><a class="dropdown-item" href="../adviser/home.php"><i class="ri-user-shared-2-line me-2"></i>Switch to Adviser</a></li>
+              <li><a class="dropdown-item" href="#"><i class="ri-settings-3-line me-2"></i>Settings</a></li>
+              <hr class="w-100">
+              <li><a class="dropdown-item" href="../login/logout.php"><i class="ri-logout-box-line me-2"></i>Logout</a></li>
             </ul>
           </div>
         </nav>
@@ -163,61 +182,79 @@
         <div class="py-4">
           <!-- start: content -->
 
-          <div class="container padding-bottom">
 
-              <table id="example" class="table table-striped" style="width:100%">
-                  <thead>
-                  <tr>
-                      <th>#</th>
-                      <th>Name</th>
-                      <th>Username</th>
-                      <th>Email</th>
-                      <th>Course</th>
-                      <th>Year</th>
-                      <th>Section</th>
-                      <th>Semester</th>
-                      <th class="action">Action</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                          <?php
-                              require_once '../class/student.class.php';
-
-                              $student = new Student();
-                              //We will now fetch all the records in the array using loop
-                              //use as a counter, not required but suggested for the table
-                              $i = 1;
-                              //loop for each record found in the array
-                              foreach ($student->show() as $value){ //start of loop
-                          ?>
-                              <tr>
-                                  <!-- always use echo to output PHP values -->
-                                  <td><?php echo $i ?></td>
-                                  <td><?php echo $value['lastname'] . ', ' . $value['firstname'] . ' ' . $value['middle_name'] ?></td>
-                                  <td><?php echo $value['username'] ?></td>
-                                  <td><?php echo $value['email'] ?></td>
-                                  <td><?php echo $value['course'] ?></td>
-                                  <td><?php echo $value['year_level'] ?></td>
-                                  <td><?php echo $value['section'] ?></td>
-                                  <td><?php echo $value['sem'] ?></td>
-                                  
-                                      <td>
-                                          <div class="actions">
-                                              <a class="action-view" href="advisee.php"><i class="ri-eye-line"></i></a>
-                                          </div>
-                                      </td>
-                      
-
-                              </tr>
-                          <?php
-                              $i++;
-                          //end of loop
-                          }
-                          ?>
-                  </tbody>
-              </table>
-          </div>
-
+          <div class="container-calendar">
+            <div class="left">
+            <div class="calendar">
+                <div class="month">
+                <i class="fas fa-angle-left prev"></i>
+                <div class="date">december 2015</div>
+                <i class="fas fa-angle-right next"></i>
+                </div>
+                <div class="weekdays">
+                <div>Sun</div>
+                <div>Mon</div>
+                <div>Tue</div>
+                <div>Wed</div>
+                <div>Thu</div>
+                <div>Fri</div>
+                <div>Sat</div>
+                </div>
+                <div class="days"></div>
+                <div class="goto-today">
+                <div class="goto">
+                    <input type="text" placeholder="mm/yyyy" class="date-input" />
+                    <button class="goto-btn">Go</button>
+                </div>
+                <button class="today-btn">Today</button>
+                </div>
+            </div>
+            </div>
+            <div class="right">
+            <div class="today-date">
+                <div class="event-day">wed</div>
+                <div class="event-date">12th december 2022</div>
+            </div>
+            
+            <div class="events"></div>
+            <?php
+                if($_SESSION['user_type'] == 'admin'){ 
+            ?>
+            <div class="add-event-wrapper">
+                <div class="add-event-header">
+                <div class="title">Add Event</div>
+                <i class="fas fa-times close"></i>
+                </div>
+                <div class="add-event-body">
+                <div class="add-event-input">
+                    <input type="text" placeholder="Event Name" class="event-name" />
+                </div>
+                <div class="add-event-input">
+                    <input
+                    type="text"
+                    placeholder="Event Time From"
+                    class="event-time-from"
+                    />
+                </div>
+                <div class="add-event-input">
+                    <input
+                    type="text"
+                    placeholder="Event Time To"
+                    class="event-time-to"
+                    />
+                </div>
+                </div>
+                <div class="add-event-footer">
+                <button class="add-event-btn">Add Event</button>
+                </div>
+            </div>
+            </div>
+            <button class="add-event">
+            <i class="fas fa-plus"></i>
+            </button>
+            <?php
+                }
+            ?>
 
         </div>
 

@@ -159,8 +159,11 @@
               />
             </div>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" href="#">Profile</a></li>
-              <li><a class="dropdown-item" href="../login/logout.php">Logout </a></li>
+              <li><a class="dropdown-item" href="#"><i class="ri-user-settings-line me-2"></i>Profile</a></li>
+              <li><a class="dropdown-item" href="../panel/home.php"><i class="ri-user-shared-2-line me-2"></i>Switch to Panelist</a></li>
+              <li><a class="dropdown-item" href="#"><i class="ri-settings-3-line me-2"></i>Settings</a></li>
+              <hr class="w-100">
+              <li><a class="dropdown-item" href="../login/logout.php"><i class="ri-logout-box-line me-2"></i>Logout</a></li>
             </ul>
           </div>
         </nav>
@@ -180,8 +183,6 @@
                         <tr>
                             <th>#</th>
                             <th>Name</th>
-                            <th>Username</th>
-                            <th>Email</th>
                             <th>Course</th>
                             <th>Year & Section</th>
                             <th>Semester</th>
@@ -206,8 +207,6 @@
                                         <!-- always use echo to output PHP values -->
                                         <td><?php echo $i ?></td>
                                         <td><?php echo $value['lastname'] . ', ' . $value['firstname'] . ' ' . $value['middle_name'] ?></td>
-                                        <td><?php echo $value['username'] ?></td>
-                                        <td><?php echo $value['email'] ?></td>
                                         <td><?php echo $value['course'] ?></td>
                                         <td><?php echo $value['year_and_section'] ?></td>
                                         <td><?php echo $value['sem'] ?></td>

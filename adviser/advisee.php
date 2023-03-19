@@ -164,8 +164,11 @@ require_once  '../student/process.php';
               />
             </div>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" href="#">Profile</a></li>
-              <li><a class="dropdown-item" href="../login/logout.php">Logout </a></li>
+              <li><a class="dropdown-item" href="#"><i class="ri-user-settings-line me-2"></i>Profile</a></li>
+              <li><a class="dropdown-item" href="../panel/home.php"><i class="ri-user-shared-2-line me-2"></i>Switch to Panelist</a></li>
+              <li><a class="dropdown-item" href="#"><i class="ri-settings-3-line me-2"></i>Settings</a></li>
+              <hr class="w-100">
+              <li><a class="dropdown-item" href="../login/logout.php"><i class="ri-logout-box-line me-2"></i>Logout</a></li>
             </ul>
           </div>
         </nav>
@@ -186,6 +189,7 @@ require_once  '../student/process.php';
                           <ul>
                               <li class="pb-1">Marvin Waro</li>
                               <li class="pb-1">Christian Fernandez</li>
+                              <li class="pb-1">Faye Lacsi</li>
                           </ul>
                       </div>
                   </div>
@@ -196,22 +200,25 @@ require_once  '../student/process.php';
                         <div class="mb-3">
                           <p class="me-3">link here pdf only</p>
                           <textarea name="comment" form="usrform">Adviser comment...</textarea>
+                          <input type="submit" name="submit" id="submit" value="Submit">
                         </div>
-                        
+
                         <div class="mb-3">
                           <p class="me-3">link here pdf only</p>
                           <textarea name="comment" form="usrform">Adviser Comment...</textarea>
+                          <input type="submit" name="submit" id="submit" value="Submit">
                         </div>
-                        
+
                         <div class="mb-3">
                           <p class="me-3">link here pdf only</p>
                           <textarea name="comment" form="usrform">Adviser Comment...</textarea>
+                          <input type="submit" name="submit" id="submit" value="Submit">
                         </div>
-                        
+
                       </div>
                   </div>
             </div>
-            
+
 
         </div>
 
