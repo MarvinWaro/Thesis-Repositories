@@ -383,10 +383,7 @@
 
                       <div class="cont">
                       <label for="your_group">Group no.</label>
-                      <select name="your_group" id="your_group">
-                      <option value="None" <?php if(isset($_POST['your_group'])) { if ($_POST['your_group'] == 'None') echo ' selected="selected"'; } ?>>--Select Group No.--</option>
-                        <option value="1" <?php if(isset($_POST['your_group'])) { if ($_POST['your_group'] == '1') echo ' selected="selected"'; } ?>>Group 1</option>
-                      </select>
+                      <input class="form-input" type="number" id="your_group" name="your_group" min="1" required placeholder="Group no.*" value="<?php if(isset($_POST['your_group'])) { echo $_POST['your_group']; }else { echo $data['your_group']; } ?>">
                       </div>
 
                      

@@ -223,19 +223,7 @@
 
           <div class="input-box">
             <span class="details">Your Group</span>
-            <select name="your_group" id="your_group">
-              <option value="None" <?php if(isset($_POST['your_group'])) { if ($_POST['your_group'] == 'None') echo ' selected="selected"'; } ?>>--Select Group No.--</option>
-              <option value="1" <?php if(isset($_POST['your_group'])) { if ($_POST['your_group'] == '1') echo ' selected="selected"'; } ?>>Group 1</option>
-            </select>
-
-
-            <?php
-                    if(isset($_POST['save']) && !validate_group_no($_POST)){
-                ?>
-                      <p class="error">Please choose your group # from the dropdown list to proceed.</p>
-                <?php
-                    }
-                ?>
+            <input class="form-input" type="number" id="your_group" name="your_group" min="1" required placeholder="Group no.*" value="<?php if(isset($_POST['your_group'])) { echo $_POST['your_group']; } ?>">
 
           </div>
 
