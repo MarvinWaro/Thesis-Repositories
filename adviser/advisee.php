@@ -177,6 +177,7 @@ require_once  '../student/process.php';
           <div class="main-content border">
                   <div class="head-number p-3"> 
                       <h2>Group 1</h2>
+                      <h6>>>Course Here<<</h6>
                   </div>
 
                   <div class="members p-3">
@@ -193,41 +194,20 @@ require_once  '../student/process.php';
                       <span>Titles</span>
                       <div class="uploading">
                         <div class="mb-3">
+                          <p class="me-3">link here pdf only</p>
+                          <textarea name="comment" form="usrform">Adviser comment...</textarea>
+                        </div>
                         
-                            <?php
-                              require_once '../class/dbconfig.php';
-
-                              // Initialize $insert variable
-                              $insert = TRUE;
-
-                              if (isset($_POST['file_submit'])) {
-                                  // ...
-                                  // Your existing file upload code
-                                  // ...
-                              }
-
-                              include '../student/process.php';
-
-
-                              
-                              // Check the value of $insert
-                              if ($insert) {
-                                  $files = scandir("../student/upload/documents");
-                                  if (isset($files[6])) { // Check if there's at least one file in the directory (excluding . and ..)
-                                      $file = $files[6]; // Get the first file from the directory
-                                      ?>
-                                      <a href="../student/upload/documents/<?php echo $file; ?>"><?php echo $file; ?></a>
-                                      <?php
-                                  }
-                              }
-                              ?>
-                        </div>
                         <div class="mb-3">
-                          <p>link here</p>
+                          <p class="me-3">link here pdf only</p>
+                          <textarea name="comment" form="usrform">Adviser Comment...</textarea>
                         </div>
+                        
                         <div class="mb-3">
-                          <p>link here</p>
+                          <p class="me-3">link here pdf only</p>
+                          <textarea name="comment" form="usrform">Adviser Comment...</textarea>
                         </div>
+                        
                       </div>
                   </div>
             </div>
