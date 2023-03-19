@@ -189,6 +189,7 @@
                           <ul>
                               <li class="pb-1">Marvin Waro</li>
                               <li class="pb-1">Christian Fernandez</li>
+                              <li class="pb-1">Faye Lacsi</li>
                           </ul>
                       </div>
                   </div>
@@ -199,9 +200,17 @@
                         <form action="process.php" method="POST" enctype="multipart/form-data">
                           <div class="mb-3">
                             <input type="text" name="name_file" id="file" required placeholder="Enter you title here">
-
                             <input class="form-control form-control-sm" type="file" id="formFile" name="myfile" required>
-
+                            </i><input type="submit" name="file_submit" id="upload" value="Submit" >
+                          </div>
+                          <div class="mb-3">
+                            <input type="text" name="name_file" id="file" required placeholder="Enter you title here">
+                            <input class="form-control form-control-sm" type="file" id="formFile" name="myfile" required>
+                            </i><input type="submit" name="file_submit" id="upload" value="Submit" >
+                          </div>
+                          <div class="mb-3">
+                            <input type="text" name="name_file" id="file" required placeholder="Enter you title here">
+                            <input class="form-control form-control-sm" type="file" id="formFile" name="myfile" required>
                             </i><input type="submit" name="file_submit" id="upload" value="Submit" >
                           </div>
                         </form>
