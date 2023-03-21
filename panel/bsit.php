@@ -12,7 +12,6 @@
         }
 
 
-
 ?>
 
 
@@ -35,7 +34,7 @@
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../assets/css/style.css" />
     <!-- end: CSS -->
-    <title>Thesis Repository - Thesis</title>
+    <title>Thesis Repository</title>
   </head>
 
   <body>
@@ -52,30 +51,30 @@
         ></i>
       </div>
       <ul class="sidebar-menu p-3 m-0 mb-0">
-        <li class="sidebar-menu-item">
-          <a href="home.php">
+        <li class="sidebar-menu-item ">
+          <a href="home.php ">
             <i class="ri-home-8-line sidebar-menu-item-icon"></i>
             Home
           </a>
         </li>
-        <li class="sidebar-menu-item active">
-            <a href="thesis.php">
+        <li class="sidebar-menu-item">
+            <a href="bscs.php">
                 <i class="ri-sticky-note-line sidebar-menu-item-icon"></i>
-              Thesis
+              BSCS
             </a>
           </li>
-        <li class="sidebar-menu-item ">
-          <a href="grades.php">
-            <i class="ri-mail-star-line sidebar-menu-item-icon"></i>
-            Grades
-          </a>
-        </li>
-        <li class="sidebar-menu-item ">
-          <a href="archives.php">
-             <i class="ri-archive-drawer-line sidebar-menu-item-icon"></i>
-            Archives
-          </a>
-        </li>
+          <li class="sidebar-menu-item active">
+            <a href="bsit.php">
+                <i class="ri-sticky-note-line sidebar-menu-item-icon"></i>
+                BSIT
+            </a>
+          </li>
+          <li class="sidebar-menu-item">
+            <a href="approved.php">
+                <i class="ri-check-fill sidebar-menu-item-icon"></i>
+                Approved Titles
+            </a>
+          </li>
       </ul>
     </div>
     <div class="sidebar-overlay"></div>
@@ -87,7 +86,7 @@
         <!-- start: Navbar -->
         <nav class="px-3 py-2 bg-white rounded shadow-sm">
           <i class="ri-menu-line sidebar-toggle me-3 d-block d-md-none"></i>
-          <h5 class="fw-bold mb-0 me-auto">Thesis</h5>
+          <h5 class="fw-bold mb-0 me-auto">Home</h5>
           <div class="dropdown me-3 d-none d-sm-block">
             <div
               class="cursor-pointer dropdown-toggle navbar-link"
@@ -161,65 +160,83 @@
               <span class="me-2 d-none d-sm-block"><?php echo $_SESSION['fullname'] ?></span>
               <img
                 class="navbar-profile-image"
-                src="../img/u-icon.png"
-                alt="Image"
+                src="../img/u-icon.png" alt="Image"
               />
             </div>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" href="student_profile.php"><i class="ri-user-settings-line me-2"></i>Profile</a></li>
-              <li><a class="dropdown-item" href="student_settings.php"><i class="ri-settings-3-line me-2"></i>Settings</a></li>
+              <li><a class="dropdown-item" href="#"><i class="ri-user-settings-line me-2"></i>Profile</a></li>
+              <li><a class="dropdown-item" href="../panel/home.php"><i class="ri-user-shared-2-line me-2"></i>Switch to Adviser</a></li>
+              <li><a class="dropdown-item" href="#"><i class="ri-settings-3-line me-2"></i>Settings</a></li>
               <hr class="w-100">
               <li><a class="dropdown-item" href="../login/logout.php"><i class="ri-logout-box-line me-2"></i>Logout</a></li>
             </ul>
           </div>
-          </nav>
-          <!-- end: Navbar -->
+        </nav>
+        <!-- end: Navbar -->
 
-          <!-- start: Content -->
-          <div class="py-4">
-            <!-- start: content -->
-              <div class="main-content border">
-                  <div class="head-number p-3"> 
-                      <h2>Group 1</h2>
+        <!-- start: Content -->
+        <div class="py-4">
+          <!-- start: content -->
+
+          <div class="container padding-bottom">
+                  <div class="head-cont d-flex justify-content-end pb-2">
+                      <a class="btn btn-primary add-button" href="add_student.php">Add new Student</a>
                   </div>
 
-                  <div class="members p-3">
-                      <span>Members</span>
-                      <div class="list-mem pt-2">
-                          <ul>
-                              <li class="pb-1">Marvin Waro</li>
-                              <li class="pb-1">Christian Fernandez</li>
-                              <li class="pb-1">Faye Lacsi</li>
-                          </ul>
-                      </div>
-                  </div>
+                    <table id="example" class="table table-striped" style="width:100%">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Course</th>
+                            <th>Year & Section</th>
+                            <th>Semester</th>
+                            <th>School Year</th>
+                            <th>Adviser</th>
+                            <th>Group #</th>
+                            <th class="action">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                                <?php
+                                    require_once '../class/student.class.php';
 
-                  <div class="titles-up p-3">
-                      <span>Title</span>
-                      <div class="uploading">
-                        <form action="process.php" method="POST" enctype="multipart/form-data">
-                          <div class="mb-3">
-                            <input type="text" name="name_file" id="file" required placeholder="Enter you title here">
-                            <input class="form-control form-control-sm" type="file" id="formFile" name="myfile" required>
-                            </i><input type="submit" name="file_submit" id="upload" value="Submit" >
-                          </div>
-                          <div class="mb-3">
-                            <input type="text" name="name_file" id="file" required placeholder="Enter you title here">
-                            <input class="form-control form-control-sm" type="file" id="formFile" name="myfile" required>
-                            </i><input type="submit" name="file_submit" id="upload" value="Submit" >
-                          </div>
-                          <div class="mb-3">
-                            <input type="text" name="name_file" id="file" required placeholder="Enter you title here">
-                            <input class="form-control form-control-sm" type="file" id="formFile" name="myfile" required>
-                            </i><input type="submit" name="file_submit" id="upload" value="Submit" >
-                          </div>
-                        </form>
+                                    $student = new Student();
+                                    //We will now fetch all the records in the array using loop
+                                    //use as a counter, not required but suggested for the table
+                                    $i = 1;
+                                    //loop for each record found in the array
+                                    foreach ($student->show_bsit() as $value){ //start of loop
+                                ?>
+                                    <tr>
+                                        <!-- always use echo to output PHP values -->
+                                        <td><?php echo $i ?></td>
+                                        <td><?php echo $value['lastname'] . ', ' . $value['firstname'] . ' ' . $value['middle_name'] ?></td>
+                                        <td><?php echo $value['course'] ?></td>
+                                        <td><?php echo $value['year_and_section'] ?></td>
+                                        <td><?php echo $value['sem'] ?></td>
+                                        <td><?php echo $value['school_year'] ?></td>
+                                        <td><?php echo $value['your_adviser'] ?></td>
+                                        <td><?php echo $value['your_group'] ?></td>
 
-                      </div>
-                  </div>
-              </div>
+                                        <td>
+                                            <div class="actions">
+                                            <a class="action-view" href="#"><i class="ri-eye-line"></i></a>
+                                            </div>
+                                        </td>
 
+                                    </tr>
+                                <?php
+                                    $i++;
+                                //end of loop
+                                }
+                                ?>
+                        </tbody>
+                    </table>
           </div>
+
+          
+        </div>
 
           <!-- end: content -->
           <!-- start: Graph -->

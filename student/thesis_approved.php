@@ -176,45 +176,8 @@
 
           <!-- start: Content -->
           <div class="py-4">
-            <!-- start: content -->
-              <div class="main-content border">
-                  <div class="head-number p-3"> 
-                      <h2>Group 1</h2>
-                  </div>
-
-                  <div class="members p-3">
-                      <span>Members</span>
-                      <div class="list-mem pt-2">
-                          <ul>
-                              <li class="pb-1">Marvin Waro</li>
-                              <li class="pb-1">Christian Fernandez</li>
-                          </ul>
-                      </div>
-                  </div>
-
-                  <div class="titles-up p-3">
-                      <span>Titles</span>
-                      <div class="uploading">
-                        <div class="mb-3">
-                          <input type="text" name="file" id="file" placeholder="Enter you title here">
-                          <input class="form-control form-control-sm" type="file" id="formFile">
-                          <i class="ri-upload-2-fill"></i>
-                        </div>
-                        <div class="mb-3">
-                        <input type="text" name="file" id="file" placeholder="Enter you title here">
-                          <input class="form-control form-control-sm" type="file" id="formFile">
-                          <i class="ri-upload-2-fill"></i>
-                        </div>
-                        <div class="mb-3">
-                          <input type="text" name="file" id="file" placeholder="Enter you title here">
-                          <input class="form-control form-control-sm" type="file" id="formFile">
-                          <i class="ri-upload-2-fill"></i>
-                        </div>
-                      </div>
-                  </div>
-              </div>
             
-          </div>
+         </div>
 
           <!-- end: content -->
           <!-- start: Graph -->
