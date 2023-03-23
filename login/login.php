@@ -17,6 +17,8 @@
                   $row=mysqli_fetch_assoc($sql);
                   $_SESSION['logged-in'] = $username;
                   $_SESSION['fullname']=$row['firstname'] . ' ' . $row['lastname'];
+                  $_SESSION['groupnum']=$row['your_group'];
+                  $_SESSION['course']=$row['course'];
                   $_SESSION['user_type'] = $row['type'];
                   //display the appropriate dashboard page for user
                   if (($_SESSION['user_type']) == 'student'){

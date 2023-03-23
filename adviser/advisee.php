@@ -1,8 +1,7 @@
 <?php
 
 require_once  '../student/process.php';
-
-
+require_once '../class/dbconfig.php';
 
         session_start();
         /*
@@ -14,7 +13,42 @@ require_once  '../student/process.php';
             header('location: ../login/login.php');
         }
 
+        if(isset($_GET['file'])){
+            $file_name = basename($_GET['file']);
+            $file_path = '../student/upload/documents/' . $file_name;
 
+            $path_parts = pathinfo($fullPath);
+            echo $file_path;
+            $ext = strtolower($path_parts["extension"]);
+
+            switch ($ext) {
+              case "pdf":
+                $ctype = "application/pdf";
+                break;
+              case "doc":
+                $ctype = "application/msword";
+                break;
+              case "xls":
+                $ctype = "application/vnd.ms-excel";
+                break;
+              default:
+                $ctype = "application/force-download";
+            }
+
+            if(!empty($file_name) && file_exists($file_path)){
+                header('Cache-Control: public');
+                header('Content-Description: File Transfer');
+                header('Content-Disposition: attachment; filename=' . $file_name);
+                header('Content-Type: $ctype' );
+                header('Content-Transfer-Encoding: binary');
+
+                readfile($file_path);
+                exit;
+            }
+            else {
+              echo "Not Found";
+            }
+        }
 
 
 ?>
@@ -179,42 +213,74 @@ require_once  '../student/process.php';
           <!-- start: content -->
           <div class="main-content border">
                   <div class="head-number p-3"> 
-                      <h2>Group 1</h2>
-                      <h6>>>Course Here<<</h6>
+                      <h2>Group <?php echo $_GET['groupnum'] ?></h2>
+                      <h6><?php echo $_GET['course'] ?></h6>
                   </div>
 
                   <div class="members p-3">
                       <span>Members</span>
                       <div class="list-mem pt-2">
                           <ul>
-                              <li class="pb-1">Marvin Waro</li>
-                              <li class="pb-1">Christian Fernandez</li>
-                              <li class="pb-1">Faye Lacsi</li>
+                              <?php
+                              require_once '../class/student.class.php';
+
+                              $student = new Student();
+
+                              foreach ($student->show_group_members($_GET['groupnum'], $_GET['course']) as $value){
+                              ?>
+                                <li class="pb-1"><?php echo $value['firstname']. " " . $value['lastname'] ?></li>
+                              <?php
+                              }
+                              ?>
                           </ul>
                       </div>
                   </div>
 
                   <div class="titles-up p-3">
                       <span>Titles</span>
+                      
                       <div class="uploading">
-                        <div class="mb-3">
-                          <p class="me-3">link here pdf only</p>
-                          <textarea name="comment" form="usrform">Adviser comment...</textarea>
-                          <input type="submit" name="submit" id="submit" value="Submit">
-                        </div>
+                      <?php
+                                    require_once '../class/student.class.php';
 
-                        <div class="mb-3">
-                          <p class="me-3">link here pdf only</p>
-                          <textarea name="comment" form="usrform">Adviser Comment...</textarea>
-                          <input type="submit" name="submit" id="submit" value="Submit">
-                        </div>
+                                    $student = new Student();
+                                    foreach ($student->show_group($_GET['groupnum'], $_GET['course']) as $value){
+                      ?>
+                                    <form action="add_comment.php" method="POST">
+                                      <div class="mb-3">
+                                        <p class="me-3">Title 1: <?php echo $value['title1']?></p>
+                                        <p class="me-3"><a href="advisee.php?file=<?php echo $value['title1_file'] ?>"><?php echo $value['title1_file'] ?></a></p>
+                                        <textarea required class="form-control" name="comment" placeholder="Adviser Comment"><?php echo $value['title1_comment'] ?></textarea>
+                                        <?php ?><input type="submit" name="submit1" id="submit" value="Submit">
+                                        <input type="hidden" name="cGroupNum" value="<?php echo $_GET['groupnum'] ?>">
+                                        <input type="hidden" name="cCourse" value="<?php echo $_GET['course'] ?>">
+                                      </div>
+                                    </form>
+                                      
+                                    <form action="add_comment.php" method="POST">
+                                      <div class="mb-3">
+                                        <p class="me-3">Title 2: <?php echo $value['title2']?></p>
+                                        <p class="me-3"><a href="advisee.php?file=<?php echo $value['title2_file'] ?>"><?php echo $value['title2_file'] ?></a></p>
+                                        <textarea required class="form-control" name="comment" placeholder="Adviser Comment"><?php echo $value['title2_comment'] ?></textarea>
+                                        <input type="submit" name="submit2" id="submit" value="Submit">
+                                        <input type="hidden" name="cGroupNum" value="<?php echo $_GET['groupnum'] ?>">
+                                        <input type="hidden" name="cCourse" value="<?php echo $_GET['course'] ?>">
+                                      </div>
+                                    </form>
 
-                        <div class="mb-3">
-                          <p class="me-3">link here pdf only</p>
-                          <textarea name="comment" form="usrform">Adviser Comment...</textarea>
-                          <input type="submit" name="submit" id="submit" value="Submit">
-                        </div>
-
+                                    <form action="add_comment.php" method="POST">
+                                      <div class="mb-3">
+                                        <p class="me-3">Title 3: <?php echo $value['title3']?></p>
+                                        <p class="me-3"><a href="advisee.php?file=<?php echo $value['title3_file'] ?>"><?php echo $value['title3_file'] ?></a></p>
+                                        <textarea required class="form-control" name="comment" placeholder="Adviser Comment"><?php echo $value['title3_comment'] ?></textarea>
+                                        <input type="submit" name="submit3" id="submit" value="Submit">
+                                        <input type="hidden" name="cGroupNum" value="<?php echo $_GET['groupnum'] ?>">
+                                        <input type="hidden" name="cCourse" value="<?php echo $_GET['course'] ?>">
+                                      </div>
+                                    </form>
+                        <?php
+                                    }
+                        ?>
                       </div>
                   </div>
             </div>

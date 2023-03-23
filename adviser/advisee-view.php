@@ -1,5 +1,7 @@
 <?php
 
+require_once  '../student/process.php';
+require_once '../class/dbconfig.php';
 
         session_start();
         /*
@@ -9,6 +11,43 @@
         */
         if (!isset($_SESSION['logged-in'])){
             header('location: ../login/login.php');
+        }
+
+        if(isset($_GET['file'])){
+            $file_name = basename($_GET['file']);
+            $file_path = '../student/upload/documents/' . $file_name;
+
+            $path_parts = pathinfo($fullPath);
+            echo $file_path;
+            $ext = strtolower($path_parts["extension"]);
+
+            switch ($ext) {
+              case "pdf":
+                $ctype = "application/pdf";
+                break;
+              case "doc":
+                $ctype = "application/msword";
+                break;
+              case "xls":
+                $ctype = "application/vnd.ms-excel";
+                break;
+              default:
+                $ctype = "application/force-download";
+            }
+
+            if(!empty($file_name) && file_exists($file_path)){
+                header('Cache-Control: public');
+                header('Content-Description: File Transfer');
+                header('Content-Disposition: attachment; filename=' . $file_name);
+                header('Content-Type: $ctype' );
+                header('Content-Transfer-Encoding: binary');
+
+                readfile($file_path);
+                exit;
+            }
+            else {
+              echo "Not Found";
+            }
         }
 
 
@@ -52,71 +91,24 @@
       </div>
       <ul class="sidebar-menu p-3 m-0 mb-0">
         <li class="sidebar-menu-item">
-          <a href="dashboard.php">
-            <i class="ri-dashboard-line sidebar-menu-item-icon"></i>
-            Dashboard
+          <a href="home.php ">
+            <i class="ri-home-8-line sidebar-menu-item-icon"></i>
+            Home
           </a>
         </li>
-
-        <li class="sidebar-menu-divider mt-3 mb-1 text-uppercase">Thesis</li>
-
-        <li class="sidebar-menu-item ">
-          <a href="archives.php">
-            <i class="ri-archive-drawer-line sidebar-menu-item-icon"></i>
-            Archives
-          </a>
-        </li>
-        <li class="sidebar-menu-item has-dropdown">
-            <a href="thesis_status.php">
-                <i class="ri-bar-chart-box-line sidebar-menu-item-icon"></i>
-                Thesis Status
-                <i class="ri-arrow-down-s-line sidebar-menu-item-accordion ms-auto"></i>
+        <li class="sidebar-menu-item">
+            <a href="bscs.php">
+              <i class="ri-sticky-note-line sidebar-menu-item-icon"></i>
+              BSCS
             </a>
-            <ul class="sidebar-dropdown-menu">
-                <li class="sidebar-dropdown-menu-item">
-                    <a href="accepted.php">
-                        Accepted Titles
-                    </a>
-                </li>
-                <li class="sidebar-dropdown-menu-item">
-                    <a href="rejected.php">
-                        Rejected Titles
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li class="sidebar-menu-divider mt-3 mb-1 text-uppercase">Manage</li>
-
-        <li class="sidebar-menu-item">
-          <a href="manage_students.php">
-            <i class="ri-user-line sidebar-menu-item-icon"></i>
-            Manage Student
-          </a>
-        </li>
-        <li class="sidebar-menu-item">
-          <a href="manage_groups.php">
-            <i class="ri-group-2-line sidebar-menu-item-icon"></i>
-            Manage Groups
-          </a>
-        </li>
-        <li class="sidebar-menu-item">
-          <a href="manage_faculty.php">
-            <i class="ri-group-line sidebar-menu-item-icon"></i>
-            Manage Faculty
-          </a>
-        </li>
-        <li class="sidebar-menu-item">
-          <a href="manage_rubrics.php">
-            <i class="ri-table-2 sidebar-menu-item-icon"></i>
-            Manage Rubrics
-          </a>
-        </li>
-        <li class="sidebar-menu-item">
-          <a href="manage_schedules.php">
-            <i class="ri-calendar-2-line sidebar-menu-item-icon"></i>
-            Manage Events
-          </a>
-        </li>
+          </li>
+          </li>
+          <li class="sidebar-menu-item">
+            <a href="bsit.php">
+                <i class="ri-sticky-note-line sidebar-menu-item-icon"></i>
+                BSIT
+            </a>
+          </li>
       </ul>
     </div>
     <div class="sidebar-overlay"></div>
@@ -128,7 +120,7 @@
         <!-- start: Navbar -->
         <nav class="px-3 py-2 bg-white rounded shadow-sm">
           <i class="ri-menu-line sidebar-toggle me-3 d-block d-md-none"></i>
-          <h5 class="fw-bold mb-0 me-auto">Rejected Titles</h5>
+          <h5 class="fw-bold mb-0 me-auto">Home</h5>
           <div class="dropdown me-3 d-none d-sm-block">
             <div
               class="cursor-pointer dropdown-toggle navbar-link"
@@ -206,8 +198,9 @@
               />
             </div>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" href="profile.php"><i class="ri-user-settings-line me-2"></i>Profile</a></li>
-              <li><a class="dropdown-item" href="settings.php"><i class="ri-settings-3-line me-2"></i>Settings</a></li>
+              <li><a class="dropdown-item" href="#"><i class="ri-user-settings-line me-2"></i>Profile</a></li>
+              <li><a class="dropdown-item" href="../panel/home.php"><i class="ri-user-shared-2-line me-2"></i>Switch to Panelist</a></li>
+              <li><a class="dropdown-item" href="#"><i class="ri-settings-3-line me-2"></i>Settings</a></li>
               <hr class="w-100">
               <li><a class="dropdown-item" href="../login/logout.php"><i class="ri-logout-box-line me-2"></i>Logout</a></li>
             </ul>
@@ -218,75 +211,79 @@
         <!-- start: Content -->
         <div class="py-4">
           <!-- start: content -->
-          <div class="container">
+          <div class="main-content border">
+                  <div class="head-number p-3"> 
+                      <h2>Group <?php echo $_GET['groupnum'] ?></h2>
+                      <h6><?php echo $_GET['course'] ?></h6>
+                  </div>
 
-                <table id="example" class="table table-striped" style="width:100%">
-                    <thead id="head">
-                        <tr>
-                            <th>#</th>
-                            <th>Titles</th>
-                            <th>Department</th>
-                            <th>Section</th>
-                            <th>Date of Upload</th>
-                            <th>Semester</th>
+                  <div class="members p-3">
+                      <span>Members</span>
+                      <div class="list-mem pt-2">
+                          <ul>
+                              <?php
+                              require_once '../class/student.class.php';
 
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>System Architect</td>
-                            <td>BSCS</td>
-                            <td>B</td>
-                            <td>2011-04-25</td>
-                            <td>First Semester</td>
-                            <td>
-                                <div class="actions">
-                                    <a class="action-view" href="#"><i class="ri-eye-line"></i></a>
-                                    <a class="action-edit" href="#"><i class="ri-edit-line"></i></a>
-                                    <a class="action-delete" href="#"><i class="ri-delete-bin-line"></i></a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Software Engineering</td>
-                            <td>BSCS</td>
-                            <td>B</td>
-                            <td>2011-04-25</td>
-                            <td>First Semester</td>
-                            <td>
-                                <div class="actions">
-                                    <a class="action-view" href="#"><i class="ri-eye-line"></i></a>
-                                    <a class="action-edit" href="#"><i class="ri-edit-line"></i></a>
-                                    <a class="action-delete" href="#"><i class="ri-delete-bin-line"></i></a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Cyber Crime</td>
-                            <td>BSCS</td>
-                            <td>B</td>
-                            <td>2011-04-25</td>
-                            <td>First Semester</td>
-                            <td>
-                                <div class="actions">
-                                    <a class="action-view" href="#"><i class="ri-eye-line"></i></a>
-                                    <a class="action-edit" href="#"><i class="ri-edit-line"></i></a>
-                                    <a class="action-delete" href="#"><i class="ri-delete-bin-line"></i></a>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-          </div>
-    </div>
+                              $student = new Student();
+
+                              foreach ($student->show_group_members($_GET['groupnum'], $_GET['course']) as $value){
+                              ?>
+                                <li class="pb-1"><?php echo $value['firstname']. " " . $value['lastname'] ?></li>
+                              <?php
+                              }
+                              ?>
+                          </ul>
+                      </div>
+                  </div>
+
+                  <div class="titles-up p-3">
+                      <span>Titles</span>
+                      
+                      <div class="uploading">
+                      <?php
+                                    require_once '../class/student.class.php';
+
+                                    $student = new Student();
+                                    foreach ($student->show_group($_GET['groupnum'], $_GET['course']) as $value){
+                      ?>
+                                    <form action="add_comment.php" method="POST">
+                                      <div class="mb-3">
+                                        <p class="me-3">Title 1: <?php echo $value['title1']?></p>
+                                        <p class="me-3"><a href="advisee.php?file=<?php echo $value['title1_file'] ?>"><?php echo $value['title1_file'] ?></a></p>
+                                        <textarea required class="form-control" name="comment" placeholder="Adviser Comment" disabled><?php echo $value['title1_comment'] ?></textarea>
+                                        
+                                      </div>
+                                    </form>
+                                      
+                                    <form action="add_comment.php" method="POST">
+                                      <div class="mb-3">
+                                        <p class="me-3">Title 2: <?php echo $value['title2']?></p>
+                                        <p class="me-3"><a href="advisee.php?file=<?php echo $value['title2_file'] ?>"><?php echo $value['title2_file'] ?></a></p>
+                                        <textarea required class="form-control" name="comment" placeholder="Adviser Comment" disabled><?php echo $value['title2_comment'] ?></textarea>
+                                        
+                                      </div>
+                                    </form>
+
+                                    <form action="add_comment.php" method="POST">
+                                      <div class="mb-3">
+                                        <p class="me-3">Title 3: <?php echo $value['title3']?></p>
+                                        <p class="me-3"><a href="advisee.php?file=<?php echo $value['title3_file'] ?>"><?php echo $value['title3_file'] ?></a></p>
+                                        <textarea required class="form-control" name="comment" placeholder="Adviser Comment" disabled><?php echo $value['title3_comment'] ?></textarea>
+                                        
+                                      </div>
+                                    </form>
+                        <?php
+                                    }
+                        ?>
+                      </div>
+                  </div>
+            </div>
+
+
+        </div>
 
           <!-- end: content -->
           <!-- start: Graph -->
-          
 
           <!-- end: Graph -->
         </div>

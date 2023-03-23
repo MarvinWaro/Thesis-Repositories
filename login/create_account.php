@@ -3,6 +3,7 @@
 
     require_once '../tools/functions.php';
     require_once '../class/database.php';
+    require_once '../class/dbconfig.php';
     require_once '../class/student.class.php';
 
     //we start session since we need to use session values
@@ -34,6 +35,8 @@
             }
         }
     }
+
+    $s =  mysqli_query($conn, "SELECT * FROM faculty");
 
 ?>
 
@@ -199,15 +202,25 @@
 
           </div>
 
+          <div class="input-box">
+            <span class="details">Your Group</span>
+            <input class="form-input" type="number" id="your_group" name="your_group" min="1" required placeholder="Group no.*" value="<?php if(isset($_POST['your_group'])) { echo $_POST['your_group']; } ?>">
+          </div>
+
 
 
           <div class="input-box">
             <span class="details">Your Adviser</span>
             <select name="your_adviser" id="your_adviser">
               <option value="None" <?php if(isset($_POST['your_adviser'])) { if ($_POST['your_adviser'] == 'None') echo ' selected="selected"'; } ?>>--Select Adviser--</option>
-              <option value="Jaydee Ballaho" <?php if(isset($_POST['your_adviser'])) { if ($_POST['your_adviser'] == 'Jaydee Ballaho') echo ' selected="selected"'; } ?>>Jaydee Ballaho</option>
-              <option value="Marjorie Rojas" <?php if(isset($_POST['your_adviser'])) { if ($_POST['your_adviser'] == 'Marjorie Rojas') echo ' selected="selected"'; } ?>>Marjorie Rojas</option>
-            </select>
+              <?php
+                  while($r = mysqli_fetch_array($s)){
+              ?>
+              <option value="<?php echo $r['firstname'] .' '. $r['lastname'];?>" <?php if(isset($_POST['your_adviser'])) { if ($_POST['your_adviser'] == $r['firstname'] .' '. $r['lastname']) echo ' selected="selected"'; } ?>><?php echo$r['firstname'] .' '. $r['lastname'];?> </option>
+              <?php
+                  }
+              ?>
+              </select>
 
             <?php
                     if(isset($_POST['save']) && !validate_adviser($_POST)){
@@ -218,12 +231,6 @@
                 ?>
 
 
-
-          </div>
-
-          <div class="input-box">
-            <span class="details">Your Group</span>
-            <input class="form-input" type="number" id="your_group" name="your_group" min="1" required placeholder="Group no.*" value="<?php if(isset($_POST['your_group'])) { echo $_POST['your_group']; } ?>">
 
           </div>
 

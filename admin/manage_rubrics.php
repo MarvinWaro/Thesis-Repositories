@@ -85,10 +85,16 @@
             </ul>
         </li>
         <li class="sidebar-menu-divider mt-3 mb-1 text-uppercase">Manage</li>
-        <li class="sidebar-menu-item has-dropdown">
+        <li class="sidebar-menu-item">
           <a href="manage_students.php">
             <i class="ri-user-line sidebar-menu-item-icon"></i>
             Manage Student
+          </a>
+        </li>
+        <li class="sidebar-menu-item">
+          <a href="manage_groups.php">
+            <i class="ri-group-2-line sidebar-menu-item-icon"></i>
+            Manage Groups
           </a>
         </li>
         <li class="sidebar-menu-item">
@@ -98,7 +104,7 @@
           </a>
         </li>
         <li class="sidebar-menu-item active">
-          <a href="manage_rubrics.html">
+          <a href="manage_rubrics.php">
             <i class="ri-table-2 sidebar-menu-item-icon"></i>
             Manage Rubrics
           </a>

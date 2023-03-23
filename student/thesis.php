@@ -11,6 +11,7 @@
             header('location: ../login/login.php');
         }
 
+        
 
 
 ?>
@@ -180,41 +181,142 @@
             <!-- start: content -->
               <div class="main-content border">
                   <div class="head-number p-3"> 
-                      <h2>Group 1</h2>
+                      <h2>Group <?php echo $_SESSION['groupnum'] ?></h2>
                   </div>
 
                   <div class="members p-3">
                       <span>Members</span>
                       <div class="list-mem pt-2">
                           <ul>
-                              <li class="pb-1">Marvin Waro</li>
-                              <li class="pb-1">Christian Fernandez</li>
-                              <li class="pb-1">Faye Lacsi</li>
+                              <?php
+                              require_once '../class/student.class.php';
+
+                              $student = new Student();
+
+                              foreach ($student->show_group_members($_SESSION['groupnum'], $_SESSION['course']) as $value){
+                              ?>
+                                <li class="pb-1"><?php echo $value['firstname']. " " . $value['lastname'] ?></li>
+                              <?php
+                              }
+                              ?>
                           </ul>
                       </div>
                   </div>
 
-                  <div class="titles-up p-3">
+                  <div class="titles-up p-3" style="max-width:100% !important;">
                       <span>Title</span>
                       <div class="uploading">
-                        <form action="process.php" method="POST" enctype="multipart/form-data">
-                          <div class="mb-3">
-                            <input type="text" name="name_file" id="file" required placeholder="Enter you title here">
-                            <input class="form-control form-control-sm" type="file" id="formFile" name="myfile" required>
-                            </i><input type="submit" name="file_submit" id="upload" value="Submit" >
-                          </div>
-                          <div class="mb-3">
-                            <input type="text" name="name_file" id="file" required placeholder="Enter you title here">
-                            <input class="form-control form-control-sm" type="file" id="formFile" name="myfile" required>
-                            </i><input type="submit" name="file_submit" id="upload" value="Submit" >
-                          </div>
-                          <div class="mb-3">
-                            <input type="text" name="name_file" id="file" required placeholder="Enter you title here">
-                            <input class="form-control form-control-sm" type="file" id="formFile" name="myfile" required>
-                            </i><input type="submit" name="file_submit" id="upload" value="Submit" >
-                          </div>
-                        </form>
+                      <?php
+                                    require_once '../class/student.class.php';
 
+                                    $student = new Student();
+
+                                    foreach ($student->show_group($_SESSION['groupnum'], $_SESSION['course']) as $value){
+                      ?>
+                                      <form action="fileupload.php" method="POST" enctype="multipart/form-data">
+                                        <div class="mb-3" style="margin-top: 25px">
+                                          <input type="text" name="name_file1" id="file" required placeholder="Enter you title here" 
+                                          <?php
+                                            if($value['title1'] != null){
+                                          ?>
+                                              value="<?php echo $value['title1'] ?>"
+                                          <?php
+                                            }
+                                          ?>
+                                          >
+                                          <?php
+                                            if($value['title1_file'] != null){
+                                              
+                                          ?>
+                                              <h6 style="font-size: 15px; margin-top: 5px; margin-left: 5px; margin-right: 5px; max-width: 300px">Current File: <?php echo $value['title1_file']; ?></h6>
+                                          <?php
+                                            } 
+                                          ?>
+                                          <input class="form-control form-control-sm" type="file" id="formFile" name="myfile" style="max-width: 30%" required>
+                                          </i><input type="submit" name="file_submit1" id="upload" value="Submit" >
+                                        </div>
+                                        <div class="comment-div">
+                                            <h6 style="font-size: 14px; margin-top:-10px"><?php 
+                                              if($value['title1_comment'] != null){
+                                                echo "Adviser Comment: <b>" . $value['title1_comment'] . "</b>";
+                                              }
+                                              else {
+                                                echo "Adviser has no comment yet.";
+                                              }
+                                            ?></h6>
+                                        </div>
+                                      </form>
+
+                                      <form action="fileupload.php" method="POST" enctype="multipart/form-data">
+                                        <div class="mb-3" style="margin-top: 25px">
+                                          <input type="text" name="name_file2" id="file" required placeholder="Enter you title here" 
+                                          <?php
+                                            if($value['title2'] != null){
+                                          ?>
+                                              value="<?php echo $value['title2'] ?>"
+                                          <?php
+                                            }
+                                          ?>
+                                          >
+                                          <?php
+                                            if($value['title2_file'] != null){
+                                              
+                                          ?>
+                                              <h6 style="margin-top: 5px; margin-left: 5px; margin-right: 5px; max-width: 300px">Current File: <?php echo $value['title2_file']; ?></h6>
+                                          <?php
+                                            } 
+                                          ?>
+                                          <input class="form-control form-control-sm" type="file" id="formFile" name="myfile" style="max-width: 30%" required>
+                                          </i><input type="submit" name="file_submit2" id="upload" value="Submit" >
+                                        </div>
+                                        <div class="comment-div">
+                                            <h6 style="font-size: 14px; margin-top:-10px"><?php 
+                                              if($value['title2_comment'] != null){
+                                                echo "Adviser Comment: <b>" . $value['title2_comment'] . "</b>";
+                                              }
+                                              else {
+                                                echo "Adviser has no comment yet.";
+                                              }
+                                            ?></h6>
+                                        </div>
+                                      </form>
+
+                                      <form action="fileupload.php" method="POST" enctype="multipart/form-data">
+                                        <div class="mb-3" style="margin-top: 25px">
+                                          <input type="text" name="name_file3" id="file" required placeholder="Enter you title here" 
+                                          <?php
+                                            if($value['title3'] != null){
+                                          ?>
+                                              value="<?php echo $value['title3'] ?>"
+                                          <?php
+                                            }
+                                          ?>
+                                          >
+                                          <?php
+                                            if($value['title3_file'] != null){
+                                              
+                                          ?>
+                                              <h6 style="margin-top: 5px; margin-left: 5px; margin-right: 5px; max-width: 300px">Current File: <?php echo $value['title3_file']; ?></h6>
+                                          <?php
+                                            } 
+                                          ?>
+                                          <input class="form-control form-control-sm" type="file" id="formFile" name="myfile" style="max-width: 30%" required>
+                                          </i><input type="submit" name="file_submit3" id="upload" value="Submit" >
+                                        </div>
+                                        <div class="comment-div">
+                                            <h6 style="font-size: 14px; margin-top:-10px"><?php 
+                                              if($value['title3_comment'] != null){
+                                                echo "Adviser Comment: <b>" . $value['title3_comment'] . "</b>";
+                                              }
+                                              else {
+                                                echo "Adviser has no comment yet.";
+                                              }
+                                            ?></h6>
+                                        </div>
+                                      </form>
+                      <?php
+                                    }
+                      ?>
                       </div>
                   </div>
               </div>

@@ -99,8 +99,14 @@ if (!isset($_SESSION['logged-in'])){
             Manage Student
           </a>
         </li>
+        <li class="sidebar-menu-item">
+          <a href="manage_groups.php">
+            <i class="ri-group-2-line sidebar-menu-item-icon"></i>
+            Manage Groups
+          </a>
+        </li>
         <li class="sidebar-menu-item active">
-          <a href="manage_faculty.php active">
+          <a href="manage_faculty.php">
             <i class="ri-group-line sidebar-menu-item-icon"></i>
             Manage Faculty
           </a>

@@ -173,21 +173,14 @@
           <!-- start: content -->
 
           <div class="container padding-bottom">
-                  <div class="head-cont d-flex justify-content-end pb-2">
-                      <a class="btn btn-primary add-button" href="add_student.php">Add new Student</a>
-                  </div>
+
 
                     <table id="example" class="table table-striped" style="width:100%">
                         <thead>
                         <tr>
-                            <th>#</th>
-                            <th>Name</th>
-                            <th>Course</th>
-                            <th>Year & Section</th>
-                            <th>Semester</th>
-                            <th>School Year</th>
-                            <th>Adviser</th>
                             <th>Group #</th>
+                            <th>Curriculum</th>
+                            <th>Adviser</th>
                             <th class="action">Action</th>
                         </tr>
                         </thead>
@@ -200,27 +193,46 @@
                                     //use as a counter, not required but suggested for the table
                                     $i = 1;
                                     //loop for each record found in the array
-                                    foreach ($student->show_bsit() as $value){ //start of loop
+                                    foreach ($student->show_all_groups() as $value){ //start of loop
+                                      if($value['curriculum'] == "BSIT"){
                                 ?>
                                     <tr>
                                         <!-- always use echo to output PHP values -->
-                                        <td><?php echo $i ?></td>
-                                        <td><?php echo $value['lastname'] . ', ' . $value['firstname'] . ' ' . $value['middle_name'] ?></td>
-                                        <td><?php echo $value['course'] ?></td>
-                                        <td><?php echo $value['year_and_section'] ?></td>
-                                        <td><?php echo $value['sem'] ?></td>
-                                        <td><?php echo $value['school_year'] ?></td>
-                                        <td><?php echo $value['your_adviser'] ?></td>
-                                        <td><?php echo $value['your_group'] ?></td>
+                                        <td><?php echo "Group " . $value['group_number'] ?></td>
+                                        <td><?php echo $value['curriculum'] ?></td>
+                                        
+                                        <?php
+                                        foreach ($student->get_adviser($value['adviser_id']) as $adviser){
+                                        ?>
+                                          <td><?php echo $adviser['firstname'] . " " . $adviser["lastname"] ?></td>
+                                        <?php
+                                        }
+                                        ?>
 
-                                        <td>
-                                            <div class="actions">
-                                            <a class="action-view" href="advisee.php"><i class="ri-eye-line"></i></a>
-                                            </div>
-                                        </td>
-
+                                        <?php
+                                            if($_SESSION['id'] == $value['adviser_id']){ 
+                                        ?>
+                                            <td>
+                                                <div class="actions">
+                                                    <a class="action-edit" href="advisee.php?groupnum=<?php echo $value['group_number'] ?>&course=<?php echo $value['curriculum'] ?>"><i class="ri-edit-line"></i></a>
+                                                    <a class="action-delete" href="../admin/delete_group.php?id=<?php echo $value['id'] ?>" onclick="return confirm('Are you sure to delete?')"><i class="ri-delete-bin-line"></i></a>
+                                                </div>
+                                            </td>
+                                        <?php
+                                            }
+                                            else {
+                                        ?>
+                                            <td>
+                                                <div class="actions">
+                                                  <a class="action-view" href="advisee-view.php?groupnum=<?php echo $value['group_number'] ?>&course=<?php echo $value['curriculum'] ?>"><i class="ri-eye-line"></i></a>
+                                                </div>
+                                            </td>
+                                        <?php
+                                            }
+                                        ?>
                                     </tr>
                                 <?php
+                                      }
                                     $i++;
                                 //end of loop
                                 }

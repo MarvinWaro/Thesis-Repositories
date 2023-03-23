@@ -746,6 +746,7 @@ a{
 
 .main-content .titles-up .uploading{
     padding-top: 15px;
+    width: 100%;
 }
 
 .main-content .titles-up .mb-3{
@@ -950,6 +951,5 @@ form .error {
   #upload:hover{
     opacity: 79%;
   }
-
 
 

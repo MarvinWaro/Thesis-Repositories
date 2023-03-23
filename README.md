@@ -1,2 +1,2 @@
-# CCS-Thesis_Repository
- Project lng po
+# Thesis-Repo
+ College of Computing Studies Thesis Archiving System

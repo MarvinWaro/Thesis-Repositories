@@ -18,6 +18,7 @@
                   $_SESSION['logged-in'] = $username;
                   $_SESSION['fullname']=$row['firstname'] . ' ' . $row['lastname'];
                   $_SESSION['user_type'] = $row['type'];
+                  $_SESSION['id'] = $row['id'];
                   //display the appropriate dashboard page for user
                   if (($_SESSION['user_type']) == 'faculty'){
                       header('location: ../adviser/home.php');

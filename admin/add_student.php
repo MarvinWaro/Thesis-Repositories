@@ -3,6 +3,7 @@
 
 require_once '../tools/functions.php';
 require_once '../class/database.php';
+require_once '../class/dbconfig.php';
 require_once '../class/student.class.php';
 
 session_start();
@@ -42,7 +43,7 @@ if(isset($_POST['save'])){
     }
 }
 
-
+$s =  mysqli_query($conn, "SELECT * FROM faculty");
 
 ?>
 
@@ -117,29 +118,35 @@ if(isset($_POST['save'])){
     <li class="sidebar-menu-divider mt-3 mb-1 text-uppercase">Manage</li>
 
     <li class="sidebar-menu-item active">
-      <a href="manage_students.php">
-        <i class="ri-user-line sidebar-menu-item-icon"></i>
-        Manage Student
-      </a>
-    </li>
-    <li class="sidebar-menu-item">
-      <a href="manage_faculty.php">
-        <i class="ri-group-line sidebar-menu-item-icon"></i>
-        Manage Faculty
-      </a>
-    </li>
-    <li class="sidebar-menu-item">
-      <a href="manage_rubrics.php">
-        <i class="ri-table-2 sidebar-menu-item-icon"></i>
-        Manage Rubrics
-      </a>
-    </li>
-    <li class="sidebar-menu-item">
-      <a href="manage_schedules.php">
-        <i class="ri-calendar-2-line sidebar-menu-item-icon"></i>
-        Manage Events
-      </a>
-    </li>
+          <a href="manage_students.php">
+            <i class="ri-user-line sidebar-menu-item-icon"></i>
+            Manage Student
+          </a>
+        </li>
+        <li class="sidebar-menu-item">
+          <a href="manage_groups.php">
+            <i class="ri-group-2-line sidebar-menu-item-icon"></i>
+            Manage Groups
+          </a>
+        </li>
+        <li class="sidebar-menu-item">
+          <a href="manage_faculty.php">
+            <i class="ri-group-line sidebar-menu-item-icon"></i>
+            Manage Faculty
+          </a>
+        </li>
+        <li class="sidebar-menu-item">
+          <a href="manage_rubrics.php">
+            <i class="ri-table-2 sidebar-menu-item-icon"></i>
+            Manage Rubrics
+          </a>
+        </li>
+        <li class="sidebar-menu-item">
+          <a href="manage_schedules.php">
+            <i class="ri-calendar-2-line sidebar-menu-item-icon"></i>
+            Manage Events
+          </a>
+        </li>
   </ul>
 </div>
 <div class="sidebar-overlay"></div>
@@ -357,13 +364,22 @@ if(isset($_POST['save'])){
                     }
                 ?>
 
+                <label for="your_group">Group no.</label>
+                <input class="form-input" type="number" id="your_group" name="your_group" min="1" required placeholder="Group no.*" value="<?php if(isset($_POST['your_group'])) { echo $_POST['your_group']; } ?>">
+
+
 
                 <label for="your_adviser">Adviser</label>
                 <select name="your_adviser" id="your_adviser">
                     <option value="None" <?php if(isset($_POST['your_adviser'])) { if ($_POST['your_adviser'] == 'None') echo ' selected="selected"'; } ?>>--Select Adviser--</option>
-                    <option value="Jaydee Ballaho" <?php if(isset($_POST['your_adviser'])) { if ($_POST['your_adviser'] == 'Jaydee Ballaho') echo ' selected="selected"'; } ?>>Jaydee Ballaho</option>
-                    <option value="Marjorie Rojas" <?php if(isset($_POST['your_adviser'])) { if ($_POST['your_adviser'] == 'Marjorie Rojas') echo ' selected="selected"'; } ?>>Marjorie Rojas</option>
-                </select>
+                    <?php
+                    while($r = mysqli_fetch_array($s)){
+                    ?>
+                    <option value="<?php echo $r['firstname'] .' '. $r['lastname'];?>" <?php if(isset($_POST['your_adviser'])) { if ($_POST['your_adviser'] == $r['firstname'] .' '. $r['lastname']) echo ' selected="selected"'; } ?>><?php echo$r['firstname'] .' '. $r['lastname'];?> </option>
+                    <?php
+                        }
+                    ?>
+              </select>
 
                 <?php
                     if(isset($_POST['save']) && !validate_adviser($_POST)){
@@ -372,9 +388,6 @@ if(isset($_POST['save'])){
                 <?php
                     }
                 ?>
-
-                <label for="your_group">Group no.</label>
-                <input class="form-input" type="number" id="your_group" name="your_group" min="1" required placeholder="Group no.*" value="<?php if(isset($_POST['your_group'])) { echo $_POST['your_group']; } ?>">
 
 
                 <label for="school_year">School Year</label>

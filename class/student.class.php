@@ -2,6 +2,7 @@
 
 require_once 'database.php';
 
+
 class Student{
     //attributes
 
@@ -18,6 +19,8 @@ class Student{
     public $your_adviser;
     public $your_group;
     public $type;
+
+    
 
     protected $db;
 
@@ -130,6 +133,111 @@ class Student{
         return $data;
     }
 
+    function add_group($group_number, $curriculum, $adviser_id){
+        
+        $conn = mysqli_connect("localhost","root","","tams");
+        $sql = "INSERT INTO groups (group_number, curriculum, adviser_id) VALUES (?, ?, ?)";
+        $stmt = mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt, $sql)) {
+            ?>
+                <script>
+                    alert("Something Went Wrong!");
+                    window.location.href="../admin/add_group.php";
+                </script>
+            <?php
+            }
+
+        mysqli_stmt_bind_param($stmt, "sss", $group_number, $curriculum, $adviser_id);
+        mysqli_stmt_execute($stmt);
+        $lastID = mysqli_insert_id($conn);
+        mysqli_stmt_close($stmt);
+
+        $this->add_group_files($group_number, $lastID);
+    }
+
+    function add_group_files($group_number, $lastID) {
+        $sql = "INSERT INTO group_files (group_id, group_num) VALUES (:last_group_id, :group_number)";
+        $query=$this->db->connect()->prepare($sql);
+        $query->bindParam(':last_group_id', $lastID);
+        $query->bindParam(':group_number', $group_number);
+        if($query->execute()){
+            return true;
+        } 
+        else {
+            return false;
+        }
+    }
+
+    function show_all_groups(){
+        $sql = "SELECT * FROM groups";
+        $query=$this->db->connect()->prepare($sql);
+        if($query->execute()){
+            $data = $query->fetchAll();
+        }
+        return $data;
+    }
+
+    function show_group($group_id, $curriculum){
+        $sql = "SELECT * FROM group_files WHERE group_id IN (SELECT id FROM groups WHERE group_number = :groupid AND curriculum = :course)";
+        $query=$this->db->connect()->prepare($sql);
+        $query->bindParam(':groupid', $group_id);
+        $query->bindParam(':course', $curriculum);
+        if($query->execute()){
+            $data2 = $query->fetchAll();
+        }
+        return $data2;
+    }
+
+    function show_group_info($group_id){
+        $sql = "SELECT * FROM groups WHERE id = :groupid;";
+        $query=$this->db->connect()->prepare($sql);
+        $query->bindParam(':groupid', $group_id);
+        if($query->execute()){
+            $data = $query->fetchAll();
+        }
+        return $data;
+    }
+
+    function check_if_group_exist($groupnum, $curriculum) {
+        $sql = "SELECT * FROM groups WHERE group_number=:groupnum AND curriculum=:curriculum";
+        $query=$this->db->connect()->prepare($sql);
+        $query->bindParam(':groupnum', $groupnum);
+        $query->bindParam(':curriculum', $curriculum);
+        if($query->execute()){
+            $data = $query->fetchAll();
+        }
+        return $data;
+    }
+
+    function show_group_members($groupnum, $curriculum){
+        $sql = "SELECT * FROM student WHERE your_group=:groupnum AND course=:curriculum";
+        $query=$this->db->connect()->prepare($sql);
+        $query->bindParam(':groupnum', $groupnum);
+        $query->bindParam(':curriculum', $curriculum);
+        if($query->execute()){
+            $data = $query->fetchAll();
+        }
+        return $data;
+    }
+
+    function get_adviser($adviser_id){
+        $sql = "SELECT * FROM faculty WHERE id=:adviser_id";
+        $query=$this->db->connect()->prepare($sql);
+        $query->bindParam(':adviser_id', $adviser_id);
+        if($query->execute()){
+            $data = $query->fetchAll();
+        }
+        return $data;
+    }
+
+    function get_adviser_list(){
+        $sql = "SELECT * FROM faculty";
+        $query=$this->db->connect()->prepare($sql);
+        if($query->execute()){
+            $data = $query->fetchAll();
+        }
+        return $data;
+    }
 }
 
 ?>
