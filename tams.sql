@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 23, 2023 at 03:23 AM
--- Server version: 10.4.21-MariaDB
+-- Generation Time: Mar 23, 2023 at 05:48 AM
+-- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -73,8 +73,9 @@ CREATE TABLE `faculty` (
 INSERT INTO `faculty` (`id`, `firstname`, `middle_name`, `lastname`, `email`, `username`, `password`, `department`, `type`, `created_at`, `updated_at`) VALUES
 (25, 'Jaydee', '', 'Ballaho', 'jaydee@wmsu.edu.ph', 'jaydee', 'jaydee', 'Computer Science', 'faculty', '2023-03-10 16:55:53', '2023-03-10 16:55:53'),
 (26, 'Lucy Felix', '', 'Sadiwa', 'lucy@wmsu.edu.ph', 'lucy', 'lucy', 'Computer Science', 'faculty', '2023-03-11 07:36:13', '2023-03-11 07:36:13'),
-(30, 'Edwin', '', 'Arip', 'edwin@wmsu.edu.ph', 'Edwin09', 'edwin', 'Information Technolgy', 'faculty', '2023-03-14 04:49:48', '2023-03-14 04:50:23'),
-(33, 'Mara Marie', '', 'Liao', 'xt202002177@wmsu.edu.ph', 'Mara09', 'mara', 'Computer Science', 'faculty', '2023-03-15 00:02:21', '2023-03-15 00:02:21');
+(33, 'Mara Marie', '', 'Liao', 'xt202002177@wmsu.edu.ph', 'Mara09', 'mara', 'Computer Science', 'faculty', '2023-03-15 00:02:21', '2023-03-15 00:02:21'),
+(34, 'Jason', '', 'Catadman', 'xt2929290@wmsu.edu.ph', 'jason', 'jason', 'Information Technolgy', 'faculty', '2023-03-23 02:44:43', '2023-03-23 02:44:43'),
+(35, 'Pauleen', '', 'Gregana', 'xct2324342@wmsu.edu.ph', 'pauleen', 'pauleen', 'Information Technolgy', 'faculty', '2023-03-23 02:58:41', '2023-03-23 02:58:41');
 
 -- --------------------------------------------------------
 
@@ -96,7 +97,13 @@ CREATE TABLE `groups` (
 INSERT INTO `groups` (`id`, `group_number`, `curriculum`, `adviser_id`) VALUES
 (29, 1, 'BSCS', 26),
 (30, 2, 'BSCS', 25),
-(31, 1, 'BSIT', 30);
+(32, 3, 'BSCS', 26),
+(33, 4, 'BSCS', 25),
+(34, 5, 'BSCS', 33),
+(35, 1, 'BSIT', 35),
+(36, 2, 'BSIT', 34),
+(37, 3, 'BSIT', 35),
+(38, 4, 'BSIT', 34);
 
 -- --------------------------------------------------------
 
@@ -126,7 +133,13 @@ CREATE TABLE `group_files` (
 INSERT INTO `group_files` (`id`, `group_id`, `group_num`, `title1`, `title1_file`, `title1_comment`, `title2`, `title2_file`, `title2_comment`, `title3`, `title3_file`, `title3_comment`) VALUES
 (22, 29, 1, 'Game Dev is bs', 'qwerty.docx', 'so true', NULL, NULL, NULL, NULL, NULL, NULL),
 (23, 30, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(24, 31, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(25, 32, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(26, 33, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(27, 34, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(28, 35, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(29, 36, 2, 'Arduino Thanos Hand', 'Waro_Activity 1.docx', 'Please Add The Significance of the Study', 'Raspberrypie', 'Waro_Laboratory_Midterm_Project.docx', 'wow nice idea', 'Develpment of chess game', 'Waro_Activity 3.3.pdf', 'wow Auto approve'),
+(30, 37, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(31, 38, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -158,7 +171,10 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`id`, `firstname`, `middle_name`, `lastname`, `username`, `email`, `password`, `type`, `course`, `year_and_section`, `sem`, `school_year`, `your_adviser`, `your_group`, `created_at`, `updated_at`) VALUES
-(91, 'John', 'D', 'Doe', 'johndoe123', 'john.doe@wmsu.edu.ph', '1234', 'admin', 'BSCS', '4-A', 'First Semester', '2022-2023', 'Jaydee Ballaho', 1, '2023-03-23 02:00:23', '2023-03-23 02:00:43');
+(92, 'Christian', '', 'Fernandez', 'yan', 'yan@wmsu.edu.ph', 'yan', 'student', 'BSCS', '3-B', 'First Semester', '2022-2023', 'Lucy Felix Sadiwa', 1, '2023-03-23 03:16:15', '2023-03-23 03:16:15'),
+(93, 'Bernard', '', 'Sanson', 'nard', 'nard@wmsu.edu.ph', 'nard', 'student', 'BSIT', '3-B', 'First Semester', '2022-2023', 'Pauleen Gregana', 1, '2023-03-23 03:17:09', '2023-03-23 03:17:09'),
+(94, 'Joshua', '', 'Bada', 'josh', 'josh@wmsu.edu.ph', 'josh', 'student', 'BSIT', '4-A', 'First Semester', '2022-2023', 'Pauleen Gregana', 1, '2023-03-23 03:22:02', '2023-03-23 03:22:02'),
+(95, 'Joshua', '', 'Blancaflor', 'joshua', 'joshua@wmsu.edu.ph', 'joshua', 'student', 'BSIT', '4-B', 'First Semester', '2022-2023', 'Jason Catadman', 2, '2023-03-23 03:39:06', '2023-03-23 03:49:08');
 
 -- --------------------------------------------------------
 
@@ -280,25 +296,25 @@ ALTER TABLE `archive`
 -- AUTO_INCREMENT for table `faculty`
 --
 ALTER TABLE `faculty`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `group_files`
 --
 ALTER TABLE `group_files`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
 
 --
 -- AUTO_INCREMENT for table `tbl_files`
