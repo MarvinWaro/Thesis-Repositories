@@ -257,6 +257,8 @@ $s =  mysqli_query($conn, "SELECT * FROM faculty");
                     <a href="manage_students.php"><i class="ri-arrow-go-back-line back pb-2">Back</i></a>
                 </div>
 
+                <div class="container-1">
+
                 <div class="cont">
                 <label for="firstname">First Name</label>
                 <input class="form-input" type="text" id="firstname" name="firstname" placeholder="Enter First name*" value="<?php if(isset($_POST['firstname'])) { echo $_POST['firstname']; } ?>">
@@ -312,6 +314,9 @@ $s =  mysqli_query($conn, "SELECT * FROM faculty");
                 <input class="form-input" type="password" id="password" name="password" placeholder="Enter password" required value="<?php if(isset($_POST['password'])) { echo $_POST['password']; } ?>">
                 </div>
 
+                </div><!--container1-->
+
+                <div class="container-2">
 
                 <label for="course">Course</label>
                 <select name="course" id="course">
@@ -395,6 +400,7 @@ $s =  mysqli_query($conn, "SELECT * FROM faculty");
                     <option value="2022-2023" <?php if(isset($_POST['school_year'])) { if ($_POST['school_year'] == '2022-2023') echo ' selected="selected"'; } ?>>2022-2023</option>
                 </select>
 
+                </div> <!--Container 2-->
 
                 <label class="container-radio label-radio">Regular
                   <input type="radio" checked="checked" name="type" id="student" required value="student" <?php if(isset($_POST['type'])) { if ($_POST['type'] == 'student') echo ' checked'; } ?>>

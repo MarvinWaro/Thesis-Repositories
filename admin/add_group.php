@@ -269,6 +269,12 @@ if (isset($_POST['save'])) {
                                     }
                                     ?>
                                 </select>
+
+                                <label for="school_year">School Year</label>
+                                <select name="school_year" id="school_year" class="mb-3">
+                                    <option value="2022-2023">2022-2023</option>
+                                </select>
+
                             </div>
                             <div class="pbutton">
                                 <input class="save-btn form-input" type="submit" value="Save" name="save">

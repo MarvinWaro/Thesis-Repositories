@@ -80,7 +80,7 @@
         <!-- start: Navbar -->
         <nav class="px-3 py-2 bg-white rounded shadow-sm">
           <i class="ri-menu-line sidebar-toggle me-3 d-block d-md-none"></i>
-          <h5 class="fw-bold mb-0 me-auto">Home</h5>
+          <h5 class="fw-bold mb-0 me-auto">BSIT</h5>
           <div class="dropdown me-3 d-none d-sm-block">
             <div
               class="cursor-pointer dropdown-toggle navbar-link"
@@ -181,6 +181,7 @@
                             <th>Group #</th>
                             <th>Curriculum</th>
                             <th>Adviser</th>
+                            <th>School Year</th>
                             <th class="action">Action</th>
                         </tr>
                         </thead>
@@ -208,14 +209,13 @@
                                         <?php
                                         }
                                         ?>
-
+                                        <td>2022-2023</td>
                                         <?php
                                             if($_SESSION['id'] == $value['adviser_id']){ 
                                         ?>
                                             <td>
                                                 <div class="actions">
                                                     <a class="action-edit" href="advisee.php?groupnum=<?php echo $value['group_number'] ?>&course=<?php echo $value['curriculum'] ?>"><i class="ri-edit-line"></i></a>
-                                                    <a class="action-delete" href="../admin/delete_group.php?id=<?php echo $value['id'] ?>" onclick="return confirm('Are you sure to delete?')"><i class="ri-delete-bin-line"></i></a>
                                                 </div>
                                             </td>
                                         <?php

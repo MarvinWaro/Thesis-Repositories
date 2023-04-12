@@ -337,9 +337,9 @@
                       <div class="cont">
                       <label for="course">Course</label>
                       <select name="course" id="course">
-                          <option value="None" <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'None') echo ' selected="selected"'; } ?>>--Select Course--</option>
-                          <option value="BSIT" <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'BSIT') echo ' selected="selected"'; } else { echo $data['course']; }?> >BSIT</option>
-                          <option value="BSCS" <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'BSCS') echo ' selected="selected"'; } else { echo $data['course']; }?> >BSCS</option>
+                          <option value="None" <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'None') echo ' selected="selected"'; } elseif ($data['course'] == 'none') echo ' selected="selected"'; ?>>--Select Course--</option>
+                          <option value="BSIT" <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'BSIT') echo ' selected="selected"'; } elseif ($data['course'] == 'BSIT') echo ' selected="selected"'; ?> >BSIT</option>
+                          <option value="BSCS" <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'BSCS') echo ' selected="selected"'; } elseif ($data['course'] == 'BSCS') echo ' selected="selected"'; ?> >BSCS</option>
                       </select>
                       <?php
                         if(isset($_POST['save']) && !validate_course($_POST)){
@@ -354,39 +354,35 @@
                       <div class="cont">
                       <label for="year_and_section">Year & Section</label>
                       <select name="year_and_section" id="year_and_section">
-                          <option value="None" <?php if(isset($_POST['year_and_section'])) { if ($_POST['year_and_section'] == 'None') echo ' selected="selected"'; } ?>>--Select Year & Section--</option>
-                          <option value="3-A" <?php if(isset($_POST['year_and_section'])) { if ($_POST['year_and_section'] == '3-A') echo ' selected="selected"'; } ?>>3-A</option>
-                          <option value="3-B" <?php if(isset($_POST['year_and_section'])) { if ($_POST['year_and_section'] == '3-B') echo ' selected="selected"'; } ?>>3-B</option>
-                          <option value="3-C" <?php if(isset($_POST['year_and_section'])) { if ($_POST['year_and_section'] == '3-C') echo ' selected="selected"'; } ?>>3-C</option>
-                          <option value="4-A" <?php if(isset($_POST['year_and_section'])) { if ($_POST['year_and_section'] == '4-A') echo ' selected="selected"'; } ?>>4-A</option>
-                          <option value="4-B" <?php if(isset($_POST['year_and_section'])) { if ($_POST['year_and_section'] == '4-B') echo ' selected="selected"'; } ?>>4-B</option>
+                          <option value="None" <?php if(isset($_POST['year_and_section'])) { if ($_POST['year_and_section'] == 'None') echo ' selected="selected"'; } elseif ($data['year_and_section'] == 'none') echo ' selected="selected"'; ?>>--Select Year & Section--</option>
+                          <option value="3-A" <?php if(isset($_POST['year_and_section'])) { if ($_POST['year_and_section'] == '3-A') echo ' selected="selected"'; } elseif ($data['year_and_section'] == '3-A') echo ' selected="selected"'; ?>>3-A</option>
+                          <option value="3-B" <?php if(isset($_POST['year_and_section'])) { if ($_POST['year_and_section'] == '3-B') echo ' selected="selected"'; } elseif ($data['year_and_section'] == '3-B') echo ' selected="selected"'; ?>>3-B</option>
+                          <option value="3-C" <?php if(isset($_POST['year_and_section'])) { if ($_POST['year_and_section'] == '3-C') echo ' selected="selected"'; } elseif ($data['year_and_section'] == '3-C') echo ' selected="selected"'; ?>>3-C</option>
+                          <option value="4-A" <?php if(isset($_POST['year_and_section'])) { if ($_POST['year_and_section'] == '4-A') echo ' selected="selected"'; } elseif ($data['year_and_section'] == '4-A') echo ' selected="selected"'; ?>>4-A</option>
+                          <option value="4-B" <?php if(isset($_POST['year_and_section'])) { if ($_POST['year_and_section'] == '4-B') echo ' selected="selected"'; } elseif ($data['year_and_section'] == '4-B') echo ' selected="selected"'; ?>>4-B</option>
                         </select>
                       </div>
-
-
-                        
 
 
                       <div class="cont">
                       <label for="sem">Semester</label>
                       <select name="sem" id="sem">
-                          <option value="None" <?php if(isset($_POST['sem'])) { if ($_POST['sem'] == 'None') echo ' selected="selected"'; } ?>>--Select Semester--</option>
-                          <option value="First Semester" <?php if(isset($_POST['sem'])) { if ($_POST['sem'] == 'First Semester') echo ' selected="selected"'; } ?>>First Semester</option>
-                          <option value="Second Semester" <?php if(isset($_POST['sem'])) { if ($_POST['sem'] == 'Second Semester') echo ' selected="selected"'; } ?>>Second Semester</option>
+                          <option value="None" <?php if(isset($_POST['sem'])) { if ($_POST['sem'] == 'None') echo ' selected="selected"'; } elseif ($data['sem'] == 'none') echo ' selected="selected"'; ?>>--Select Semester--</option>
+                          <option value="First Semester" <?php if(isset($_POST['sem'])) { if ($_POST['sem'] == 'First Semester') echo ' selected="selected"'; } elseif ($data['sem'] == 'First Semester') echo ' selected="selected"'; ?>>First Semester</option>
+                          <option value="Second Semester" <?php if(isset($_POST['sem'])) { if ($_POST['sem'] == 'Second Semester') echo ' selected="selected"'; } elseif ($data['sem'] == 'Second Semester') echo ' selected="selected"'; ?>>Second Semester</option>
                       </select>
                       </div>
 
-                       
-
+                      
                       
                       <div class="cont">
                       <label for="your_adviser">Adviser</label>
                       <select name="your_adviser" id="your_adviser">
-                          <option value="None" <?php if(isset($_POST['your_adviser'])) { if ($_POST['your_adviser'] == 'None') echo ' selected="selected"'; } ?>>--Select Adviser--</option>
+                          <option value="None" <?php if(isset($_POST['your_adviser'])) { if ($_POST['your_adviser'] == 'None') echo ' selected="selected"'; } elseif ($data['your_adviser'] == 'none') echo ' selected="selected"'; ?>>--Select Adviser--</option>
                           <?php
                           while($r = mysqli_fetch_array($s)){
                           ?>
-                          <option value="<?php echo $r['firstname'] .' '. $r['lastname'];?>" <?php if(isset($_POST['your_adviser'])) { if ($_POST['your_adviser'] == $r['firstname'] .' '. $r['lastname']) echo ' selected="selected"'; } ?>><?php echo$r['firstname'] .' '. $r['lastname'];?> </option>
+                          <option value="<?php echo $r['firstname'] .' '. $r['lastname'];?>" <?php if(isset($_POST['your_adviser'])) { if ($_POST['your_adviser'] == $r['firstname'] .' '. $r['lastname']) echo ' selected="selected"'; } elseif ($data['your_adviser'] == $r['firstname'] .' '. $r['lastname']) echo ' selected="selected"'; ?>><?php echo$r['firstname'] .' '. $r['lastname'];?> </option>
                           <?php
                               }
                           ?>

@@ -1,6 +1,5 @@
 <?php
 
-
         session_start();
         /*
             if user is not login then redirect to login page,
@@ -10,6 +9,44 @@
         if (!isset($_SESSION['logged-in'])){
             header('location: ../login/login.php');
         }
+
+        if (isset($_GET['file'])) {
+          
+          $file_name = basename($_GET['file']);
+          $file_path = '../adviser/upload/documents/' . $file_name;
+        
+          $path_parts = pathinfo($file_path);
+          echo $file_path;
+          $ext = strtolower($path_parts["extension"]);
+        
+          switch ($ext) {
+            case "pdf":
+              $ctype = "application/pdf";
+              break;
+            case "doc":
+              $ctype = "application/msword";
+              break;
+            case "xls":
+              $ctype = "application/vnd.ms-excel";
+              break;
+            default:
+              $ctype = "application/force-download";
+          }
+        
+          if (!empty($file_name) && file_exists($file_path)) {
+            header('Cache-Control: public');
+            header('Content-Description: File Transfer');
+            header('Content-Disposition: attachment; filename=' . $file_name);
+            header('Content-Type: $ctype');
+            header('Content-Transfer-Encoding: binary');
+        
+            readfile($file_path);
+            exit;
+          } else {
+            echo "Not Found";
+          }
+        }
+
 
 
 ?>
@@ -179,41 +216,56 @@
             <!-- start: content -->
               <div class="main-content border">
                   <div class="head-number p-3"> 
-                      <h2>Group 1</h2>
+                      <h2> >>Your Approved title Here<<</h2>
+                      <div class="sub d-flex">
+                        <h6> <?php echo $_SESSION['adviser'] ?></h6>
+                        <h6 class="slash-padding"> | </h6>
+                        <h6> <?php echo $_SESSION['course'] ?> </h6>
+                        <h6 class="slash-padding"> | </h6>
+                        <h6> >> file title here <<</h6>
+                      </div>
+                     
                   </div>
 
                   <div class="members p-3">
                       <span>Members</span>
                       <div class="list-mem pt-2">
                           <ul>
-                              <li class="pb-1">Marvin Waro</li>
-                              <li class="pb-1">Christian Fernandez</li>
+                              <li>Christian Fernandez</li>
+                              <li>Faye Lacsi</li>
                           </ul>
                       </div>
                   </div>
 
-                  <div class="titles-up p-3">
-                      <span>Titles</span>
-                      <div class="uploading">
-                        <div class="mb-3">
-                          <input type="text" name="file" id="file" placeholder="Enter you title here">
-                          <input class="form-control form-control-sm" type="file" id="formFile">
-                          <i class="ri-upload-2-fill"></i>
+                  <div class="titles-up p-3" style="max-width:100% !important;">
+
+                   <div class="comment">
+                      <span>Comment</span>
+                      <p>coment here from the panelist at title defense</p>
+                   </div>
+
+
+                    <span>Overview</span>
+
+                    <div class="overview">
+
+                      <form action="" method="POST">
+                        <textarea required class="form-control" name="comment" rows="6"></textarea>
+
+                        <label for="formFile" class="form-label mt-2">Upload Updated File:</label>
+                        <input class="form-control student-form-control" type="file" id="formFile" name="myfile">
+
+                        <div class="submit-cont mt-2">
+                          <input type="submit" name="submit" id="submit" value="Submit for Proposal">
                         </div>
-                        <div class="mb-3">
-                        <input type="text" name="file" id="file" placeholder="Enter you title here">
-                          <input class="form-control form-control-sm" type="file" id="formFile">
-                          <i class="ri-upload-2-fill"></i>
-                        </div>
-                        <div class="mb-3">
-                          <input type="text" name="file" id="file" placeholder="Enter you title here">
-                          <input class="form-control form-control-sm" type="file" id="formFile">
-                          <i class="ri-upload-2-fill"></i>
-                        </div>
-                      </div>
+
+                      </form>
+
+                    </div>
+                              
                   </div>
               </div>
-            
+
           </div>
 
           <!-- end: content -->

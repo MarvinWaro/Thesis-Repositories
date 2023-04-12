@@ -217,60 +217,46 @@
                 <table id="example" class="table table-striped" style="width:100%">
                     <thead id="head">
                         <tr>
+                            <th>Action</th>
                             <th>#</th>
                             <th>Titles</th>
-                            <th>Department</th>
-                            <th>Section</th>
+                            <th>Course</th>
+                            <th>Group No</th>
                             <th>Date of Upload</th>
-                            <th>Semester</th>
-                            <th>Action</th>
+                            <th>School Year</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
+                            <td>
+                                <div class="actions">
+                                    <a class="action-view" href="#"><i class="ri-eye-line"></i></a>
+                                    <a class="action-delete" href="#"><i class="ri-delete-bin-line"></i></a>
+                                </div>
+                            </td>
                             <td>1</td>
                             <td>System Architect</td>
                             <td>BSCS</td>
-                            <td>B</td>
+                            <td>1</td>
                             <td>2011-04-25</td>
-                            <td>First Semester</td>
+                            <td>2022-2023</td>
+                            
+                        </tr>
+                        <tr>
                             <td>
                                 <div class="actions">
                                     <a class="action-view" href="#"><i class="ri-eye-line"></i></a>
-                                    <a class="action-edit" href="#"><i class="ri-edit-line"></i></a>
                                     <a class="action-delete" href="#"><i class="ri-delete-bin-line"></i></a>
                                 </div>
                             </td>
-                        </tr>
-                        <tr>
                             <td>2</td>
                             <td>Software Engineering</td>
-                            <td>BSCS</td>
-                            <td>B</td>
+                            <td>BSIT</td>
+                            <td>1</td>
                             <td>2011-04-25</td>
-                            <td>First Semester</td>
-                            <td>
-                                <div class="actions">
-                                    <a class="action-view" href="#"><i class="ri-eye-line"></i></a>
-                                    <a class="action-edit" href="#"><i class="ri-edit-line"></i></a>
-                                    <a class="action-delete" href="#"><i class="ri-delete-bin-line"></i></a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Cyber Crime</td>
-                            <td>BSCS</td>
-                            <td>B</td>
-                            <td>2011-04-25</td>
-                            <td>First Semester</td>
-                            <td>
-                                <div class="actions">
-                                    <a class="action-view" href="#"><i class="ri-eye-line"></i></a>
-                                    <a class="action-edit" href="#"><i class="ri-edit-line"></i></a>
-                                    <a class="action-delete" href="#"><i class="ri-delete-bin-line"></i></a>
-                                </div>
-                            </td>
+                            <td>2022-2023</td>
+                            
                         </tr>
                     </tbody>
                 </table>

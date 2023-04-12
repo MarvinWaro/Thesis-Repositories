@@ -19,8 +19,15 @@ body{
   justify-content: center;
   align-items: center;
   padding: 10px;
-  background: linear-gradient(135deg, #1f4037, #99f2c8);
+  background-image:
+  linear-gradient(to bottom, rgba(156, 225, 203, 0.601), rgba(19, 117, 96, 0.782)),
+  url('../../img/banner-3.jpg');
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
 }
+
 .container{
   max-width: 300px;
   margin: 0 auto;

@@ -177,6 +177,18 @@ class Student{
         return $data;
     }
 
+    function delete_group($record_id){
+        $sql = "DELETE FROM groups WHERE id = :id;";
+        $query=$this->db->connect()->prepare($sql);
+        $query->bindParam(':id', $record_id);
+        if($query->execute()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
     function show_group($group_id, $curriculum){
         $sql = "SELECT * FROM group_files WHERE group_id IN (SELECT id FROM groups WHERE group_number = :groupid AND curriculum = :course)";
         $query=$this->db->connect()->prepare($sql);

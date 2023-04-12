@@ -1,0 +1,240 @@
+
+
+
+
+
+                <form action="fileupload.php" method="POST" enctype="multipart/form-data">
+                    <div class="mb-3" style="margin-top: 25px">
+                      <input <?php if($value['lock1'] == 1){ ?> disabled <?php } ?> type="text" name="name_file1" id="file" required placeholder="Enter you title here" 
+                      <?php
+                        if($value['title1'] != null){
+                      ?>
+                          value="<?php echo $value['title1'] ?>"
+                      <?php
+                        }
+                      ?>
+                      >
+                      <?php
+                        if($value['title1_file'] != null){
+                          
+                      ?>
+                          <h6 style="font-size: 15px; margin-top: 5px; margin-left: 5px; margin-right: 5px; max-width: 300px">Current File: <?php echo $value['title1_file']; ?></h6>
+                      <?php
+                        } 
+                      ?>
+                      <input class="form-control form-control-sm" type="file" id="formFile" name="myfile" style="max-width: 100%" required <?php if($value['lock1'] == 1){ ?> disabled <?php } ?>>
+                      </i><input type="submit" name="file_submit1" id="upload" value="Submit" <?php if($value['lock1'] == 1){ ?> disabled <?php } ?>>
+                    
+                    <div class="comment-div">
+                        <h6><?php 
+                          if($value['title1_comment'] != null){
+                            echo "Adviser Comment: <b>" . $value['title1_comment'] . "</b>";
+                            ?>
+                              <br>File attachment: <b><a href="thesis.php?file=<?php echo $value['title1_adviser_file'] ?>"><?php echo $value['title1_adviser_file'] ?></a>
+                            <?php
+                          }
+                          else {
+                            echo "Adviser has no comment yet.";
+                            ?>
+                              <br>File attachment: <b><a href="thesis.php?file=<?php echo $value['title1_adviser_file'] ?>"><?php echo $value['title1_adviser_file'] ?></a>
+                            <?php
+                          }
+                        ?></h6>
+                    </div>
+                    </div>
+                  </form>
+
+                  <form action="fileupload.php" method="POST" enctype="multipart/form-data">
+                    <div class="mb-3" style="margin-top: 25px">
+                      <input <?php if($value['lock2'] == 1){ ?> disabled <?php } ?> type="text" name="name_file2" id="file" required placeholder="Enter you title here" 
+                      <?php
+                        if($value['title2'] != null){
+                      ?>
+                          value="<?php echo $value['title2'] ?>"
+                      <?php
+                        }
+                      ?>
+                      >
+                      <?php
+                        if($value['title2_file'] != null){
+
+                      ?>
+                          <h6 style="margin-top: 5px; margin-left: 5px; margin-right: 5px; max-width: 300px">Current File: <?php echo $value['title2_file']; ?></h6>
+                      <?php
+                        } 
+                      ?>
+                      <input class="form-control form-control-sm" type="file" id="formFile" name="myfile" style="max-width: 100%" required <?php if($value['lock2'] == 1){ ?> disabled <?php } ?>>
+                      </i><input type="submit" name="file_submit2" id="upload" value="Submit" <?php if($value['lock2'] == 1){ ?> disabled <?php } ?>>
+                    
+                    <div class="comment-div">
+                        <h6><?php 
+                          if($value['title2_comment'] != null){
+                            echo "Adviser Comment: <b>" . $value['title2_comment'] . "</b>";
+                            ?>
+                              <br>File attachment: <b><a href="thesis.php?file=<?php echo $value['title2_adviser_file'] ?>"><?php echo $value['title2_adviser_file'] ?></a>
+                            <?php
+                          }
+                          else {
+                            echo "Adviser has no comment yet.";
+                            ?>
+                              <br>File attachment: <b><a href="thesis.php?file=<?php echo $value['title2_adviser_file'] ?>"><?php echo $value['title2_adviser_file'] ?></a>
+                            <?php
+                          }
+                        ?></h6>
+                      </div>
+                    </div>
+                  </form>
+
+                  <form action="fileupload.php" method="POST" enctype="multipart/form-data">
+                    <div class="mb-3" style="margin-top: 25px">
+                      <input <?php if($value['lock3'] == 1){ ?> disabled <?php } ?> type="text" name="name_file3" id="file" required placeholder="Enter you title here" 
+                      <?php
+                        if($value['title3'] != null){
+                      ?>
+                          value="<?php echo $value['title3'] ?>"
+                      <?php
+                        }
+                      ?>
+                      >
+                      <?php
+                        if($value['title3_file'] != null){
+                          
+                      ?>
+                          <h6 style="margin-top: 5px; margin-left: 5px; margin-right: 5px; max-width: 300px">Current File: <?php echo $value['title3_file']; ?></h6>
+                      <?php
+                        } 
+                      ?>
+                      <input class="form-control form-control-sm" type="file" id="formFile" name="myfile" style="max-width: 100%" required <?php if($value['lock3'] == 1){ ?> disabled <?php } ?>>
+                      </i><input type="submit" name="file_submit3" id="upload" value="Submit" <?php if($value['lock3'] == 1){ ?> disabled <?php } ?> >
+                    
+                    <div class="comment-div">
+                        <h6><?php 
+                          if($value['title3_comment'] != null){
+                            echo "Adviser Comment: <b>" . $value['title3_comment'] . "</b>";
+                            ?>
+                              <br>File attachment: <b><a href="thesis.php?file=<?php echo $value['title3_adviser_file'] ?>"><?php echo $value['title3_adviser_file'] ?></a>
+                            <?php
+                          }
+                          else {
+                            echo "Adviser has no comment yet.";
+                            ?>
+                              <br>File attachment: <b><a href="thesis.php?file=<?php echo $value['title3_adviser_file'] ?>"><?php echo $value['title3_adviser_file'] ?></a>
+                            <?php
+                          }
+                        ?></h6>
+                    </div>
+                  </div>
+                 </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                 <form action="fileupload.php" method="POST" enctype="multipart/form-data">
+                              <div class="mb-3" style="margin-top: 25px">
+                                <input <?php if($value['lock1'] == 1){ ?> disabled <?php } ?> type="text" name="name_file1" id="file" required placeholder="Enter you title here" 
+                                <?php
+                                  if($value['title1'] != null){
+                                ?>
+                                    value="<?php echo $value['title1'] ?>"
+                                <?php
+                                  }
+                                ?>
+                                >
+                                <?php
+                                  if($value['title1_file'] != null){
+                                    
+                                ?>
+                                    <h6 style="font-size: 15px; margin-top: 5px; margin-left: 5px; margin-right: 5px; max-width: 300px">Current File: <?php echo $value['title1_file']; ?></h6>
+                                <?php
+                                  } 
+                                ?>
+                                <input class="form-control form-control-sm" type="file" id="formFile" name="myfile" style="max-width: 100%" required <?php if($value['lock1'] == 1){ ?> disabled <?php } ?>>
+                                </i><input type="submit" name="file_submit1" id="upload" value="Submit" <?php if($value['lock1'] == 1){ ?> disabled <?php } ?>>
+                              
+                              <div class="comment-div">
+                                <?php 
+                                  if($value['title1_comment'] != null){
+                                    echo "Adviser Comment: <b>" . $value['title1_comment'] . "</b>";
+                                    ?>
+                                      <br>File attachment:</br> <b></b><a href="thesis.php?file=<?php echo $value['title1_adviser_file'] ?>"><?php echo $value['title1_adviser_file'] ?></a>
+                                    <?php
+                                  } else {
+                                    echo "Adviser has no comment yet.";
+                                    ?>
+                                      <br>File attachment:</br> <b></b><a href="thesis.php?file=<?php echo $value['title1_adviser_file'] ?>"><?php echo $value['title1_adviser_file'] ?></a>
+                                    <?php
+                                  }
+                                ?>
+                                </div>
+                              </div>
+                            </form> <!--FIrst Form-->
+
+                              <form action="fileupload.php" method="POST" enctype="multipart/form-data">
+                                <div class="mb-3" style="margin-top: 25px">
+                                  <input <?php if($value['lock2'] == 1){ ?> disabled <?php } ?> type="text" name="name_file2" id="file" required placeholder="Enter you title here" 
+                                  <?php
+                                    if($value['title2'] != null){
+                                  ?>
+                                      value="<?php echo $value['title2'] ?>"
+                                  <?php
+                                    }
+                                  ?>
+                                  >
+                                  <?php
+                                    if($value['title2_file'] != null){
+
+                                  ?>
+                                      <h6 style="margin-top: 5px; margin-left: 5px; margin-right: 5px; max-width: 300px">Current File: <?php echo $value['title2_file']; ?></h6>
+                                  <?php
+                                    } 
+                                  ?>
+                                  <input class="form-control form-control-sm" type="file" id="formFile" name="myfile" style="max-width: 100%" required <?php if($value['lock2'] == 1){ ?> disabled <?php } ?>>
+                                  </i><input type="submit" name="file_submit2" id="upload" value="Submit" <?php if($value['lock2'] == 1){ ?> disabled <?php } ?>>
+                                </div>
+                              </form> <!--second Form-->
+
+                              <form action="fileupload.php" method="POST" enctype="multipart/form-data">
+                                <div class="mb-3" style="margin-top: 25px">
+                                  <input <?php if($value['lock3'] == 1){ ?> disabled <?php } ?> type="text" name="name_file3" id="file" required placeholder="Enter you title here" 
+                                  <?php
+                                    if($value['title3'] != null){
+                                  ?>
+                                      value="<?php echo $value['title3'] ?>"
+                                  <?php
+                                    }
+                                  ?>
+                                  >
+                                  <?php
+                                    if($value['title3_file'] != null){
+                                      
+                                  ?>
+                                      <h6 style="margin-top: 5px; margin-left: 5px; margin-right: 5px; max-width: 300px">Current File: <?php echo $value['title3_file']; ?></h6>
+                                  <?php
+                                    } 
+                                  ?>
+                                  <input class="form-control form-control-sm" type="file" id="formFile" name="myfile" style="max-width: 100%" required <?php if($value['lock3'] == 1){ ?> disabled <?php } ?>>
+                                  </i><input type="submit" name="file_submit3" id="upload" value="Submit" <?php if($value['lock3'] == 1){ ?> disabled <?php } ?> >
+                                </div>
+                              </form>  <!--third Form-->
+
+
+
+                              <th class="action">Action</th>
+                                        <td>
+                                          <div class="actions">
+                                            <a class="action-edit" href="edit_group.php?id=<?php echo $value['id'] ?>"><i class="ri-edit-line"></i></a>
+                                            <a class="action-delete" data-id="<?php echo $value['id']; ?>" href="#"><i class="ri-delete-bin-line"></i></a>
+                                          </div>
+                                        </td>
+
+
+                                        <a class="action-delete" href="../admin/delete_group.php?id=<?php echo $value['id'] ?>" onclick="return confirm('Are you sure to delete?')"><i class="ri-delete-bin-line"></i></a>

@@ -32,7 +32,7 @@ require_once '../class/student.class.php';
         $fileTmpName = $_FILES['myfile']['tmp_name'];
         $fileExt = explode('.', $fileName);
         $fileActualExt = strtolower(end($fileExt));
-        $allowed = array('docs', 'docx', 'pdf', 'xlsx');
+        $allowed = array('docs', 'docx', 'pdf');
 
         if(in_array($fileActualExt, $allowed)){
 

@@ -409,18 +409,19 @@ nav {
 }
 
 .table .actions .action-edit{
-    color: white;
-    background: orange;
+    color: var(--maincolor);
+    font-size: 19px;
+
 }
 
 .table .actions .action-view{
-    color: #fff;
-    background: var(--maincolorMdark);
+    color: var(--maincolor);
+    font-size: 19px;
 }
 
 .table .actions .action-delete{
-    color: white;
-    background: lightcoral;
+    color: var(--maincolor);
+    font-size: 19px;
 }
 
 .table .actions .action-edit,
@@ -428,10 +429,10 @@ nav {
 .table .actions .action-delete{
     
     border-radius: 6px;
-    padding: 7px 10px;
+    padding: 7px 5px;
     margin-left: 3px;
     text-decoration: none;
-    font-weight:lighter;
+    font-weight:bolder;
 }
 
 .container .add-button{
@@ -736,36 +737,101 @@ a{
 
 .main-content span{
     font-size: 30px;
-    font-weight: 400;
     color: var(--maincolor);
+    font-weight: 500;
 }
 
 .main-content .titles-up{
-    max-width: 700px;
-}
-
-.main-content .titles-up .uploading{
-    padding-top: 15px;
     width: 100%;
 }
 
-.main-content .titles-up .mb-3{
+
+.main-content .titles-up input{
+    width: 100%;
+}
+
+.main-content .titles-up .uploading{
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-evenly;
+}
+
+
+.main-content .titles-up .mb-3{
+    display: block;
+    margin: 5px;
 }
 
 #file{
     border: 1px solid black;
     border-radius: 5px;
     font-size: 12px;
-    padding: 0 12px 0 12px;
+    padding: 9px 12px 9px 12px;
+    margin-bottom: 5px;
 }
 
-#formFile{
-    width: 60%;
+.comment-div h6{
+    padding-top: 9px;
+    font-size: 13px;
 }
+
+#submit{
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    font-size: 13px;
+    padding: 9px 9px;
+    margin-top: 5px;
+    background: var(--maincolor);
+    color: white;
+  }
+
+  #submit:hover{
+    background-color: var(--maincolorMdark);
+  }
+
+/*panel*/
+
+.main-content .titles-up form .panel-cont{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.main-content .titles-up form .radio-cont{
+    width: 100%;
+    margin: 5px;
+}
+
+.main-content form .submit-cont{
+    display: flex;
+    justify-content: end;
+}
+
+.main-content form .panel-submit{
+    width: 33%;
+}
+
+.main-content .titles-up .overview form .submit-cont{
+    display: flex;
+    width: 170px;
+}
+
+.main-content .titles-up .overview form .opt{
+    display: flex;
+    width: 170px;
+}
+
+
 
 @media(max-width: 717px ) {
+
+    .main-content .titles-up form .panel-cont{
+        display: block;
+    }
+
+    .main-content .titles-up .uploading{
+        display: block;
+    }
+
     .main-content .titles-up .mb-3{
         display: block;
         margin: 3px;
@@ -780,6 +846,11 @@ a{
         width: 100%;
         margin: 5px 0 5px 0;
     }
+}
+
+.titles-up .overview .student-form-control{
+    width: 30rem;
+    padding: 5px 5px;
 }
 
 form .error {
@@ -911,7 +982,7 @@ form .error {
   
   /* When the radio button is checked, add a blue background */
   .container-radio input:checked ~ .checkmark {
-    background-color: #2196F3;
+    background-color: var(--maincolorMdark);
   }
   
   /* Create the indicator (the dot/circle - hidden when not checked) */
@@ -946,10 +1017,64 @@ form .error {
     border: none;
     font-size: 13px;
     padding: 4px 9px;
+    margin-top: 5px;
+    background: var(--maincolor);
+    color: white;
   }
 
   #upload:hover{
     opacity: 79%;
   }
+
+  .form-label{
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .slash-padding{
+    padding: 0 8px;
+  }
+
+  #percentage-input{
+    max-width: 320px;
+  }
+
+  #overview{
+    border: solid 1px black;
+    padding: 10px 20px;
+    text-align: justify;
+  }
+
+  #submit-proposal-title{
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    font-size: 13px;
+    padding: 9px 9px;
+    margin-top: 5px;
+    background: var(--maincolor);
+    color: white;
+    width: 320px;
+  }
+
+  #search-record{
+    padding: 10px;
+    border-radius: 6px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    margin: 7px 0;
+    font-size: 13px
+  }
+
+  #search-icon{
+    padding: 8px 12px;
+    border-radius: 6px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    margin: 7px 0;
+    font-size: 13px
+  }
+
+
 
 

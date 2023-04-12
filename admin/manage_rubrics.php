@@ -221,19 +221,16 @@
                 <table id="example" class="table table-striped" style="width:100%">
                     <thead id="head">
                         <tr>
+                            <th>Action</th>
                             <th>#</th>
                             <th>School Year</th>
                             <th>Date Uploaded</th>
                             <th>Status</th>
-                            <th>Action</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1</td>
-                            <td>2022-2023</td>
-                            <td>2022-06-14</td>
-                            <td>active</td>
                             <td>
                                 <div class="actions">
                                     <a class="action-view" href="#"><i class="ri-eye-line"></i></a>
@@ -241,12 +238,13 @@
                                     <a class="action-delete" href="#"><i class="ri-delete-bin-line"></i></a>
                                 </div>
                             </td>
+                            <td>1</td>
+                            <td>2022-2023</td>
+                            <td>2022-06-14</td>
+                            <td>active</td>
+                            
                         </tr>
                         <tr>
-                            <td>1</td>
-                            <td>2022-2023</td>
-                            <td>2022-06-14</td>
-                            <td>active</td>
                             <td>
                                 <div class="actions">
                                     <a class="action-view" href="#"><i class="ri-eye-line"></i></a>
@@ -254,12 +252,13 @@
                                     <a class="action-delete" href="#"><i class="ri-delete-bin-line"></i></a>
                                 </div>
                             </td>
+                            <td>1</td>
+                            <td>2022-2023</td>
+                            <td>2022-06-14</td>
+                            <td>active</td>
+                            
                         </tr>
                         <tr>
-                            <td>1</td>
-                            <td>2022-2023</td>
-                            <td>2022-06-14</td>
-                            <td>active</td>
                             <td>
                                 <div class="actions">
                                     <a class="action-view" href="#"><i class="ri-eye-line"></i></a>
@@ -267,6 +266,11 @@
                                     <a class="action-delete" href="#"><i class="ri-delete-bin-line"></i></a>
                                 </div>
                             </td>
+                            <td>1</td>
+                            <td>2022-2023</td>
+                            <td>2022-06-14</td>
+                            <td>active</td>
+                            
                         </tr>
                     </tbody>
                 </table>

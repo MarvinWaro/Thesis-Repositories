@@ -13,15 +13,15 @@ require_once '../class/student.class.php';
 
         if(isset($_POST['submit1'])){
             // Change group_id = to current group selected ID.
-            $sql = "UPDATE group_files SET title1_comment = ? WHERE group_id = ?";
+            $sql = "UPDATE group_files SET title1_comment = ?, title1_adviser_file = ? WHERE group_id = ?";
         }
         elseif (isset($_POST['submit2'])) {
             // Change group_id = to current group selected ID.
-            $sql = "UPDATE group_files SET title2_comment = ? WHERE group_id = ?";
+            $sql = "UPDATE group_files SET title2_comment = ?, title2_adviser_file = ? WHERE group_id = ?";
         }
         elseif (isset($_POST['submit3'])) {
             // Change group_id = to current group selected ID.
-            $sql = "UPDATE group_files SET title3_comment = ? WHERE group_id = ?";
+            $sql = "UPDATE group_files SET title3_comment = ?, title3_adviser_file = ? WHERE group_id = ?";
         }
 
         $stmt = mysqli_stmt_init($conn);
@@ -35,12 +35,29 @@ require_once '../class/student.class.php';
             header("location: advisee.php?groupnum=" . $_POST['cGroupNum'] . "&course=" . $_POST['cCourse']);
         }
 
+        $doc_type = "Document";
+        $fileName = $_FILES['myfile']['name'];
+        $fileTmpName = $_FILES['myfile']['tmp_name'];
+        $fileExt = explode('.', $fileName);
+        $fileActualExt = strtolower(end($fileExt));
+        $allowed = array('docs', 'docx', 'pdf', 'xlsx');
+        $fileNameNew = "";
+        $filesDestination = "";
+
+        if(in_array($fileActualExt, $allowed)){
+
+            $fileNameNew = $fileName;
+            $filesDestination = 'upload/documents/'.$fileNameNew;
+        }
+
         $student = new Student();
 
         foreach ($student->show_group($_POST['cGroupNum'], $_POST['cCourse']) as $value){
-            mysqli_stmt_bind_param($stmt, "ss", $comment, $value['group_id']);
+            mysqli_stmt_bind_param($stmt, "sss", $comment, $fileNameNew, $value['group_id']);
             mysqli_stmt_execute($stmt);
         }
+        
+        move_uploaded_file($fileTmpName, $filesDestination);
         mysqli_stmt_close($stmt);
 
         ?>

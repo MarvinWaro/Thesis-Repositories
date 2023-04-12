@@ -14,7 +14,6 @@
 
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -77,6 +76,12 @@
             <a href="bsit.php">
                 <i class="ri-sticky-note-line sidebar-menu-item-icon"></i>
                 BSIT
+            </a>
+          </li>
+          <li class="sidebar-menu-item">
+            <a href="approve_titles.php">
+                <i class="ri-check-fill sidebar-menu-item-icon"></i>
+                Approved Titles
             </a>
           </li>
       </ul>

@@ -52,30 +52,31 @@
         ></i>
       </div>
       <ul class="sidebar-menu p-3 m-0 mb-0">
-        <li class="sidebar-menu-item">
-          <a href="home.php">
+        <li class="sidebar-menu-item ">
+          <a href="home.php ">
             <i class="ri-home-8-line sidebar-menu-item-icon"></i>
             Home
           </a>
         </li>
         <li class="sidebar-menu-item active">
-            <a href="thesis.php">
-                <i class="ri-sticky-note-line sidebar-menu-item-icon"></i>
-              Thesis
+            <a href="bscs.php">
+              <i class="ri-sticky-note-line sidebar-menu-item-icon"></i>
+              BSCS
             </a>
           </li>
-        <li class="sidebar-menu-item ">
-          <a href="grades.php">
-            <i class="ri-mail-star-line sidebar-menu-item-icon"></i>
-            Grades
-          </a>
-        </li>
-        <li class="sidebar-menu-item ">
-          <a href="archives.php">
-             <i class="ri-archive-drawer-line sidebar-menu-item-icon"></i>
-            Archives
-          </a>
-        </li>
+          </li>
+          <li class="sidebar-menu-item">
+            <a href="bsit.php">
+                <i class="ri-sticky-note-line sidebar-menu-item-icon"></i>
+                BSIT
+            </a>
+          </li>
+          <li class="sidebar-menu-item ">
+            <a href="approve_titles.php">
+                <i class="ri-check-fill sidebar-menu-item-icon"></i>
+                Approved Titles
+            </a>
+          </li>
       </ul>
     </div>
     <div class="sidebar-overlay"></div>
@@ -167,6 +168,7 @@
             </div>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               <li><a class="dropdown-item" href="student_profile.php"><i class="ri-user-settings-line me-2"></i>Profile</a></li>
+              <li><a class="dropdown-item" href="../adviser/home.php"><i class="ri-user-shared-2-line me-2"></i>Switch to Adviser</a></li>
               <li><a class="dropdown-item" href="student_settings.php"><i class="ri-settings-3-line me-2"></i>Settings</a></li>
               <hr class="w-100">
               <li><a class="dropdown-item" href="../login/logout.php"><i class="ri-logout-box-line me-2"></i>Logout</a></li>
@@ -180,7 +182,20 @@
             <!-- start: content -->
               <div class="main-content border">
                   <div class="head-number p-3"> 
-                      <h2>Group 1</h2>
+                      <div class="head-searchbar d-flex align-items-center justify-content-between">
+                        <h2>Group 1</h2>
+                        <div class="search-container ml-auto">
+                          <form method="GET">
+                            <input type="text" name="search" placeholder="Search..." id="search-record">
+                            <button type="submit" id="search-icon"><i class="ri-search-line"></i></i></button>
+                          </form>
+                        </div>
+                      </div>
+                      <div class="sub d-flex">
+                        <h6> >>Adviser<< </h6>
+                        <h6> | </h6>
+                        <h6> >>Course<< </h6>
+                      </div>
                   </div>
 
                   <div class="members p-3">
@@ -194,30 +209,55 @@
                       </div>
                   </div>
 
-                  <div class="titles-up p-3">
-                      <span>Title</span>
-                      <div class="uploading">
-                        <form action="process.php" method="POST" enctype="multipart/form-data">
-                          <div class="mb-3">
-                            <input type="text" name="name_file" id="file" required placeholder="Enter you title here">
-                            <input class="form-control form-control-sm" type="file" id="formFile" name="myfile" required>
-                            </i><input type="submit" name="file_submit" id="upload" value="Submit" >
-                          </div>
-                          <div class="mb-3">
-                            <input type="text" name="name_file" id="file" required placeholder="Enter you title here">
-                            <input class="form-control form-control-sm" type="file" id="formFile" name="myfile" required>
-                            </i><input type="submit" name="file_submit" id="upload" value="Submit" >
-                          </div>
-                          <div class="mb-3">
-                            <input type="text" name="name_file" id="file" required placeholder="Enter you title here">
-                            <input class="form-control form-control-sm" type="file" id="formFile" name="myfile" required>
-                            </i><input type="submit" name="file_submit" id="upload" value="Submit" >
-                          </div>
-                        </form>
+            <div class="titles-up p-3">
+              <span>Titles</span>
 
-                      </div>
+            <div class="panel-comment mt-2">
+
+              <form action="" method="POST">
+                <div class="panel-cont">
+                  <div class="radio-cont mt-2">
+                    <label class="container-radio label-radio fw-bold">Title 1:
+                      <input type="radio" name="type" required>
+                      <span class="checkmark"></span>
+                    </label>
+
+                    <br>File attachment: </br><a href=""></a>
+
+                    <textarea class="form-control mt-2" name="comment" placeholder="Panel Comment"></textarea>
                   </div>
-              </div>
+
+                  <div class="radio-cont mt-2">
+                    <label class="container-radio label-radio fw-bold">Title 2:
+                      <input type="radio" name="type" required>
+                      <span class="checkmark"></span>
+                    </label>
+
+                    <br>File attachment: </br><a href=""></a>
+
+                    <textarea class="form-control mt-2" name="comment" placeholder="Panel Comment"></textarea>
+                  </div>
+
+                  <div class="radio-cont mt-2">
+                    <label class="container-radio label-radio fw-bold">Title 3:
+                      <input type="radio" name="type" required>
+                      <span class="checkmark"></span>
+                    </label>
+
+                    <br>File attachment: </br><a href=""></a>
+
+                    <textarea class="form-control mt-2" name="comment" placeholder="Panel Comment"></textarea>
+                  </div>
+                </div>
+
+                <div class="submit-cont">
+                  <input class="panel-submit" type="submit" name="submit" id="submit" value="Proceed to Proposal">
+                </div>
+              </form>
+
+            </div>
+          </div>
+        </div>
 
           </div>
 

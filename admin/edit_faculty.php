@@ -288,13 +288,12 @@ if(isset($_POST['save'])){
                   <div class="cont">
                   <label for="department">Department</label>
                   <select name="department" id="department">
-                    <option value="none <?php if(isset($_POST['department'])) { if ($_POST['department'] == 'None') echo ' selected="selected"'; } ?>">--Select Department--</option>
-                    <option value="Computer Science" <?php if(isset($_POST['department'])) { if ($_POST['department'] == 'Computer Science') echo ' selected="selected"'; } ?>>Computer Science</option>
-                    <option value="Information Technolgy" <?php if(isset($_POST['department'])) { if ($_POST['department'] == 'Information Technology') echo ' selected="selected"'; } ?>>Information Technology</option>
+                    <option value="none <?php if(isset($_POST['department'])) { if ($_POST['department'] == 'None') echo ' selected="selected"'; } elseif ($data['department'] == 'none') echo ' selected="selected"'; ?>">--Select Department--</option>
+                    <option value="Computer Science" <?php if(isset($_POST['department'])) { if ($_POST['department'] == 'Computer Science') echo ' selected="selected"'; } elseif ($data['department'] == 'Computer Science') echo ' selected="selected"';  ?>>Computer Science</option>
+                    <option value="Information Technolgy" <?php if(isset($_POST['department'])) { if ($_POST['department'] == 'Information Technology') echo ' selected="selected"'; } elseif ($data['department'] == 'Information Technology') echo ' selected="selected"'; ?>>Information Technology</option>
                   </select>
                   </div>
 
-                  
 
                   <div class="cont">
                     <label class="container-label label-font">Active

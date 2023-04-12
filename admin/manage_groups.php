@@ -35,6 +35,7 @@ if (!isset($_SESSION['logged-in'])){
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.0/dist/sweetalert2.min.css">
     <!-- end: CSS -->
     <title>Thesis Repository - Blank Page</title>
   </head>
@@ -228,10 +229,12 @@ if (!isset($_SESSION['logged-in'])){
                     <table id="example" class="table table-striped" style="width:100%">
                         <thead>
                         <tr>
-                            <th>Group #</th>
-                            <th>Curriculum</th>
-                            <th>Adviser</th>
                             <th class="action">Action</th>
+                            <th>Group #</th>
+                            <th>Course</th>
+                            <th>Adviser</th>
+                            <th>School Year</th>
+                            
                         </tr>
                         </thead>
                         <tbody>
@@ -247,6 +250,11 @@ if (!isset($_SESSION['logged-in'])){
                                 ?>
                                     <tr>
                                         <!-- always use echo to output PHP values -->
+                                        <td>
+                                          <div class="actions">
+                                            <a class="action-edit" href="#"><i class="ri-edit-line"></i></a>
+                                          </div>
+                                        </td>
                                         <td><?php echo "Group " . $value['group_number'] ?></td>
                                         <td><?php echo $value['curriculum'] ?></td>
                                         
@@ -257,12 +265,8 @@ if (!isset($_SESSION['logged-in'])){
                                         <?php
                                         }
                                         ?>
-                                        <td>
-                                          <div class="actions">
-                                            <a class="action-edit" href="edit_group.php?id=<?php echo $value['id'] ?>"><i class="ri-edit-line"></i></a>
-                                            <a class="action-delete" href="delete_group.php?id=<?php echo $value['id'] ?>" onclick="return confirm('Are you sure to delete?')"><i class="ri-delete-bin-line"></i></a>
-                                          </div>
-                                        </td>
+                                        
+                                        <td>2022-2023</td>
                                     </tr>
                                 <?php
                                     $i++;
@@ -292,7 +296,8 @@ if (!isset($_SESSION['logged-in'])){
     <!-- end: Main -->
 
     <!-- start: JS -->
-    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/jquery-3.6.4.min.js"></script>
+    <script src="../assets/js/sweetalert2.min.js"></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"
       integrity="sha512-sW/w8s4RWTdFFSduOTGtk4isV1+190E/GghVffMA9XczdJ2MDzSzLEubKAs5h0wzgSJOQTRYyaz73L3d6RtJSg=="
@@ -306,12 +311,46 @@ if (!isset($_SESSION['logged-in'])){
     <!--responsive-->
     <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
     <script>
-      function confirmation(){
-        var result = confirm("Are you sure to delete?");
-        if(result){
-          console.log("Deleted")
-        }
-      }
+      $('.action-delete').click(function(e) {
+        e.preventDefault();
+        
+        // Get the ID of the item to delete
+        var id = $(this).data('id');
+        
+        // Show a SweetAlert2 confirmation dialog
+
+        Swal.fire({
+        title: 'Are you sure?',
+        text: "Once the group record is deleted, it will be permanently lost and cannot be restored.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            // User clicked the "Yes, delete it!" button
+            // Send the ID to the server for deletion 
+            $.ajax({
+              url: 'delete_group.php',
+              method: 'POST',
+              data: { 'id': id },
+              success: function(response) {
+                // Handle success
+                Swal.fire(
+                  'Deleted!',
+                  'Your file has been deleted.',
+                  'success'
+                ).then(function() {
+                  // Reload the page after the SweetAlert2 is closed
+                  location.reload();
+              });
+          },
+
+            });
+          }
+        });
+      });
   </script>
     <!-- end: JS -->
   </body>

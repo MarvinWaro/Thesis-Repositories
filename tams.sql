@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 23, 2023 at 05:48 AM
+-- Generation Time: Apr 12, 2023 at 05:19 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -20,31 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `tams`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `archive`
---
-
-CREATE TABLE `archive` (
-  `id` int(11) NOT NULL,
-  `titles` varchar(150) NOT NULL,
-  `department` varchar(100) NOT NULL,
-  `section` varchar(10) NOT NULL,
-  `date_of_upload` date NOT NULL,
-  `sem` varchar(100) NOT NULL,
-  `grade` varchar(50) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `archive`
---
-
-INSERT INTO `archive` (`id`, `titles`, `department`, `section`, `date_of_upload`, `sem`, `grade`, `created_at`, `updated_at`) VALUES
-(1, 'Turtle and the Mokey', 'BSCS', 'A', '2023-02-23', 'First Semester', '89%', '2023-02-25 07:13:01', '2023-02-25 07:13:01');
 
 -- --------------------------------------------------------
 
@@ -71,11 +46,11 @@ CREATE TABLE `faculty` (
 --
 
 INSERT INTO `faculty` (`id`, `firstname`, `middle_name`, `lastname`, `email`, `username`, `password`, `department`, `type`, `created_at`, `updated_at`) VALUES
-(25, 'Jaydee', '', 'Ballaho', 'jaydee@wmsu.edu.ph', 'jaydee', 'jaydee', 'Computer Science', 'faculty', '2023-03-10 16:55:53', '2023-03-10 16:55:53'),
-(26, 'Lucy Felix', '', 'Sadiwa', 'lucy@wmsu.edu.ph', 'lucy', 'lucy', 'Computer Science', 'faculty', '2023-03-11 07:36:13', '2023-03-11 07:36:13'),
-(33, 'Mara Marie', '', 'Liao', 'xt202002177@wmsu.edu.ph', 'Mara09', 'mara', 'Computer Science', 'faculty', '2023-03-15 00:02:21', '2023-03-15 00:02:21'),
-(34, 'Jason', '', 'Catadman', 'xt2929290@wmsu.edu.ph', 'jason', 'jason', 'Information Technolgy', 'faculty', '2023-03-23 02:44:43', '2023-03-23 02:44:43'),
-(35, 'Pauleen', '', 'Gregana', 'xct2324342@wmsu.edu.ph', 'pauleen', 'pauleen', 'Information Technolgy', 'faculty', '2023-03-23 02:58:41', '2023-03-23 02:58:41');
+(25, 'Jaydee', '', 'Ballaho', 'jaydee@wmsu.edu.ph', 'jaydee', 'jaydee', 'Computer Science', 'faculty', '2023-03-10 16:55:53', '2023-04-08 23:39:28'),
+(34, 'Jason', '', 'Catadman', 'ndksndksn@wmsu.edu.ph', 'jason', 'jason', 'Information Technology', 'faculty', '2023-03-25 03:53:59', '2023-04-04 01:41:40'),
+(35, 'Lucy', 'Felix', 'Sadiwa', 'Lucy@wmsu.edu.ph', 'lucy', 'lucy', 'Computer Science', 'faculty', '2023-04-09 06:58:43', '2023-04-09 06:58:43'),
+(37, 'Edwin', '', 'Arip', 'edwin@wmsu.edu.ph', 'edwin', 'edwin', 'Computer Science', 'faculty', '2023-04-09 14:25:30', '2023-04-09 14:25:30'),
+(38, 'Pauleen', '', 'Gregana', 'pauleen@wmsu.edu.ph', 'Pauleen', 'pauleen', 'Information Technolgy', 'faculty', '2023-04-09 14:27:33', '2023-04-09 14:27:33');
 
 -- --------------------------------------------------------
 
@@ -95,15 +70,14 @@ CREATE TABLE `groups` (
 --
 
 INSERT INTO `groups` (`id`, `group_number`, `curriculum`, `adviser_id`) VALUES
-(29, 1, 'BSCS', 26),
-(30, 2, 'BSCS', 25),
-(32, 3, 'BSCS', 26),
-(33, 4, 'BSCS', 25),
-(34, 5, 'BSCS', 33),
-(35, 1, 'BSIT', 35),
-(36, 2, 'BSIT', 34),
-(37, 3, 'BSIT', 35),
-(38, 4, 'BSIT', 34);
+(37, 1, 'BSCS', 25),
+(38, 2, 'BSCS', 35),
+(39, 3, 'BSCS', 37),
+(41, 2, 'BSIT', 38),
+(42, 3, 'BSIT', 38),
+(43, 1, 'BSIT', 34),
+(44, 4, 'BSCS', 25),
+(45, 4, 'BSIT', 34);
 
 -- --------------------------------------------------------
 
@@ -118,28 +92,33 @@ CREATE TABLE `group_files` (
   `title1` varchar(255) DEFAULT NULL,
   `title1_file` varchar(255) DEFAULT NULL,
   `title1_comment` varchar(255) DEFAULT NULL,
+  `title1_adviser_file` varchar(255) DEFAULT NULL,
+  `lock1` tinyint(1) DEFAULT NULL,
   `title2` varchar(255) DEFAULT NULL,
   `title2_file` varchar(255) DEFAULT NULL,
   `title2_comment` varchar(255) DEFAULT NULL,
+  `title2_adviser_file` varchar(255) DEFAULT NULL,
+  `lock2` tinyint(1) DEFAULT NULL,
   `title3` varchar(255) DEFAULT NULL,
   `title3_file` varchar(255) DEFAULT NULL,
-  `title3_comment` varchar(255) DEFAULT NULL
+  `title3_comment` varchar(255) DEFAULT NULL,
+  `title3_adviser_file` varchar(255) NOT NULL,
+  `lock3` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `group_files`
 --
 
-INSERT INTO `group_files` (`id`, `group_id`, `group_num`, `title1`, `title1_file`, `title1_comment`, `title2`, `title2_file`, `title2_comment`, `title3`, `title3_file`, `title3_comment`) VALUES
-(22, 29, 1, 'Game Dev is bs', 'qwerty.docx', 'so true', NULL, NULL, NULL, NULL, NULL, NULL),
-(23, 30, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(25, 32, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(26, 33, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(27, 34, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(28, 35, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(29, 36, 2, 'Arduino Thanos Hand', 'Waro_Activity 1.docx', 'Please Add The Significance of the Study', 'Raspberrypie', 'Waro_Laboratory_Midterm_Project.docx', 'wow nice idea', 'Develpment of chess game', 'Waro_Activity 3.3.pdf', 'wow Auto approve'),
-(30, 37, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(31, 38, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `group_files` (`id`, `group_id`, `group_num`, `title1`, `title1_file`, `title1_comment`, `title1_adviser_file`, `lock1`, `title2`, `title2_file`, `title2_comment`, `title2_adviser_file`, `lock2`, `title3`, `title3_file`, `title3_comment`, `title3_adviser_file`, `lock3`) VALUES
+(30, 37, 1, 'title1', 'Doc1.docx', 'please do this format', 'Name.docx', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 0),
+(31, 38, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 0),
+(32, 39, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 0),
+(34, 41, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 0),
+(35, 42, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 0),
+(36, 43, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 0),
+(37, 44, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 0),
+(38, 45, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 0);
 
 -- --------------------------------------------------------
 
@@ -171,10 +150,24 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`id`, `firstname`, `middle_name`, `lastname`, `username`, `email`, `password`, `type`, `course`, `year_and_section`, `sem`, `school_year`, `your_adviser`, `your_group`, `created_at`, `updated_at`) VALUES
-(92, 'Christian', '', 'Fernandez', 'yan', 'yan@wmsu.edu.ph', 'yan', 'student', 'BSCS', '3-B', 'First Semester', '2022-2023', 'Lucy Felix Sadiwa', 1, '2023-03-23 03:16:15', '2023-03-23 03:16:15'),
-(93, 'Bernard', '', 'Sanson', 'nard', 'nard@wmsu.edu.ph', 'nard', 'student', 'BSIT', '3-B', 'First Semester', '2022-2023', 'Pauleen Gregana', 1, '2023-03-23 03:17:09', '2023-03-23 03:17:09'),
-(94, 'Joshua', '', 'Bada', 'josh', 'josh@wmsu.edu.ph', 'josh', 'student', 'BSIT', '4-A', 'First Semester', '2022-2023', 'Pauleen Gregana', 1, '2023-03-23 03:22:02', '2023-03-23 03:22:02'),
-(95, 'Joshua', '', 'Blancaflor', 'joshua', 'joshua@wmsu.edu.ph', 'joshua', 'student', 'BSIT', '4-B', 'First Semester', '2022-2023', 'Jason Catadman', 2, '2023-03-23 03:39:06', '2023-03-23 03:49:08');
+(115, 'Christian', '', 'Fernandez', 'yan', 'yan@wmsu.edu.ph', 'yan', 'student', 'BSCS', '3-A', 'First Semester', '2022-2023', 'Jaydee Ballaho', 1, '2023-04-11 16:28:57', '2023-04-11 16:28:57'),
+(116, 'Bernard', '', 'Sanson', 'nard ', 'nard@wmsu.edu.ph', 'nard', 'student', 'BSCS', '3-C', 'First Semester', '2022-2023', 'Jaydee Ballaho', 1, '2023-04-11 16:33:31', '2023-04-11 16:36:08'),
+(118, 'Joshua', '', 'Bada', 'josh', 'josh@wmsu.edu.ph', 'josh', 'student', 'BSCS', '3-A', 'First Semester', '2022-2023', 'Jaydee Ballaho', 1, '2023-04-11 16:34:52', '2023-04-11 16:34:52'),
+(119, 'Lowey', 'G', 'Ecat', 'lowey', 'lowey@wmsu.edu.ph', 'lowey', 'student', 'BSIT', '3-A', 'First Semester', '2022-2023', 'Jason Catadman', 1, '2023-04-11 16:35:40', '2023-04-11 16:35:59'),
+(120, 'Marvin', 'Bercero', 'Waro', 'Marvin', 'marvin@wmsu.edu.ph', 'marvin', 'student', 'BSIT', '3-B', 'First Semester', '2022-2023', 'Jason Catadman', 1, '2023-04-11 16:45:22', '2023-04-11 16:45:22'),
+(121, 'John', 'Connor', 'Mesa', 'john', 'john@wmsu.edu.ph', 'john', 'student', 'BSIT', '3-C', 'First Semester', '2022-2023', 'Jason Catadman', 1, '2023-04-11 16:46:42', '2023-04-11 16:46:42'),
+(122, 'Faye', '', 'Lacsi', 'faye', 'faye@wmsu.edu.ph', 'faye', 'student', 'BSCS', '4-A', 'First Semester', '2022-2023', 'Lucy Sadiwa', 2, '2023-04-11 16:48:47', '2023-04-11 16:48:47'),
+(123, 'Jenny Babe', '', 'Samson', 'Jenny', 'jenny@wmsu.edu.ph', 'jenny', 'student', 'BSCS', '3-B', 'First Semester', '2022-2023', 'Lucy Sadiwa', 2, '2023-04-11 16:49:48', '2023-04-11 16:49:48'),
+(124, 'Avon', '', 'Alcontin', 'avon', 'avon@wmsu.edu.ph', 'avon', 'student', 'BSCS', '3-A', 'First Semester', '2022-2023', 'Lucy Sadiwa', 2, '2023-04-11 16:50:57', '2023-04-11 16:50:57'),
+(125, 'Xela', '', 'Silorio', 'xela', 'Xela@wmsu.edu.ph', 'xela', 'student', 'BSIT', '3-A', 'First Semester', '2022-2023', 'Pauleen Gregana', 2, '2023-04-11 16:51:52', '2023-04-11 17:09:36'),
+(126, 'Chriz', '', 'Mamugos', 'chriz', 'chriz@wmsu.edu.ph', 'chriz', 'student', 'BSIT', '4-B', 'First Semester', '2022-2023', 'Pauleen Gregana', 2, '2023-04-11 16:55:02', '2023-04-11 16:55:02'),
+(127, 'Kenneth', '', 'Tan', 'ken', 'ken@wmsu.edu.ph', 'ken', 'student', 'BSIT', '3-A', 'First Semester', '2022-2023', 'Pauleen Gregana', 2, '2023-04-11 17:11:17', '2023-04-11 17:11:17'),
+(128, 'Hannah', '', 'Mae', 'hannah', 'hannah@wmsu.edu.ph', 'hannah', 'student', 'BSIT', '3-C', 'First Semester', '2022-2023', 'Pauleen Gregana', 3, '2023-04-11 23:57:19', '2023-04-12 00:19:42'),
+(129, 'Dana', '', 'Anastacio', 'Dana', 'dana@wmsu.edu.ph', 'dana', 'student', 'BSIT', '4-A', 'First Semester', '2022-2023', 'Pauleen Gregana', 3, '2023-04-12 00:17:41', '2023-04-12 00:17:41'),
+(130, 'Reniel', '', 'Alfaro', 'ren', 'ren@wmsu.edu.ph', 'ren', 'student', 'BSIT', '3-B', 'First Semester', '2022-2023', 'Pauleen Gregana', 3, '2023-04-12 00:18:15', '2023-04-12 00:18:15'),
+(131, 'Erven', '', 'Idjad', 'erven', 'erven@wmsu.edu.ph', 'erven', 'student', 'BSCS', '3-B', 'First Semester', '2022-2023', 'Edwin Arip', 3, '2023-04-12 00:28:48', '2023-04-12 00:28:48'),
+(132, 'Alsibar', '', 'Ahmad', 'sibar', 'sibar@wmsu.edu.ph', 'sibar', 'student', 'BSCS', '4-A', 'First Semester', '2022-2023', 'Edwin Arip', 3, '2023-04-12 00:29:37', '2023-04-12 00:29:37'),
+(133, 'Athram', '', 'Igasan', 'athram', 'athram@wmsu.edu.ph', 'athram', 'student', 'BSCS', '3-C', 'First Semester', '2022-2023', 'Edwin Arip', 3, '2023-04-12 00:31:02', '2023-04-12 00:31:02');
 
 -- --------------------------------------------------------
 
@@ -188,22 +181,6 @@ CREATE TABLE `tbl_files` (
   `document` varchar(255) NOT NULL,
   `date_uploaded` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_files`
---
-
-INSERT INTO `tbl_files` (`id`, `name_file`, `document`, `date_uploaded`) VALUES
-(10, 'Yan File', 'Waro_Laboratory_Midterm_Project.pdf', 'March-16-2023'),
-(11, 'Waro', 'Waro_Activity 1.docx', 'March-16-2023'),
-(12, 'Marvinty', 'Waro_Activity 2.5.docx', 'March-16-2023'),
-(13, 'we', 'Waro_Activity 3.3.pdf', 'March-16-2023'),
-(14, 'we', 'Waro_Activity 3.3.pdf', 'March-16-2023'),
-(15, 'po', 'Waro_Activity 1.pdf', 'March-16-2023'),
-(16, 'png', 'Waro_Activity 3.pdf', 'March-16-2023'),
-(17, 'ty', 'Waro_Activity 2.3.pdf', 'March-16-2023'),
-(18, 'yuo', 'Module 7 - Lists in Python.pdf', 'March-16-2023'),
-(19, 'Another File', 'LECTURE-IN-P.E.-4-RECREATIONAL-ACTIVITIES.pdf', 'March-16-2023');
 
 -- --------------------------------------------------------
 
@@ -234,12 +211,6 @@ INSERT INTO `useraccounts` (`id`, `firstname`, `lastname`, `username`, `password
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `archive`
---
-ALTER TABLE `archive`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `faculty`
@@ -287,34 +258,28 @@ ALTER TABLE `useraccounts`
 --
 
 --
--- AUTO_INCREMENT for table `archive`
---
-ALTER TABLE `archive`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
 -- AUTO_INCREMENT for table `faculty`
 --
 ALTER TABLE `faculty`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `group_files`
 --
 ALTER TABLE `group_files`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
 
 --
 -- AUTO_INCREMENT for table `tbl_files`

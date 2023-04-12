@@ -295,20 +295,6 @@
                 <h4>3</h4>
               </a>
             </div>
-            <div class="col-12 col-sm-6 col-lg-3">
-              <a
-                href="#"
-                class="text-dark text-decoration-none bg-white p-3 rounded shadow-sm d-flex justify-content-between summary-danger"
-              >
-                <div>
-                  <i
-                    class="ri-group-line summary-icon bg-danger mb-2"
-                  ></i>
-                  <div>Total Rejected Titles</div>
-                </div>
-                <h4>149</h4>
-              </a>
-            </div>
           </div>
           
           <!-- end: Summary -->

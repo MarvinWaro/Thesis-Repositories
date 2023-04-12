@@ -213,8 +213,12 @@ require_once '../class/dbconfig.php';
           <!-- start: content -->
           <div class="main-content border">
                   <div class="head-number p-3"> 
-                      <h2>Group <?php echo $_GET['groupnum'] ?></h2>
-                      <h6><?php echo $_GET['course'] ?></h6>
+                    <h2>Group <?php echo $_GET['groupnum'] ?></h2>
+                      <div class="sub d-flex">
+                        <h6> >>Adviser<< </h6>
+                        <h6> | </h6>
+                        <h6><?php echo $_GET['course'] ?></h6>
+                      </div>
                   </div>
 
                   <div class="members p-3">

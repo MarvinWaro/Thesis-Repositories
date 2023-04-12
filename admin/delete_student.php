@@ -1,23 +1,29 @@
 <?php
-
     require_once '../class/student.class.php';
 
-    //resume session here to fetch session values
-    session_start();
-    /*
-        if user is not login then redirect to login page,
-        this is to prevent users from accessing pages that requires
-        authentication such as the dashboard
-    */
-    if (!isset($_SESSION['logged-in'])){
-        header('location: ../login/login.php');
-    }
-    //if the above code is false then code and html below will be executed
+session_start();
+// Check if the request is a POST request and that the 'hotel_id' parameter is set
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
+    // Get the hotel ID from the POST data
+    // Delete the hotel record from the database
     $student = new Student;
-    if(isset($_GET['id'])){
-        if($student->delete($_GET['id'])){
-            //redirect user to program page after saving
-            header('location: manage_students.php');
-        }
+    $result = $student->delete($_POST['id']);
+
+    if ($result) {
+        // The hotel was successfully deleted, so return a success message
+        $response = array(
+            'status' => 'success',
+            'message' => 'Student successfully deleted.'
+        );
+        echo json_encode($response);
+    } else {
+        // There was an error deleting the hotel, so return an error message
+        $response = array(
+            'status' => 'error',
+            'message' => 'There was an error deleting the student.'
+        );
+        echo json_encode($response);
     }
+}
+
 ?>
