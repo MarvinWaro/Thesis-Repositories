@@ -141,12 +141,7 @@ $s =  mysqli_query($conn, "SELECT * FROM faculty");
             Manage Faculty
           </a>
         </li>
-        <li class="sidebar-menu-item">
-          <a href="manage_rubrics.php">
-            <i class="ri-table-2 sidebar-menu-item-icon"></i>
-            Manage Rubrics
-          </a>
-        </li>
+        
         <li class="sidebar-menu-item">
           <a href="manage_schedules.php">
             <i class="ri-calendar-2-line sidebar-menu-item-icon"></i>

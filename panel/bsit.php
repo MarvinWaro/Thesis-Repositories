@@ -199,25 +199,27 @@
           <table id="example" class="table table-striped" style="width:100%">
                         <thead>
                         <tr>
+                        <th class="action">Action</th>
                             <th>Group #</th>
                             <th>Curriculum</th>
                             <th>Adviser</th>
                             <th>School Year</th>
-                            <th class="action">Action</th>
+                           
                         </tr>
                         </thead>
                         <tbody>
                                     <tr>
+                                    <td>
+                                              <div class="actions">
+                                                <a class="action-view" href="thesis.php"><i class="ri-eye-line"></i></a>
+                                              </div>
+                                          </td>
                                         <!-- always use echo to output PHP values -->
                                         <td> Group 1</td>
                                         <td> BSIT</td>
                                         <td> Jason Catadman</td>
                                         <td>2022-2023</td>
-                                          <td>
-                                              <div class="actions">
-                                                <a class="action-view" href="thesis.php"><i class="ri-eye-line"></i></a>
-                                              </div>
-                                          </td>
+                                          
                                     </tr>
                         </tbody>
                     </table>

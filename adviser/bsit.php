@@ -178,11 +178,12 @@
                     <table id="example" class="table table-striped" style="width:100%">
                         <thead>
                         <tr>
+                        <th class="action">Action</th>
                             <th>Group #</th>
                             <th>Curriculum</th>
                             <th>Adviser</th>
                             <th>School Year</th>
-                            <th class="action">Action</th>
+                            
                         </tr>
                         </thead>
                         <tbody>
@@ -198,19 +199,7 @@
                                       if($value['curriculum'] == "BSIT"){
                                 ?>
                                     <tr>
-                                        <!-- always use echo to output PHP values -->
-                                        <td><?php echo "Group " . $value['group_number'] ?></td>
-                                        <td><?php echo $value['curriculum'] ?></td>
-                                        
-                                        <?php
-                                        foreach ($student->get_adviser($value['adviser_id']) as $adviser){
-                                        ?>
-                                          <td><?php echo $adviser['firstname'] . " " . $adviser["lastname"] ?></td>
-                                        <?php
-                                        }
-                                        ?>
-                                        <td>2022-2023</td>
-                                        <?php
+                                    <?php
                                             if($_SESSION['id'] == $value['adviser_id']){ 
                                         ?>
                                             <td>
@@ -230,6 +219,19 @@
                                         <?php
                                             }
                                         ?>
+                                        <!-- always use echo to output PHP values -->
+                                        <td><?php echo "Group " . $value['group_number'] ?></td>
+                                        <td><?php echo $value['curriculum'] ?></td>
+                                        
+                                        <?php
+                                        foreach ($student->get_adviser($value['adviser_id']) as $adviser){
+                                        ?>
+                                          <td><?php echo $adviser['firstname'] . " " . $adviser["lastname"] ?></td>
+                                        <?php
+                                        }
+                                        ?>
+                                        <td>2022-2023</td>
+                                        
                                     </tr>
                                 <?php
                                       }

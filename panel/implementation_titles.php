@@ -198,6 +198,7 @@
                 <table id="example" class="table table-striped" style="width:100%">
                 <thead id="head">
                         <tr>
+                        <th>Action</th>
                             <th>#</th>
                             <th>Titles</th>
                             <th>Course</th>
@@ -205,11 +206,17 @@
                             <th>Date of Upload</th>
                             <th>Grade</th>
                             <th>School Year</th>
-                            <th>Action</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
+                        <td>
+                                <div class="actions">
+                                    <a class="action-view" href="implementation_titles_approval.php"><i class="ri-eye-line"></i></a>
+                                    
+                                </div>
+                            </td>
                             <td>1</td>
                             <td>System Architect</td>
                             <td>BSCS</td>
@@ -217,14 +224,15 @@
                             <td>2011-04-25</td>
                             <td>89%</td>
                             <td>2022-2023</td>
-                            <td>
-                                <div class="actions">
-                                    <a class="action-view" href="implementation_titles_approval.php"><i class="ri-eye-line"></i></a>
-                                    <a class="action-delete" href="#"><i class="ri-delete-bin-line"></i></a>
-                                </div>
-                            </td>
+                            
                         </tr>
                         <tr>
+                        <td>
+                                <div class="actions">
+                                <a class="action-view" href="implementation_titles_approval.php"><i class="ri-eye-line"></i></a>
+                                    
+                                </div>
+                            </td>
                             <td>2</td>
                             <td>Software Engineering</td>
                             <td>BSIT</td>
@@ -232,12 +240,7 @@
                             <td>2011-04-25</td>
                             <td>90%</td>
                             <td>2022-2023</td>
-                            <td>
-                                <div class="actions">
-                                <a class="action-view" href="implementation_titles_approval.php"><i class="ri-eye-line"></i></a>
-                                    <a class="action-delete" href="#"><i class="ri-delete-bin-line"></i></a>
-                                </div>
-                            </td>
+                            
                         </tr>
                     </tbody>
                 </table>
