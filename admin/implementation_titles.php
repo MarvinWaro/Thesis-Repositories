@@ -1,5 +1,6 @@
 <?php
 
+
         session_start();
         /*
             if user is not login then redirect to login page,
@@ -9,44 +10,6 @@
         if (!isset($_SESSION['logged-in'])){
             header('location: ../login/login.php');
         }
-
-        if (isset($_GET['file'])) {
-          
-          $file_name = basename($_GET['file']);
-          $file_path = '../adviser/upload/documents/' . $file_name;
-        
-          $path_parts = pathinfo($file_path);
-          echo $file_path;
-          $ext = strtolower($path_parts["extension"]);
-        
-          switch ($ext) {
-            case "pdf":
-              $ctype = "application/pdf";
-              break;
-            case "doc":
-              $ctype = "application/msword";
-              break;
-            case "xls":
-              $ctype = "application/vnd.ms-excel";
-              break;
-            default:
-              $ctype = "application/force-download";
-          }
-        
-          if (!empty($file_name) && file_exists($file_path)) {
-            header('Cache-Control: public');
-            header('Content-Description: File Transfer');
-            header('Content-Disposition: attachment; filename=' . $file_name);
-            header('Content-Type: $ctype');
-            header('Content-Transfer-Encoding: binary');
-        
-            readfile($file_path);
-            exit;
-          } else {
-            echo "Not Found";
-          }
-        }
-
 
 
 ?>
@@ -71,7 +34,7 @@
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../assets/css/style.css" />
     <!-- end: CSS -->
-    <title>Thesis Repository - Thesis</title>
+    <title>Thesis Repository - Blank Page</title>
   </head>
 
   <body>
@@ -89,27 +52,75 @@
       </div>
       <ul class="sidebar-menu p-3 m-0 mb-0">
         <li class="sidebar-menu-item">
-          <a href="home.php">
-            <i class="ri-home-8-line sidebar-menu-item-icon"></i>
-            Home
+          <a href="dashboard.php">
+            <i class="ri-dashboard-line sidebar-menu-item-icon"></i>
+            Dashboard
+          </a>
+        </li>
+
+        <li class="sidebar-menu-divider mt-3 mb-1 text-uppercase">Thesis</li>
+
+        <li class="sidebar-menu-item">
+          <a href="archives.php">
+            <i class="ri-archive-drawer-line sidebar-menu-item-icon"></i>
+            Archives
           </a>
         </li>
         <li class="sidebar-menu-item active">
-            <a href="thesis.php">
-                <i class="ri-sticky-note-line sidebar-menu-item-icon"></i>
-              Thesis
-            </a>
-          </li>
-        <li class="sidebar-menu-item ">
-          <a href="grades.php">
-            <i class="ri-mail-star-line sidebar-menu-item-icon"></i>
-            Grades
+          <a href="implementation_titles.php">
+            <i class="ri-archive-drawer-line sidebar-menu-item-icon"></i>
+            Implementation Titles
           </a>
         </li>
-        <li class="sidebar-menu-item ">
-          <a href="archives.php">
-             <i class="ri-archive-drawer-line sidebar-menu-item-icon"></i>
-            Archives
+        <li class="sidebar-menu-item has-dropdown">
+            <a href="thesis_status.php">
+                <i class="ri-bar-chart-box-line sidebar-menu-item-icon"></i>
+                Thesis Status
+                <i class="ri-arrow-down-s-line sidebar-menu-item-accordion ms-auto"></i>
+            </a>
+            <ul class="sidebar-dropdown-menu">
+                <li class="sidebar-dropdown-menu-item">
+                    <a href="accepted.php">
+                        Accepted Titles
+                    </a>
+                </li>
+                <li class="sidebar-dropdown-menu-item">
+                    <a href="rejected.php">
+                        Rejected Titles
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="sidebar-menu-divider mt-3 mb-1 text-uppercase">Manage</li>
+
+        <li class="sidebar-menu-item">
+          <a href="manage_students.php">
+            <i class="ri-user-line sidebar-menu-item-icon"></i>
+            Manage Student
+          </a>
+        </li>
+        <li class="sidebar-menu-item">
+          <a href="manage_groups.php">
+            <i class="ri-group-2-line sidebar-menu-item-icon"></i>
+            Manage Groups
+          </a>
+        </li>
+        <li class="sidebar-menu-item">
+          <a href="manage_faculty.php">
+            <i class="ri-group-line sidebar-menu-item-icon"></i>
+            Manage Faculty
+          </a>
+        </li>
+        <li class="sidebar-menu-item">
+          <a href="manage_rubrics.php">
+            <i class="ri-table-2 sidebar-menu-item-icon"></i>
+            Manage Rubrics
+          </a>
+        </li>
+        <li class="sidebar-menu-item">
+          <a href="manage_schedules.php">
+            <i class="ri-calendar-2-line sidebar-menu-item-icon"></i>
+            Manage Events
           </a>
         </li>
       </ul>
@@ -123,7 +134,7 @@
         <!-- start: Navbar -->
         <nav class="px-3 py-2 bg-white rounded shadow-sm">
           <i class="ri-menu-line sidebar-toggle me-3 d-block d-md-none"></i>
-          <h5 class="fw-bold mb-0 me-auto">Thesis</h5>
+          <h5 class="fw-bold mb-0 me-auto">Archives</h5>
           <div class="dropdown me-3 d-none d-sm-block">
             <div
               class="cursor-pointer dropdown-toggle navbar-link"
@@ -197,79 +208,79 @@
               <span class="me-2 d-none d-sm-block"><?php echo $_SESSION['fullname'] ?></span>
               <img
                 class="navbar-profile-image"
-                src="../img/u-icon.png"
-                alt="Image"
+                src="../img/u-icon.png" alt="Image"
               />
             </div>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" href="student_profile.php"><i class="ri-user-settings-line me-2"></i>Profile</a></li>
-              <li><a class="dropdown-item" href="student_settings.php"><i class="ri-settings-3-line me-2"></i>Settings</a></li>
+              <li><a class="dropdown-item" href="profile.php"><i class="ri-user-settings-line me-2"></i>Profile</a></li>
+              <li><a class="dropdown-item" href="settings.php"><i class="ri-settings-3-line me-2"></i>Settings</a></li>
               <hr class="w-100">
               <li><a class="dropdown-item" href="../login/logout.php"><i class="ri-logout-box-line me-2"></i>Logout</a></li>
             </ul>
           </div>
-          </nav>
-          <!-- end: Navbar -->
+        </nav>
+        <!-- end: Navbar -->
 
-          <!-- start: Content -->
-          <div class="py-4">
-            <!-- start: content -->
-              <div class="main-content border">
-                  <div class="head-number p-3"> 
-                      <h2> >>Your Approved title Here<<</h2>
-                      <div class="sub d-flex">
-                        <h6> <?php echo $_SESSION['adviser'] ?></h6>
-                        <h6 class="slash-padding"> | </h6>
-                        <h6> <?php echo $_SESSION['course'] ?> </h6>
-                        <h6 class="slash-padding"> | </h6>
-                        <h6> >> file title here <<</h6>
-                      </div>
-                     
-                  </div>
+        <!-- start: Content -->
+        <div class="py-4">
+          <!-- start: content -->
+          <div class="container">
 
-                  <div class="members p-3">
-                      <span>Members</span>
-                      <div class="list-mem pt-2">
-                          <ul>
-                              <li>Christian Fernandez</li>
-                              <li>Faye Lacsi</li>
-                          </ul>
-                      </div>
-                  </div>
-
-                  <div class="titles-up p-3" style="max-width:100% !important;">
-
-                   <div class="comment">
-                      <span>Comment</span>
-                      <p>coment here from the panelist at title defense</p>
-                   </div>
-
-
-                    <span>Overview</span>
-
-                    <div class="overview">
-
-                      <form action="" method="POST">
-                        <textarea required class="form-control" name="comment" rows="6"></textarea>
-
-                        <label for="formFile" class="form-label mt-2">Upload Updated File:</label>
-                        <input class="form-control student-form-control" type="file" id="formFile" name="myfile">
-
-                        <div class="submit-cont mt-2">
-                          <input type="submit" name="submit" id="submit" value="Submit for Proposal">
-                        </div>
-
-                      </form>
-
-                    </div>
-                              
-                  </div>
-              </div>
-
+          <table id="example" class="table table-striped" style="width:100%">
+                    <thead id="head">
+                        <tr>
+                            <th>Action</th>
+                            <th>#</th>
+                            <th>Titles</th>
+                            <th>Course</th>
+                            <th>Group No</th>
+                            <th>Date of Upload</th>
+                            <th>Grade</th>
+                            <th>School Year</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="actions">
+                                    <a class="action-view" href="#"><i class="ri-eye-line"></i></a>
+                                    <a class="action-delete" href="#"><i class="ri-delete-bin-line"></i></a>
+                                </div>
+                            </td>
+                            <td>1</td>
+                            <td>Game Dev</td>
+                            <td>BSIT</td>
+                            <td>group 1</td>
+                            <td>2011-04-25</td>
+                            <td>89%</td>
+                            <td>2022-2023</td>
+                            
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="actions">
+                                    <a class="action-view" href="#"><i class="ri-eye-line"></i></a>
+                                    <a class="action-delete" href="#"><i class="ri-delete-bin-line"></i></a>
+                                </div>
+                            </td>
+                            <td>2</td>
+                            <td>System Architect</td>
+                            <td>BSCS</td>
+                            <td>Group 2</td>
+                            <td>2011-04-25</td>
+                            <td>98%</td>
+                            <td>2022-2023</td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
           </div>
+    </div>
 
           <!-- end: content -->
           <!-- start: Graph -->
+          
 
           <!-- end: Graph -->
         </div>

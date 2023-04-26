@@ -72,16 +72,23 @@
             </a>
           </li>
           </li>
+          <li class="sidebar-menu-divider mt-3 mb-1 text-uppercase">Proposals</li>
           <li class="sidebar-menu-item">
             <a href="bsit.php">
                 <i class="ri-sticky-note-line sidebar-menu-item-icon"></i>
                 BSIT
             </a>
           </li>
-          <li class="sidebar-menu-item active">
-            <a href="approve_titles.php">
+          <li class="sidebar-menu-item ">
+            <a href="accepted_titles.php">
                 <i class="ri-check-fill sidebar-menu-item-icon"></i>
-                Approved Titles
+                Accepted Titles
+            </a>
+          </li>
+          <li class="sidebar-menu-item ">
+            <a href="implementation_titles.php">
+                <i class="ri-check-fill sidebar-menu-item-icon"></i>
+                Implementation Titles
             </a>
           </li>
       </ul>
@@ -231,7 +238,7 @@
                       <form action="" method="POST">
                         <input class="form-input" type="number" id="percentage-input" name="percentage" placeholder="Enter score" min="0" max="100" step="0.01">
                         <div class="submit-cont mt-2">
-                          <input type="submit" name="submit" id="submit-proposal-title" value="Archive">
+                          <input type="submit" name="submit" id="submit-proposal-title" value="Proceed to Implementation">
                         </div>
 
                       </form>

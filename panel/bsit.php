@@ -78,10 +78,17 @@
                 BSIT
             </a>
           </li>
+          <li class="sidebar-menu-divider mt-3 mb-1 text-uppercase">Proposals</li>
           <li class="sidebar-menu-item ">
-            <a href="approve_titles.php">
+            <a href="accepted_titles.php">
                 <i class="ri-check-fill sidebar-menu-item-icon"></i>
-                Approved Titles
+                Accepted Titles
+            </a>
+          </li>
+          <li class="sidebar-menu-item ">
+            <a href="implementation_titles.php">
+                <i class="ri-check-fill sidebar-menu-item-icon"></i>
+                Implementation Titles
             </a>
           </li>
       </ul>

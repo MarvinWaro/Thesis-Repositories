@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../assets/css/calendar.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
 
     <link
       rel="stylesheet"
@@ -59,7 +59,7 @@
         ></i>
       </div>
       <ul class="sidebar-menu p-3 m-0 mb-0">
-        <li class="sidebar-menu-item active">
+        <li class="sidebar-menu-item ">
           <a href="home.php ">
             <i class="ri-home-8-line sidebar-menu-item-icon"></i>
             Home
@@ -78,8 +78,10 @@
                 BSIT
             </a>
           </li>
+
           <li class="sidebar-menu-divider mt-3 mb-1 text-uppercase">Proposals</li>
-          <li class="sidebar-menu-item ">
+
+          <li class="sidebar-menu-item active">
             <a href="accepted_titles.php">
                 <i class="ri-check-fill sidebar-menu-item-icon"></i>
                 Accepted Titles
@@ -102,7 +104,7 @@
         <!-- start: Navbar -->
         <nav class="px-3 py-2 bg-white rounded shadow-sm">
           <i class="ri-menu-line sidebar-toggle me-3 d-block d-md-none"></i>
-          <h5 class="fw-bold mb-0 me-auto">Home | Panelist</h5>
+          <h5 class="fw-bold mb-0 me-auto">Approved Titles</h5>
           <div class="dropdown me-3 d-none d-sm-block">
             <div
               class="cursor-pointer dropdown-toggle navbar-link"
@@ -193,82 +195,54 @@
         <!-- start: Content -->
         <div class="py-4">
           <!-- start: content -->
+          <div class="container">
 
+                <table id="example" class="table table-striped" style="width:100%">
+                <thead id="head">
+                        <tr>
+                            <th>#</th>
+                            <th>Titles</th>
+                            <th>Course</th>
+                            <th>Group No</th>
+                            <th>Date of Upload</th>
+                            <th>School Year</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>System Architect</td>
+                            <td>BSCS</td>
+                            <td>1</td>
+                            <td>2011-04-25</td>
+                            <td>2022-2023</td>
+                            <td>
+                                <div class="actions">
+                                    <a class="action-view" href="proposal_titles.php"><i class="ri-eye-line"></i></a>
+                                    <a class="action-delete" href="#"><i class="ri-delete-bin-line"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Software Engineering</td>
+                            <td>BSIT</td>
+                            <td>1</td>
+                            <td>2011-04-25</td>
+                            <td>2022-2023</td>
+                            <td>
+                                <div class="actions">
+                                <a class="action-view" href="proposal_titles.php"><i class="ri-eye-line"></i></a>
+                                    <a class="action-delete" href="#"><i class="ri-delete-bin-line"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+          </div>
 
-          <div class="container-calendar">
-            <div class="left">
-            <div class="calendar">
-                <div class="month">
-                <i class="fas fa-angle-left prev"></i>
-                <div class="date">december 2015</div>
-                <i class="fas fa-angle-right next"></i>
-                </div>
-                <div class="weekdays">
-                <div>Sun</div>
-                <div>Mon</div>
-                <div>Tue</div>
-                <div>Wed</div>
-                <div>Thu</div>
-                <div>Fri</div>
-                <div>Sat</div>
-                </div>
-                <div class="days"></div>
-                <div class="goto-today">
-                <div class="goto">
-                    <input type="text" placeholder="mm/yyyy" class="date-input" />
-                    <button class="goto-btn">Go</button>
-                </div>
-                <button class="today-btn">Today</button>
-                </div>
-            </div>
-            </div>
-            <div class="right">
-            <div class="today-date">
-                <div class="event-day">wed</div>
-                <div class="event-date">12th december 2022</div>
-            </div>
-            
-            <div class="events"></div>
-            <?php
-                if($_SESSION['user_type'] == 'admin'){ 
-            ?>
-            <div class="add-event-wrapper">
-                <div class="add-event-header">
-                <div class="title">Add Event</div>
-                <i class="fas fa-times close"></i>
-                </div>
-                <div class="add-event-body">
-                <div class="add-event-input">
-                    <input type="text" placeholder="Event Name" class="event-name" />
-                </div>
-                <div class="add-event-input">
-                    <input
-                    type="text"
-                    placeholder="Event Time From"
-                    class="event-time-from"
-                    />
-                </div>
-                <div class="add-event-input">
-                    <input
-                    type="text"
-                    placeholder="Event Time To"
-                    class="event-time-to"
-                    />
-                </div>
-                </div>
-                <div class="add-event-footer">
-                <button class="add-event-btn">Add Event</button>
-                </div>
-            </div>
-            </div>
-            <button class="add-event">
-            <i class="fas fa-plus"></i>
-            </button>
-            <?php
-                }
-            ?>
-
-        </div>
+        </div> <!-- END PY4 -->
 
           <!-- end: content -->
           <!-- start: Graph -->

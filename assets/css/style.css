@@ -1075,6 +1075,13 @@ form .error {
     font-size: 13px
   }
 
+  .py-4 .border .color{
+    width: 50%;
+    height: 30vh;
+    background-color: red;
+
+  }
+
 
 
 
