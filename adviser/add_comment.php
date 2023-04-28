@@ -13,15 +13,15 @@ require_once '../class/student.class.php';
 
         if(isset($_POST['submit1'])){
             // Change group_id = to current group selected ID.
-            $sql = "UPDATE group_files SET title1_comment = ?, title1_adviser_file = ? WHERE group_id = ?";
+            $sql = "UPDATE group_titles SET comment = ?, adviser_file = ? WHERE group_id = ? AND title_number = '1'";
         }
         elseif (isset($_POST['submit2'])) {
             // Change group_id = to current group selected ID.
-            $sql = "UPDATE group_files SET title2_comment = ?, title2_adviser_file = ? WHERE group_id = ?";
+            $sql = "UPDATE group_titles SET comment = ?, adviser_file = ? WHERE group_id = ? AND title_number = '2'";
         }
         elseif (isset($_POST['submit3'])) {
             // Change group_id = to current group selected ID.
-            $sql = "UPDATE group_files SET title3_comment = ?, title3_adviser_file = ? WHERE group_id = ?";
+            $sql = "UPDATE group_titles SET comment = ?, adviser_file = ? WHERE group_id = ? AND title_number = '3'";
         }
 
         $stmt = mysqli_stmt_init($conn);
@@ -52,7 +52,7 @@ require_once '../class/student.class.php';
 
         $student = new Student();
 
-        foreach ($student->show_group($_POST['cGroupNum'], $_POST['cCourse']) as $value){
+        foreach ($student->show_group($_POST['cGroupNum']) as $value){
             mysqli_stmt_bind_param($stmt, "sss", $comment, $fileNameNew, $value['group_id']);
             mysqli_stmt_execute($stmt);
         }

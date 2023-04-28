@@ -207,19 +207,39 @@
                         </tr>
                         </thead>
                         <tbody>
+                          <?php
+                          require_once '../class/student.class.php';
+
+                          $student = new Student();
+                          //We will now fetch all the records in the array using loop
+                          //use as a counter, not required but suggested for the table
+                          $i = 1;
+                          //loop for each record found in the array
+                          foreach ($student->show_all_groups() as $value){
+                            if($value['curriculum'] == "BSCS" ){
+                          ?>
                                     <tr>
                                     <td>
                                               <div class="actions">
-                                                <a class="action-view" href="thesis.php"><i class="ri-eye-line"></i></a>
+                                                <a class="action-view" href="thesis.php?groupnum=<?php echo $value['id'] ?>&course=<?php echo $value['curriculum'] ?>"><i class="ri-eye-line"></i></a>
                                               </div>
                                           </td>
                                         <!-- always use echo to output PHP values -->
-                                        <td> Group 1</td>
-                                        <td> BSCS</td>
-                                        <td> Jaydee Ballaho</td>
+                                        <td> Group <?php echo $value["group_number"] ?></td>
+                                        <td>BSCS</td>
+                                        <?php foreach ($student->get_adviser($value['adviser_id']) as $adviser){
+                                        ?>
+                                                <td><?php echo $adviser["firstname"] . " " . $adviser["lastname"] ?></td>
+                                        <?php
+                                        } ?>
+                                        
                                         <td> 2022-2023</td>
                                           
                                     </tr>
+                          <?php
+                            }
+                          }
+                          ?>
                         </tbody>
                     </table>
           </div>

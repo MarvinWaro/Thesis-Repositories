@@ -13,18 +13,18 @@ require_once '../class/student.class.php';
 
         if(isset($_POST['file_submit1'])){
             // Change group_id = to current group selected ID.
-            $sql = "UPDATE group_files SET title1 = ?, title1_file = ? WHERE group_id = ?";
-            $name_file = $_POST['name_file1'];
+            $sql = "UPDATE group_titles SET title = ?, file = ?, file_upload_date = ? WHERE group_id = ? AND title_number = '1'";
+            $name_file = $_POST['title'];
         }
         elseif (isset($_POST['file_submit2'])) {
             // Change group_id = to current group selected ID.
-            $sql = "UPDATE group_files SET title2 = ?, title2_file = ? WHERE group_id = ?";
-            $name_file = $_POST['name_file2'];
+            $sql = "UPDATE group_titles SET title = ?, file = ?, file_upload_date = ? WHERE group_id = ? AND title_number = '2'";
+            $name_file = $_POST['title'];
         }
         elseif (isset($_POST['file_submit3'])) {
             // Change group_id = to current group selected ID.
-            $sql = "UPDATE group_files SET title3 = ?, title3_file = ? WHERE group_id = ?";
-            $name_file = $_POST['name_file3'];
+            $sql = "UPDATE group_titles SET title = ?, file = ?, file_upload_date = ? WHERE group_id = ? AND title_number = '3'";
+            $name_file = $_POST['title'];
         }
 
         $doc_type = "Document";
@@ -52,8 +52,9 @@ require_once '../class/student.class.php';
 
             $student = new Student();
 
-            foreach ($student->show_group($_SESSION['groupnum'], $_SESSION['course']) as $value){
-                mysqli_stmt_bind_param($stmt, "sss", $name_file, $fileNameNew, $value['group_id']);
+            $dateNow = strval(date("Y-m-d"));
+            foreach ($student->show_group($_SESSION['groupnum']) as $value){
+                mysqli_stmt_bind_param($stmt, "ssss", $name_file, $fileNameNew, $dateNow, $value['group_id']);
                 mysqli_stmt_execute($stmt);
             }
 

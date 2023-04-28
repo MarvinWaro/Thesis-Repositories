@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 12, 2023 at 05:19 AM
--- Server version: 10.4.24-MariaDB
+-- Generation Time: Apr 28, 2023 at 01:50 AM
+-- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -50,7 +50,8 @@ INSERT INTO `faculty` (`id`, `firstname`, `middle_name`, `lastname`, `email`, `u
 (34, 'Jason', '', 'Catadman', 'ndksndksn@wmsu.edu.ph', 'jason', 'jason', 'Information Technology', 'faculty', '2023-03-25 03:53:59', '2023-04-04 01:41:40'),
 (35, 'Lucy', 'Felix', 'Sadiwa', 'Lucy@wmsu.edu.ph', 'lucy', 'lucy', 'Computer Science', 'faculty', '2023-04-09 06:58:43', '2023-04-09 06:58:43'),
 (37, 'Edwin', '', 'Arip', 'edwin@wmsu.edu.ph', 'edwin', 'edwin', 'Computer Science', 'faculty', '2023-04-09 14:25:30', '2023-04-09 14:25:30'),
-(38, 'Pauleen', '', 'Gregana', 'pauleen@wmsu.edu.ph', 'Pauleen', 'pauleen', 'Information Technolgy', 'faculty', '2023-04-09 14:27:33', '2023-04-09 14:27:33');
+(38, 'Pauleen', '', 'Gregana', 'pauleen@wmsu.edu.ph', 'Pauleen', 'pauleen', 'Information Technolgy', 'faculty', '2023-04-09 14:27:33', '2023-04-09 14:27:33'),
+(39, 'Gadmar', '', 'Belamide', 'edwin@wmsu.edu.ph', 'gadmar', 'gadmar', 'Computer Science', 'admin', '2023-04-09 14:25:30', '2023-04-09 14:25:30');
 
 -- --------------------------------------------------------
 
@@ -70,14 +71,8 @@ CREATE TABLE `groups` (
 --
 
 INSERT INTO `groups` (`id`, `group_number`, `curriculum`, `adviser_id`) VALUES
-(37, 1, 'BSCS', 25),
-(38, 2, 'BSCS', 35),
-(39, 3, 'BSCS', 37),
-(41, 2, 'BSIT', 38),
-(42, 3, 'BSIT', 38),
-(43, 1, 'BSIT', 34),
-(44, 4, 'BSCS', 25),
-(45, 4, 'BSIT', 34);
+(48, 1, 'BSCS', 25),
+(49, 1, 'BSIT', 34);
 
 -- --------------------------------------------------------
 
@@ -106,19 +101,38 @@ CREATE TABLE `group_files` (
   `lock3` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `group_files`
+-- Table structure for table `group_titles`
 --
 
-INSERT INTO `group_files` (`id`, `group_id`, `group_num`, `title1`, `title1_file`, `title1_comment`, `title1_adviser_file`, `lock1`, `title2`, `title2_file`, `title2_comment`, `title2_adviser_file`, `lock2`, `title3`, `title3_file`, `title3_comment`, `title3_adviser_file`, `lock3`) VALUES
-(30, 37, 1, 'title1', 'Doc1.docx', 'please do this format', 'Name.docx', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 0),
-(31, 38, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 0),
-(32, 39, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 0),
-(34, 41, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 0),
-(35, 42, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 0),
-(36, 43, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 0),
-(37, 44, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 0),
-(38, 45, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 0);
+CREATE TABLE `group_titles` (
+  `id` int(11) NOT NULL,
+  `group_id` int(11) NOT NULL,
+  `group_number` int(11) NOT NULL,
+  `title_number` int(11) NOT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `file` varchar(255) DEFAULT NULL,
+  `file_upload_date` date DEFAULT NULL,
+  `adviser_file` varchar(255) DEFAULT NULL,
+  `comment` varchar(255) DEFAULT NULL,
+  `panel_comment` varchar(255) DEFAULT NULL,
+  `is_locked` tinyint(1) NOT NULL DEFAULT 0,
+  `status` varchar(255) NOT NULL DEFAULT 'Pending'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `group_titles`
+--
+
+INSERT INTO `group_titles` (`id`, `group_id`, `group_number`, `title_number`, `title`, `file`, `file_upload_date`, `adviser_file`, `comment`, `panel_comment`, `is_locked`, `status`) VALUES
+(2, 48, 1, 1, 'GameDev', 'Test SE File.docx', '2023-04-28', '', 'Test', 'A', 1, 'To Proposal'),
+(3, 48, 1, 2, 'WebDev', 'TestDocu.docx', NULL, '', 'Test2', 'B', 0, 'Rejected'),
+(4, 48, 1, 3, 'DataScience', NULL, NULL, '', NULL, 'C', 0, 'Rejected'),
+(5, 49, 1, 1, NULL, NULL, NULL, '', NULL, '', 0, 'Pending'),
+(6, 49, 1, 2, NULL, NULL, NULL, '', NULL, '', 0, 'Pending'),
+(7, 49, 1, 3, NULL, NULL, NULL, '', NULL, '', 0, 'Pending');
 
 -- --------------------------------------------------------
 
@@ -150,24 +164,7 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`id`, `firstname`, `middle_name`, `lastname`, `username`, `email`, `password`, `type`, `course`, `year_and_section`, `sem`, `school_year`, `your_adviser`, `your_group`, `created_at`, `updated_at`) VALUES
-(115, 'Christian', '', 'Fernandez', 'yan', 'yan@wmsu.edu.ph', 'yan', 'student', 'BSCS', '3-A', 'First Semester', '2022-2023', 'Jaydee Ballaho', 1, '2023-04-11 16:28:57', '2023-04-11 16:28:57'),
-(116, 'Bernard', '', 'Sanson', 'nard ', 'nard@wmsu.edu.ph', 'nard', 'student', 'BSCS', '3-C', 'First Semester', '2022-2023', 'Jaydee Ballaho', 1, '2023-04-11 16:33:31', '2023-04-11 16:36:08'),
-(118, 'Joshua', '', 'Bada', 'josh', 'josh@wmsu.edu.ph', 'josh', 'student', 'BSCS', '3-A', 'First Semester', '2022-2023', 'Jaydee Ballaho', 1, '2023-04-11 16:34:52', '2023-04-11 16:34:52'),
-(119, 'Lowey', 'G', 'Ecat', 'lowey', 'lowey@wmsu.edu.ph', 'lowey', 'student', 'BSIT', '3-A', 'First Semester', '2022-2023', 'Jason Catadman', 1, '2023-04-11 16:35:40', '2023-04-11 16:35:59'),
-(120, 'Marvin', 'Bercero', 'Waro', 'Marvin', 'marvin@wmsu.edu.ph', 'marvin', 'student', 'BSIT', '3-B', 'First Semester', '2022-2023', 'Jason Catadman', 1, '2023-04-11 16:45:22', '2023-04-11 16:45:22'),
-(121, 'John', 'Connor', 'Mesa', 'john', 'john@wmsu.edu.ph', 'john', 'student', 'BSIT', '3-C', 'First Semester', '2022-2023', 'Jason Catadman', 1, '2023-04-11 16:46:42', '2023-04-11 16:46:42'),
-(122, 'Faye', '', 'Lacsi', 'faye', 'faye@wmsu.edu.ph', 'faye', 'student', 'BSCS', '4-A', 'First Semester', '2022-2023', 'Lucy Sadiwa', 2, '2023-04-11 16:48:47', '2023-04-11 16:48:47'),
-(123, 'Jenny Babe', '', 'Samson', 'Jenny', 'jenny@wmsu.edu.ph', 'jenny', 'student', 'BSCS', '3-B', 'First Semester', '2022-2023', 'Lucy Sadiwa', 2, '2023-04-11 16:49:48', '2023-04-11 16:49:48'),
-(124, 'Avon', '', 'Alcontin', 'avon', 'avon@wmsu.edu.ph', 'avon', 'student', 'BSCS', '3-A', 'First Semester', '2022-2023', 'Lucy Sadiwa', 2, '2023-04-11 16:50:57', '2023-04-11 16:50:57'),
-(125, 'Xela', '', 'Silorio', 'xela', 'Xela@wmsu.edu.ph', 'xela', 'student', 'BSIT', '3-A', 'First Semester', '2022-2023', 'Pauleen Gregana', 2, '2023-04-11 16:51:52', '2023-04-11 17:09:36'),
-(126, 'Chriz', '', 'Mamugos', 'chriz', 'chriz@wmsu.edu.ph', 'chriz', 'student', 'BSIT', '4-B', 'First Semester', '2022-2023', 'Pauleen Gregana', 2, '2023-04-11 16:55:02', '2023-04-11 16:55:02'),
-(127, 'Kenneth', '', 'Tan', 'ken', 'ken@wmsu.edu.ph', 'ken', 'student', 'BSIT', '3-A', 'First Semester', '2022-2023', 'Pauleen Gregana', 2, '2023-04-11 17:11:17', '2023-04-11 17:11:17'),
-(128, 'Hannah', '', 'Mae', 'hannah', 'hannah@wmsu.edu.ph', 'hannah', 'student', 'BSIT', '3-C', 'First Semester', '2022-2023', 'Pauleen Gregana', 3, '2023-04-11 23:57:19', '2023-04-12 00:19:42'),
-(129, 'Dana', '', 'Anastacio', 'Dana', 'dana@wmsu.edu.ph', 'dana', 'student', 'BSIT', '4-A', 'First Semester', '2022-2023', 'Pauleen Gregana', 3, '2023-04-12 00:17:41', '2023-04-12 00:17:41'),
-(130, 'Reniel', '', 'Alfaro', 'ren', 'ren@wmsu.edu.ph', 'ren', 'student', 'BSIT', '3-B', 'First Semester', '2022-2023', 'Pauleen Gregana', 3, '2023-04-12 00:18:15', '2023-04-12 00:18:15'),
-(131, 'Erven', '', 'Idjad', 'erven', 'erven@wmsu.edu.ph', 'erven', 'student', 'BSCS', '3-B', 'First Semester', '2022-2023', 'Edwin Arip', 3, '2023-04-12 00:28:48', '2023-04-12 00:28:48'),
-(132, 'Alsibar', '', 'Ahmad', 'sibar', 'sibar@wmsu.edu.ph', 'sibar', 'student', 'BSCS', '4-A', 'First Semester', '2022-2023', 'Edwin Arip', 3, '2023-04-12 00:29:37', '2023-04-12 00:29:37'),
-(133, 'Athram', '', 'Igasan', 'athram', 'athram@wmsu.edu.ph', 'athram', 'student', 'BSCS', '3-C', 'First Semester', '2022-2023', 'Edwin Arip', 3, '2023-04-12 00:31:02', '2023-04-12 00:31:02');
+(135, 'Christian', '', 'Fernandez', 'yanyan', 'yanyan@wmsu.edu.ph', 'yanyan', 'student', 'BSCS', '3-B', 'First Semester', '2022-2023', 'Jaydee Ballaho', 48, '2023-04-27 15:40:13', '2023-04-27 15:40:13');
 
 -- --------------------------------------------------------
 
@@ -235,6 +232,13 @@ ALTER TABLE `group_files`
   ADD KEY `groupnum` (`group_num`);
 
 --
+-- Indexes for table `group_titles`
+--
+ALTER TABLE `group_titles`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `grpid` (`group_id`);
+
+--
 -- Indexes for table `student`
 --
 ALTER TABLE `student`
@@ -261,13 +265,13 @@ ALTER TABLE `useraccounts`
 -- AUTO_INCREMENT for table `faculty`
 --
 ALTER TABLE `faculty`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `group_files`
@@ -276,10 +280,16 @@ ALTER TABLE `group_files`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
+-- AUTO_INCREMENT for table `group_titles`
+--
+ALTER TABLE `group_titles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=136;
 
 --
 -- AUTO_INCREMENT for table `tbl_files`
@@ -310,10 +320,16 @@ ALTER TABLE `group_files`
   ADD CONSTRAINT `groups` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Constraints for table `group_titles`
+--
+ALTER TABLE `group_titles`
+  ADD CONSTRAINT `grpid` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `student`
 --
 ALTER TABLE `student`
-  ADD CONSTRAINT `stud_group` FOREIGN KEY (`your_group`) REFERENCES `groups` (`group_number`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `stud_group` FOREIGN KEY (`your_group`) REFERENCES `groups` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

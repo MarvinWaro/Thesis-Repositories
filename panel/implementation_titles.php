@@ -214,7 +214,7 @@
                         <td>
                                 <div class="actions">
                                     <a class="action-view" href="implementation_titles_approval.php"><i class="ri-eye-line"></i></a>
-                                    
+                                    <a class="action-delete" href="#"><i class="ri-delete-bin-line"></i></a>
                                 </div>
                             </td>
                             <td>1</td>
@@ -230,7 +230,7 @@
                         <td>
                                 <div class="actions">
                                 <a class="action-view" href="implementation_titles_approval.php"><i class="ri-eye-line"></i></a>
-                                    
+                                    <a class="action-delete" href="#"><i class="ri-delete-bin-line"></i></a>
                                 </div>
                             </td>
                             <td>2</td>

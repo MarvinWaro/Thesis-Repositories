@@ -1,54 +1,57 @@
 <?php
 
-require_once  '../student/process.php';
-require_once '../class/dbconfig.php';
+                      require_once  '../student/process.php';
+                      require_once '../class/dbconfig.php';
 
-        session_start();
-        /*
+                      session_start();
+                      /*
             if user is not login then redirect to login page,
             this is to prevent users from accessing pages that requires
             authentication such as the dashboard
         */
-        if (!isset($_SESSION['logged-in'])){
-            header('location: ../login/login.php');
-        }
+                      if (!isset($_SESSION['logged-in'])) {
+                        header('location: ../login/login.php');
+                      }
 
-        if(isset($_GET['file'])){
-            $file_name = basename($_GET['file']);
-            $file_path = '../student/upload/documents/' . $file_name;
+                      if (isset($_GET['file'])) {
+                        $file_name = basename($_GET['file']);
+                        $file_path = '../student/upload/documents/' . $file_name;
 
-            $path_parts = pathinfo($fullPath);
-            echo $file_path;
-            $ext = strtolower($path_parts["extension"]);
+                        $path_parts = pathinfo($file_Path);
+                        echo $file_path;
+                        $ext = strtolower($path_parts["extension"]);
 
-            switch ($ext) {
-              case "pdf":
-                $ctype = "application/pdf";
-                break;
-              case "doc":
-                $ctype = "application/msword";
-                break;
-              case "xls":
-                $ctype = "application/vnd.ms-excel";
-                break;
-              default:
-                $ctype = "application/force-download";
-            }
+                        switch ($ext) {
+                          case "pdf":
+                            $ctype = "application/pdf";
+                            break;
+                          case "doc":
+                            $ctype = "application/msword";
+                            break;
+                          case "docx":
+                            $ctype = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+                            break;
+                          case "xls":
+                            $ctype = "application/vnd.ms-excel";
+                            break;
+                          default:
+                            $ctype = "application/force-download";
+                        }
+                        ob_end_clean();
+                        if (!empty($file_name) && file_exists($file_path)) {
 
-            if(!empty($file_name) && file_exists($file_path)){
-                header('Cache-Control: public');
-                header('Content-Description: File Transfer');
-                header('Content-Disposition: attachment; filename=' . $file_name);
-                header('Content-Type: $ctype' );
-                header('Content-Transfer-Encoding: binary');
+                          header('Cache-Control: public');
+                          header('Content-Description: File Transfer');
+                          header('Content-Disposition: attachment; filename=' . $file_name);
+                          header('Content-Type: ' . $ctype);
+                          header('Content-Transfer-Encoding: binary');
 
-                readfile($file_path);
-                exit;
-            }
-            else {
-              echo "Not Found";
-            }
-        }
+                          readfile($file_path);
+                          exit;
+                        } else {
+                          echo "Not Found";
+                        }
+                      }
 
 
 ?>
@@ -207,16 +210,19 @@ require_once '../class/dbconfig.php';
           </div>
         </nav>
         <!-- end: Navbar -->
+        <?php
+        require_once '../class/student.class.php';
 
+        $student = new Student();
+
+        ?>
         <!-- start: Content -->
         <div class="py-4">
           <!-- start: content -->
           <div class="main-content border">
                   <div class="head-number p-3"> 
-                    <h2>Group <?php echo $_GET['groupnum'] ?></h2>
+                    <h2>Group <?php foreach ($student->show_group_info($_GET['groupnum']) as $groupNum) echo $groupNum['group_number'] ?></h2>
                       <div class="sub d-flex">
-                        <h6> >>Adviser<< </h6>
-                        <h6> | </h6>
                         <h6><?php echo $_GET['course'] ?></h6>
                       </div>
                   </div>
@@ -226,9 +232,7 @@ require_once '../class/dbconfig.php';
                       <div class="list-mem pt-2">
                           <ul>
                               <?php
-                              require_once '../class/student.class.php';
-
-                              $student = new Student();
+                              
 
                               foreach ($student->show_group_members($_GET['groupnum'], $_GET['course']) as $value){
                               ?>
@@ -245,37 +249,19 @@ require_once '../class/dbconfig.php';
                       
                       <div class="uploading">
                       <?php
-                                    require_once '../class/student.class.php';
-
-                                    $student = new Student();
-                                    foreach ($student->show_group($_GET['groupnum'], $_GET['course']) as $value){
+                                    
+                                    foreach ($student->show_group($_GET['groupnum']) as $value){
                       ?>
                                     <form action="add_comment.php" method="POST">
                                       <div class="mb-3">
-                                        <p class="me-3">Title 1: <?php echo $value['title1']?></p>
-                                        <p class="me-3"><a href="advisee.php?file=<?php echo $value['title1_file'] ?>"><?php echo $value['title1_file'] ?></a></p>
-                                        <textarea required class="form-control" name="comment" placeholder="Adviser Comment" disabled><?php echo $value['title1_comment'] ?></textarea>
+                                        <p class="me-3">Title 1: <?php echo $value['title']?></p>
+                                        <p class="me-3"><a href="advisee.php?file=<?php echo $value['file'] ?>"><?php echo $value['file'] ?></a></p>
+                                        <textarea required class="form-control" name="comment" placeholder="Adviser Comment" readonly><?php echo $value['comment'] ?></textarea>
                                         
                                       </div>
                                     </form>
                                       
-                                    <form action="add_comment.php" method="POST">
-                                      <div class="mb-3">
-                                        <p class="me-3">Title 2: <?php echo $value['title2']?></p>
-                                        <p class="me-3"><a href="advisee.php?file=<?php echo $value['title2_file'] ?>"><?php echo $value['title2_file'] ?></a></p>
-                                        <textarea required class="form-control" name="comment" placeholder="Adviser Comment" disabled><?php echo $value['title2_comment'] ?></textarea>
-                                        
-                                      </div>
-                                    </form>
-
-                                    <form action="add_comment.php" method="POST">
-                                      <div class="mb-3">
-                                        <p class="me-3">Title 3: <?php echo $value['title3']?></p>
-                                        <p class="me-3"><a href="advisee.php?file=<?php echo $value['title3_file'] ?>"><?php echo $value['title3_file'] ?></a></p>
-                                        <textarea required class="form-control" name="comment" placeholder="Adviser Comment" disabled><?php echo $value['title3_comment'] ?></textarea>
-                                        
-                                      </div>
-                                    </form>
+                      
                         <?php
                                     }
                         ?>

@@ -105,7 +105,7 @@
             Manage Faculty
           </a>
         </li>
-        
+      
         <li class="sidebar-menu-item">
           <a href="manage_schedules.php">
             <i class="ri-calendar-2-line sidebar-menu-item-icon"></i>
@@ -229,6 +229,13 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php
+                          include_once '../class/student.class.php';
+                          $student = new Student();
+
+                          $counter = 1;
+                          foreach ($student->get_proposed_titles() as $title) {
+                        ?>
                         <tr>
                             <td>
                                 <div class="actions">
@@ -236,29 +243,18 @@
                                     <a class="action-delete" href="#"><i class="ri-delete-bin-line"></i></a>
                                 </div>
                             </td>
-                            <td>1</td>
-                            <td>System Architect</td>
-                            <td>BSCS</td>
-                            <td>1</td>
-                            <td>2011-04-25</td>
+                            <td><?php echo $counter ?></td>
+                            <td><?php echo $title["title"]?></td>
+                            <td><?php echo $title["curriculum"]?></td>
+                            <td><?php echo $title["group_number"]?></td>
+                            <td><?php echo $title["file_upload_date"]?></td>
                             <td>2022-2023</td>
-                            
                         </tr>
-                        <tr>
-                            <td>
-                                <div class="actions">
-                                    <a class="action-view" href="#"><i class="ri-eye-line"></i></a>
-                                    <a class="action-delete" href="#"><i class="ri-delete-bin-line"></i></a>
-                                </div>
-                            </td>
-                            <td>2</td>
-                            <td>Software Engineering</td>
-                            <td>BSIT</td>
-                            <td>1</td>
-                            <td>2011-04-25</td>
-                            <td>2022-2023</td>
-                            
-                        </tr>
+                        <?php
+                          $counter++;
+                          }
+                        ?>
+
                     </tbody>
                 </table>
           </div>

@@ -141,7 +141,7 @@ $s =  mysqli_query($conn, "SELECT * FROM faculty");
             Manage Faculty
           </a>
         </li>
-        
+       
         <li class="sidebar-menu-item">
           <a href="manage_schedules.php">
             <i class="ri-calendar-2-line sidebar-menu-item-icon"></i>
@@ -319,87 +319,79 @@ $s =  mysqli_query($conn, "SELECT * FROM faculty");
 
                 <div class="container-2">
 
-                <label for="course">Course</label>
-                <select name="course" id="course">
-                    <option value="None" <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'None') echo ' selected="selected"'; } ?>>--Select Course--</option>
+                  <label for="course">Course</label>
+                  <select name="course" id="course">
+                    <option value="" <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'None') echo ' selected="selected"'; } ?>>--Select--</option>
                     <option value="BSIT" <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'BSIT') echo ' selected="selected"'; } ?>>BSIT</option>
-                    <option value="BSCS" <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'BSIT') echo ' selected="selected"'; } ?>>BSCS</option>
-                </select>
+                    <option value="BSCS" <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'BSCS') echo ' selected="selected"'; } ?>>BSCS</option>
+                  </select>
 
-                <?php
-                    if(isset($_POST['save']) && !validate_course($_POST)){
-                ?>
-                      <p class="error">Please choose from the Dropdown</p>
-                <?php
-                    }
-                ?>
-
-
-                <label for="year_and_section">Year & Section</label>
-                <select name="year_and_section" id="year_and_section">
-                    <option value="None" <?php if(isset($_POST['year_and_section'])) { if ($_POST['year_and_section'] == 'None') echo ' selected="selected"'; } ?>>--Select Year & Section--</option>
-                    <option value="3-A" <?php if(isset($_POST['year_and_section'])) { if ($_POST['year_and_section'] == '3-A') echo ' selected="selected"'; } ?>>3-A</option>
-                    <option value="3-B" <?php if(isset($_POST['year_and_section'])) { if ($_POST['year_and_section'] == '3-B') echo ' selected="selected"'; } ?>>3-B</option>
-                    <option value="3-C" <?php if(isset($_POST['year_and_section'])) { if ($_POST['year_and_section'] == '3-C') echo ' selected="selected"'; } ?>>3-C</option>
-                    <option value="4-A" <?php if(isset($_POST['year_and_section'])) { if ($_POST['year_and_section'] == '4-A') echo ' selected="selected"'; } ?>>4-A</option>
-                    <option value="4-B" <?php if(isset($_POST['year_and_section'])) { if ($_POST['year_and_section'] == '4-B') echo ' selected="selected"'; } ?>>4-B</option>
-                </select>
-
-                <?php
-                    if(isset($_POST['save']) && !validate_year_and_section($_POST)){
-                ?>
-                      <p class="error">Please choose from the Dropdown</p>
-                <?php
-                    }
-                ?>
+                  <?php
+                      if(isset($_POST['save']) && !validate_course($_POST)){
+                  ?>
+                        <p class="error">Please choose from the Dropdown</p>
+                  <?php
+                      }
+                  ?>
 
 
+                  <label for="year_and_section">Year & Section</label>
+                  <select name="year_and_section" id="year_and_section">
+                      <option value="None" <?php if(isset($_POST['year_and_section'])) { if ($_POST['year_and_section'] == 'None') echo ' selected="selected"'; } ?>>--Select Year & Section--</option>
+                      <option value="3-A" <?php if(isset($_POST['year_and_section'])) { if ($_POST['year_and_section'] == '3-A') echo ' selected="selected"'; } ?>>3-A</option>
+                      <option value="3-B" <?php if(isset($_POST['year_and_section'])) { if ($_POST['year_and_section'] == '3-B') echo ' selected="selected"'; } ?>>3-B</option>
+                      <option value="3-C" <?php if(isset($_POST['year_and_section'])) { if ($_POST['year_and_section'] == '3-C') echo ' selected="selected"'; } ?>>3-C</option>
+                      <option value="4-A" <?php if(isset($_POST['year_and_section'])) { if ($_POST['year_and_section'] == '4-A') echo ' selected="selected"'; } ?>>4-A</option>
+                      <option value="4-B" <?php if(isset($_POST['year_and_section'])) { if ($_POST['year_and_section'] == '4-B') echo ' selected="selected"'; } ?>>4-B</option>
+                  </select>
 
-                <label for="sem">Semester</label>
-                <select name="sem" id="sem">
-                    <option value="None" <?php if(isset($_POST['sem'])) { if ($_POST['sem'] == 'None') echo ' selected="selected"'; } ?>>--Select Semester--</option>
-                    <option value="First Semester" <?php if(isset($_POST['sem'])) { if ($_POST['sem'] == 'First Semester') echo ' selected="selected"'; } ?>>First Semester</option>
-                    <option value="Second Semester" <?php if(isset($_POST['sem'])) { if ($_POST['sem'] == 'Second Semester') echo ' selected="selected"'; } ?>>Second Semester</option>
-                </select>
-
-                <?php
-                    if(isset($_POST['save']) && !validate_semester($_POST)){
-                ?>
-                      <p class="error">Please choose from the Dropdown</p>
-                <?php
-                    }
-                ?>
-
-                <label for="your_group">Group no.</label>
-                <input class="form-input" type="number" id="your_group" name="your_group" min="1" required placeholder="Group no.*" value="<?php if(isset($_POST['your_group'])) { echo $_POST['your_group']; } ?>">
+                  <?php
+                      if(isset($_POST['save']) && !validate_year_and_section($_POST)){
+                  ?>
+                        <p class="error">Please choose from the Dropdown</p>
+                  <?php
+                      }
+                  ?>
 
 
 
-                <label for="your_adviser">Adviser</label>
-                <select name="your_adviser" id="your_adviser">
-                    <option value="None" <?php if(isset($_POST['your_adviser'])) { if ($_POST['your_adviser'] == 'None') echo ' selected="selected"'; } ?>>--Select Adviser--</option>
-                    <?php
-                    while($r = mysqli_fetch_array($s)){
-                    ?>
-                    <option value="<?php echo $r['firstname'] .' '. $r['lastname'];?>" <?php if(isset($_POST['your_adviser'])) { if ($_POST['your_adviser'] == $r['firstname'] .' '. $r['lastname']) echo ' selected="selected"'; } ?>><?php echo$r['firstname'] .' '. $r['lastname'];?> </option>
-                    <?php
-                        }
-                    ?>
-              </select>
+                  <label for="sem">Semester</label>
+                  <select name="sem" id="sem">
+                      <option value="None" <?php if(isset($_POST['sem'])) { if ($_POST['sem'] == 'None') echo ' selected="selected"'; } ?>>--Select Semester--</option>
+                      <option value="First Semester" <?php if(isset($_POST['sem'])) { if ($_POST['sem'] == 'First Semester') echo ' selected="selected"'; } ?>>First Semester</option>
+                      <option value="Second Semester" <?php if(isset($_POST['sem'])) { if ($_POST['sem'] == 'Second Semester') echo ' selected="selected"'; } ?>>Second Semester</option>
+                  </select>
 
-                <?php
-                    if(isset($_POST['save']) && !validate_adviser($_POST)){
-                ?>
-                      <p class="error">Please choose from the Dropdown</p>
-                <?php
-                    }
-                ?>
+                  <?php
+                      if(isset($_POST['save']) && !validate_semester($_POST)){
+                  ?>
+                        <p class="error">Please choose from the Dropdown</p>
+                  <?php
+                      }
+                  ?>
+
+                  <label for="your_group">Group no.</label>
+                  <select name="your_group" id="your_group" required>
+                    <option value="" selected>--Select--</option>
+                  </select>
+
+                  <label for="your_adviser">Adviser</label>
+                  <input class="form-input" name="your_adviser" id="your_adviser" placeholder="Select Group*" value="" readonly required> 
 
 
-                <label for="school_year">School Year</label>
-                <select name="school_year" id="school_year" class="mb-3">
-                    <option value="2022-2023" <?php if(isset($_POST['school_year'])) { if ($_POST['school_year'] == '2022-2023') echo ' selected="selected"'; } ?>>2022-2023</option>
-                </select>
+                  <?php
+                      if(isset($_POST['save']) && !validate_adviser($_POST)){
+                  ?>
+                        <p class="error">Please choose from the Dropdown</p>
+                  <?php
+                      }
+                  ?>
+
+
+                  <label for="school_year">School Year</label>
+                  <select name="school_year" id="school_year" class="mb-3">
+                      <option value="2022-2023" <?php if(isset($_POST['school_year'])) { if ($_POST['school_year'] == '2022-2023') echo ' selected="selected"'; } ?>>2022-2023</option>
+                  </select>
 
                 </div> <!--Container 2-->
 
@@ -441,6 +433,59 @@ $s =  mysqli_query($conn, "SELECT * FROM faculty");
 ></script>
 <script src="../assets/js/bootstrap.bundle.min.js"></script>
 <script src="../assets/js/script.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.6.4.js"
+  integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+  crossorigin="anonymous"></script>
+<script>
+  $(document).ready(function() {
+    $('#course').change(function() {
+      var selectedCourse = $(this).val();
+      if (selectedCourse != '') {
+        $.ajax({
+          type: "POST",
+          url: "group_handler.php",
+          data: { course: selectedCourse },
+          dataType: "json",
+          success: function(result) {
+            var groupDropdown = $('#your_group');
+            groupDropdown.empty();
+            groupDropdown.append('<option value="">--Select--</option>');
+            $.each(result, function(index, value) {
+              groupDropdown.append('<option value="' + value.id + '">' + value.group_number + '</option>');
+            });
+          }
+        });
+      } else {
+        $('#your_group').empty();
+        $('#your_group').append('<option value="">--Select--</option>');
+      }
+    });
+
+    $('#your_group').change(function() {
+      var selectedGroup = $(this).val();
+      if (selectedGroup != '') {
+        $.ajax({
+          type: "POST",
+          url: "group_handler.php",
+          data: { your_group: selectedGroup },
+          dataType: "json",
+          success: function(result) {
+            var adviserInput = $('#your_adviser');
+            adviserInput.empty();
+            adviserInput.val('');
+            $.each(result, function(index, value) {
+              adviserInput.val(value.firstname + ' ' + value.lastname);
+            });
+          }
+        });
+      } else {
+        $('#your_adviser').empty();
+        $('#your_adviser').val('');
+      }
+    });
+  });
+</script>
 <!-- end: JS -->
 </body>
 </html>

@@ -152,14 +152,17 @@ class Student{
         $lastID = mysqli_insert_id($conn);
         mysqli_stmt_close($stmt);
 
-        $this->add_group_files($group_number, $lastID);
+        $this->add_group_files($group_number, $lastID, 1);
+        $this->add_group_files($group_number, $lastID, 2);
+        $this->add_group_files($group_number, $lastID, 3);
     }
 
-    function add_group_files($group_number, $lastID) {
-        $sql = "INSERT INTO group_files (group_id, group_num) VALUES (:last_group_id, :group_number)";
+    function add_group_files($group_number, $lastID, $titleNumber) {
+        $sql = "INSERT INTO group_titles (group_id, group_number, title_number) VALUES (:last_group_id, :group_number, :title_number)";
         $query=$this->db->connect()->prepare($sql);
         $query->bindParam(':last_group_id', $lastID);
         $query->bindParam(':group_number', $group_number);
+        $query->bindParam(':title_number', $titleNumber);
         if($query->execute()){
             return true;
         } 
@@ -189,11 +192,10 @@ class Student{
         }
     }
 
-    function show_group($group_id, $curriculum){
-        $sql = "SELECT * FROM group_files WHERE group_id IN (SELECT id FROM groups WHERE group_number = :groupid AND curriculum = :course)";
+    function show_group($group_id){
+        $sql = "SELECT * FROM group_titles WHERE group_id = :groupid";
         $query=$this->db->connect()->prepare($sql);
         $query->bindParam(':groupid', $group_id);
-        $query->bindParam(':course', $curriculum);
         if($query->execute()){
             $data2 = $query->fetchAll();
         }
@@ -245,6 +247,74 @@ class Student{
     function get_adviser_list(){
         $sql = "SELECT * FROM faculty";
         $query=$this->db->connect()->prepare($sql);
+        if($query->execute()){
+            $data = $query->fetchAll();
+        }
+        return $data;
+    }
+
+    function add_panel_comment($group_id, $titleNumber, $comment){
+        $sql = "UPDATE group_titles SET panel_comment = :comment WHERE group_id = :id AND title_number = :titleNumber";
+        $query=$this->db->connect()->prepare($sql);
+        $query->bindParam(':id', $group_id);
+        $query->bindParam(':titleNumber', $titleNumber);
+        $query->bindParam(':comment', $comment);
+        if($query->execute()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    function update_title($group_id, $titleNumber, $status){
+        $sql = "UPDATE group_titles SET status = :status WHERE group_id = :id AND title_number = :titleNumber";
+        $query=$this->db->connect()->prepare($sql);
+        $query->bindParam(':id', $group_id);
+        $query->bindParam(':titleNumber', $titleNumber);
+        $query->bindParam(':status', $status);
+        if($query->execute()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    function add_proposed_title($titleid){
+        $sql = "INSERT INTO proposed_titles (group_titles_id) VALUES (:titleid)";
+        $query=$this->db->connect()->prepare($sql);
+        $query->bindParam(':titleid', $titleid);
+        if($query->execute()){
+            return true;
+        } 
+        else {
+            return false;
+        }
+    }
+
+    function get_proposed_titles(){
+        $sql = "SELECT group_titles.*, groups.group_number, groups.curriculum, groups.adviser_id FROM group_titles INNER JOIN groups ON groups.id = group_titles.group_id WHERE status = 'To Proposal'";
+        $query=$this->db->connect()->prepare($sql);
+        if($query->execute()){
+            $data = $query->fetchAll();
+        }
+        return $data;
+    }
+
+    function get_rejected_titles(){
+        $sql = "SELECT group_titles.*, groups.group_number, groups.curriculum, groups.adviser_id FROM group_titles INNER JOIN groups ON groups.id = group_titles.group_id WHERE status = 'Rejected'";
+        $query=$this->db->connect()->prepare($sql);
+        if($query->execute()){
+            $data = $query->fetchAll();
+        }
+        return $data;
+    }
+
+    function get_group_proposed_title($id){
+        $sql = "SELECT group_titles.*, groups.adviser_id FROM group_titles INNER JOIN groups ON groups.id = group_titles.group_id WHERE group_titles.id = :id";
+        $query=$this->db->connect()->prepare($sql);
+        $query->bindParam(':id', $id);
         if($query->execute()){
             $data = $query->fetchAll();
         }

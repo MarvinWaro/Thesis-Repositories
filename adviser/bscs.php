@@ -178,12 +178,11 @@
                     <table id="example" class="table table-striped" style="width:100%">
                         <thead>
                         <tr>
-                        <th class="action">Action</th>
                             <th>Group #</th>
                             <th>Curriculum</th>
                             <th>Adviser</th>
                             <th>School Year</th>
-                           
+                            <th class="action">Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -199,26 +198,6 @@
                                       if($value['curriculum'] == "BSCS"){
                                 ?>
                                     <tr>
-                                    <?php
-                                            if($_SESSION['id'] == $value['adviser_id']){ 
-                                        ?>
-                                            <td>
-                                                <div class="actions">
-                                                    <a class="action-edit" href="advisee.php?groupnum=<?php echo $value['group_number'] ?>&course=<?php echo $value['curriculum'] ?>"><i class="ri-edit-line"></i></a>
-                                                </div>
-                                            </td>
-                                        <?php
-                                            }
-                                            else {
-                                        ?>
-                                            <td>
-                                                <div class="actions">
-                                                  <a class="action-view" href="advisee-view.php?groupnum=<?php echo $value['group_number'] ?>&course=<?php echo $value['curriculum'] ?>"><i class="ri-eye-line"></i></a>
-                                                </div>
-                                            </td>
-                                        <?php
-                                            }
-                                        ?>
                                         <!-- always use echo to output PHP values -->
                                         <td><?php echo "Group " . $value['group_number'] ?></td>
                                         <td><?php echo $value['curriculum'] ?></td>
@@ -231,7 +210,26 @@
                                         }
                                         ?>
                                         <td>2022-2023</td>
-                                        
+                                        <?php
+                                            if($_SESSION['id'] == $value['adviser_id']){ 
+                                        ?>
+                                            <td>
+                                                <div class="actions">
+                                                    <a class="action-edit" href="advisee.php?groupnum=<?php echo $value['id'] ?>&course=<?php echo $value['curriculum'] ?>"><i class="ri-edit-line"></i></a>
+                                                </div>
+                                            </td>
+                                        <?php
+                                            }
+                                            else {
+                                        ?>
+                                            <td>
+                                                <div class="actions">
+                                                  <a class="action-view" href="advisee-view.php?groupnum=<?php echo $value['id'] ?>&course=<?php echo $value['curriculum'] ?>"><i class="ri-eye-line"></i></a>
+                                                </div>
+                                            </td>
+                                        <?php
+                                            }
+                                        ?>
                                     </tr>
                                 <?php
                                       }

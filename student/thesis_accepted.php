@@ -241,7 +241,7 @@
 
                    <div class="comment">
                       <span>Comment</span>
-                      <p>coment here from the panelist at title defense</p>
+                      <p>Comment here from the panelist at title defense</p>
                    </div>
 
 

@@ -11,7 +11,45 @@
             header('location: ../login/login.php');
         }
 
-
+        if (isset($_GET['file'])) {
+          $file_name = basename($_GET['file']);
+          $file_path = '../student/upload/documents/' . $file_name;
+          
+          $path_parts = pathinfo($file_Path);
+          echo $file_path;
+          $ext = strtolower($path_parts["extension"]);
+        
+          switch ($ext) {
+            case "pdf":
+              $ctype = "application/pdf";
+              break;
+            case "doc":
+              $ctype = "application/msword";
+              break;
+            case "docx":
+              $ctype = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+              break;
+            case "xls":
+              $ctype = "application/vnd.ms-excel";
+              break;
+            default:
+              $ctype = "application/force-download";
+          }
+          ob_end_clean();
+          if (!empty($file_name) && file_exists($file_path)) {
+            
+            header('Cache-Control: public');
+            header('Content-Description: File Transfer');
+            header('Content-Disposition: attachment; filename=' . $file_name);
+            header('Content-Type: ' . $ctype);
+            header('Content-Transfer-Encoding: binary');
+        
+            readfile($file_path);
+            exit;
+          } else {
+            echo "Not Found";
+          }
+        }
 
 ?>
 
@@ -58,7 +96,7 @@
             Home
           </a>
         </li>
-        <li class="sidebar-menu-item active">
+        <li class="sidebar-menu-item">
             <a href="bscs.php">
               <i class="ri-sticky-note-line sidebar-menu-item-icon"></i>
               BSCS
@@ -183,14 +221,18 @@
           </div>
           </nav>
           <!-- end: Navbar -->
+          <?php
+          require_once '../class/student.class.php';
 
+          $student = new Student();
+          ?>
           <!-- start: Content -->
           <div class="py-4">
             <!-- start: content -->
               <div class="main-content border">
                   <div class="head-number p-3"> 
                       <div class="head-searchbar d-flex align-items-center justify-content-between">
-                        <h2>Group 1</h2>
+                        <h2>Group <?php foreach ($student->show_group_info($_GET['groupnum']) as $groupNum) echo $groupNum['group_number'] ?></h2>
                         <div class="search-container ml-auto">
                           <form method="GET">
                             <input type="text" name="search" placeholder="Search..." id="search-record">
@@ -199,20 +241,34 @@
                         </div>
                       </div>
                       <div class="sub d-flex">
-                        <h6> >>Adviser<< </h6>
+                        <h6> 
+                          <?php 
+                          foreach($student->show_group_info($_GET["groupnum"]) as $group){
+                            foreach($student->get_adviser($group["adviser_id"]) as $adviser){
+                              echo $adviser["firstname"] . " " . $adviser["lastname"];
+                            }
+                          } 
+                          ?> 
+                        </h6>
                         <h6> | </h6>
-                        <h6> >>Course<< </h6>
+                        <h6> <?php echo $_GET["course"] ?> </h6>
                       </div>
                   </div>
 
                   <div class="members p-3">
                       <span>Members</span>
                       <div class="list-mem pt-2">
-                          <ul>
-                              <li class="pb-1">Marvin Waro</li>
-                              <li class="pb-1">Christian Fernandez</li>
-                              <li class="pb-1">Faye Lacsi</li>
-                          </ul>
+                        <ul>
+                          <?php
+                            foreach($student->show_group_members($_GET["groupnum"], $_GET["course"]) as $member){
+                          ?>
+                          
+                              <li class="pb-1"><?php echo $member["firstname"] . " " . $member["lastname"] ?></li>
+                          
+                          <?php
+                            }
+                          ?>
+                        </ul>
                       </div>
                   </div>
 
@@ -221,40 +277,27 @@
 
             <div class="panel-comment mt-2">
 
-              <form action="" method="POST">
+              <form action="to_proposal.php" method="POST">
                 <div class="panel-cont">
+                <?php
+                $counter = 1;
+                foreach ($student->show_group($_GET['groupnum']) as $value) {
+                ?>
                   <div class="radio-cont mt-2">
-                    <label class="container-radio label-radio fw-bold">Title 1:
-                      <input type="radio" name="type" required>
+                    <input hidden name="groupnum" value="<?php echo $value["group_id"] ?>">
+                    <label class="container-radio label-radio fw-bold">Title <?php echo $value["title_number"] ?>: <?php echo $value["title"] ?>
+                      <input type="radio" name="type" value="<?php echo $value["title_number"] ?>" required>
                       <span class="checkmark"></span>
                     </label>
 
-                    <br>File attachment: </br><a href=""></a>
+                    <br>File attachment: </br><a href="thesis.php?file=<?php echo $value["file"] ?>"><?php echo $value["file"] ?></a>
 
-                    <textarea class="form-control mt-2" name="comment" placeholder="Panel Comment"></textarea>
+                    <textarea class="form-control mt-2" name="comment[]" placeholder="Panel Comment"></textarea>
                   </div>
-
-                  <div class="radio-cont mt-2">
-                    <label class="container-radio label-radio fw-bold">Title 2:
-                      <input type="radio" name="type" required>
-                      <span class="checkmark"></span>
-                    </label>
-
-                    <br>File attachment: </br><a href=""></a>
-
-                    <textarea class="form-control mt-2" name="comment" placeholder="Panel Comment"></textarea>
-                  </div>
-
-                  <div class="radio-cont mt-2">
-                    <label class="container-radio label-radio fw-bold">Title 3:
-                      <input type="radio" name="type" required>
-                      <span class="checkmark"></span>
-                    </label>
-
-                    <br>File attachment: </br><a href=""></a>
-
-                    <textarea class="form-control mt-2" name="comment" placeholder="Panel Comment"></textarea>
-                  </div>
+                <?php
+                  $counter++;
+                }
+                ?>
                 </div>
 
                 <div class="submit-cont">

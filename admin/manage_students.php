@@ -255,19 +255,12 @@ if (!isset($_SESSION['logged-in'])){
                                     foreach ($student->show() as $value){ //start of loop
                                 ?>
                                     <tr>
-                                        <!-- always use echo to output PHP values -->
-                                        <?php
-                                            if($_SESSION['user_type'] == 'admin'){ 
-                                        ?>
-                                            <td>
-                                                <div class="actions">
-                                                    <a class="action-edit" href="edit_student.php?id=<?php echo $value['id'] ?>"><i class="ri-edit-line"></i></a>
-                                                    <a class="action-delete" data-id="<?php echo $value['id']; ?>" href="#"><i class="ri-delete-bin-line"></i></a>
-                                                </div>
-                                            </td>
-                                        <?php
-                                            }
-                                        ?>
+                                        <td>
+                                            <div class="actions">
+                                                <a class="action-edit" href="edit_student.php?id=<?php echo $value['id'] ?>"><i class="ri-edit-line"></i></a>
+                                                <a class="action-delete" data-id="<?php echo $value['id']; ?>" href="#"><i class="ri-delete-bin-line"></i></a>
+                                            </div>
+                                        </td>
                                         <td><?php echo $i ?></td>
                                         <td><?php echo $value['lastname'] . ', ' . $value['firstname'] . ' ' . $value['middle_name'] ?></td>
                                         <td><?php echo $value['email'] ?></td>
@@ -276,7 +269,9 @@ if (!isset($_SESSION['logged-in'])){
                                         <td><?php echo $value['sem'] ?></td>
                                         <td><?php echo $value['school_year'] ?></td>
                                         <td><?php echo $value['your_adviser'] ?></td>
-                                        <td><?php echo $value['your_group'] ?></td>
+                                        <td><?php foreach($student->show_group_info($value["your_group"]) as $groupNum)
+                                                    echo $groupNum["group_number"]
+                                        ?></td>
                                         
                                     </tr>
                                 <?php

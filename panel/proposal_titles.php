@@ -190,18 +190,36 @@
         </nav>
         <!-- end: Navbar -->
 
+
+        <?php
+          include_once '../class/student.class.php';
+          $student = new Student();
+        ?>
         <!-- start: Content -->
         <div class="py-4">
           <!-- start: content -->
           <div class="main-content border">
                   <div class="head-number p-3"> 
-                      <h2> >>Your Approved title Here<<</h2>
+                      <h2>
+                        <?php 
+                          foreach($student->get_group_proposed_title($_GET["id"]) as $title)
+                            echo $title["title"];
+                        ?>
+                      </h2>
                       <div class="sub d-flex">
-                        <h6> >>Adviser<< </h6>
+                        <h6> 
+                        <?php 
+                          foreach($student->get_group_proposed_title($_GET["id"]) as $title){
+                            foreach($student->get_adviser($title["adviser_id"]) as $adviser){
+                              echo $adviser["firstname"] . " " . $adviser["lastname"];
+                            }
+
+                          }
+                            
+                        ?>
+                        </h6>
                         <h6> | </h6>
-                        <h6> >>Course<< </h6>
-                        <h6> | </h6>
-                        <h6> >> file title here <<</h6>
+                        <h6> <?php echo $_GET["course"] ?> </h6>
                       </div>
                      
                   </div>

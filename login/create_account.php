@@ -143,7 +143,7 @@
           <div class="input-box">
             <span class="details">Course</span>
             <select name="course" id="course">
-                <option value="None" <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'None') echo ' selected="selected"'; } ?>>--Select--</option>
+                <option value="" <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'None') echo ' selected="selected"'; } ?>>--Select--</option>
                 <option value="BSIT" <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'BSIT') echo ' selected="selected"'; } ?>>BSIT</option>
                 <option value="BSCS" <?php if(isset($_POST['course'])) { if ($_POST['course'] == 'BSCS') echo ' selected="selected"'; } ?>>BSCS</option>
               </select>
@@ -182,6 +182,7 @@
 
 
           </div>
+
           <div class="input-box">
             <span class="details">Semester</span>
             <select name="sem" id="sem">
@@ -204,23 +205,16 @@
 
           <div class="input-box">
             <span class="details">Your Group</span>
-            <input class="form-input" type="number" id="your_group" name="your_group" min="1" required placeholder="Group no.*" value="<?php if(isset($_POST['your_group'])) { echo $_POST['your_group']; } ?>">
+            <select name="your_group" id="your_group" required>
+              <option value="" selected>--Select--</option>
+            </select>
           </div>
 
 
 
           <div class="input-box">
             <span class="details">Your Adviser</span>
-            <select name="your_adviser" id="your_adviser">
-              <option value="None" <?php if(isset($_POST['your_adviser'])) { if ($_POST['your_adviser'] == 'None') echo ' selected="selected"'; } ?>>--Select Adviser--</option>
-              <?php
-                  while($r = mysqli_fetch_array($s)){
-              ?>
-              <option value="<?php echo $r['firstname'] .' '. $r['lastname'];?>" <?php if(isset($_POST['your_adviser'])) { if ($_POST['your_adviser'] == $r['firstname'] .' '. $r['lastname']) echo ' selected="selected"'; } ?>><?php echo$r['firstname'] .' '. $r['lastname'];?> </option>
-              <?php
-                  }
-              ?>
-              </select>
+            <input name="your_adviser" id="your_adviser" placeholder="Select Group*" value="" readonly required> 
 
             <?php
                     if(isset($_POST['save']) && !validate_adviser($_POST)){
@@ -282,4 +276,55 @@
     <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
 
 </body>
+<script
+  src="https://code.jquery.com/jquery-3.6.4.js"
+  integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+  crossorigin="anonymous"></script>
+<script>
+  $(document).ready(function() {
+    $('#course').change(function() {
+      var selectedCourse = $(this).val();
+      if (selectedCourse != '') {
+        $.ajax({
+          type: "POST",
+          url: "group_handler.php",
+          data: { course: selectedCourse },
+          dataType: "json",
+          success: function(result) {
+            var groupDropdown = $('#your_group');
+            groupDropdown.empty();
+            groupDropdown.append('<option value="">--Select--</option>');
+            $.each(result, function(index, value) {
+              groupDropdown.append('<option value="' + value.id + '">' + value.group_number + '</option>');
+            });
+          }
+        });
+      } else {
+        $('#your_group').empty();
+        $('#your_group').append('<option value="">--Select--</option>');
+      }
+    });
+
+    $('#your_group').change(function() {
+      var selectedGroup = $(this).val();
+      if (selectedGroup != '') {
+        $.ajax({
+          type: "POST",
+          url: "group_handler.php",
+          data: { your_group: selectedGroup },
+          dataType: "json",
+          success: function(result) {
+            var adviserInput = $('#your_adviser');
+            $.each(result, function(index, value) {
+              adviserInput.val(value.firstname + ' ' + value.lastname);
+            });
+          }
+        });
+      } else {
+        $('#your_adviser').empty();
+        $('#your_adviser').append('<option value="">--Select--</option>');
+      }
+    });
+  });
+</script>
 </html>
