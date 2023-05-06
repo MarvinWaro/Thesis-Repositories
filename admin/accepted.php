@@ -66,12 +66,7 @@
             Archives
           </a>
         </li>
-        <li class="sidebar-menu-item ">
-          <a href="implementation_titles.php">
-            <i class="ri-archive-drawer-line sidebar-menu-item-icon"></i>
-            Implementation Titles
-          </a>
-        </li>
+       
         <li class="sidebar-menu-item has-dropdown">
             <a href="thesis_status.php">
                 <i class="ri-bar-chart-box-line sidebar-menu-item-icon"></i>
@@ -99,6 +94,12 @@
               Manage Student
             </a>
           </li>
+          <li class="sidebar-menu-item">
+          <a href="manage_groups.php">
+            <i class="ri-group-2-line sidebar-menu-item-icon"></i>
+            Manage Groups
+          </a>
+        </li>
         <li class="sidebar-menu-item">
           <a href="manage_faculty.php">
             <i class="ri-group-line sidebar-menu-item-icon"></i>
@@ -110,6 +111,12 @@
           <a href="manage_schedules.php">
             <i class="ri-calendar-2-line sidebar-menu-item-icon"></i>
             Manage Events
+          </a>
+        </li>
+        <li class="sidebar-menu-item">
+          <a href="manage_schoolyear.php">
+            <i class="ri-global-line sidebar-menu-item-icon"></i>
+            Manage School Year
           </a>
         </li>
       </ul>
@@ -240,7 +247,6 @@
                             <td>
                                 <div class="actions">
                                     <a class="action-view" href="#"><i class="ri-eye-line"></i></a>
-                                    <a class="action-delete" href="#"><i class="ri-delete-bin-line"></i></a>
                                 </div>
                             </td>
                             <td><?php echo $counter ?></td>

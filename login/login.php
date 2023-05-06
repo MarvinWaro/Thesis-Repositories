@@ -32,7 +32,27 @@
                       header('location: login/login.php');
                   }
               }
-              $error = 'Invalid username/password. Try again.';
+              else {
+                  $sql = mysqli_query($conn, "SELECT * FROM faculty WHERE BINARY username='$username' && BINARY password='$password'");
+                  $num = mysqli_num_rows($sql);
+                  if ($num > 0) {
+                    //echo "found";
+                    $row = mysqli_fetch_assoc($sql);
+                    $_SESSION['logged-in'] = $username;
+                    $_SESSION['fullname'] = $row['firstname'] . ' ' . $row['lastname'];
+                    $_SESSION['user_type'] = $row['type'];
+                    $_SESSION['id'] = $row['id'];
+                    //display the appropriate dashboard page for user
+                    if (($_SESSION['user_type']) == 'faculty') {
+                      header('location: ../adviser/home.php');
+                    } elseif (($_SESSION['user_type']) == 'admin'){
+                      header('location: ../admin/dashboard.php');
+                    } else {
+                      header('location: login.php');
+                    }
+                  }
+                  $error = 'Invalid username/password. Try again.';
+              }
           }
     ?>
 
@@ -90,7 +110,6 @@
                 if(isset($error)){
                     echo '<div><p class="error">'.$error.'</p></div>';
                 }
-
             ?>
         </div>
       </form>

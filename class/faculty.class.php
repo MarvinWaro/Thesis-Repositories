@@ -97,6 +97,60 @@ class Faculty{
         return $data;
     }
 
+    function add_panel($faculty_id, $group_id){
+        $sql = "INSERT INTO group_panelists (faculty_id, group_id) VALUES (:fac_id, :grp_id)";
+        $query=$this->db->connect()->prepare($sql);
+        $query->bindParam(':fac_id', $faculty_id);
+        $query->bindParam(':grp_id', $group_id);
+        if($query->execute()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    function get_panel($group_id){
+        $sql = "SELECT group_panelists.*, faculty.firstname, faculty.lastname FROM group_panelists INNER JOIN faculty ON group_panelists.faculty_id = faculty.id WHERE group_id = :grp_id";
+        $query=$this->db->connect()->prepare($sql);
+        $query->bindParam(':grp_id', $group_id);
+        if($query->execute()){
+            $data = $query->fetchAll();
+        }
+        return $data;
+    }
+
+    function check_if_year_exist($sy){
+        $sql = "SELECT * FROM school_year WHERE school_year=:sy";
+        $query=$this->db->connect()->prepare($sql);
+        $query->bindParam(':sy', $sy);
+        if($query->execute()){
+            $data = $query->fetchAll();
+        }
+        return $data;
+    }
+
+    function add_year($sy){
+        $sql = "INSERT INTO school_year (school_year) VALUES (:sy)";
+        $query=$this->db->connect()->prepare($sql);
+        $query->bindParam(':sy', $sy);
+        if($query->execute()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    function get_schoolyear(){
+        $sql = "SELECT * FROM school_year";
+        $query=$this->db->connect()->prepare($sql);
+        if($query->execute()){
+            $data = $query->fetchAll();
+        }
+        return $data;
+    }
+
 }
 
 ?>

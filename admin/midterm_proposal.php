@@ -66,12 +66,7 @@
             Archives
           </a>
         </li>
-        <li class="sidebar-menu-item ">
-          <a href="implementation_titles.php">
-            <i class="ri-archive-drawer-line sidebar-menu-item-icon"></i>
-            Implementation Titles
-          </a>
-        </li>
+        
         <li class="sidebar-menu-item has-dropdown">
             <a href="thesis_status.php">
                 <i class="ri-bar-chart-box-line sidebar-menu-item-icon"></i>

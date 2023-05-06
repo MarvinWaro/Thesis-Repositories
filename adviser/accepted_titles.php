@@ -14,7 +14,6 @@
 
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -33,8 +32,17 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../assets/css/style.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
     <!-- end: CSS -->
-    <title>Thesis Repository - Blank Page</title>
+    <title>Thesis Repository</title>
   </head>
 
   <body>
@@ -52,30 +60,39 @@
       </div>
       <ul class="sidebar-menu p-3 m-0 mb-0">
         <li class="sidebar-menu-item">
-          <a href="home.php">
+          <a href="home.php ">
             <i class="ri-home-8-line sidebar-menu-item-icon"></i>
             Home
           </a>
         </li>
         <li class="sidebar-menu-item">
-            <a href="thesis.php">
-                <i class="ri-sticky-note-line sidebar-menu-item-icon"></i>
-              Thesis
+            <a href="bscs.php">
+              <i class="ri-sticky-note-line sidebar-menu-item-icon"></i>
+              BSCS
             </a>
           </li>
-        <li class="sidebar-menu-item active">
-          <a href="grades.php">
-            <i class="ri-mail-star-line sidebar-menu-item-icon""></i>
-            Grades
-          </a>
-        </li>
-        <li class="sidebar-menu-item ">
+          </li>
+          <li class="sidebar-menu-item">
+            <a href="bsit.php">
+                <i class="ri-sticky-note-line sidebar-menu-item-icon"></i>
+                BSIT
+            </a>
+          </li>
+
+          <li class="sidebar-menu-divider mt-3 mb-1 text-uppercase">Proposals</li>
+
+          <li class="sidebar-menu-item active">
+            <a href="accepted_titles">
+                <i class="ri-sticky-note-line sidebar-menu-item-icon"></i>
+                Accepted Titles
+            </a>
+          </li>
+          <li class="sidebar-menu-item">
           <a href="archives.php">
              <i class="ri-archive-drawer-line sidebar-menu-item-icon"></i>
             Archives
           </a>
         </li>
-      </ul>
     </div>
     <div class="sidebar-overlay"></div>
     <!-- end: Sidebar -->
@@ -86,7 +103,7 @@
         <!-- start: Navbar -->
         <nav class="px-3 py-2 bg-white rounded shadow-sm">
           <i class="ri-menu-line sidebar-toggle me-3 d-block d-md-none"></i>
-          <h5 class="fw-bold mb-0 me-auto">Grades</h5>
+          <h5 class="fw-bold mb-0 me-auto">Approved Titles</h5>
           <div class="dropdown me-3 d-none d-sm-block">
             <div
               class="cursor-pointer dropdown-toggle navbar-link"
@@ -164,11 +181,10 @@
               />
             </div>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" href="student_profile.php"><i class="ri-user-settings-line me-2"></i>Profile</a></li>
-              <li><a class="dropdown-item" href="student_settings.php"><i class="ri-settings-3-line me-2"></i>Settings</a></li>
+              <li><a class="dropdown-item" href="#"><i class="ri-user-settings-line me-2"></i>Profile</a></li>
+              <li><a class="dropdown-item" href="#"><i class="ri-settings-3-line me-2"></i>Settings</a></li>
               <hr class="w-100">
               <li><a class="dropdown-item" href="../login/logout.php"><i class="ri-logout-box-line me-2"></i>Logout</a></li>
-            </ul>
             </ul>
           </div>
         </nav>
@@ -177,8 +193,68 @@
         <!-- start: Content -->
         <div class="py-4">
           <!-- start: content -->
+          <div class="container">
 
-        </div>
+                <table id="example" class="table table-striped" style="width:100%">
+                <thead id="head">
+                        <tr>
+                            <th>Action</th>
+                            <th>#</th>
+                            <th>Titles</th>
+                            <th>Course</th>
+                            <th>Group No</th>
+                            <th>Date of Upload</th>
+                            <th>School Year</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                          include_once '../class/student.class.php';
+                          $student = new Student();
+
+                          $counter = 1;
+                          foreach ($student->get_proposed_titles() as $title) {
+                        ?>
+                        <tr>
+                            <?php
+                                if($_SESSION['id'] == $title['adviser_id']){ 
+                            ?>
+                                  <td>
+                                      <div class="actions">
+                                          <a class="action-edit" href="to_archive.php?id=<?php echo $title["group_id"] ?>&course=<?php echo $title["curriculum"] ?>"><i class="ri-edit-line"></i></a>
+                                      </div>
+                                  </td>
+                            <?php
+                                }
+                                else {
+                            ?>
+                                  <td>
+                                    <div class="actions">
+                                        <a class="action-view" href="to_archive_view.php?id=<?php echo $title["group_id"] ?>&course=<?php echo $title["curriculum"] ?>"><i class="ri-eye-line"></i></a>
+                                    </div>
+                                  </td>
+                            <?php
+                                }
+                            ?>
+                            <td><?php echo $counter ?></td>
+                            <td><?php echo $title["title"]?></td>
+                            <td><?php echo $title["curriculum"]?></td>
+                            <td><?php echo $title["group_number"]?></td>
+                            <td><?php echo $title["file_upload_date"]?></td>
+                            <td>2022-2023</td>
+                            
+                        </tr>
+                        <?php
+                          $counter++;
+                          }
+                        ?>
+ 
+                    </tbody>
+                </table>
+          </div>
+
+        </div> <!-- END PY4 -->
 
           <!-- end: content -->
           <!-- start: Graph -->

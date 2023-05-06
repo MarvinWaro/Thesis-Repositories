@@ -63,12 +63,7 @@
               Thesis
             </a>
           </li>
-        <li class="sidebar-menu-item ">
-          <a href="grades.php">
-            <i class="ri-mail-star-line sidebar-menu-item-icon""></i>
-            Grades
-          </a>
-        </li>
+        
         <li class="sidebar-menu-item ">
           <a href="archives.php">
              <i class="ri-archive-drawer-line sidebar-menu-item-icon"></i>

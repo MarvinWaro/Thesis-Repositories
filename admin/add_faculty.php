@@ -27,9 +27,6 @@ if (isset($_POST['save'])) {
   $faculty->department = htmlentities($_POST['department']);
 
   $faculty->type = 'faculty';
-  if (isset($_POST['type'])) {
-    $faculty->type = $_POST['type'];
-  }
   if (validate_add_faculty($_POST)) {
     if ($faculty->add()) {
       //redirect user to create page after saving
@@ -81,12 +78,7 @@ if (isset($_POST['save'])) {
           Archives
         </a>
       </li>
-      <li class="sidebar-menu-item ">
-          <a href="implementation_titles.php">
-            <i class="ri-archive-drawer-line sidebar-menu-item-icon"></i>
-            Implementation Titles
-          </a>
-        </li>
+      
       <li class="sidebar-menu-item has-dropdown">
         <a href="thesis_status.php">
           <i class="ri-bar-chart-box-line sidebar-menu-item-icon"></i>
@@ -311,16 +303,6 @@ if (isset($_POST['save'])) {
               <?php
               }
               ?>
-
-
-              <div class="cont">
-                <label class="container-label label-font">Active
-                  <input type="checkbox" checked="checked" class="checkbox" name="type" id="faculty" value="faculty" <?php if (isset($_POST['type'])) {
-                                                                                                                        if ($_POST['type'] == 'faculty') echo ' checked';
-                                                                                                                      } ?>>
-                  <span class="checkmark"></span>
-                </label>
-              </div>
 
               <div class="pbutton">
                 <input class="save-btn form-input" type="submit" value="Save" name="save">

@@ -5,10 +5,12 @@ $db = new Database();
 
 if(isset($_POST["course"])){
     $selectedCourse = $_POST["course"];
+    $selectedSY = $_POST["school_year"];
 
     // Prepare SQL statement
-    $stmt = $db->connect()->prepare("SELECT * FROM groups WHERE curriculum = :curriculum");
+    $stmt = $db->connect()->prepare("SELECT * FROM groups WHERE curriculum = :curriculum AND school_year = :sy");
     $stmt->bindParam(':curriculum', $selectedCourse);
+    $stmt->bindParam(':sy', $selectedSY);
     $stmt->execute();
 
     // Fetch result as associative array

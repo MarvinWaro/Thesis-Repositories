@@ -34,6 +34,8 @@
     <!-- start: CSS -->
     <link rel="icon" href="../img/rlogo.png" type="image/icon type" />
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/home.css" />
   </head>
   <body>
@@ -63,22 +65,157 @@
 
           <hr class="line">
 
-          <a href="../login/login.php" class="btn btn-outline-secondary shadow-sm d-sm d-block me-2">Student Login</a>
-          <a href="../adviser/login.php" class="btn btn-outline-secondary shadow-sm d-sm d-block me-2">Faculty Login</a>
+          <a href="../login/login.php" class="btn btn-outline-secondary shadow-sm d-sm d-block me-2">Login</a>
           <a href="../login/create_account.php" class="btn btn-outline-secondary shadow-sm d-sm d-block me-2">Sign-up</a>
         </div>
       </div>
     </nav>
 
-    
 
-    <!--Home Sectio-->
+
+    <div class="modal fade modal-xl" id="archiveModal" tabindex="-1" aria-labelledby="archiveModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="archiveModalLabel">Archive Titles</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+
+          <table id="example" class="table table-striped" style="width:100%">
+                    <thead id="head">
+                        <tr>
+                            <th>Action</th>
+                            <th>#</th>
+                            <th>Titles</th>
+                            <th>Adviser</th>
+                            <th>Course</th>
+                            <th>Date of Upload</th>
+                            <th>School Year</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+
+                            <td>
+                                <div class="actions d-flex align-items-center">
+                                    <div title="Total Views" class="views-counter ">
+                                      <span title="Total Views" id="views-counter" class="views-number">85</span>
+                                    </div>
+
+
+                                    <button type="button" class="btn action-view" data-bs-toggle="modal" data-bs-target="#viewArchiveModal">
+                                        <i class="ri-eye-line"></i>
+                                    </button>
+                                </div>
+                            </td>
+
+                            <td>1</td>
+                            <td>Data Science</td>
+                            <td>Lucy Felix Sadiwa</td>
+                            <td>BSCS</td>
+                            <td>2011-04-25</td>
+                            <td>2022-2023</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade modal-xl" id="viewArchiveModal" tabindex="-1" aria-labelledby="viewArchiveModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">Research Information</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="modal-container">
+                              <div id="title-section" class="title-section mb-2">
+                                Proliferation of Game Development
+                              </div>
+
+                              <div id="title-info" class="title-info">
+                                  <h6>Adviser: <span>Koro Sensei</span></h6>
+                                  <h6>Course: <span> BSCS</span></h6>
+                                  <h6>Date of Upload: <span>2011-04-25</span></h6>
+                                  <h6>S.Y: <span>	2022-2023</span></h6>
+                              </div>
+
+                              <div id="title-info" class="title-info mb-4">
+                                <h6>Number of Viewers: <span> 3251</span></h6>
+                                <h6>Research File: <span>abcd.docs</span></h6>
+                              </div>
+
+                              <div class="member_and_panel_cont d-flex justify-content-evenly mb-3">
+
+                                  <!--Author / Members-->
+                                <div id="authors" class="list-mem pt-2">
+                                  <span>Authors</span>
+                                  <ul>
+                                    <li>Monkey D. Luffy</li>
+                                    <li>Monkey D. Dragon</li>
+                                    <li>Monkey D. Garp</li>
+                                  </ul>
+                                </div>
+
+                                <div class="vertical-line"></div>
+
+                                <div id="panelist" class="list-mem pt-2">
+                                  <span>Panelist</span>
+                                  <ul>
+                                    <li>Rimuru Tempest</li>
+                                    <li>Anos Voldigold</li>
+                                    <li>Kiyotaka Ayanoukoji</li>
+                                  </ul>
+                                </div> 
+
+                              </div> 
+
+                              <div id="abstract" class="abstract">
+                                <span>Abstract</span><br>
+                                <p>This study presents the design and development process of a multiplayer strategy 
+                                  game aimed at exploring the impact of game mechanics on user engagement and monetization 
+                                  strategies. Using an iterative design approach, the game was built with a combination of classic 
+                                  and innovative game mechanics, such as social features, competitive challenges, and in-game purchases. 
+                                  A user study was conducted to evaluate the game's usability, enjoyment, and monetization potential. 
+                                  The results suggest that a balanced combination of game mechanics, social features, and in-game purchases 
+                                  can significantly increase user engagement and revenue. The findings of this research can provide valuable 
+                                  insights for game developers and stakeholders in the gaming industry to
+                                   improve user engagement and monetization strategies in their own games.</p>
+                                   
+                              </div>
+
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+    <!--Home Section-->
     <section id="home" class="home">
       <div class="container" id="first">
         <div class="row">
           <div class="col-md-6">
             <div class="text">Thesis Archives <spann class="text2">An Online Archive System for College of Computing Studies</spann></div>
+            <button class="btn btn-outline-primary fs-4 mt-2" type="button" type="button" data-bs-toggle="modal" data-bs-target="#archiveModal">Explore Archives</button>
           </div>
+
+
 
           <!--Separate-->
 
@@ -108,8 +245,8 @@
               <div class="desc">
                 <h5>Create Account</h5>
                 <p>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Accusamus nam quo velit asperiores numquam adipisci sunt
+                To submit your thesis to our archiving system, you'll need to create an account. 
+                It's quick and easy - simply sign up and start uploading your document today!
                 </p>
               </div>
             </div>
@@ -120,8 +257,8 @@
               <div class="desc">
                 <h5>Upload Your Titles</h5>
                 <p>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Accusamus nam quo velit asperiores numquam adipisci sunt
+                To add your titles to our system, simply upload them using the provided form. 
+                It's quick and easy - start uploading your titles today and make them accessible to a wider audience!
                 </p>
               </div>
             </div>
@@ -132,8 +269,8 @@
               <div class="desc">
                 <h5>Publish Your Work</h5>
                 <p>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Accusamus nam quo velit asperiores numquam adipisci sunt
+                Publish your work with ease on our platform. Simply follow our step-by-step guide to submit your thesis project, 
+                and we'll take care of the rest. Start sharing your research with the university today!
                 </p>
               </div>
             </div>
@@ -153,7 +290,9 @@
       <div id="third" class="container">
         <div class="text-header text-center">
           <h3>System Features</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos?</p>
+          <p>Our platform is packed with powerful features to help you manage and share your academic work. 
+            From easy document uploads to robust search and collaboration tools, our system has everything you need to streamline your research process. 
+            Explore our features today and discover a better way to work!</p>
         </div>
         <div class="items text-center">
           <div class="row">
@@ -164,8 +303,10 @@
               <div class="desc">
                 <h5>Manage Archives</h5>
                 <p>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Accusamus nam quo velit asperiores numquam adipisci sunt
+                Effortlessly manage your archives with our platform. Our user-friendly 
+                system allows you to easily organize and access your archived content from anywhere. 
+                With powerful search and filter tools, 
+                finding and retrieving your archives has never been easier.
                 </p>
               </div>
             </div>
@@ -176,8 +317,9 @@
               <div class="desc">
                 <h5>Paperless</h5>
                 <p>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Accusamus nam quo velit asperiores numquam adipisci sunt
+                Say goodbye to paper clutter and go paperless with our platform. 
+                With our digital archiving system, you can store and manage all your academic
+                 content online, eliminating the need for physical copies.
                 </p>
               </div>
             </div>
@@ -186,34 +328,36 @@
               <i class="ri-spy-fill"></i>
               </div>
               <div class="desc">
-                <h5>Plagarism Detector</h5>
+                <h5>Similarity Checker</h5>
                 <p>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Accusamus nam quo velit asperiores numquam adipisci sunt
+                Our similarity checker tool scans your documents for potential matches with a vast database of sources, 
+                ensuring the originality of your work and maintaining academic integrity. 
+                Try it out today to produce high-quality, original content!
                 </p>
               </div>
             </div>
             <div class="col-md-4">
               <div class="icons">
-              <i class="ri-grid-fill"></i>
+              <i class="ri-eye-line"></i>
               </div>
               <div class="desc">
-                <h5>Rubrics</h5>
+                <h5>Views</h5>
                 <p>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Accusamus nam quo velit asperiores numquam adipisci sunt
+                Track the views of your content on our platform with ease. Our system provides detailed analytics on the number of 
+                views your content has received.
                 </p>
               </div>
             </div>
             <div class="col-md-4">
               <div class="icons">
-              <i class="ri-mail-star-line"></i>
+              <i class="ri-list-check-2"></i>
               </div>
               <div class="desc">
-                <h5>Grades</h5>
+                <h5>Evaluation</h5>
                 <p>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Accusamus nam quo velit asperiores numquam adipisci sunt
+                Get valuable feedback on your research with our evaluation system.
+                 Our platform provides an easy and efficient way for reviewers to evaluate your work, 
+                providing you with detailed feedback and suggestions for improvement.
                 </p>
               </div>
             </div>
@@ -224,8 +368,8 @@
               <div class="desc">
                 <h5>Calendar</h5>
                 <p>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Accusamus nam quo velit asperiores numquam adipisci sunt
+                Stay organized with our user-friendly calendar feature. 
+                Set reminders and never miss an important deadline again.
                 </p>
               </div>
             </div>
@@ -249,9 +393,10 @@
             <div class="text-information">
               <h5>Easily Manage, File upload and Download</h5>
               <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio
-                ex facilis cum, quas veniam rerum eius illo iure doloremque
-                asperiores.
+              Our platform makes it easy to manage, upload, and download your academic files. 
+              With our user-friendly interface, you can easily organize and access your content from anywhere, 
+              as well as upload and download files with just a few clicks. 
+              Say goodbye to the hassle of file management and try our platform today!
               </p>
             </div>
           </div>
@@ -269,11 +414,14 @@
             <!--Text-->
             <div class="col-md-6">
               <div class="text-information">
-                <h5>High Scope Thesis Titles For a Better Future</h5>
+                <h5>Thesis titles with a broad scope, designed to contribute to a better future.</h5>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio
-                  ex facilis cum, quas veniam rerum eius illo iure doloremque
-                  asperiores.
+                thesis titles available on our platform are not only focused on specific research topics, 
+                but are also aimed at addressing larger issues that can have a positive impact on society. 
+                By choosing thesis titles with a broad scope, researchers can explore complex issues and propose 
+                innovative solutions that can contribute to building a better future for all. This approach encourages 
+                a more holistic and multidisciplinary approach to research, 
+                which can lead to new insights and breakthroughs in various fields.
                 </p>
               </div>
             </div>
@@ -351,6 +499,10 @@
         $("#first").css("opacity", 1 - $(window).scrollTop() / 200);
       })
     </script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+    <!--responsive-->
+    <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
     <!-- end: JS -->
   </body>
 </html>

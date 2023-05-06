@@ -1,26 +1,23 @@
 <?php
 
-require_once '../class/database.php';
-require_once '../class/student.class.php';
 
-session_start();
-/*
-    if user is not login then redirect to login page,
-    this is to prevent users from accessing pages that requires
-    authentication such as the dashboard
-*/
-if (!isset($_SESSION['logged-in'])){
-    header('location: ../login/login.php');
-}
+        session_start();
+        /*
+            if user is not login then redirect to login page,
+            this is to prevent users from accessing pages that requires
+            authentication such as the dashboard
+        */
+        if (!isset($_SESSION['logged-in'])){
+            header('location: ../login/login.php');
+        }
 
 
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
+  <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- start: Icons -->
@@ -60,16 +57,14 @@ if (!isset($_SESSION['logged-in'])){
             Dashboard
           </a>
         </li>
-
         <li class="sidebar-menu-divider mt-3 mb-1 text-uppercase">Thesis</li>
-
         <li class="sidebar-menu-item">
           <a href="archives.php">
             <i class="ri-archive-drawer-line sidebar-menu-item-icon"></i>
             Archives
           </a>
         </li>
-       
+        
         <li class="sidebar-menu-item has-dropdown">
           <a href="thesis_status.php">
               <i class="ri-bar-chart-box-line sidebar-menu-item-icon"></i>
@@ -89,9 +84,10 @@ if (!isset($_SESSION['logged-in'])){
               </li>
           </ul>
       </li>
+
         <li class="sidebar-menu-divider mt-3 mb-1 text-uppercase">Manage</li>
 
-        <li class="sidebar-menu-item active">
+        <li class="sidebar-menu-item">
           <a href="manage_students.php">
             <i class="ri-user-line sidebar-menu-item-icon"></i>
             Manage Student
@@ -116,7 +112,7 @@ if (!isset($_SESSION['logged-in'])){
             Manage Events
           </a>
         </li>
-        <li class="sidebar-menu-item">
+        <li class="sidebar-menu-item active">
           <a href="manage_schoolyear.php">
             <i class="ri-global-line sidebar-menu-item-icon"></i>
             Manage School Year
@@ -133,7 +129,7 @@ if (!isset($_SESSION['logged-in'])){
         <!-- start: Navbar -->
         <nav class="px-3 py-2 bg-white rounded shadow-sm">
           <i class="ri-menu-line sidebar-toggle me-3 d-block d-md-none"></i>
-          <h5 class="fw-bold mb-0 me-auto">Students</h5>
+          <h5 class="fw-bold mb-0 me-auto">Dashboard</h5>
           <div class="dropdown me-3 d-none d-sm-block">
             <div
               class="cursor-pointer dropdown-toggle navbar-link"
@@ -222,80 +218,43 @@ if (!isset($_SESSION['logged-in'])){
 
         <!-- start: Content -->
         <div class="py-4">
-          <!-- start: content -->
-          <div class="container padding-bottom">
+        <div class="container padding-bottom">
                   <div class="head-cont d-flex justify-content-end pb-2">
-                      <a class="btn btn-primary add-button" href="add_student.php">Add new Student</a>
+                      <a class="btn btn-primary add-button" href="add_schoolyear.php">Add new School Year</a>
                   </div>
 
                     <table id="example" class="table table-striped" style="width:100%">
                         <thead>
-                        <tr>
-                            <th class="action">Action</th>
+                        <tr>  
                             <th>#</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Course</th>
-                            <th>Year & Section</th>
-                            <th>Semester</th>
                             <th>School Year</th>
-                            <th>Adviser</th>
-                            <th>Group #</th>
-                            
+                            <th class="action">Action</th>
                         </tr>
                         </thead>
                         <tbody>
-                                <?php
-                                    require_once '../class/student.class.php';
+                            <?php
+                              include_once '../class/faculty.class.php';
+                              $faculty = new Faculty();
 
-                                    $student = new Student();
-                                    //We will now fetch all the records in the array using loop
-                                    //use as a counter, not required but suggested for the table
-                                    $i = 1;
-                                    //loop for each record found in the array
-                                    foreach ($student->show() as $value){ //start of loop
-                                ?>
-                                    <tr>
-                                        <td>
-                                            <div class="actions">
-                                                <a class="action-edit" href="edit_student.php?id=<?php echo $value['id'] ?>"><i class="ri-edit-line"></i></a>
-                                                <a class="action-delete" data-id="<?php echo $value['id']; ?>" href="#"><i class="ri-delete-bin-line"></i></a>
-                                            </div>
-                                        </td>
-                                        <td><?php echo $i ?></td>
-                                        <td><?php echo $value['lastname'] . ', ' . $value['firstname'] . ' ' . $value['middle_name'] ?></td>
-                                        <td><?php echo $value['email'] ?></td>
-                                        <td><?php echo $value['course'] ?></td>
-                                        <td><?php echo $value['year_and_section'] ?></td>
-                                        <td><?php echo $value['sem'] ?></td>
-                                        <td><?php echo $value['school_year'] ?></td>
-                                        <td><?php echo $value['your_adviser'] ?></td>
-                                        <td><?php foreach($student->show_group_info($value["your_group"]) as $groupNum)
-                                                    echo $groupNum["group_number"]
-                                        ?></td>
-                                        
-                                    </tr>
-                                <?php
-                                    $i++;
-                                //end of loop
-                                }
-                                ?>
+                              $counter = 1;
+                              foreach($faculty->get_schoolyear() as $sy){
+                              ?> 
+                                <tr>
+                                <td><?php echo $counter ?></td>
+                                <td><?php echo $sy['school_year']?></td>
+                                <td>
+                                  <div class="actions">
+                                    <a class="action-delete" href="#"><i class="ri-delete-bin-line"></i></a>
+                                  </div>
+                                </td>
+                                </tr>
+                              <?php
+                                $counter++;
+                              }
+                            ?>
                         </tbody>
                     </table>
           </div>
-                
-        </div>
-
-        <!--Modal 1-->
-
-
-            <!--Modal 2-->
-    </div>
-
-          <!-- end: content -->
-          <!-- start: Graph -->
-
-          <!-- end: Graph -->
         </div>
         <!-- end: Content -->
       </div>
@@ -303,8 +262,7 @@ if (!isset($_SESSION['logged-in'])){
     <!-- end: Main -->
 
     <!-- start: JS -->
-    <script src="../assets/js/jquery-3.6.4.min.js"></script>
-    <script src="../assets/js/sweetalert2.min.js"></script>
+    <script src="../assets/js/jquery.min.js"></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"
       integrity="sha512-sW/w8s4RWTdFFSduOTGtk4isV1+190E/GghVffMA9XczdJ2MDzSzLEubKAs5h0wzgSJOQTRYyaz73L3d6RtJSg=="
@@ -313,52 +271,10 @@ if (!isset($_SESSION['logged-in'])){
     ></script>
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/script.js"></script>
+    <!-- end: JS -->
     <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
     <!--responsive-->
     <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
-    <script>
-      $('.action-delete').click(function(e) {
-        e.preventDefault();
-        
-        // Get the ID of the item to delete
-        var id = $(this).data('id');
-        
-        // Show a SweetAlert2 confirmation dialog
-
-        Swal.fire({
-        title: 'Are you sure?',
-        text: "Once the student record is deleted, it will be permanently lost and cannot be restored.",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
-        }).then((result) => {
-          if (result.isConfirmed) {
-            // User clicked the "Yes, delete it!" button
-            // Send the ID to the server for deletion 
-            $.ajax({
-              url: 'delete_student.php',
-              method: 'POST',
-              data: { 'id': id },
-              success: function(response) {
-                // Handle success
-                Swal.fire(
-                  'Deleted!',
-                  'Your file has been deleted.',
-                  'success'
-                ).then(function() {
-                  // Reload the page after the SweetAlert2 is closed
-                  location.reload();
-              });
-          },
-
-            });
-          }
-        });
-      });
-  </script>
-    <!-- end: JS -->
   </body>
 </html>

@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 28, 2023 at 01:50 AM
--- Server version: 10.4.21-MariaDB
+-- Generation Time: May 06, 2023 at 06:27 AM
+-- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -51,7 +51,8 @@ INSERT INTO `faculty` (`id`, `firstname`, `middle_name`, `lastname`, `email`, `u
 (35, 'Lucy', 'Felix', 'Sadiwa', 'Lucy@wmsu.edu.ph', 'lucy', 'lucy', 'Computer Science', 'faculty', '2023-04-09 06:58:43', '2023-04-09 06:58:43'),
 (37, 'Edwin', '', 'Arip', 'edwin@wmsu.edu.ph', 'edwin', 'edwin', 'Computer Science', 'faculty', '2023-04-09 14:25:30', '2023-04-09 14:25:30'),
 (38, 'Pauleen', '', 'Gregana', 'pauleen@wmsu.edu.ph', 'Pauleen', 'pauleen', 'Information Technolgy', 'faculty', '2023-04-09 14:27:33', '2023-04-09 14:27:33'),
-(39, 'Gadmar', '', 'Belamide', 'edwin@wmsu.edu.ph', 'gadmar', 'gadmar', 'Computer Science', 'admin', '2023-04-09 14:25:30', '2023-04-09 14:25:30');
+(39, 'Gadmar', '', 'Belamide', 'edwin@wmsu.edu.ph', 'gadmar', 'gadmar', 'Computer Science', 'admin', '2023-04-09 14:25:30', '2023-04-09 14:25:30'),
+(40, 'Marvic', '', 'Lines', 'marviclines@wmsu.edu.ph', 'marvic', 'marvic', 'Computer Science', 'faculty', '2023-05-04 15:09:54', '2023-05-04 15:09:54');
 
 -- --------------------------------------------------------
 
@@ -63,16 +64,21 @@ CREATE TABLE `groups` (
   `id` int(11) NOT NULL,
   `group_number` int(11) NOT NULL,
   `curriculum` varchar(255) NOT NULL,
-  `adviser_id` int(11) NOT NULL
+  `adviser_id` int(11) NOT NULL,
+  `school_year` varchar(255) NOT NULL DEFAULT '2022-2023'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `groups`
 --
 
-INSERT INTO `groups` (`id`, `group_number`, `curriculum`, `adviser_id`) VALUES
-(48, 1, 'BSCS', 25),
-(49, 1, 'BSIT', 34);
+INSERT INTO `groups` (`id`, `group_number`, `curriculum`, `adviser_id`, `school_year`) VALUES
+(48, 1, 'BSCS', 25, '2022-2023'),
+(49, 1, 'BSIT', 34, '2022-2023'),
+(50, 2, 'BSCS', 39, '2022-2023'),
+(51, 2, 'BSIT', 38, '2022-2023'),
+(52, 1, 'BSIT', 34, '2023-2024'),
+(53, 3, 'BSCS', 35, '2022-2023');
 
 -- --------------------------------------------------------
 
@@ -104,6 +110,30 @@ CREATE TABLE `group_files` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `group_panelists`
+--
+
+CREATE TABLE `group_panelists` (
+  `id` int(11) NOT NULL,
+  `faculty_id` int(11) NOT NULL,
+  `group_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `group_panelists`
+--
+
+INSERT INTO `group_panelists` (`id`, `faculty_id`, `group_id`) VALUES
+(4, 25, 48),
+(5, 35, 48),
+(6, 40, 48),
+(7, 40, 49),
+(8, 39, 49),
+(9, 35, 49);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `group_titles`
 --
 
@@ -127,12 +157,65 @@ CREATE TABLE `group_titles` (
 --
 
 INSERT INTO `group_titles` (`id`, `group_id`, `group_number`, `title_number`, `title`, `file`, `file_upload_date`, `adviser_file`, `comment`, `panel_comment`, `is_locked`, `status`) VALUES
-(2, 48, 1, 1, 'GameDev', 'Test SE File.docx', '2023-04-28', '', 'Test', 'A', 1, 'To Proposal'),
-(3, 48, 1, 2, 'WebDev', 'TestDocu.docx', NULL, '', 'Test2', 'B', 0, 'Rejected'),
+(2, 48, 1, 1, 'GameDev', 'Test SE File.docx', '2023-04-28', '', 'Test', 'A', 0, 'Accepted'),
+(3, 48, 1, 2, 'WebDev', 'Test SE File.docx', '2023-04-28', '', 'Test2', 'B', 0, 'Rejected'),
 (4, 48, 1, 3, 'DataScience', NULL, NULL, '', NULL, 'C', 0, 'Rejected'),
-(5, 49, 1, 1, NULL, NULL, NULL, '', NULL, '', 0, 'Pending'),
-(6, 49, 1, 2, NULL, NULL, NULL, '', NULL, '', 0, 'Pending'),
-(7, 49, 1, 3, NULL, NULL, NULL, '', NULL, '', 0, 'Pending');
+(5, 49, 1, 1, 'Starbucks', 'INSERT INTO test 1000.docx', '2023-05-06', '', NULL, '', 0, 'Rejected'),
+(6, 49, 1, 2, 'Tom and Toms', 'LECTURE-IN-P.E.-4-RECREATIONAL-ACTIVITIES.pdf', '2023-05-06', '', NULL, '', 0, 'Accepted'),
+(7, 49, 1, 3, 'Kopiko', 'Doc4.docx', '2023-05-06', '', NULL, '', 0, 'Rejected'),
+(8, 50, 2, 1, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'Pending'),
+(9, 50, 2, 2, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'Pending'),
+(10, 50, 2, 3, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'Pending'),
+(11, 51, 2, 1, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'Pending'),
+(12, 51, 2, 2, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'Pending'),
+(13, 51, 2, 3, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'Pending'),
+(14, 52, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'Pending'),
+(15, 52, 1, 2, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'Pending'),
+(16, 52, 1, 3, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'Pending'),
+(17, 53, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'Pending'),
+(18, 53, 3, 2, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'Pending'),
+(19, 53, 3, 3, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'Pending');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `proposed_titles`
+--
+
+CREATE TABLE `proposed_titles` (
+  `id` int(11) NOT NULL,
+  `group_titles_id` int(11) NOT NULL,
+  `abstract` mediumtext DEFAULT NULL,
+  `status` varchar(255) NOT NULL DEFAULT 'Proposed'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `proposed_titles`
+--
+
+INSERT INTO `proposed_titles` (`id`, `group_titles_id`, `abstract`, `status`) VALUES
+(1, 2, 'This is an overview of our Title.', 'Accepted'),
+(2, 6, NULL, 'Proposed');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `school_year`
+--
+
+CREATE TABLE `school_year` (
+  `id` int(11) NOT NULL,
+  `school_year` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `school_year`
+--
+
+INSERT INTO `school_year` (`id`, `school_year`) VALUES
+(1, '2022-2023'),
+(2, '2023-2024'),
+(3, '2024-2025');
 
 -- --------------------------------------------------------
 
@@ -164,7 +247,15 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`id`, `firstname`, `middle_name`, `lastname`, `username`, `email`, `password`, `type`, `course`, `year_and_section`, `sem`, `school_year`, `your_adviser`, `your_group`, `created_at`, `updated_at`) VALUES
-(135, 'Christian', '', 'Fernandez', 'yanyan', 'yanyan@wmsu.edu.ph', 'yanyan', 'student', 'BSCS', '3-B', 'First Semester', '2022-2023', 'Jaydee Ballaho', 48, '2023-04-27 15:40:13', '2023-04-27 15:40:13');
+(135, 'Christian', '', 'Fernandez', 'yanyan', 'yanyan@wmsu.edu.ph', 'yanyan', 'student', 'BSCS', '3-B', 'First Semester', '2022-2023', 'Jaydee Ballaho', 48, '2023-04-27 15:40:13', '2023-04-27 15:40:13'),
+(136, 'Joshua', '', 'Bada', 'joshuabada123', 'joshua@wmsu.edu.ph', 'joshua', 'student', 'BSCS', '3-A', 'First Semester', '2022-2023', 'Jaydee Ballaho', 48, '2023-04-28 00:32:12', '2023-04-28 00:32:12'),
+(137, 'Joshua', '', 'Blancaflor', 'joshuapogi123', 'joshuablancaflor@wmsu.edu.ph', 'password', 'student', 'BSCS', '3-A', 'First Semester', '2022-2023', 'Jaydee Ballaho', 48, '2023-05-04 14:39:35', '2023-05-04 14:39:35'),
+(138, 'Faye', '', 'Lacsi', 'faye', 'faye@wmsu.edu.ph', 'faye', 'student', 'BSIT', '3-B', 'First Semester', '2022-2023', 'Jason Catadman', 49, '2023-05-06 01:19:33', '2023-05-06 01:19:33'),
+(139, 'Roselyn', '', 'Tarroza', 'rose', 'rose@wmsu.edu.ph', 'rose', 'student', 'BSIT', '3-C', 'First Semester', '2022-2023', 'Jason Catadman', 49, '2023-05-06 01:20:10', '2023-05-06 01:20:10'),
+(140, 'Xela', '', 'Silorio', 'xela', 'Xela@wmsu.edu.ph', 'xela', 'student', 'BSIT', '3-B', 'First Semester', '2022-2023', 'Jason Catadman', 49, '2023-05-06 01:21:38', '2023-05-06 01:21:38'),
+(141, 'Rudy', '', 'Ibgos', 'rudy', 'rudy@wmsu.edu.ph', 'rudy', 'student', 'BSIT', '3-A', 'First Semester', '2022-2023', 'Pauleen Gregana', 51, '2023-05-06 02:29:12', '2023-05-06 02:29:12'),
+(142, 'Lowey', '', 'Ecat', 'lowey', 'lowey@wmsu.edu.ph', 'lowey', 'student', 'BSIT', '3-B', 'First Semester', '2022-2023', 'Pauleen Gregana', 51, '2023-05-06 02:29:39', '2023-05-06 02:29:39'),
+(144, 'Faye', '', 'Mendeja', 'faye', 'rudy@wmsu.edu.ph', 'faye', 'student', 'BSCS', '3-B', 'First Semester', '2022-2023', 'Lucy Sadiwa', 53, '2023-05-06 02:36:15', '2023-05-06 02:36:15');
 
 -- --------------------------------------------------------
 
@@ -232,11 +323,32 @@ ALTER TABLE `group_files`
   ADD KEY `groupnum` (`group_num`);
 
 --
+-- Indexes for table `group_panelists`
+--
+ALTER TABLE `group_panelists`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `faculty_id` (`faculty_id`),
+  ADD KEY `group_id` (`group_id`);
+
+--
 -- Indexes for table `group_titles`
 --
 ALTER TABLE `group_titles`
   ADD PRIMARY KEY (`id`),
   ADD KEY `grpid` (`group_id`);
+
+--
+-- Indexes for table `proposed_titles`
+--
+ALTER TABLE `proposed_titles`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `gt_id` (`group_titles_id`);
+
+--
+-- Indexes for table `school_year`
+--
+ALTER TABLE `school_year`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `student`
@@ -265,13 +377,13 @@ ALTER TABLE `useraccounts`
 -- AUTO_INCREMENT for table `faculty`
 --
 ALTER TABLE `faculty`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `group_files`
@@ -280,16 +392,34 @@ ALTER TABLE `group_files`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
+-- AUTO_INCREMENT for table `group_panelists`
+--
+ALTER TABLE `group_panelists`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- AUTO_INCREMENT for table `group_titles`
 --
 ALTER TABLE `group_titles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT for table `proposed_titles`
+--
+ALTER TABLE `proposed_titles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `school_year`
+--
+ALTER TABLE `school_year`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=136;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=145;
 
 --
 -- AUTO_INCREMENT for table `tbl_files`
@@ -320,10 +450,23 @@ ALTER TABLE `group_files`
   ADD CONSTRAINT `groups` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Constraints for table `group_panelists`
+--
+ALTER TABLE `group_panelists`
+  ADD CONSTRAINT `faculty_id` FOREIGN KEY (`faculty_id`) REFERENCES `faculty` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `group_id` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `group_titles`
 --
 ALTER TABLE `group_titles`
   ADD CONSTRAINT `grpid` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `proposed_titles`
+--
+ALTER TABLE `proposed_titles`
+  ADD CONSTRAINT `gt_id` FOREIGN KEY (`group_titles_id`) REFERENCES `group_titles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `student`

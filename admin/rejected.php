@@ -66,12 +66,7 @@
             Archives
           </a>
         </li>
-        <li class="sidebar-menu-item ">
-          <a href="implementation_titles.php">
-            <i class="ri-archive-drawer-line sidebar-menu-item-icon"></i>
-            Implementation Titles
-          </a>
-        </li>
+        
         <li class="sidebar-menu-item has-dropdown">
             <a href="thesis_status.php">
                 <i class="ri-bar-chart-box-line sidebar-menu-item-icon"></i>
@@ -94,12 +89,12 @@
         <li class="sidebar-menu-divider mt-3 mb-1 text-uppercase">Manage</li>
 
         <li class="sidebar-menu-item">
-          <a href="manage_students.php">
-            <i class="ri-user-line sidebar-menu-item-icon"></i>
-            Manage Student
-          </a>
-        </li>
-        <li class="sidebar-menu-item">
+            <a href="manage_students.php">
+              <i class="ri-user-line sidebar-menu-item-icon"></i>
+              Manage Student
+            </a>
+          </li>
+          <li class="sidebar-menu-item">
           <a href="manage_groups.php">
             <i class="ri-group-2-line sidebar-menu-item-icon"></i>
             Manage Groups
@@ -111,11 +106,17 @@
             Manage Faculty
           </a>
         </li>
-        
+      
         <li class="sidebar-menu-item">
           <a href="manage_schedules.php">
             <i class="ri-calendar-2-line sidebar-menu-item-icon"></i>
             Manage Events
+          </a>
+        </li>
+        <li class="sidebar-menu-item">
+          <a href="manage_schoolyear.php">
+            <i class="ri-global-line sidebar-menu-item-icon"></i>
+            Manage School Year
           </a>
         </li>
       </ul>

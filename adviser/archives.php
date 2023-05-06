@@ -1,5 +1,7 @@
 <?php
 
+        require_once '../class/database.php';
+        require_once '../class/archive.class.php';
 
         session_start();
         /*
@@ -11,6 +13,7 @@
             header('location: ../login/login.php');
         }
 
+        
 
 ?>
 
@@ -51,71 +54,36 @@
         ></i>
       </div>
       <ul class="sidebar-menu p-3 m-0 mb-0">
+      <li class="sidebar-menu-item">
+          <a href="home.php ">
+            <i class="ri-home-8-line sidebar-menu-item-icon"></i>
+            Home
+          </a>
+        </li>
         <li class="sidebar-menu-item">
-          <a href="dashboard.php">
-            <i class="ri-dashboard-line sidebar-menu-item-icon"></i>
-            Dashboard
-          </a>
-        </li>
-
-        <li class="sidebar-menu-divider mt-3 mb-1 text-uppercase">Thesis</li>
-
-        <li class="sidebar-menu-item">
-          <a href="archives.php">
-            <i class="ri-archive-drawer-line sidebar-menu-item-icon"></i>
-            Archives
-          </a>
-        </li>
-        <li class="sidebar-menu-item active">
-          <a href="implementation_titles.php">
-            <i class="ri-archive-drawer-line sidebar-menu-item-icon"></i>
-            Implementation Titles
-          </a>
-        </li>
-        <li class="sidebar-menu-item has-dropdown">
-            <a href="thesis_status.php">
-                <i class="ri-bar-chart-box-line sidebar-menu-item-icon"></i>
-                Thesis Status
-                <i class="ri-arrow-down-s-line sidebar-menu-item-accordion ms-auto"></i>
+            <a href="bscs.php">
+              <i class="ri-sticky-note-line sidebar-menu-item-icon"></i>
+              BSCS
             </a>
-            <ul class="sidebar-dropdown-menu">
-                <li class="sidebar-dropdown-menu-item">
-                    <a href="accepted.php">
-                        Accepted Titles
-                    </a>
-                </li>
-                <li class="sidebar-dropdown-menu-item">
-                    <a href="rejected.php">
-                        Rejected Titles
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li class="sidebar-menu-divider mt-3 mb-1 text-uppercase">Manage</li>
+          </li>
+          <li class="sidebar-menu-item">
+            <a href="bsit.php">
+                <i class="ri-sticky-note-line sidebar-menu-item-icon"></i>
+                BSIT
+            </a>
+          </li>
+          <li class="sidebar-menu-divider mt-3 mb-1 text-uppercase">Proposals</li>
 
-        <li class="sidebar-menu-item">
-          <a href="manage_students.php">
-            <i class="ri-user-line sidebar-menu-item-icon"></i>
-            Manage Student
-          </a>
-        </li>
-        <li class="sidebar-menu-item">
-          <a href="manage_groups.php">
-            <i class="ri-group-2-line sidebar-menu-item-icon"></i>
-            Manage Groups
-          </a>
-        </li>
-        <li class="sidebar-menu-item">
-          <a href="manage_faculty.php">
-            <i class="ri-group-line sidebar-menu-item-icon"></i>
-            Manage Faculty
-          </a>
-        </li>
-        
-        <li class="sidebar-menu-item">
-          <a href="manage_schedules.php">
-            <i class="ri-calendar-2-line sidebar-menu-item-icon"></i>
-            Manage Events
+          <li class="sidebar-menu-item">
+            <a href="accepted_titles.php">
+                <i class="ri-sticky-note-line sidebar-menu-item-icon"></i>
+                Accepted Titles
+            </a>
+          </li>
+        <li class="sidebar-menu-item active">
+          <a href="archives.php">
+             <i class="ri-archive-drawer-line sidebar-menu-item-icon"></i>
+            Archives
           </a>
         </li>
       </ul>
@@ -207,8 +175,8 @@
               />
             </div>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" href="profile.php"><i class="ri-user-settings-line me-2"></i>Profile</a></li>
-              <li><a class="dropdown-item" href="settings.php"><i class="ri-settings-3-line me-2"></i>Settings</a></li>
+              <li><a class="dropdown-item" href="student_profile.php"><i class="ri-user-settings-line me-2"></i>Profile</a></li>
+              <li><a class="dropdown-item" href="student_settings.php"><i class="ri-settings-3-line me-2"></i>Settings</a></li>
               <hr class="w-100">
               <li><a class="dropdown-item" href="../login/logout.php"><i class="ri-logout-box-line me-2"></i>Logout</a></li>
             </ul>
@@ -227,55 +195,119 @@
                             <th>Action</th>
                             <th>#</th>
                             <th>Titles</th>
+                            <th>Adviser</th>
                             <th>Course</th>
-                            <th>Group No</th>
                             <th>Date of Upload</th>
-                            <th>Grade</th>
                             <th>School Year</th>
-                            
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
+
                             <td>
-                                <div class="actions">
-                                    <a class="action-view" href="#"><i class="ri-eye-line"></i></a>
-                                    <a class="action-delete" href="#"><i class="ri-delete-bin-line"></i></a>
+                                <div class="actions d-flex align-items-center">
+                                    <div title="Total Views" class="views-counter ">
+                                      <span title="Total Views" id="views-counter" class="views-number">3251</span>
+                                    </div>
+
+                                    <button type="button" class="btn action-view" data-bs-toggle="modal" data-bs-target="#viewArchiveModal">
+                                        <i class="ri-eye-line"></i>
+                                    </button>
                                 </div>
                             </td>
+
                             <td>1</td>
                             <td>Game Dev</td>
+                            <td>Jaydee Ballaho</td>
                             <td>BSIT</td>
-                            <td>group 1</td>
                             <td>2011-04-25</td>
-                            <td>89%</td>
                             <td>2022-2023</td>
-                            
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="actions">
-                                    <a class="action-view" href="#"><i class="ri-eye-line"></i></a>
-                                    <a class="action-delete" href="#"><i class="ri-delete-bin-line"></i></a>
-                                </div>
-                            </td>
-                            <td>2</td>
-                            <td>System Architect</td>
-                            <td>BSCS</td>
-                            <td>Group 2</td>
-                            <td>2011-04-25</td>
-                            <td>98%</td>
-                            <td>2022-2023</td>
-                            
                         </tr>
                     </tbody>
                 </table>
-          </div>
-    </div>
+            </div>
+
+        </div>
+
+        <!--Modal Archives-->
+
+        <div class="modal fade modal-xl" id="viewArchiveModal" tabindex="-1" aria-labelledby="viewArchiveModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">Research Information</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="modal-container">
+                              <div id="title-section" class="title-section mb-2">
+                                Proliferation of Game Development
+                              </div>
+
+                              <div id="title-info" class="title-info">
+                                  <h6>Adviser: <span>Koro Sensei</span></h6>
+                                  <h6>Course: <span> BSCS</span></h6>
+                                  <h6>Date of Upload: <span>2011-04-25</span></h6>
+                                  <h6>S.Y: <span>	2022-2023</span></h6>
+                              </div>
+
+                              <div id="title-info" class="title-info mb-4">
+                                <h6>Number of Viewers: <span> 3251</span></h6>
+                                <h6>Research File: <span>abcd.docs</span></h6>
+                              </div>
+
+                              <div class="member_and_panel_cont d-flex justify-content-evenly mb-3">
+
+                                  <!--Author / Members-->
+                                <div id="authors" class="list-mem pt-2">
+                                  <span>Authors</span>
+                                  <ul>
+                                    <li>Monkey D. Luffy</li>
+                                    <li>Monkey D. Dragon</li>
+                                    <li>Monkey D. Garp</li>
+                                  </ul>
+                                </div>
+
+                                <div class="vertical-line"></div>
+
+                                <div id="panelist" class="list-mem pt-2">
+                                  <span>Panelist</span>
+                                  <ul>
+                                    <li>Rimuru Tempest</li>
+                                    <li>Anos Voldigold</li>
+                                    <li>Kiyotaka Ayanoukoji</li>
+                                  </ul>
+                                </div> 
+
+                              </div> 
+
+                              <div id="abstract" class="abstract">
+                                <span>Abstract</span><br>
+                                <p>This study presents the design and development process of a multiplayer strategy 
+                                  game aimed at exploring the impact of game mechanics on user engagement and monetization 
+                                  strategies. Using an iterative design approach, the game was built with a combination of classic 
+                                  and innovative game mechanics, such as social features, competitive challenges, and in-game purchases. 
+                                  A user study was conducted to evaluate the game's usability, enjoyment, and monetization potential. 
+                                  The results suggest that a balanced combination of game mechanics, social features, and in-game purchases 
+                                  can significantly increase user engagement and revenue. The findings of this research can provide valuable 
+                                  insights for game developers and stakeholders in the gaming industry to
+                                   improve user engagement and monetization strategies in their own games.</p>
+                                   
+                              </div>
+
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
           <!-- end: content -->
           <!-- start: Graph -->
-          
 
           <!-- end: Graph -->
         </div>

@@ -61,12 +61,7 @@
             Archives
           </a>
         </li>
-        <li class="sidebar-menu-item ">
-          <a href="implementation_titles.php">
-            <i class="ri-archive-drawer-line sidebar-menu-item-icon"></i>
-            Implementation Titles
-          </a>
-        </li>
+        
         <li class="sidebar-menu-item has-dropdown">
           <a href="thesis_status.php">
               <i class="ri-bar-chart-box-line sidebar-menu-item-icon"></i>
@@ -112,6 +107,12 @@
           <a href="manage_schedules.php">
             <i class="ri-calendar-2-line sidebar-menu-item-icon"></i>
             Manage Events
+          </a>
+        </li>
+        <li class="sidebar-menu-item">
+          <a href="manage_schoolyear.php">
+            <i class="ri-global-line sidebar-menu-item-icon"></i>
+            Manage School Year
           </a>
         </li>
       </ul>

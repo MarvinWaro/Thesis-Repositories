@@ -66,12 +66,7 @@
               Thesis
             </a>
           </li>
-        <li class="sidebar-menu-item">
-          <a href="grades.php">
-            <i class="ri-mail-star-line sidebar-menu-item-icon""></i>
-            Grades
-          </a>
-        </li>
+        
         <li class="sidebar-menu-item active">
           <a href="archives.php">
              <i class="ri-archive-drawer-line sidebar-menu-item-icon"></i>
@@ -187,52 +182,117 @@
                             <th>Action</th>
                             <th>#</th>
                             <th>Titles</th>
+                            <th>Adviser</th>
                             <th>Course</th>
                             <th>Date of Upload</th>
-                            <th>Grade</th>
                             <th>School Year</th>
-                            
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
+
                             <td>
-                                <div class="actions">
-                                    <a class="action-view" href="#"><i class="ri-eye-line"></i></a>
-                                    <a class="action-delete" href="#"><i class="ri-delete-bin-line"></i></a>
+                                <div class="actions d-flex align-items-center">
+                                    <div title="Total Views" class="views-counter ">
+                                      <span title="Total Views" id="views-counter" class="views-number">3251</span>
+                                    </div>
+
+                                    <button type="button" class="btn action-view" data-bs-toggle="modal" data-bs-target="#viewArchiveModal">
+                                        <i class="ri-eye-line"></i>
+                                    </button>
                                 </div>
                             </td>
+
                             <td>1</td>
                             <td>Game Dev</td>
+                            <td>Jaydee Ballaho</td>
                             <td>BSIT</td>
                             <td>2011-04-25</td>
-                            <td>89%</td>
                             <td>2022-2023</td>
-                            
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="actions">
-                                    <a class="action-view" href="#"><i class="ri-eye-line"></i></a>
-                                    <a class="action-delete" href="#"><i class="ri-delete-bin-line"></i></a>
-                                </div>
-                            </td>
-                            <td>2</td>
-                            <td>System Architect</td>
-                            <td>BSCS</td>
-                            <td>2011-04-25</td>
-                            <td>98%</td>
-                            <td>2022-2023</td>
-                            
                         </tr>
                     </tbody>
                 </table>
             </div>
 
-        </div>
+        </div> <!--End py4-->
 
-        
+        <!--Modal Archive-->
 
+        <div class="modal fade modal-xl" id="viewArchiveModal" tabindex="-1" aria-labelledby="viewArchiveModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">Research Information</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="modal-container">
+                              <div id="title-section" class="title-section mb-2">
+                                Proliferation of Game Development
+                              </div>
+
+                              <div id="title-info" class="title-info">
+                                  <h6>Adviser: <span>Koro Sensei</span></h6>
+                                  <h6>Course: <span> BSCS</span></h6>
+                                  <h6>Date of Upload: <span>2011-04-25</span></h6>
+                                  <h6>S.Y: <span>	2022-2023</span></h6>
+                              </div>
+
+                              <div id="title-info" class="title-info mb-4">
+                                <h6>Number of Viewers: <span> 3251</span></h6>
+                                <h6>Research File: <span>abcd.docs</span></h6>
+                              </div>
+
+                              <div class="member_and_panel_cont d-flex justify-content-evenly mb-3">
+
+                                  <!--Author / Members-->
+                                <div id="authors" class="list-mem pt-2">
+                                  <span>Authors</span>
+                                  <ul>
+                                    <li>Monkey D. Luffy</li>
+                                    <li>Monkey D. Dragon</li>
+                                    <li>Monkey D. Garp</li>
+                                  </ul>
+                                </div>
+
+                                <div class="vertical-line"></div>
+
+                                <div id="panelist" class="list-mem pt-2">
+                                  <span>Panelist</span>
+                                  <ul>
+                                    <li>Rimuru Tempest</li>
+                                    <li>Anos Voldigold</li>
+                                    <li>Kiyotaka Ayanoukoji</li>
+                                  </ul>
+                                </div> 
+
+                              </div> 
+
+                              <div id="abstract" class="abstract">
+                                <span>Abstract</span><br>
+                                <p>This study presents the design and development process of a multiplayer strategy 
+                                  game aimed at exploring the impact of game mechanics on user engagement and monetization 
+                                  strategies. Using an iterative design approach, the game was built with a combination of classic 
+                                  and innovative game mechanics, such as social features, competitive challenges, and in-game purchases. 
+                                  A user study was conducted to evaluate the game's usability, enjoyment, and monetization potential. 
+                                  The results suggest that a balanced combination of game mechanics, social features, and in-game purchases 
+                                  can significantly increase user engagement and revenue. The findings of this research can provide valuable 
+                                  insights for game developers and stakeholders in the gaming industry to
+                                   improve user engagement and monetization strategies in their own games.</p>
+
+                              </div>
+
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+ 
           <!-- end: content -->
           <!-- start: Graph -->
 

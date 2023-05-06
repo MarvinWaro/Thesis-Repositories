@@ -3,6 +3,7 @@
 require_once '../tools/functions.php';
 require_once '../class/database.php';
 require_once '../class/student.class.php';
+require_once '../class/faculty.class.php';
 require_once '../class/dbconfig.php';
 
 session_start();
@@ -16,25 +17,34 @@ if (!isset($_SESSION['logged-in'])) {
 }
 
 if (isset($_POST['save'])) {
-    $student = new Student();
+    $faculty = new Faculty();
 
-    if(empty($student->check_if_group_exist($_POST['groupnum'], $_POST['course'], $_POST["school_year"]))){
-        $student->add_group($_POST['groupnum'], $_POST['course'], $_POST['adviser'], $_POST["school_year"]);
-            
-        //redirect user to create page after saving
-        header('location: manage_groups.php');
+    $start = $_POST['schoolyearstart'];
+    $end = $_POST['schoolyearend'];
+    $sy = $start . "-" . $end;
 
-    } 
-    else {
+    if (intval($end) - intval($start) == 1) {
+        if (empty($faculty->check_if_year_exist($start . "-" . $end))) {
+            $faculty->add_year($sy);
+
+            //redirect user to create page after saving
+            header('location: manage_schoolyear.php');
+        } else {
+?>
+            <script>
+                alert("School Year Already Exist!");
+                window.location.href = "add_schoolyear.php";
+            </script>
+        <?php
+        }
+    } else {
         ?>
             <script>
-                alert("Group Already Exist!");
-                window.location.href="add_group.php";
+                alert("Invalid School Year!");
+                window.location.href = "add_schoolyear.php";
             </script>
         <?php
     }
-
-    
 }
 
 
@@ -81,7 +91,7 @@ if (isset($_POST['save'])) {
                     Archives
                 </a>
             </li>
-            
+
             <li class="sidebar-menu-item has-dropdown">
                 <a href="thesis_status.php">
                     <i class="ri-bar-chart-box-line sidebar-menu-item-icon"></i>
@@ -122,7 +132,7 @@ if (isset($_POST['save'])) {
                     Manage Faculty
                 </a>
             </li>
-            
+
             <li class="sidebar-menu-item">
                 <a href="manage_schedules.php">
                     <i class="ri-calendar-2-line sidebar-menu-item-icon"></i>
@@ -206,79 +216,23 @@ if (isset($_POST['save'])) {
                 <!-- start: Summary -->
                 <div class="main-content border">
                     <div class="form-cont">
-                        <form class="edit-form" action="add_group.php" method="post">
+                        <form class="edit-form" action="add_schoolyear.php" method="post">
 
                             <div class="d-flex justify-content-between pt-2 pb-3">
-                                <h3>Add Group</h3>
-                                <a href="manage_groups.php"><i class="ri-arrow-go-back-line back pb-2">Back</i></a>
+                                <h3>Add School Year</h3>
+                                <a href="manage_schoolyear.php"><i class="ri-arrow-go-back-line back pb-2">Back</i></a>
                             </div>
 
                             <div class="cont">
-                                <label for="firstname">Group Number</label>
-                                <input class="form-input" type="number" id="groupnum" name="groupnum" placeholder="Enter Group Number*" value="<?php if (isset($_POST['groupnum'])) {
-                                                                                                                                                    echo $_POST['groupnum'];
-                                                                                                                                                } ?>">
+                                <label for="schoolyear">School Year Start:</label>
+                                <input class="form-input" type="number" id="schoolyearstart" name="schoolyearstart" placeholder="Enter School Year Start*" value="<?php if (isset($_POST['schoolyearstart'])) {
+                                                                                                                                                                        echo $_POST['schoolyearstart'];
+                                                                                                                                                                    } else echo 2023 ?>">
 
-
-
-                                <label for="course">Course</label>
-                                <select name="course" id="course">
-                                    <option value="None" <?php if (isset($_POST['course'])) {
-                                                                if ($_POST['course'] == 'None') echo ' selected="selected"';
-                                                            } ?>>--Select Course--</option>
-                                    <option value="BSIT" <?php if (isset($_POST['course'])) {
-                                                                if ($_POST['course'] == 'BSIT') echo ' selected="selected"';
-                                                            } ?>>BSIT</option>
-                                    <option value="BSCS" <?php if (isset($_POST['course'])) {
-                                                                if ($_POST['course'] == 'BSIT') echo ' selected="selected"';
-                                                            } ?>>BSCS</option>
-                                </select>
-
-                                <?php
-                                if (isset($_POST['save']) && !validate_course($_POST)) {
-                                ?>
-                                    <p class="error">Please choose from the Dropdown</p>
-                                <?php
-                                }
-                                ?>
-
-                                <label for="adviser">Adviser</label>
-                                <select name="adviser" id="adviser">
-                                
-                                    <option value="None" <?php if (isset($_POST['adviser'])) {
-                                                                    if ($_POST['adviser'] == 'None') echo ' selected="selected"';
-                                                                } ?>>--Select Adviser--</option>
-
-                                    <?php
-                                    require_once '../class/student.class.php';
-
-                                    $student = new Student();
-                                    
-                                    $i = 1;
-                                    
-                                    foreach ($student->get_adviser_list() as $value){
-                                    ?>
-                                        <option value="<?php echo $value['id'] ?>" <?php if (isset($_POST['adviser'])) {
-                                                                    if ($_POST['adviser'] == $value['id']) echo ' selected="selected"';
-                                                                } ?>><?php echo $value['firstname'] . " " . $value["lastname"] ?></option>
-                                    <?php
-                                    }
-                                    ?>
-                                </select>
-
-                                <label for="school_year">School Year</label>
-                                <select name="school_year" id="school_year" class="mb-3">
-                                    <?php
-                                    require_once '../class/faculty.class.php';
-                                    $faculty = new Faculty();
-
-                                    foreach($faculty->get_schoolyear() as $schoolyear){
-                                    ?>
-                                        <option value="<?php echo $schoolyear["school_year"] ?>"><?php echo $schoolyear["school_year"] ?></option>
-                                    <?php
-                                    }
-                                    ?>
-                                </select>
+                                <label for="schoolyear">School Year End:</label>
+                                <input class="form-input" type="number" id="schoolyearend" name="schoolyearend" placeholder="Enter School Year End*" value="<?php if (isset($_POST['schoolyearend'])) {
+                                                                                                                                                                echo $_POST['schoolyearend'];
+                                                                                                                                                            } else echo 2024 ?>">
                             </div>
                             <div class="pbutton">
                                 <input class="save-btn form-input" type="submit" value="Save" name="save">

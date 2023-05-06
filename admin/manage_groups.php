@@ -69,12 +69,7 @@ if (!isset($_SESSION['logged-in'])){
             Archives
           </a>
         </li>
-        <li class="sidebar-menu-item ">
-          <a href="implementation_titles.php">
-            <i class="ri-archive-drawer-line sidebar-menu-item-icon"></i>
-            Implementation Titles
-          </a>
-        </li>
+        
         <li class="sidebar-menu-item has-dropdown">
           <a href="thesis_status.php">
               <i class="ri-bar-chart-box-line sidebar-menu-item-icon"></i>
@@ -119,6 +114,12 @@ if (!isset($_SESSION['logged-in'])){
           <a href="manage_schedules.php">
             <i class="ri-calendar-2-line sidebar-menu-item-icon"></i>
             Manage Events
+          </a>
+        </li>
+        <li class="sidebar-menu-item">
+          <a href="manage_schoolyear.php">
+            <i class="ri-global-line sidebar-menu-item-icon"></i>
+            Manage School Year
           </a>
         </li>
       </ul>
@@ -253,12 +254,13 @@ if (!isset($_SESSION['logged-in'])){
                                         <!-- always use echo to output PHP values -->
                                         <td>
                                           <div class="actions">
-                                            <a class="action-edit" href="#"><i class="ri-edit-line"></i></a>
+
+                                            <a class="action-view" href="#"><i class="ri-eye-line"></i></a>
                                           </div>
                                         </td>
                                         <td><?php echo "Group " . $value['group_number'] ?></td>
                                         <td><?php echo $value['curriculum'] ?></td>
-                                        
+
                                         <?php
                                         foreach ($student->get_adviser($value['adviser_id']) as $adviser){
                                         ?>
@@ -266,8 +268,8 @@ if (!isset($_SESSION['logged-in'])){
                                         <?php
                                         }
                                         ?>
-                                        
-                                        <td>2022-2023</td>
+
+                                        <td><?php echo $value['school_year'] ?></td>
                                     </tr>
                                 <?php
                                     $i++;
@@ -340,7 +342,7 @@ if (!isset($_SESSION['logged-in'])){
                 // Handle success
                 Swal.fire(
                   'Deleted!',
-                  'Your file has been deleted.',
+                  'Group has been deleted.',
                   'success'
                 ).then(function() {
                   // Reload the page after the SweetAlert2 is closed

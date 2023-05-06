@@ -417,6 +417,8 @@ nav {
 .table .actions .action-view{
     color: var(--maincolor);
     font-size: 19px;
+    background: none;
+    border: none;
 }
 
 .table .actions .action-delete{
@@ -846,6 +848,10 @@ a{
         width: 100%;
         margin: 5px 0 5px 0;
     }
+
+    #members_and_panel{
+        flex-direction: column-reverse;
+    }
 }
 
 .titles-up .overview .student-form-control{
@@ -1081,6 +1087,103 @@ form .error {
     background-color: red;
 
   }
+
+  #add-panel-btn{
+    border: none;
+    background: none;
+  }
+
+  #add-panel-btn i{
+    font-size: 25px;
+    color: var(--maincolor);
+    padding: -2px;
+  }
+
+#views-counter{
+    margin-right: 8px;
+}
+
+
+.views-counter {
+    display: inline-block;
+    background-color: #f5f5f5;
+    color: rgb(153, 152, 152);
+    border-radius: 3px;
+    padding: 2px 8px;
+    cursor: default;
+}
+
+
+#title-section{
+    text-align: center;
+    font-size: 36px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--maincolor);
+}
+
+#title-info{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#title-info h6{
+    padding: 10px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+#title-info span{
+    font-weight: normal;
+}
+
+
+#authors span{
+    font-size: 25px;
+    color: var(--maincolor);
+    font-weight: 700;
+}
+
+#abstract{
+    text-align: center;
+}
+
+#abstract span{
+    font-size: 25px;
+    color: var(--maincolor);
+    font-weight: 700;
+}
+
+
+
+#panelist span{
+    font-size: 25px;
+    color: var(--maincolor);
+    font-weight: 700;
+}
+
+
+.vertical-line {
+    border-left: 2px solid black;
+    height: 100px;
+  }
+
+  #archive-button{
+    margin-top: 8px;
+    background: var(--maincolor);
+    color: #FFFFFF;
+  }
+
+  #archive-button:hover{
+    opacity: 70%;
+  }
+
+
+
+
+
+
+
 
 
 

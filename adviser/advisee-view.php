@@ -112,6 +112,20 @@
                 BSIT
             </a>
           </li>
+          <li class="sidebar-menu-divider mt-3 mb-1 text-uppercase">Proposals</li>
+
+          <li class="sidebar-menu-item">
+            <a href="accepted_titles.php">
+                <i class="ri-sticky-note-line sidebar-menu-item-icon"></i>
+                Accepted Titles
+            </a>
+          </li>
+          <li class="sidebar-menu-item ">
+          <a href="archives.php">
+             <i class="ri-archive-drawer-line sidebar-menu-item-icon"></i>
+            Archives
+          </a>
+        </li>
       </ul>
     </div>
     <div class="sidebar-overlay"></div>
@@ -202,7 +216,6 @@
             </div>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               <li><a class="dropdown-item" href="#"><i class="ri-user-settings-line me-2"></i>Profile</a></li>
-              <li><a class="dropdown-item" href="../panel/home.php"><i class="ri-user-shared-2-line me-2"></i>Switch to Panelist</a></li>
               <li><a class="dropdown-item" href="#"><i class="ri-settings-3-line me-2"></i>Settings</a></li>
               <hr class="w-100">
               <li><a class="dropdown-item" href="../login/logout.php"><i class="ri-logout-box-line me-2"></i>Logout</a></li>
@@ -227,13 +240,12 @@
                       </div>
                   </div>
 
-                  <div class="members p-3">
-                      <span>Members</span>
+                  <div class="members p-3 d-flex justify-content-evenly">
+                      
                       <div class="list-mem pt-2">
+                      <span>Members</span>
                           <ul>
                               <?php
-                              
-
                               foreach ($student->show_group_members($_GET['groupnum'], $_GET['course']) as $value){
                               ?>
                                 <li class="pb-1"><?php echo $value['firstname']. " " . $value['lastname'] ?></li>
@@ -241,6 +253,15 @@
                               }
                               ?>
                           </ul>
+                      </div>
+                      
+                      <div class="list-mem pt-2">
+                        <span>Panelist</span>
+                        <ul>
+                          <li class="pb-1">Jaydee Ballaho</li>
+                          <li class="pb-1">Marvic Lines</li>
+                          <li class="pb-1">Marjorie Rojas</li>
+                        </ul>
                       </div>
                   </div>
 

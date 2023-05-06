@@ -47,7 +47,7 @@
           }
         }
 
-
+        
 
 ?>
 
@@ -100,12 +100,7 @@
               Thesis
             </a>
           </li>
-        <li class="sidebar-menu-item ">
-          <a href="grades.php">
-            <i class="ri-mail-star-line sidebar-menu-item-icon"></i>
-            Grades
-          </a>
-        </li>
+        
         <li class="sidebar-menu-item ">
           <a href="archives.php">
              <i class="ri-archive-drawer-line sidebar-menu-item-icon"></i>
@@ -227,25 +222,30 @@
                      
                   </div>
 
-                  <div class="members p-3">
+                  <div class="members p-3 d-flex justify-content-evenly">
+
+                      <div class="list-mem pt-2 ">
                       <span>Members</span>
-                      <div class="list-mem pt-2">
                           <ul>
                               <li>Christian Fernandez</li>
                               <li>Faye Lacsi</li>
+                          </ul>
+                      </div>
+
+
+
+                      <div class="list-mem pt-2">
+                      <span>Panelist</span>
+                          <ul>
+                              <li>Marjorie Rojas</li>
+                              <li>Jaydee Ballaho</li>
                           </ul>
                       </div>
                   </div>
 
                   <div class="titles-up p-3" style="max-width:100% !important;">
 
-                   <div class="comment">
-                      <span>Comment</span>
-                      <p>Comment here from the panelist at title defense</p>
-                   </div>
-
-
-                    <span>Overview</span>
+                    <span>Abstract</span>
 
                     <div class="overview">
 
@@ -256,13 +256,10 @@
                         <input class="form-control student-form-control" type="file" id="formFile" name="myfile">
 
                         <div class="submit-cont mt-2">
-                          <input type="submit" name="submit" id="submit" value="Submit for Proposal">
+                          <input type="submit" name="submit" id="submit" value="Submit">
                         </div>
-
                       </form>
-
                     </div>
-                              
                   </div>
               </div>
 

@@ -445,6 +445,120 @@ footer .copy{
 
 }
 
+thead{
+    text-transform: uppercase;
+    border-bottom:  #000;
+}
+
+.table .actions{
+    display: flex;
+}
+
+.table .actions .action-edit{
+    color: var(--maincolor);
+    font-size: 19px;
+
+}
+
+.table .actions .action-view{
+    color: var(--maincolor);
+    font-size: 19px;
+    border: none;
+}
+
+.table .actions .action-delete{
+    color: var(--maincolor);
+    font-size: 19px;
+}
+
+.table .actions .action-edit,
+.table .actions .action-view,
+.table .actions .action-delete{
+    
+    border-radius: 6px;
+    padding: 7px 5px;
+    margin-left: 3px;
+    text-decoration: none;
+    font-weight:bolder;
+}
+
+#views-counter{
+    margin-right: 8px;
+}
+
+
+.views-counter {
+    display: inline-block;
+    background-color: #f5f5f5;
+    color: rgb(153, 152, 152);
+    border-radius: 3px;
+    padding: 2px 8px;
+    cursor: default;
+}
+
+#archiveModalLabel{
+    font-weight: 700;
+}
+
+/*modal*/
+
+#title-section{
+    text-align: center;
+    font-size: 36px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--maincolor);
+}
+
+#title-info{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#title-info h6{
+    padding: 10px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+#title-info span{
+    font-weight: normal;
+}
+
+
+#authors span{
+    font-size: 25px;
+    color: var(--maincolor);
+    font-weight: 700;
+}
+
+#abstract{
+    text-align: center;
+}
+
+#abstract span{
+    font-size: 25px;
+    color: var(--maincolor);
+    font-weight: 700;
+}
+
+
+
+#panelist span{
+    font-size: 25px;
+    color: var(--maincolor);
+    font-weight: 700;
+}
+
+
+.vertical-line {
+    border-left: 2px solid black;
+    height: 100px;
+  }
+
+
+
+
 
 
 

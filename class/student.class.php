@@ -89,7 +89,7 @@ class Student{
         $query=$this->db->connect()->prepare($sql);
         $query->bindParam(':id', $record_id);
         if($query->execute()){
-            $data = $query->fetch();
+            $data = $query->fetchAll();
         }
         return $data;
     }
@@ -133,10 +133,10 @@ class Student{
         return $data;
     }
 
-    function add_group($group_number, $curriculum, $adviser_id){
+    function add_group($group_number, $curriculum, $adviser_id, $school_year){
         
-        $conn = mysqli_connect("localhost","root","","tams");
-        $sql = "INSERT INTO groups (group_number, curriculum, adviser_id) VALUES (?, ?, ?)";
+        require 'dbconfig.php';
+        $sql = "INSERT INTO groups (group_number, curriculum, adviser_id, school_year) VALUES (?, ?, ?, ?)";
         $stmt = mysqli_stmt_init($conn);
         if (!mysqli_stmt_prepare($stmt, $sql)) {
             ?>
@@ -147,7 +147,7 @@ class Student{
             <?php
             }
 
-        mysqli_stmt_bind_param($stmt, "sss", $group_number, $curriculum, $adviser_id);
+        mysqli_stmt_bind_param($stmt, "ssss", $group_number, $curriculum, $adviser_id, $school_year);
         mysqli_stmt_execute($stmt);
         $lastID = mysqli_insert_id($conn);
         mysqli_stmt_close($stmt);
@@ -212,11 +212,12 @@ class Student{
         return $data;
     }
 
-    function check_if_group_exist($groupnum, $curriculum) {
-        $sql = "SELECT * FROM groups WHERE group_number=:groupnum AND curriculum=:curriculum";
+    function check_if_group_exist($groupnum, $curriculum, $sy) {
+        $sql = "SELECT * FROM groups WHERE group_number=:groupnum AND curriculum=:curriculum AND school_year=:sy";
         $query=$this->db->connect()->prepare($sql);
         $query->bindParam(':groupnum', $groupnum);
         $query->bindParam(':curriculum', $curriculum);
+        $query->bindParam(':sy', $sy);
         if($query->execute()){
             $data = $query->fetchAll();
         }
@@ -293,8 +294,18 @@ class Student{
         }
     }
 
+    function get_accepted($id){
+        $sql = "SELECT * FROM proposed_titles WHERE group_titles_id = :id";
+        $query=$this->db->connect()->prepare($sql);
+        $query->bindParam(':id', $id);
+        if($query->execute()){
+            $data = $query->fetchAll();
+        }
+        return $data;
+    }
+
     function get_proposed_titles(){
-        $sql = "SELECT group_titles.*, groups.group_number, groups.curriculum, groups.adviser_id FROM group_titles INNER JOIN groups ON groups.id = group_titles.group_id WHERE status = 'To Proposal'";
+        $sql = "SELECT group_titles.*, groups.group_number, groups.curriculum, groups.adviser_id FROM group_titles INNER JOIN groups ON groups.id = group_titles.group_id WHERE status = 'Accepted'";
         $query=$this->db->connect()->prepare($sql);
         if($query->execute()){
             $data = $query->fetchAll();
@@ -312,7 +323,7 @@ class Student{
     }
 
     function get_group_proposed_title($id){
-        $sql = "SELECT group_titles.*, groups.adviser_id FROM group_titles INNER JOIN groups ON groups.id = group_titles.group_id WHERE group_titles.id = :id";
+        $sql = "SELECT group_titles.*, groups.adviser_id FROM group_titles INNER JOIN groups ON groups.id = group_titles.group_id WHERE group_titles.group_id = :id AND group_titles.status = 'Accepted';";
         $query=$this->db->connect()->prepare($sql);
         $query->bindParam(':id', $id);
         if($query->execute()){

@@ -2,6 +2,7 @@
 
 require_once  '../student/process.php';
 require_once '../class/dbconfig.php';
+require_once '../class/student.class.php';
 
 session_start();
 /*
@@ -16,7 +17,7 @@ if (!isset($_SESSION['logged-in'])) {
 if (isset($_GET['file'])) {
   $file_name = basename($_GET['file']);
   $file_path = '../student/upload/documents/' . $file_name;
-  
+
   $path_parts = pathinfo($file_Path);
   echo $file_path;
   $ext = strtolower($path_parts["extension"]);
@@ -39,7 +40,7 @@ if (isset($_GET['file'])) {
   }
   ob_end_clean();
   if (!empty($file_name) && file_exists($file_path)) {
-    
+
     header('Cache-Control: public');
     header('Content-Description: File Transfer');
     header('Content-Disposition: attachment; filename=' . $file_name);
@@ -52,6 +53,8 @@ if (isset($_GET['file'])) {
     echo "Not Found";
   }
 }
+
+$stdnt = new Student();
 
 
 ?>
@@ -102,6 +105,20 @@ if (isset($_GET['file'])) {
         <a href="bsit.php">
           <i class="ri-sticky-note-line sidebar-menu-item-icon"></i>
           BSIT
+        </a>
+      </li>
+      <li class="sidebar-menu-divider mt-3 mb-1 text-uppercase">Proposals</li>
+
+      <li class="sidebar-menu-item">
+        <a href="accepted_titles.php">
+          <i class="ri-sticky-note-line sidebar-menu-item-icon"></i>
+          Accepted Titles
+        </a>
+      </li>
+      <li class="sidebar-menu-item ">
+        <a href="archives.php">
+          <i class="ri-archive-drawer-line sidebar-menu-item-icon"></i>
+          Archives
         </a>
       </li>
     </ul>
@@ -168,7 +185,6 @@ if (isset($_GET['file'])) {
           </div>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
             <li><a class="dropdown-item" href="#"><i class="ri-user-settings-line me-2"></i>Profile</a></li>
-            <li><a class="dropdown-item" href="../panel/home.php"><i class="ri-user-shared-2-line me-2"></i>Switch to Panelist</a></li>
             <li><a class="dropdown-item" href="#"><i class="ri-settings-3-line me-2"></i>Settings</a></li>
             <hr class="w-100">
             <li><a class="dropdown-item" href="../login/logout.php"><i class="ri-logout-box-line me-2"></i>Logout</a></li>
@@ -189,20 +205,19 @@ if (isset($_GET['file'])) {
         <div class="main-content border">
           <div class="head-number p-3">
             <h2>Group <?php foreach ($student->show_group_info($_GET['groupnum']) as $groupNum) echo $groupNum['group_number'] ?></h2>
-              <div class="sub d-flex">
-                <h6> Adviser </h6>
-                <h6 class="slash-padding"> | </h6>
-                <h6><?php echo $_GET['course'] ?></h6>
-              </div>
+            <div class="sub d-flex">
+              <h6> Adviser </h6>
+              <h6 class="slash-padding"> | </h6>
+              <h6><?php echo $_GET['course'] ?></h6>
+            </div>
           </div>
 
-          <div class="members p-3">
-            <span>Members</span>
+          <div class="members p-3 d-flex justify-content-evenly" id="members_and_panel">
+
             <div class="list-mem pt-2">
+              <span>Members</span>
               <ul>
                 <?php
-                
-
                 foreach ($student->show_group_members($_GET['groupnum'], $_GET['course']) as $value) {
                 ?>
                   <li class="pb-1"><?php echo $value['firstname'] . " " . $value['lastname'] ?></li>
@@ -211,7 +226,119 @@ if (isset($_GET['file'])) {
                 ?>
               </ul>
             </div>
+            <!--Adding of Panelist-->
+            <div class="list-mem pt-2 d-flex flex-column">
+              <span>Panelist</span>
+              <ul>
+                <?php
+                include_once '../class/faculty.class.php';
+                $faculty = new Faculty();
+
+                $counter = 0;
+                foreach ($faculty->get_panel($_GET["groupnum"]) as $value) {
+                ?>
+                  <li class="pb-1"><?php echo $value['firstname'] . " " . $value['lastname'] ?></li>
+                <?php
+                  $counter++;
+                }
+                ?>
+              </ul>
+              <?php
+              if ($counter == 0) {
+              ?>
+                <button title="Add Panelist" id="add-panel-btn" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="ri-add-circle-fill"></i></button>
+              <?php
+              }
+              ?>
+
+            </div>
           </div>
+
+          <!-- Button trigger modal -->
+
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Add Panelist</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form method="POST" action="add_panel.php">
+                  <div class="modal-body">
+
+                    <input hidden name="group_id" value="<?php echo $_GET["groupnum"] ?>">
+                    <input hidden name="course" value="<?php echo $_GET["course"] ?>">
+
+                    <div>
+                      <label>Panel 1</label>
+                      <select class="form-select" style="margin-top: -2px; margin-bottom: 15px" name="panel_one" required>
+                        <option hidden disabled selected value="" required>--Select--</option>
+                        <?php
+                        include_once '../class/faculty.class.php';
+                        $faculty = new Faculty();
+
+                        foreach ($faculty->show() as $list) {
+                        ?>
+                          <option value="<?php echo $list["id"] ?>"><?php echo $list["firstname"] . " " . $list["lastname"] ?></option>
+                        <?php
+                        }
+                        ?>
+                      </select>
+                    </div>
+
+
+                    <div>
+                      <label>Panel 2</label>
+                      <select class="form-select" style="margin-top: -2px; margin-bottom: 15px" name="panel_two" required>
+                        <option hidden disabled selected value="" required>--Select--</option>
+                        <?php
+                        include_once '../class/faculty.class.php';
+                        $faculty = new Faculty();
+
+                        foreach ($faculty->show() as $list) {
+                        ?>
+                          <option value="<?php echo $list["id"] ?>"><?php echo $list["firstname"] . " " . $list["lastname"] ?></option>
+                        <?php
+                        }
+                        ?>
+                      </select>
+                    </div>
+
+
+                    <div>
+                      <label>Panel 3</label>
+                      <select class="form-select" style="margin-top: -2px; margin-bottom: 15px" name="panel_three" required>
+                        <option hidden disabled selected value="" required>--Select--</option>
+                        <?php
+                        include_once '../class/faculty.class.php';
+                        $faculty = new Faculty();
+
+                        foreach ($faculty->show() as $list) {
+                        ?>
+                          <option value="<?php echo $list["id"] ?>"><?php echo $list["firstname"] . " " . $list["lastname"] ?></option>
+                        <?php
+                        }
+                        ?>
+                      </select>
+                    </div>
+
+
+
+
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" name="submit">Save changes</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!--Modal-->
+
+
 
           <div class="titles-up p-3">
             <span>Titles</span>
@@ -227,45 +354,85 @@ if (isset($_GET['file'])) {
                 <form action="add_comment.php" method="POST" enctype="multipart/form-data">
                   <div class="mb-3">
                     <p class="me-3 fw-bold">Title <?php echo $counter; ?>: <?php echo $value['title'] ?></p>
-                    <p class="me-3"><a href="advisee.php?file=<?php echo $value['file'] ?>"><?php echo $value['file'] ?></a></p>
+                    <p class="me-3" style="margin-top: -15px;">File: <a href="advisee.php?file=<?php echo $value['file'] ?>"><?php echo $value['file'] ?></a></p>
                     <textarea required class="form-control" name="comment" placeholder="Adviser Comment"><?php echo $value['comment'] ?></textarea>
                     <div class="mb-3">
-                      <label for="formFile" class="form-label">Adviser File:</label>
+                      <label for="formFile" class="form-label">Adviser File: <?php echo $value['adviser_file'] ?></label>
                       <input class="form-control" type="file" id="formFile" name="myfile">
                     </div>
 
                     <input type="submit" name="submit<?php echo $counter ?>" id="submit" value="Submit">
                     <?php
-                      if(!$value['is_locked']){
+                    if (!$value['is_locked']) {
                     ?>
-                        <button onclick="return confirm('Are you sure to Lock?')" class="btn btn-danger" style="width: 100%; color:#fff; padding: 4px 9px; font-size: 14px; margin-top: 5px" name="lock<?php echo $counter ?>" form="lockTitle">Lock</button>
+                      <button onclick="return confirm('Are you sure to Lock?')" class="btn btn-danger" style="width: 100%; color:#fff; padding: 4px 9px; font-size: 14px; margin-top: 5px" name="lock<?php echo $counter ?>" form="lockTitle">Lock</button>
                     <?php
-                      }
-                      else {
+                    } else {
                     ?>
-                        <button onclick="return confirm('Are you sure to Unlock?')" class="btn btn-success" style="width: 100%; color:#fff; padding: 4px 9px; font-size: 14px; margin-top: 5px" name="unlock<?php echo $counter ?>" form="lockTitle">Unlock</button>
+                      <button onclick="return confirm('Are you sure to Unlock?')" class="btn btn-success" style="width: 100%; color:#fff; padding: 4px 9px; font-size: 14px; margin-top: 5px" name="unlock<?php echo $counter ?>" form="lockTitle">Unlock</button>
                     <?php
-                      }
+                    }
                     ?>
                     <input type="hidden" name="cCourse" value="<?php echo $_GET['course'] ?>">
                     <input type="hidden" name="cGroupNum" value="<?php echo $_GET['groupnum'] ?>">
                   </div>
                 </form>
                 <form id="lockTitle" method="POST" action="lock_title.php">
-                    <input type="hidden" name="cGroupNum" value="<?php echo $_GET['groupnum'] ?>">
-                    <input type="hidden" name="cCourse" value="<?php echo $_GET['course'] ?>">
+                  <input type="hidden" name="cGroupNum" value="<?php echo $_GET['groupnum'] ?>">
+                  <input type="hidden" name="cCourse" value="<?php echo $_GET['course'] ?>">
                 </form>
 
-                
+
               <?php
-              $counter++;
+                $counter++;
               }
               ?>
+            </div>
+
+            <div class="d-flex justify-content-center" style="margin-top: 25px;">
+              <button class="btn btn-primary" style="width: 50%; color: white; background" data-bs-toggle="modal" data-bs-target="#acceptTitle">Accept a Title</button>
             </div>
           </div>
         </div>
 
+        <div class="modal fade" id="acceptTitle" tabindex="-1" aria-labelledby="acceptTitleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="acceptTitleModalLabel">Select Title to Accept</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <form method="POST" action="accept_title.php">
+                <div class="modal-body">
 
+                  <div class="panel-cont">
+                    <?php
+                    $counter = 1;
+                    foreach ($student->show_group($_GET['groupnum']) as $value) {
+                    ?>
+                      <div class="radio-cont mt-2">
+                        <input hidden name="groupnum" value="<?php echo $value["group_id"] ?>">
+                        <label class="container-radio label-radio fw-bold">Title <?php echo $value["title_number"] ?>: <?php echo $value["title"] ?>
+                          <input type="radio" name="type" value="<?php echo $value["title_number"] ?>" required>
+                          <span class="checkmark"></span>
+                        </label>
+
+
+                      </div>
+                    <?php
+                      $counter++;
+                    }
+                    ?>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary" name="submit">Save changes</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- end: content -->
@@ -288,12 +455,12 @@ if (isset($_GET['file'])) {
   <!--responsive-->
   <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
   <script>
-      function confirmation(){
-        var result = confirm("Are you sure to you want to lock?");
-        if(result){
-          console.log("Locked")
-        }
+    function confirmation() {
+      var result = confirm("Are you sure to you want to lock?");
+      if (result) {
+        console.log("Locked")
       }
+    }
   </script>
   <!-- end: JS -->
 </body>
