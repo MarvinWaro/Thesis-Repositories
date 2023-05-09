@@ -282,10 +282,11 @@ class Student{
         }
     }
 
-    function add_proposed_title($titleid){
-        $sql = "INSERT INTO proposed_titles (group_titles_id) VALUES (:titleid)";
+    function add_proposed_title($titleid, $title){
+        $sql = "INSERT INTO proposed_titles (group_titles_id, title) VALUES (:titleid, :title)";
         $query=$this->db->connect()->prepare($sql);
         $query->bindParam(':titleid', $titleid);
+        $query->bindParam(':title', $title);
         if($query->execute()){
             return true;
         } 
@@ -305,7 +306,7 @@ class Student{
     }
 
     function get_proposed_titles(){
-        $sql = "SELECT group_titles.*, groups.group_number, groups.curriculum, groups.adviser_id FROM group_titles INNER JOIN groups ON groups.id = group_titles.group_id WHERE status = 'Accepted'";
+        $sql = "SELECT group_titles.*, groups.group_number, groups.curriculum, groups.adviser_id, groups.school_year FROM group_titles INNER JOIN groups ON groups.id = group_titles.group_id WHERE status = 'Accepted'";
         $query=$this->db->connect()->prepare($sql);
         if($query->execute()){
             $data = $query->fetchAll();
@@ -314,7 +315,7 @@ class Student{
     }
 
     function get_rejected_titles(){
-        $sql = "SELECT group_titles.*, groups.group_number, groups.curriculum, groups.adviser_id FROM group_titles INNER JOIN groups ON groups.id = group_titles.group_id WHERE status = 'Rejected'";
+        $sql = "SELECT group_titles.*, groups.group_number, groups.curriculum, groups.adviser_id, groups.school_year FROM group_titles INNER JOIN groups ON groups.id = group_titles.group_id WHERE status = 'Rejected'";
         $query=$this->db->connect()->prepare($sql);
         if($query->execute()){
             $data = $query->fetchAll();
@@ -322,8 +323,8 @@ class Student{
         return $data;
     }
 
-    function get_group_proposed_title($id){
-        $sql = "SELECT group_titles.*, groups.adviser_id FROM group_titles INNER JOIN groups ON groups.id = group_titles.group_id WHERE group_titles.group_id = :id AND group_titles.status = 'Accepted';";
+    function get_grouparchived_titles($id){
+        $sql = "SELECT group_titles.*, groups.group_number, groups.curriculum, groups.adviser_id, groups.school_year FROM group_titles INNER JOIN groups ON groups.id = group_titles.group_id WHERE group_titles.group_id = :id AND status = 'Archived'";
         $query=$this->db->connect()->prepare($sql);
         $query->bindParam(':id', $id);
         if($query->execute()){
@@ -331,6 +332,61 @@ class Student{
         }
         return $data;
     }
+
+    function get_group_proposed_title($id){
+        $sql = "SELECT group_titles.*, groups.adviser_id, groups.school_year FROM group_titles INNER JOIN groups ON groups.id = group_titles.group_id WHERE group_titles.group_id = :id AND group_titles.status = 'Accepted';";
+        $query=$this->db->connect()->prepare($sql);
+        $query->bindParam(':id', $id);
+        if($query->execute()){
+            $data = $query->fetchAll();
+        }
+        return $data;
+    }
+
+    function get_group_archived_title($id){
+        $sql = "SELECT group_titles.*, groups.adviser_id, groups.school_year FROM group_titles INNER JOIN groups ON groups.id = group_titles.group_id WHERE group_titles.group_id = :id AND group_titles.status = 'Archived';";
+        $query=$this->db->connect()->prepare($sql);
+        $query->bindParam(':id', $id);
+        if($query->execute()){
+            $data = $query->fetchAll();
+        }
+        return $data;
+    }
+
+    function update_proposed_title($id, $abstract, $filename){
+        $sql = "UPDATE proposed_titles SET abstract = :abstract, file = :filename WHERE group_titles_id = :id";
+        $query=$this->db->connect()->prepare($sql);
+        $query->bindParam(':id', $id);
+        $query->bindParam(':abstract', $abstract);
+        $query->bindParam(':filename', $filename);
+        if($query->execute()){
+            return true;
+        } 
+        else {
+            return false;
+        }
+    }
+
+    function get_toarchive_title($id){
+        $sql = "SELECT * FROM proposed_titles WHERE group_titles_id = :id";
+        $query=$this->db->connect()->prepare($sql);
+        $query->bindParam(':id', $id);
+        if($query->execute()){
+            $data = $query->fetchAll();
+        }
+        return $data;
+    }
+
+    function get_archived_titles(){
+        $sql = "SELECT proposed_titles.*, group_titles.group_id FROM proposed_titles INNER JOIN group_titles ON group_titles.id = proposed_titles.group_titles_id WHERE proposed_titles.status = 'Archived'";
+        $query=$this->db->connect()->prepare($sql);
+        if($query->execute()){
+            $data = $query->fetchAll();
+        }
+        return $data;
+    }
+
+    
 }
 
 ?>

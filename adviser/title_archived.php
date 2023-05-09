@@ -1,5 +1,6 @@
 <?php
 
+
 session_start();
 /*
             if user is not login then redirect to login page,
@@ -10,15 +11,11 @@ if (!isset($_SESSION['logged-in'])) {
   header('location: ../login/login.php');
 }
 
-require_once '../class/student.class.php';
-$student = new Student();
-
 if (isset($_GET['file'])) {
-
   $file_name = basename($_GET['file']);
-  $file_path = '../adviser/upload/documents/' . $file_name;
+  $file_path = '../student/upload/documents/' . $file_name;
 
-  $path_parts = pathinfo($file_path);
+  $path_parts = pathinfo($file_Path);
   echo $file_path;
   $ext = strtolower($path_parts["extension"]);
 
@@ -29,18 +26,22 @@ if (isset($_GET['file'])) {
     case "doc":
       $ctype = "application/msword";
       break;
+    case "docx":
+      $ctype = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+      break;
     case "xls":
       $ctype = "application/vnd.ms-excel";
       break;
     default:
       $ctype = "application/force-download";
   }
-
+  ob_end_clean();
   if (!empty($file_name) && file_exists($file_path)) {
+
     header('Cache-Control: public');
     header('Content-Description: File Transfer');
     header('Content-Disposition: attachment; filename=' . $file_name);
-    header('Content-Type: $ctype');
+    header('Content-Type: ' . $ctype);
     header('Content-Transfer-Encoding: binary');
 
     readfile($file_path);
@@ -48,21 +49,9 @@ if (isset($_GET['file'])) {
   } else {
     echo "Not Found";
   }
-
-  
 }
-
-if(!empty($student->get_group_proposed_title($_SESSION["groupnum"]))){
-  header("location: thesis_accepted.php");
-}
-elseif(!empty($student->get_group_archived_title($_SESSION["groupnum"]))){
-  header("location: thesis_archived.php");
-}
-
-
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -80,8 +69,11 @@ elseif(!empty($student->get_group_archived_title($_SESSION["groupnum"]))){
   <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.bootstrap.min.css">
   <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
   <link rel="stylesheet" href="../assets/css/style.css" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <!-- end: CSS -->
-  <title>Thesis Repository - Thesis</title>
+  <title>Thesis Repository</title>
 </head>
 
 <body>
@@ -93,19 +85,33 @@ elseif(!empty($student->get_group_archived_title($_SESSION["groupnum"]))){
     </div>
     <ul class="sidebar-menu p-3 m-0 mb-0">
       <li class="sidebar-menu-item">
-        <a href="home.php">
+        <a href="home.php ">
           <i class="ri-home-8-line sidebar-menu-item-icon"></i>
           Home
         </a>
       </li>
-      <li class="sidebar-menu-item active">
-        <a href="thesis.php">
+      <li class="sidebar-menu-item">
+        <a href="bscs.php">
           <i class="ri-sticky-note-line sidebar-menu-item-icon"></i>
-          Thesis
+          BSCS
         </a>
       </li>
-      
-      <li class="sidebar-menu-item ">
+      </li>
+      <li class="sidebar-menu-item">
+        <a href="bsit.php">
+          <i class="ri-sticky-note-line sidebar-menu-item-icon"></i>
+          BSIT
+        </a>
+      </li>
+      <li class="sidebar-menu-divider mt-3 mb-1 text-uppercase">Proposals</li>
+
+      <li class="sidebar-menu-item">
+        <a href="accepted_titles.php">
+          <i class="ri-sticky-note-line sidebar-menu-item-icon"></i>
+          Accepted Titles
+        </a>
+      </li>
+      <li class="sidebar-menu-item">
         <a href="archives.php">
           <i class="ri-archive-drawer-line sidebar-menu-item-icon"></i>
           Archives
@@ -122,7 +128,7 @@ elseif(!empty($student->get_group_archived_title($_SESSION["groupnum"]))){
       <!-- start: Navbar -->
       <nav class="px-3 py-2 bg-white rounded shadow-sm">
         <i class="ri-menu-line sidebar-toggle me-3 d-block d-md-none"></i>
-        <h5 class="fw-bold mb-0 me-auto">Thesis</h5>
+        <h5 class="fw-bold mb-0 me-auto">Accepted Titles</h5>
         <div class="dropdown me-3 d-none d-sm-block">
           <div class="cursor-pointer dropdown-toggle navbar-link" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="ri-notification-line"></i>
@@ -174,8 +180,8 @@ elseif(!empty($student->get_group_archived_title($_SESSION["groupnum"]))){
             <img class="navbar-profile-image" src="../img/u-icon.png" alt="Image" />
           </div>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><a class="dropdown-item" href="student_profile.php"><i class="ri-user-settings-line me-2"></i>Profile</a></li>
-            <li><a class="dropdown-item" href="student_settings.php"><i class="ri-settings-3-line me-2"></i>Settings</a></li>
+            <li><a class="dropdown-item" href="#"><i class="ri-user-settings-line me-2"></i>Profile</a></li>
+            <li><a class="dropdown-item" href="#"><i class="ri-settings-3-line me-2"></i>Settings</a></li>
             <hr class="w-100">
             <li><a class="dropdown-item" href="../login/logout.php"><i class="ri-logout-box-line me-2"></i>Logout</a></li>
           </ul>
@@ -188,23 +194,49 @@ elseif(!empty($student->get_group_archived_title($_SESSION["groupnum"]))){
         <!-- start: content -->
         <div class="main-content border">
           <div class="head-number p-3">
-            <h2>Group <?php foreach ($student->show_group_info($_SESSION['groupnum']) as $groupNum) echo $groupNum['group_number'] ?></h2>
+            <h2>
+              <?php
+              include_once '../class/student.class.php';
+              $student = new Student();
+
+              foreach ($student->get_group_archived_title($_GET["id"]) as $title) {
+                echo $title["title"] . " ";
+              ?>
+            </h2>
             <div class="sub d-flex">
-              <h6>Adviser:  <?php echo $_SESSION['adviser'] ?></h6>
-              <h6 class="slash-padding"> | </h6>
-              <h6>Course:  <?php echo $_SESSION['course'] ?> </h6>
+              <h6>
+              <?php
+                foreach ($student->get_group_archived_title($_GET["id"]) as $title) {
+                  foreach ($student->get_adviser($title["adviser_id"]) as $adviser) {
+                    echo $adviser["firstname"] . " " . $adviser["lastname"];
+                  }
+                }
+              }
+              ?>
+              </h6>
+              <h6 style="margin-left: 5px; margin-right: 5px"> | </h6>
+              <h6> <?php echo $_GET["course"] ?></h6>
+              <h6 style="margin-left: 5px; margin-right: 5px"> | </h6>
+              <?php
+              foreach ($student->get_group_archived_title($_GET["id"]) as $title) {
+                foreach ($student->get_toarchive_title($title["id"]) as $toarchive) {
+              ?>
+                  <h6> <a href="to_archive.php?file=<?php echo $toarchive['file'] ?>"><?php echo $toarchive['file'] ?></a></h6>
+              <?php
+                }
+              }
+              ?>
             </div>
+
           </div>
 
-          <div class="members p-3 d-flex justify-content-evenly" id="members_and_panel">
+          <div class="members p-3 d-flex justify-content-evenly">
 
             <div class="list-mem pt-2">
-            <span>Members</span>
+              <span>Members</span>
               <ul>
                 <?php
-
-
-                foreach ($student->show_group_members($_SESSION['groupnum'], $_SESSION['course']) as $value) {
+                foreach ($student->show_group_members($_GET['id'], $_GET['course']) as $value) {
                 ?>
                   <li class="pb-1"><?php echo $value['firstname'] . " " . $value['lastname'] ?></li>
                 <?php
@@ -214,14 +246,14 @@ elseif(!empty($student->get_group_archived_title($_SESSION["groupnum"]))){
             </div>
 
             <div class="list-mem pt-2">
-            <span>Panelist</span>
+              <span>Panelist</span>
               <ul>
-              <?php
+                <?php
                 include_once '../class/faculty.class.php';
                 $faculty = new Faculty();
 
                 $counter = 0;
-                foreach ($faculty->get_panel($_SESSION['groupnum']) as $value) {
+                foreach ($faculty->get_panel($_GET["id"]) as $value) {
                 ?>
                   <li class="pb-1"><?php echo $value['firstname'] . " " . $value['lastname'] ?></li>
                 <?php
@@ -233,56 +265,30 @@ elseif(!empty($student->get_group_archived_title($_SESSION["groupnum"]))){
           </div>
 
           <div class="titles-up p-3" style="max-width:100% !important;">
-            <span>Titles</span>
 
-            <div class="uploading">
+            <span>Abstract</span>
 
+            <div id="overview" class="overview">
               <?php
-              $counter = 1;
-              foreach ($student->show_group($_SESSION['groupnum']) as $value) {
+              foreach ($student->get_group_archived_title($_GET["id"]) as $title) {
+                foreach ($student->get_accepted($title['id']) as $abstract) {
               ?>
+                  <p><?php echo $abstract['abstract'] != null ? $abstract['abstract'] : "N/A" ?></p>
 
-
-                <form action="fileupload.php" method="POST" enctype="multipart/form-data">
-                  <div class="mb-3" style="margin-top: 25px">
-                    <input <?php if ($value['is_locked'] == 1) { ?> disabled <?php } ?> type="text" name="title" id="file" required placeholder="Enter you title here" <?php
-                                                                                                                                                                      if ($value['title'] != null) {
-                                                                                                                                                                      ?> value="<?php echo $value['title'] ?>" <?php
-                                                                                                                                                                      }
-                                                                                    ?>>
-                    <?php
-                    if ($value['file'] != null) {
-
-                    ?>
-                      <h6 style="font-size: 15px; margin-top: 5px; margin-left: 5px; margin-right: 5px; max-width: 300px">Current File: <?php echo $value['file']; ?></h6>
-                    <?php
-                    }
-                    ?>
-                    <input class="form-control form-control-sm" type="file" id="formFile" name="myfile" style="max-width: 100%" required <?php if ($value['is_locked'] == 1) { ?> disabled <?php } ?>>
-                    </i><input type="submit" name="file_submit<?php echo $counter ?>" id="upload" value="Submit" <?php if ($value['is_locked'] == 1) { ?> disabled <?php } ?>>
-
-                    <div class="comment-div">
-                      <h6><?php
-                          if ($value['comment'] != null) {
-                            echo "Adviser Comment: <b>" . $value['comment'] . "</b>";
-                          } else {
-                            echo "Adviser has no comment yet.";
-                          }
-                        ?>
-                        <br>File attachment: </br><a href="thesis.php?file=<?php echo $value['adviser_file'] ?>"><?php echo $value['adviser_file'] ?></a>
-                      </h6>
-                    </div>
-                  </div>
-                </form>
-              <?php
-                $counter++;
-              }
-              ?>
             </div>
+            <div class="w-100 d-flex justify-content-center align-items-center" style="margin-top: 15px;">
+              <h5>This Title has been Archived.</h5>
+            </div>
+        <?php
+                }
+              }
+        ?>
+
           </div>
         </div>
 
-      </div>
+
+      </div> <!-- END PY4 -->
 
       <!-- end: content -->
       <!-- start: Graph -->

@@ -151,6 +151,30 @@ class Faculty{
         return $data;
     }
 
+    function archive_group_title($group_id){
+        $sql = "UPDATE group_titles SET status = 'Archived' WHERE group_id = :id AND status = 'Accepted'";
+        $query=$this->db->connect()->prepare($sql);
+        $query->bindParam(':id', $group_id);
+        if($query->execute()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    function archive_title($id){
+        $sql = "UPDATE proposed_titles SET status = 'Archived' WHERE id = :id";
+        $query=$this->db->connect()->prepare($sql);
+        $query->bindParam(':id', $id);
+        if($query->execute()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
 }
 
 ?>

@@ -65,16 +65,7 @@ $(document).ready(function() {
         }
     })
 
-    const visitorsChart = new Chart($('#visitors-chart'), {
-        type: 'doughnut',
-        data: {
-            labels: ['Student', 'Faculty', 'Archives', 'Groups'],
-            datasets: [{
-                backgroundColor: ['#0D6EFD', '#198754', '#0DCAF0', '#FFC107'],
-                data: [11, 4, 3, 10],
-            }]
-        }
-    })
+    
     // end: Charts
 })
 

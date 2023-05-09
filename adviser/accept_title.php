@@ -13,7 +13,7 @@ if(isset($_POST["submit"])){
         if($counter == intval($selectedTitle)){
             $student->update_title($groupid, $selectedTitle, "Accepted");
             foreach($student->get_group_proposed_title($groupid) as $proposed)
-                $student->add_proposed_title($proposed['id']);
+                $student->add_proposed_title($proposed['id'], $proposed["title"]);
         }
         else {
             $student->update_title($groupid, $counter, "Rejected");

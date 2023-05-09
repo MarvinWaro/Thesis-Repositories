@@ -54,8 +54,17 @@ if (isset($_GET['file'])) {
   }
 }
 
+$id = $_GET["groupnum"];
+$course = $_GET["course"];
+
 $stdnt = new Student();
 
+if(!empty($stdnt->get_group_proposed_title($_GET["groupnum"]))){
+  header("location: to_archive.php?id=" . $id . "&course=" . $course);
+}
+elseif(!empty($stdnt->get_group_archived_title($_GET["groupnum"]))){
+  header("location: title_archived.php?id=" . $id . "&course=" . $course);
+}
 
 ?>
 
@@ -390,7 +399,7 @@ $stdnt = new Student();
             </div>
 
             <div class="d-flex justify-content-center" style="margin-top: 25px;">
-              <button class="btn btn-primary" style="width: 50%; color: white; background" data-bs-toggle="modal" data-bs-target="#acceptTitle">Accept a Title</button>
+              <button class="btn btn-primary" style="width: 50%; color: white;" data-bs-toggle="modal" data-bs-target="#acceptTitle">Accept a Title</button>
             </div>
           </div>
         </div>

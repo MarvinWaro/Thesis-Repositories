@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 06, 2023 at 06:27 AM
--- Server version: 10.4.24-MariaDB
+-- Generation Time: May 09, 2023 at 03:53 AM
+-- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -48,7 +48,7 @@ CREATE TABLE `faculty` (
 INSERT INTO `faculty` (`id`, `firstname`, `middle_name`, `lastname`, `email`, `username`, `password`, `department`, `type`, `created_at`, `updated_at`) VALUES
 (25, 'Jaydee', '', 'Ballaho', 'jaydee@wmsu.edu.ph', 'jaydee', 'jaydee', 'Computer Science', 'faculty', '2023-03-10 16:55:53', '2023-04-08 23:39:28'),
 (34, 'Jason', '', 'Catadman', 'ndksndksn@wmsu.edu.ph', 'jason', 'jason', 'Information Technology', 'faculty', '2023-03-25 03:53:59', '2023-04-04 01:41:40'),
-(35, 'Lucy', 'Felix', 'Sadiwa', 'Lucy@wmsu.edu.ph', 'lucy', 'lucy', 'Computer Science', 'faculty', '2023-04-09 06:58:43', '2023-04-09 06:58:43'),
+(35, 'Lucy', 'Felix', 'Sadiwa', 'Lucy@wmsu.edu.ph', 'lucy', 'lucy', 'Computer Science', 'faculty', '2023-04-09 06:58:43', '2023-05-08 18:52:41'),
 (37, 'Edwin', '', 'Arip', 'edwin@wmsu.edu.ph', 'edwin', 'edwin', 'Computer Science', 'faculty', '2023-04-09 14:25:30', '2023-04-09 14:25:30'),
 (38, 'Pauleen', '', 'Gregana', 'pauleen@wmsu.edu.ph', 'Pauleen', 'pauleen', 'Information Technolgy', 'faculty', '2023-04-09 14:27:33', '2023-04-09 14:27:33'),
 (39, 'Gadmar', '', 'Belamide', 'edwin@wmsu.edu.ph', 'gadmar', 'gadmar', 'Computer Science', 'admin', '2023-04-09 14:25:30', '2023-04-09 14:25:30'),
@@ -76,9 +76,7 @@ INSERT INTO `groups` (`id`, `group_number`, `curriculum`, `adviser_id`, `school_
 (48, 1, 'BSCS', 25, '2022-2023'),
 (49, 1, 'BSIT', 34, '2022-2023'),
 (50, 2, 'BSCS', 39, '2022-2023'),
-(51, 2, 'BSIT', 38, '2022-2023'),
-(52, 1, 'BSIT', 34, '2023-2024'),
-(53, 3, 'BSCS', 35, '2022-2023');
+(51, 1, 'BSIT', 38, '2023-2024');
 
 -- --------------------------------------------------------
 
@@ -127,9 +125,9 @@ INSERT INTO `group_panelists` (`id`, `faculty_id`, `group_id`) VALUES
 (4, 25, 48),
 (5, 35, 48),
 (6, 40, 48),
-(7, 40, 49),
-(8, 39, 49),
-(9, 35, 49);
+(7, 34, 51),
+(8, 35, 51),
+(9, 37, 51);
 
 -- --------------------------------------------------------
 
@@ -157,24 +155,18 @@ CREATE TABLE `group_titles` (
 --
 
 INSERT INTO `group_titles` (`id`, `group_id`, `group_number`, `title_number`, `title`, `file`, `file_upload_date`, `adviser_file`, `comment`, `panel_comment`, `is_locked`, `status`) VALUES
-(2, 48, 1, 1, 'GameDev', 'Test SE File.docx', '2023-04-28', '', 'Test', 'A', 0, 'Accepted'),
+(2, 48, 1, 1, 'GameDev', 'Test SE File.docx', '2023-04-28', '', 'Test', 'A', 1, 'Archived'),
 (3, 48, 1, 2, 'WebDev', 'Test SE File.docx', '2023-04-28', '', 'Test2', 'B', 0, 'Rejected'),
 (4, 48, 1, 3, 'DataScience', NULL, NULL, '', NULL, 'C', 0, 'Rejected'),
-(5, 49, 1, 1, 'Starbucks', 'INSERT INTO test 1000.docx', '2023-05-06', '', NULL, '', 0, 'Rejected'),
-(6, 49, 1, 2, 'Tom and Toms', 'LECTURE-IN-P.E.-4-RECREATIONAL-ACTIVITIES.pdf', '2023-05-06', '', NULL, '', 0, 'Accepted'),
-(7, 49, 1, 3, 'Kopiko', 'Doc4.docx', '2023-05-06', '', NULL, '', 0, 'Rejected'),
+(5, 49, 1, 1, NULL, NULL, NULL, '', NULL, '', 0, 'Pending'),
+(6, 49, 1, 2, NULL, NULL, NULL, '', NULL, '', 0, 'Pending'),
+(7, 49, 1, 3, NULL, NULL, NULL, '', NULL, '', 0, 'Pending'),
 (8, 50, 2, 1, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'Pending'),
 (9, 50, 2, 2, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'Pending'),
 (10, 50, 2, 3, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'Pending'),
-(11, 51, 2, 1, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'Pending'),
-(12, 51, 2, 2, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'Pending'),
-(13, 51, 2, 3, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'Pending'),
-(14, 52, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'Pending'),
-(15, 52, 1, 2, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'Pending'),
-(16, 52, 1, 3, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'Pending'),
-(17, 53, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'Pending'),
-(18, 53, 3, 2, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'Pending'),
-(19, 53, 3, 3, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'Pending');
+(11, 51, 1, 1, 'Predicting Student Fail Rate using Machine Learning', 'Transaction.docx', '2023-05-09', NULL, NULL, NULL, 1, 'Archived'),
+(12, 51, 1, 2, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'Rejected'),
+(13, 51, 1, 3, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'Rejected');
 
 -- --------------------------------------------------------
 
@@ -185,17 +177,21 @@ INSERT INTO `group_titles` (`id`, `group_id`, `group_number`, `title_number`, `t
 CREATE TABLE `proposed_titles` (
   `id` int(11) NOT NULL,
   `group_titles_id` int(11) NOT NULL,
+  `title` varchar(255) DEFAULT NULL,
   `abstract` mediumtext DEFAULT NULL,
-  `status` varchar(255) NOT NULL DEFAULT 'Proposed'
+  `file` varchar(255) DEFAULT NULL,
+  `file_upload_date` date NOT NULL DEFAULT current_timestamp(),
+  `status` varchar(255) NOT NULL DEFAULT 'Proposed',
+  `views` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `proposed_titles`
 --
 
-INSERT INTO `proposed_titles` (`id`, `group_titles_id`, `abstract`, `status`) VALUES
-(1, 2, 'This is an overview of our Title.', 'Accepted'),
-(2, 6, NULL, 'Proposed');
+INSERT INTO `proposed_titles` (`id`, `group_titles_id`, `title`, `abstract`, `file`, `file_upload_date`, `status`, `views`) VALUES
+(1, 2, 'GameDev', 'Game Development is the art of creating games and describes the design, development and release of a game. It may involve concept generation, design, build, test and release. While you create a game, it is important to think about the game mechanics, rewards, player engagement and level design.', 'Test SE File.docx', '2023-05-09', 'Archived', 0),
+(4, 11, 'Predicting Student Fail Rate using Machine Learning', 'Abranch of artificial intelligence (AI) and computer science which focuses on the use of data and algorithms to imitate the way that humans learn, gradually improving its accuracy.', 'Transaction.docx', '2023-05-09', 'Archived', 0);
 
 -- --------------------------------------------------------
 
@@ -247,15 +243,10 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`id`, `firstname`, `middle_name`, `lastname`, `username`, `email`, `password`, `type`, `course`, `year_and_section`, `sem`, `school_year`, `your_adviser`, `your_group`, `created_at`, `updated_at`) VALUES
-(135, 'Christian', '', 'Fernandez', 'yanyan', 'yanyan@wmsu.edu.ph', 'yanyan', 'student', 'BSCS', '3-B', 'First Semester', '2022-2023', 'Jaydee Ballaho', 48, '2023-04-27 15:40:13', '2023-04-27 15:40:13'),
+(135, 'Christian', '', 'Fernandez', 'yanyan', 'yanyan@wmsu.edu.ph', 'yanyan', 'student', 'BSCS', '3-A', 'First Semester', '2022-2023', 'Jaydee Ballaho', 48, '2023-04-27 15:40:13', '2023-05-06 02:00:29'),
 (136, 'Joshua', '', 'Bada', 'joshuabada123', 'joshua@wmsu.edu.ph', 'joshua', 'student', 'BSCS', '3-A', 'First Semester', '2022-2023', 'Jaydee Ballaho', 48, '2023-04-28 00:32:12', '2023-04-28 00:32:12'),
 (137, 'Joshua', '', 'Blancaflor', 'joshuapogi123', 'joshuablancaflor@wmsu.edu.ph', 'password', 'student', 'BSCS', '3-A', 'First Semester', '2022-2023', 'Jaydee Ballaho', 48, '2023-05-04 14:39:35', '2023-05-04 14:39:35'),
-(138, 'Faye', '', 'Lacsi', 'faye', 'faye@wmsu.edu.ph', 'faye', 'student', 'BSIT', '3-B', 'First Semester', '2022-2023', 'Jason Catadman', 49, '2023-05-06 01:19:33', '2023-05-06 01:19:33'),
-(139, 'Roselyn', '', 'Tarroza', 'rose', 'rose@wmsu.edu.ph', 'rose', 'student', 'BSIT', '3-C', 'First Semester', '2022-2023', 'Jason Catadman', 49, '2023-05-06 01:20:10', '2023-05-06 01:20:10'),
-(140, 'Xela', '', 'Silorio', 'xela', 'Xela@wmsu.edu.ph', 'xela', 'student', 'BSIT', '3-B', 'First Semester', '2022-2023', 'Jason Catadman', 49, '2023-05-06 01:21:38', '2023-05-06 01:21:38'),
-(141, 'Rudy', '', 'Ibgos', 'rudy', 'rudy@wmsu.edu.ph', 'rudy', 'student', 'BSIT', '3-A', 'First Semester', '2022-2023', 'Pauleen Gregana', 51, '2023-05-06 02:29:12', '2023-05-06 02:29:12'),
-(142, 'Lowey', '', 'Ecat', 'lowey', 'lowey@wmsu.edu.ph', 'lowey', 'student', 'BSIT', '3-B', 'First Semester', '2022-2023', 'Pauleen Gregana', 51, '2023-05-06 02:29:39', '2023-05-06 02:29:39'),
-(144, 'Faye', '', 'Mendeja', 'faye', 'rudy@wmsu.edu.ph', 'faye', 'student', 'BSCS', '3-B', 'First Semester', '2022-2023', 'Lucy Sadiwa', 53, '2023-05-06 02:36:15', '2023-05-06 02:36:15');
+(138, 'Jake', '', 'Doe', 'jake123', 'jakedoe@wmsu.edu.ph', 'password', 'student', 'BSIT', '3-A', 'First Semester', '2023-2024', 'Pauleen Gregana', 51, '2023-05-06 01:24:21', '2023-05-06 01:24:21');
 
 -- --------------------------------------------------------
 
@@ -383,7 +374,7 @@ ALTER TABLE `faculty`
 -- AUTO_INCREMENT for table `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `group_files`
@@ -401,13 +392,13 @@ ALTER TABLE `group_panelists`
 -- AUTO_INCREMENT for table `group_titles`
 --
 ALTER TABLE `group_titles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `proposed_titles`
 --
 ALTER TABLE `proposed_titles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `school_year`
@@ -419,7 +410,7 @@ ALTER TABLE `school_year`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=145;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
 
 --
 -- AUTO_INCREMENT for table `tbl_files`

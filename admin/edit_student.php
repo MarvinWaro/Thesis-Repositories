@@ -212,6 +212,7 @@ $s =  mysqli_query($conn, "SELECT * FROM faculty");
         <div class="main-content border">
           <div class="form-cont">
             <form class="edit-form" action="edit_student.php" method="POST">
+              <input hidden name="student-id" value="<?php echo $_GET['id'] ?>">
               <div class="d-flex justify-content-between pt-2 pb-3">
                 <h3>Update Student</h3>
                 <a href="manage_students.php"><i class="ri-arrow-go-back-line back pb-2"></i>Back</a>

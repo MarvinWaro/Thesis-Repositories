@@ -84,7 +84,7 @@ if (isset($_GET['file'])) {
       <i class="sidebar-toggle ri-arrow-left-circle-line ms-auto fs-5 d-none d-md-block"></i>
     </div>
     <ul class="sidebar-menu p-3 m-0 mb-0">
-      <li class="sidebar-menu-item active">
+      <li class="sidebar-menu-item">
         <a href="home.php ">
           <i class="ri-home-8-line sidebar-menu-item-icon"></i>
           Home
@@ -211,15 +211,21 @@ if (isset($_GET['file'])) {
                     echo $adviser["firstname"] . " " . $adviser["lastname"];
                   }
                 }
+              }
                 ?>
               </h6>
               <h6 style="margin-left: 5px; margin-right: 5px"> | </h6>
               <h6> <?php echo $_GET["course"] ?></h6>
               <h6 style="margin-left: 5px; margin-right: 5px"> | </h6>
-              <h6> <a href="advisee.php?file=<?php echo $title['file'] ?>"><?php echo $title['file'] ?></a></h6>
-            <?php
+              <?php
+              foreach($student->get_group_proposed_title($_GET["id"]) as $title){
+                foreach($student->get_toarchive_title($title["id"]) as $toarchive){
+              ?>
+              <h6> <a href="to_archive.php?file=<?php echo $toarchive['file'] ?>"><?php echo $toarchive['file'] ?></a></h6>
+              <?php
+                }
               }
-            ?>
+              ?>
             </div>
 
           </div>
@@ -268,15 +274,19 @@ if (isset($_GET['file'])) {
                 foreach ($student->get_accepted($title['id']) as $abstract) {
                 ?>
                 <p><?php echo $abstract['abstract'] != null ? $abstract['abstract'] : "N/A" ?></p>
-                <?php
-                }
-              }
-              ?>
+                
               
 
             </div>
-
-            <button id="archive-button" type="button" class="btn">Archive Thesis</button>
+            <form method="POST" action="archive_title.php">
+            <input hidden name="groupid" value="<?php echo $_GET['id'] ?>">
+              <input hidden name="titleid" value="<?php echo $abstract['id'] ?>">
+              <button id="archive-button" type="submit" name="submit" class="btn">Archive Thesis</button>
+            </form>
+            <?php
+                }
+              }
+            ?>
 
           </div>
         </div>

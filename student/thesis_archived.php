@@ -215,7 +215,7 @@
               <div class="main-content border">
                   <div class="head-number p-3"> 
                       <?php
-                        foreach($student->get_group_proposed_title($_SESSION["groupnum"]) as $title){
+                        foreach($student->get_group_archived_title($_SESSION["groupnum"]) as $title){
                       ?>
                       <input hidden name="id" value="<?php echo $title["id"] ?>" form="abstract_update">
                       <h2> <?php echo $title['title'] ?> </h2>
@@ -275,17 +275,13 @@
 
                       <form action="abstract_update.php" method="POST" id="abstract_update" enctype="multipart/form-data">
                         <?php
-                        foreach($student->get_group_proposed_title($_SESSION["groupnum"]) as $title){
+                        foreach($student->get_group_archived_title($_SESSION["groupnum"]) as $title){
                           foreach($student->get_toarchive_title($title["id"]) as $toarchive){
                         ?>
-                        <textarea required class="form-control" name="abstract" rows="6"><?php echo $toarchive["abstract"] ?></textarea>
-
-                        <label for="formFile" class="form-label mt-2">Upload Updated File:</label>
-                        <input required class="form-control student-form-control" type="file" id="formFile" name="myfile">
-                        <h6 style="font-size: 12px;">Current File: <?php echo $toarchive["file"] ?></h6>
-
-                        <div class="submit-cont mt-2">
-                          <input type="submit" name="submit" id="submit" value="Submit">
+                        <textarea readonly required style="background-color: white" class="form-control" name="abstract" rows="6"><?php echo $toarchive["abstract"] ?></textarea>
+                        
+                        <div class="w-100 d-flex justify-content-center align-items-center" style="margin-top: 15px;">
+                            <h5>This Title has been Archived.</h5>
                         </div>
                         <?php
                           }

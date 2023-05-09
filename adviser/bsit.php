@@ -243,7 +243,7 @@
                                         <?php
                                         }
                                         ?>
-                                        <td>2022-2023</td>
+                                        <td><?php echo $value['school_year'] ?></td>
                                         
                                     </tr>
                                 <?php

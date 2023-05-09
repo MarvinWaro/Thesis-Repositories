@@ -242,7 +242,7 @@
                             <td><?php echo $title["curriculum"]?></td>
                             <td><?php echo $title["group_number"]?></td>
                             <td><?php echo $title["file_upload_date"]?></td>
-                            <td>2022-2023</td>
+                            <td><?php echo $title["school_year"]?></td>
                             
                         </tr>
                         <?php
