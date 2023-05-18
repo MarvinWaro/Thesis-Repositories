@@ -60,7 +60,7 @@ $course = $_GET["course"];
 $stdnt = new Student();
 
 if(!empty($stdnt->get_group_proposed_title($_GET["groupnum"]))){
-  header("location: to_archive.php?id=" . $id . "&course=" . $course);
+  header("location: to_archive_view.php?id=" . $id . "&course=" . $course);
 }
 elseif(!empty($stdnt->get_group_archived_title($_GET["groupnum"]))){
   header("location: title_archived.php?id=" . $id . "&course=" . $course);
